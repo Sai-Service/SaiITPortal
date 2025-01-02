@@ -1,0 +1,118 @@
+
+<form #f="ngForm" novalidate class="form-container" >
+  <nav class="navbar">
+    <div class="container">
+        <div class="logo">
+          <img src="http://saiitportal.com/Images/Sai%20Logo.jpg" alt="Sai Service">
+        </div>
+         <div class="navbar-center">
+             <span class="navbar-text">
+             <img style="height:45px;width:250px;" src="https://advicefromacaterpillar.wordpress.com/wp-content/uploads/2016/12/merry-christmas.gif"></span>
+         </div>       
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="https://www.saiservice.com/">About</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header class="new">
+  <div class="header-left">
+     <img style="height: 50px; width:150px;" src="https://st4.depositphotos.com/2274151/30829/v/450/depositphotos_308292292-stock-illustration-new-update-sign-new-update.jpg" alt="">
+      <div>
+        <marquee direction="up" scrollamount="3" onMouseOver="this.stop()" onMouseOut="this.start()">
+          <ul>
+          <li>The best preparation for tomorrow is doing your best today.</li>
+          <br>
+          <li> Increasing your competitive advantage by aligning strategy with people and culture.</li>
+          <br>
+          <li> Stay updated with our latest offers and services!</li>
+          <br>
+          <li>
+          <a href="DOCUMENTS/Excel Training - Links.xlsx" target="_blank">Excel Training - Links</a>
+          </li>
+          <br>
+          <li>
+            <a href="http://saiitportal.com/Images/Sai%20Mumbai%20Newletter%20July%20-%20September-24.pdf" target="_blank">Mumbai News Letter</a>
+          </li>
+          </ul>
+        </marquee> 
+      </div>
+ </div>
+   
+   <div class="header-center">
+    <img src="https://scontent.fnag1-1.fna.fbcdn.net/v/t39.30808-6/461170520_926879486136695_3165988932914913540_n.png?stp=dst-png_s960x960&_nc_cat=102&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=6hz3s247Y2UQ7kNvgHHIh57&_nc_zt=23&_nc_ht=scontent.fnag1-1.fna&_nc_gid=AAFNm8alRmCEURNyFOcujOM&oh=00_AYC3Wp4CkN7sIyuE3ZATDq0JdQBaYRgxzRGQtD350IrTDw&oe=6771757A">
+    </div>
+  
+   <div class="header-right">
+        <p class="page">LOGIN</p>        
+        <input type="text" id="username" placeholder="Enter the User Name"  [(ngModel)]="username" name="username"  name="username" placeholder="username" required>
+        <input type="password" id="password" placeholder="Enter the Password"  [(ngModel)]="password" name="username"  name="password" placeholder="password" required>
+        <button type="submit" (click)="login()" class="btn btn-signin">Login</button>
+    </div>
+</header> 
+
+<section class="search-section">
+  <div class="container">
+    <marquee direction="left">
+      DBA Team Support : Monday to Saturday = Digamber G Pune-9923208023 : 9 AM To 6 PM //  Mangesh R Pune-9594440963 : 9 PM to 6 AM //  Dinesh D Mumbai-9594952151 : 10 PM to 7 PM .
+    </marquee>
+  </div>
+</section>
+
+<section class="features">
+     <div class="container">
+         <div class="feature">
+              <a class="btn" [routerLink]="['/admin/erpIssueModule/userIssueLog']">IT SUPPORT</a>
+         </div>
+         <div class="feature">
+              <a class="btn" href="http://saiitportal.com/ITLogin-Bajaj.aspx">BAJAJ SUPPORT</a>
+         </div>
+         <div class="feature"> 
+              <a class="btn" href="http://saiappsnew.horizon.org:8014/">HORIZON</a>
+         </div>
+         <div class="feature">
+              <a class="btn" href="http://saihorizon.com:8051/erpReplica/">BAJAJ REPLICA</a>
+         </div>
+         <div class="feature">
+              <a class="btn" href="http://saiitportal.com/TV_NMaruti.aspx">TRUE VALUE</a>
+         </div> 
+         <div class="feature">
+              <a class="btn" href="http://dms.maruti.com/">DMS</a>
+         </div>
+         <div class="feature">
+              <a class="btn" href="http://10.58.1.10/">MARUTI EXTRANET</a>
+         </div>
+         <div class="feature">
+              <a class="btn" href="http://192.168.19.244/EasyPAY/view/loginmain.aspx">HR</a>
+         </div>
+     </div>
+</section>
+
+<section class="latest-cars">
+    <div class="container">
+          <div class="car-list">
+              <div class="car">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwkAVLmBnTwAQnYOJqOABDrf-XsiEAgOEvVMlfNt2vZFViuHHLXwCf3_EWV8LQO7wWlYM&usqp=CAU">
+              </div>
+              <div class="car">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfXlR0C1KcOmo-EY8rUHsXRW5n3VRLM1Timw&s">
+              </div>   
+              <div class="car">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm3lL9KfLQ10aeKed_GHTzfjk_JhIwbPbGng&s">
+              </div>
+              <div class="car">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGr0Cl3ywWWDf8M5GFWaZDeMPy1S5Fnw-U5A&s">
+
+              </div>
+          </div>
+    </div>
+</section>
+
+<footer>
+   <div class="container">
+    <p>Copyright at saiservice.com. All rights reserve to sai service IT.</p>
+   </div>
+</footer>
+
+</form>

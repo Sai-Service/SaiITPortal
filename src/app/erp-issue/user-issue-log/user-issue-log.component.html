@@ -1,0 +1,208 @@
+   <html>
+    <body>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>IT Support Form</title>
+        <div class="header" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center;">
+            <img src="http://saiitportal.com/Images/Sai%20Logo.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;">
+            <marquee style="font-size: 22px; font-weight: bold;">WELCOME TO SAI SERVICE IT SUPPORT 12 * 7</marquee>
+            <!-- <img src="D:\sai IT Portal\Angular\itPortal\src\images\bg itportral.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;"> -->
+        </div>
+
+        <div class="container" >
+            <form>
+                <div class="form-group inline">
+                    <div>
+                        <label for="city">City</label>
+                        <input type="text" id="city" value="Mumbai" style="height: 0.7cm;" readonly>
+                    </div>
+    
+                    <div>
+                        <label for="location">Location</label>
+                        <select id="location" style="height: 0.7cm;" >
+                        <option value="11MU.201-LOWER PAREL">11MU.201-LOWER PAREL</option></select>
+                        
+                       <!-- <select id="location" style="height: 0.7cm;" formControlName="erpLoc" >
+                            <option ngFor="let sc of erplocationList" [value]="sc.locID">
+                                {{sc.locId}}- {{sc.locName}}
+                            </option>
+                        </select> -->
+                        
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                            <label for="priority">Priority</label>
+                            <select id="priority" style="height: 0.7cm;" >
+                                <option value="High" class="priority-high">High</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group inline">
+                    <div>
+                        <label for="user-name">Name of User</label>
+                        <input type="text" style="height: 0.7cm;"  id="user-name">
+                    </div>
+                    
+                    <div>
+                        <label for="email">Email ID</label>
+                        <input type="email"  style="height: 0.7cm;" id="email" placeholder="@saiservice.com">
+                    </div>
+                    
+                    <div>
+                        <label>Contact No</label>
+                        <input type="tel" style="height: 0.7cm;" id="contact-no">
+                    </div>
+                </div>
+
+                <div class="form-group inline">
+                    <div>
+                        <label for="issue-type">Issue Type</label>
+                        <select id="issue-type" style="height: 0.7cm;" >
+                            <option value="ERP Operations">ERP Operations</option>      
+                        </select>
+                    </div>
+    
+                    <div>
+                        <label for="department">Department</label>
+                        <select id="department" style="height: 0.7cm;" >
+                            <option value="Accessories">Accessories</option>
+                          
+                        </select>
+                    </div>
+    
+                    <div>
+                        <label for="module">Module</label>
+                        <select id="module" style="height: 0.7cm;" >
+                            <option value="Order Management">Order Management</option>
+                            
+                        </select>
+                    </div>
+                </div>
+        
+                <div class="form-group inline">
+                    <div>
+                        <label for="mail-subject">Mail Subject</label>
+                        <input type="text"  style="height: 0.7cm;" rows="3"  id="mail-subject">
+                    </div>
+               
+                    <div>
+                        <label for="priority">Issue-Description Title</label>
+                        <select id="priority" style="height: 0.7cm;" >
+                            <option class="priority-high">Bill To Ship To Error</option> 
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="issue-description">Issue Description (250 Characters)</label>
+                    <textarea type="textarea" id="issue-description"  rows="2"></textarea>
+                </div>
+    
+                <div class="form-group">
+                    <label for="file-upload">Select File Type & Upload File (Excel with .xlsx/pdf with .pdf Format)</label>
+                    <input type="file"  id="file-upload">
+                </div>
+    
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="container">
+            <form>
+                <div class="form-group inline">
+                    <div>
+                        <label for="city">City</label>
+                        <input type="text" id="city" value="Mumbai" style="height: 0.8cm;" readonly>
+                    </div>
+        
+                    <div>
+                        <label for="search">Search by Issue No</label>
+                        <input type="search" id="search" style="height: 0.8cm;">
+                    </div>
+                    
+                    <div>
+                        <label for="location">Location</label>
+                        <select id="location" style="height: 0.8cm;" >
+                            <option value="11MU.201-LOWER PAREL">11MU.201-LOWER PAREL</option>
+                           
+                        </select>
+                    </div>
+        
+                    <div>
+                        <label for="department">Department</label>
+                        <select id="department" style="height: 0.8cm;" >
+                            <option value="Accessories">Accessories</option>
+                        </select>
+                    </div>
+        
+                    <div>
+                        <label for="status">Status</label>
+                        <select id="priority" style="height: 0.8cm;" >
+                            <option value="select">Select</option>
+                           
+                        </select>
+                    </div>
+                </div>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+
+
+
+
+    
+ <div class="search">
+        <table class="issue-table">
+                    <tr>
+                        <th>Priority</th>
+                        <th>Issue No</th>
+                        <th>Status</th>
+                        <th>User Subject</th>
+                        <th>Assign To</th>
+                        <th>User Name</th>
+                        <th>Issue Date</th>
+                        <th>Email ID</th>
+                        <th>Issue Type</th>
+                        <th>Select</th>
+                    </tr>
+                
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th><a href="#">select</a></th>
+                    </tr> 
+        </table>
+
+            <div class="issue-details">
+                <p>Please find the below details of your Issue No: <strong>11MU.227-0029446</strong></p>
+                <form>
+                    <label for="update-issue">Update Issue:</label>
+                    <textarea id="update-issue" rows="2" maxlength="250" placeholder="Enter issue update"></textarea>
+    
+                    <label for="file-type">Select File Type & Upload File:</label>
+                    <input type="file" id="upload-file">
+    
+                    <div class="buttons">
+                        <button type="submit">Add/Update Issue</button>
+                        <button type="button">Close Issue</button>
+                    </div>
+                </form>
+            </div>
+</div>
+
+
+</body>
+</html>

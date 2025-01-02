@@ -1,0 +1,138 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+}
+
+.header {
+    background-color: #0073e6;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 4m;
+}
+
+.container {
+    max-width: 900px;
+    margin: 15px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.form-group {
+    margin-bottom: 6px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 3px;
+    color: #720755;
+}
+
+td {
+    display: block;
+    font-size: 30spx;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #ffffff;
+}
+
+input, select, textarea {
+    width: 100%;
+    margin-top: 1px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 13px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out;
+    padding-left: 6px;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #0073e6;
+    outline: none;
+}
+
+input[type="file"] {
+    padding: 5px;
+}
+
+button {
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    padding: 4px 20px;
+    border-radius: 5px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 1px auto;
+    max-width: 250px;
+}
+
+button:hover {
+    background-color: #005bb5;
+}
+
+.priority-high {
+    color: red;
+    font-weight: bold;
+}
+
+.inline {
+    display: flex;
+    gap: 15px;
+}
+
+.inline > div {
+    flex: 1;
+}
+
+textarea{
+    resize: none;
+}
+
+
+
+
+
+
+
+.search {
+    max-width: 98%;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    padding: 20px; 
+}
+
+  .issue-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.issue-table th,
+.issue-table td {
+    border: 1px solid #ddd;
+    padding: 4px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.issue-details p {
+    font-size: 12px;
+    margin-bottom: 10px;
+}
