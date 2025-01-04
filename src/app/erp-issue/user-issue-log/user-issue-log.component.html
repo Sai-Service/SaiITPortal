@@ -9,28 +9,30 @@
             <!-- <img src="D:\sai IT Portal\Angular\itPortal\src\images\bg itportral.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;"> -->
         </div>
 
+
         <div class="container" >
-            <form>
-                <p style="text-align: center;">Send Your ERP related issue </p>
+            <form [formGroup]="userissueslogForm" (ngSubmit)="Userissuesfrm(userissueslogForm.value)" >
+                <p style="text-align: center; font-weight: 900;font-size: 16px; margin-bottom: 10px;">ERP Issue Registration Form</p>
+              <hr style="width:100%; border: 1px solid black;">
                 <div class="form-group inline">
                     <div>
-                        <label for="city">City</label>
+                        <label >City</label>
                         <input type="text" id="city" value="Mumbai" style="height: 0.7cm;" readonly>
                     </div>
     
                     <div>
-                        <label for="location">Location</label>
-                            <option ngFor="let sc of erplocationList" [value]="sc.locID">
-                                {{sc.locId}}- {{sc.locName}}
-                            </option>
+                        <label>Location</label>
+                        <select id="locationId" style="height: 0.7cm;" formControlName="locationId" >
+                            <option *ngFor="let text of  erplocationList" [value]="text.locId">
+                                {{text.locId}}-{{text.locName}}
+                             </option>
                         </select>
-
                     </div>
 
                     <div class="form-group">
                         <div>
-                            <label for="priority">Priority</label>
-                            <select id="priority" style="height: 0.7cm;" >
+                            <label>Priority</label>
+                            <select id="priority" style="height: 0.7cm;" formControlName="priority">
                                 <option value="High" class="priority-high">High</option>
                                 <option value="Medium">Medium</option>
                                 <option value="Low">Low</option>
@@ -41,41 +43,41 @@
 
                 <div class="form-group inline">
                     <div>
-                        <label for="user-name">Name of User</label>
-                        <input type="text" style="height: 0.7cm;"  id="user-name">
+                        <label>Name of User</label>
+                        <input type="text" style="height: 0.7cm;"  id="user-name" formControlName="userName">
                     </div>
                     
                     <div>
-                        <label for="email">Email ID</label>
-                        <input type="email"  style="height: 0.7cm;" id="email" placeholder="@saiservice.com">
+                        <label>Email ID</label>
+                        <input type="email"  style="height: 0.7cm;" id="email" placeholder="@saiservice.com" formControlName="userEmail">
                     </div>
                     
                     <div>
                         <label>Contact No</label>
-                        <input type="tel" style="height: 0.7cm;" id="contact-no">
+                        <input type="tel" style="height: 0.7cm;" id="contact-no" formControlName="contactNo">
                     </div>
                 </div>
 
                 <div class="form-group inline">
                     <div>
-                        <label for="issue-type">Issue Type</label>
-                        <select id="issue-type" style="height: 0.7cm;" >
+                        <label>Issue Type</label>
+                        <select id="IssueType" style="height: 0.7cm;" formControlName="IssueType">
                             <option value="ERP Operations">ERP Operations</option>      
                         </select>
                     </div>
     
                     <div>
-                        <label for="department">Department</label>
-                        <select id="department" style="height: 0.7cm;" >
+                        <label>Department</label>
+                        <select id="deptId" style="height: 0.7cm;" formControlName="deptId" >
                             <option value="Accessories">Accessories</option>
                           
                         </select>
                     </div>
     
                     <div>
-                        <label for="module">Module</label>
-                        <select id="module" style="height: 0.7cm;" >
-                            <option value="Order Management">Order Management</option>
+                        <label>Module</label>
+                        <select type="text" id="module" style="height: 0.7cm;" formControlName="module">
+                            
                             
                         </select>
                     </div>
@@ -83,34 +85,39 @@
         
                 <div class="form-group inline">
                     <div>
-                        <label for="mail-subject">Mail Subject</label>
-                        <input type="text"  style="height: 0.7cm;" rows="3"  id="mail-subject">
+                        <label>Mail Subject</label>
+                        <input type="text"  style="height: 0.7cm;" rows="3"  id="mail-subject" formControlName="subject">
                     </div>
                
                     <div>
-                        <label for="priority">Issue-Description Title</label>
-                        <select id="priority" style="height: 0.7cm;" >
+                        <label>Issue-Description Title</label>
+                        <select id="priority" style="height: 0.7cm;" formControlName="IssueType">
                             <option class="priority-high">Bill To Ship To Error</option> 
                         </select>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="issue-description">Issue Description (250 Characters)</label>
-                    <textarea type="textarea" id="issue-description"  rows="2"></textarea>
+                    <label>Issue Description (250 Characters)</label>
+                    <textarea type="textarea" id="issue-description"  rows="2" formControlName="IssueDesc"></textarea>
                 </div>
     
                 <div class="form-group">
                     <label for="file-upload">Select File Type & Upload File (Excel with .xlsx/pdf with .pdf Format)</label>
-                    <input type="file"  id="file-upload">
+                    <input type="file"  id="filePath" formControlName="filePath">
                 </div>
-    
+
+                <input type="text" id="issueNo" hidden fromControlName="issueNo" style="height: 0.8cm;" readonly>
+                <input type="text" id="firstName" hidden     fromControlName="firstName" style="height: 0.8cm;" readonly>
+                
+             
                 <button type="submit">Submit</button>
             </form>
         </div>
 
         <div class="container">
             <form>
+                
                 <div class="form-group inline">
                     <div>
                         <label for="city">City</label>
@@ -118,30 +125,27 @@
                     </div>
         
                     <div>
-                        <label for="search">Search by Issue No</label>
-                        <input type="search" id="search" style="height: 0.8cm;">
+                        <label>Search by Issue No</label>
+                        <input type="text" id="issueNo" style="height: 0.8cm;" formControlName="issueNo">
                     </div>
                     
                     <div>
-                        <label for="location">Location</label>
-                        <select id="location" style="height: 0.8cm;" >
-                            <option value="11MU.201-LOWER PAREL">11MU.201-LOWER PAREL</option>
-                           
+                        <label>Location</label>
+                        <select  style="height: 0.8cm;" formControlName="locationId" id="locationId">    
                         </select>
                     </div>
         
                     <div>
-                        <label for="department">Department</label>
-                        <select id="department" style="height: 0.8cm;" >
+                        <label>Department</label>
+                        <select id="deptId" style="height: 0.8cm;" formControlName="deptId">
                             <option value="Accessories">Accessories</option>
                         </select>
                     </div>
         
                     <div>
-                        <label for="status">Status</label>
-                        <select id="priority" style="height: 0.8cm;" >
-                            <option value="select">Select</option>
-                           
+                        <label>Status</label>
+                        <select id="status" style="height: 0.8cm;" formControlName="status">
+                            <option value="select">Select</option> 
                         </select>
                     </div>
                 </div>
@@ -193,8 +197,8 @@
                     <input type="file" id="upload-file">
     
                     <div class="buttons">
-                        <button type="submit">Add/Update Issue</button>
-                        <button type="button">Close Issue</button>
+                         <button type="submit" style="margin-top: 10px;">Add/Update Issue</button>
+                         <button type="button">Close Issue</button>
                     </div>
                 </form>
             </div>
