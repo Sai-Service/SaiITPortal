@@ -133,106 +133,136 @@
                     <button type="submit"  style="background: linear-gradient(to right, #23a802, #b3f802); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center; width: 5cm;" (click)="sendIasue()">Submit</button>
                 
             </div>
-    
+      
             <div class="container">
-              
-                    <div class="form-group inline">
-                        <div>
-                            <label for="city">City</label>
-                            <input type="text" id="city" value="Mumbai" style="height: 0.8cm;" readonly>
-                        </div>
-            
-                        <div>
-                            <label>Search by Issue No</label>
-                            <input type="text" id="issueNo" style="height: 0.8cm;" formControlName="issueNo">
-                        </div>
-                        
-                        <div>
-                            <label>Location</label>
-                            <select type="number" id="locationId" style="height: 0.8cm;" formControlName="locationId" >
-                              
-                            </select>
-                        </div>
-            
-                        <div>
-                            <label>Department</label>
-                            <select id="department" style="height: 0.8cm;" formControlName="deptId">
-                                <option value="Accessories">Accessories</option>
-                            </select>
-                        </div>
-            
-                        <div>
-                            <label>Status</label>
-                            <select id="status" style="height: 0.8cm;" formControlName="status">
-                                <option value="select">Select</option> 
-                            </select>
-                        </div>
+          
+                <div class="form-group inline">
+                    <div>
+                        <label>City</label>
+                        <input type="text" id="city" formControlName="attribute5" style="height: 0.8cm;" readonly>
                     </div>
-                    <button type="submit" type="submit" class="btn btn-info" id="register" (click)="sendIasue
-                ()">Search</button>
-             
-            </div>
-    
-    
-    
-    
-    
         
-     <!-- <div class="search">
-            <table class="issue-table">
-                <thead>
-                        <tr>
-                            <th>Priority</th>
-                            <th>Issue No</th>
-                            <th>Status</th>
-                            <th>User Subject</th>
-                            <th>Assign To</th>
-                            <th>User Name</th>
-                            <th>Issue Date</th>
-                            <th>Email ID</th>
-                            <th>Issue Type</th>
-                            <th>Select</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <ng-container class="center" formArrayName="transLines">
-                            <ng-container *ngFor="let group of orderlineDetailsArray().controls; let i= index"
-                                [formGroupName]="i">
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th><a href="#">select</a></th>
-                        </tr> 
-                    </ng-container>
-                </ng-container>  
-                      
-                </tbody>
-            </table>
-    
-                <div class="issue-details">
-                    <p>Please find the below details of your Issue No: <strong></strong></p>
-                
-                        <label for="update-issue">Update Issue:</label>
-                        <textarea id="update-issue" rows="2" maxlength="250" placeholder="Enter issue update"></textarea>
-        
-                        <label for="file-type">Select File Type & Upload File:</label>
-                        <input type="file" id="upload-file">
-        
-                        <div class="buttons">
-                             <button type="submit" style="margin-top: 10px;">Add/Update Issue</button>
-                             <button type="button">Close Issue</button>
-                        </div>
+                    <div>
+                        <label>Search by Issue No</label>
+                        <input type="text" id="issueNo" style="height: 0.8cm;" formControlName="issueNo">
+                    </div>
                     
+                    <div>
+                        <label>Location</label>
+                        <select type="number" id="locationId" style="height: 0.8cm;" formControlName="srclocationId" >
+                            <option *ngFor="let sc of  erplocationList" [value]="sc.locId">
+                                {{sc.locId}} - {{sc.locName}}
+                             </option>
+                        </select>
+                    </div>
+        
+                    <div>
+                        <label>Department</label>
+                        <select id="department" style="height: 0.8cm;" formControlName="srcdeptId">
+                            <option *ngFor="let sc of  departmentList" [value]="sc.cmntypeId">
+                                {{sc.cmnDesc}}
+                             </option>
+                        </select>
+                    </div>
+        
+                    <div>
+                        <label>Status</label>
+                        <select id="status" style="height: 0.8cm;" formControlName="status">
+                            <option *ngFor="let sc of  issuestatusList" [value]="sc.cmntypeId">
+                                {{sc.cmnDesc}}
+                             </option>
+                        </select>
+                    </div>
                 </div>
-                
-    </div>-->
+                <button type="submit" type="submit" class="btn btn-info" id="register" (click)="search()">Search</button>
+         
+        </div>
+
+            
+
+    <div class="search">
+    <table class="issue-table"
+    style="border-color:#959595;border-collapse:collapse;width: 100%; ">
+    <thead>
+        <tr class="GridHeader">
+            <th style="border: 1px solid black; width:50px;">Priority</th>
+            <th style="border: 1px solid black; width:50px;">Issue No</th>
+            <th style="border: 1px solid black; width:50px;">Status</th>
+            <th style="border: 1px solid black; width:50px;">User Subject</th>
+            <th style="border: 1px solid black; width:50px;">Assign To</th>
+            <th style="border: 1px solid black; width:50px;">User Name</th>
+            <th style="border: 1px solid black; width:50px;">Issue Date</th>
+            <th style="border: 1px solid black; width:50px;">Email ID</th>
+            <th style="border: 1px solid black; width:50px;">Issue Type</th>
+            <th style="border: 1px solid black; width:50px;">Select</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let com of userissuefromsearch">
+            <th>{{com.priority}}</th>
+            <th>{{com.issueNo}}</th>
+            <th>{{com.status}}</th>
+            <th>{{com.userSubject}}</th>
+            <th>{{com.assignedTo}}</th>
+            <th>{{com.userName}}</th>
+            <th>{{com.issueDate}}</th>
+            <th>{{com.userEmail}}</th>
+            <th>{{com.issueType}}</th> 
+             <!-- <th  (click)="issueNoFind(com.issueNo)">select</th>  -->
+        </tr>
+    
+    </tbody>
+</table>
+
+
+
+
+<!-- <table class="issue-table" cellspacing="0" cellpadding="15"
+                style="border-color:#959595;border-collapse:collapse;width: 100%; ">
+                <thead>
+                    <tr class="GridHeader">
+                        <th scope="col" style="border: 1px solid black; width: 30px;"> Item Id</th>
+                        <th scope="col" style="border: 1px solid black; width: 30px;"> Item Id</th>
+                        <th scope="col" style="border: 1px solid black; width: 30px;"> Item Id</th>
+                        <th scope="col" style="border: 1px solid black; width: 30px;"> Item Id</th>
+                        <th scope="col" style="border: 1px solid black; width: 30px;"> Item Id</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let com of userissuefromsearch" >
+                       
+                            <th style="border: 1px solid black;padding-left: 15px;">{{com.itemType}}</th>
+                            <th style="border: 1px solid black;padding-left: 15px;">{{com.itemType}}</td>
+                            <td style="border: 1px solid black;padding-left: 15px;">{{com.itemType}}</td>
+                            <td style="border: 1px solid black;padding-left: 15px;">{{com.itemType}}</td>
+                            <td style="border: 1px solid black;padding-left: 15px;">{{com.itemType}}</td>
+
+                    
+                    </tr>
+                </tbody>
+</table> -->
+ 
+
+        <div class="issue-details">
+            <p>Please find the below details of your Issue No: <strong></strong></p>
+            <!-- <form> -->
+                <label for="update-issue">Update Issue:</label>
+                <textarea id="update-issue" rows="2" maxlength="250" placeholder="Enter issue update"></textarea>
+
+                <label for="file-type">Select File Type & Upload File:</label>
+                <input type="file" id="upload-file">
+
+                <div class="buttons">
+                     <button type="submit" style="margin-top: 10px;">Add/Update Issue</button>
+                     <button type="button">Close Issue</button>
+                </div>
+            
+        </div>
+        
+</div>
+
+
     
     </form>
 

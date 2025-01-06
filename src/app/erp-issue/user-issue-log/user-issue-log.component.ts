@@ -100,6 +100,8 @@ export class UserIssueLogComponent {
   currentYear:string;
   status:string;
   file:string;
+  srclocationId:number;
+  srcdeptId:number;
   @ViewChild('fileInput') fileInput:any;
 
 
@@ -110,6 +112,8 @@ public departmentList:any=[];
 public ModuletList:any=[];
 public issuediscList:any=[];
 public filetypeList:any=[];
+public issuestatusList:any=[];
+userissuefromsearch:any[];
   mainimage:any=[];
 
 
@@ -152,6 +156,8 @@ public filetypeList:any=[];
   currentYear:[],
   status:[],
   file:[],
+  srcdeptId:[],
+  srclocationId:[],
   transLines:this.fb.array([this.UserissueLinesGroup()]),
 })
 }
@@ -243,6 +249,14 @@ UserissueLinesGroup() {
       }
     )
 
+    this.service.issuestatusList()
+    .subscribe( 
+      data => {
+        this.issuestatusList = data.obj;
+        console.log(this.issuestatusList);
+      }
+    )
+
     
 
 
@@ -275,5 +289,41 @@ UserissueLinesGroup() {
 
 
   }
+
+  search(){
+  var  issueNo = this.userissueslogForm.get('issueNo')?.value;
+  var  srclocationId = this.userissueslogForm.get('srclocationId')?.value;
+  var  srcdeptId = this.userissueslogForm.get('srcdeptId')?.value;
+  var  status = this.userissueslogForm.get('status')?.value;
+  if (issueNo === null) { issueNo = '' }
+  if (srclocationId === null) { srclocationId = '' }
+  if (srcdeptId === null) { srcdeptId = '' }
+  if (status === null) { status = '' }
+
+  this.service.UserissuesSearch(issueNo,sessionStorage.getItem('orgId'),srclocationId,srcdeptId,status)
+  .subscribe(
+    (res: any) => {
+      if (res.code==200){
+        alert(res.message)
+      this.userissuefromsearch= res.obj;
+      
+   
+    if (res.obj.length !=0){
+      
+    }
+}
+  else {
+    if (res.code === 400) {
+      alert(res.message);
+      
+    }
+  }
+    });
+
+
+  }
+
+
+  issueNoFind(){}
 
 }
