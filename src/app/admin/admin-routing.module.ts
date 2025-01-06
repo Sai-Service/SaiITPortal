@@ -9,6 +9,10 @@ const routes: Routes = [
         path: 'erpIssueModule',
         loadChildren: () => import('../erp-issue/erp-issue.module').then(mod => mod.ErpIssueModule)
       },
+      {
+        path: 'bajajIssueModule',
+        loadChildren: () => import('../bajaj-issue/bajaj-issue.module').then(mod => mod.BajajIssueModule)
+      },
     ]
   }
 ];

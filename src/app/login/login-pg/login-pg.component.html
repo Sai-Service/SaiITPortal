@@ -40,14 +40,15 @@
       </div>
  </div>
    
-   <div class="header-center">
-    <img src="https://scontent.fnag1-1.fna.fbcdn.net/v/t39.30808-6/461170520_926879486136695_3165988932914913540_n.png?stp=dst-png_s960x960&_nc_cat=102&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=6hz3s247Y2UQ7kNvgHHIh57&_nc_zt=23&_nc_ht=scontent.fnag1-1.fna&_nc_gid=AAFNm8alRmCEURNyFOcujOM&oh=00_AYC3Wp4CkN7sIyuE3ZATDq0JdQBaYRgxzRGQtD350IrTDw&oe=6771757A">
-    </div>
+ <div class="header-center">
+  <img src="http://localhost:8080/DocUpload/DownloadImages?imagePath=D://IMGUPLOAD//MAIN%20IMAGE.jpg">
+  
+  </div>
   
    <div class="header-right">
         <p class="page">LOGIN</p>        
         <input type="text" id="username" placeholder="Enter the User Name"  [(ngModel)]="username" name="username"  name="username" placeholder="username" required>
-        <input type="password" id="password" placeholder="Enter the Password"  [(ngModel)]="password" name="username"  name="password" placeholder="password" required>
+        <input type="password" id="password" placeholder="Enter the Password"  [(ngModel)]="password" name="username"  name="password" placeholder="password" required><br>
         <button type="submit" (click)="login()" class="btn btn-signin">Login</button>
     </div>
 </header> 
@@ -66,7 +67,7 @@
               <a class="btn" [routerLink]="['/admin/erpIssueModule/logincommonerp']">IT SUPPORT</a>
          </div>
          <div class="feature">
-              <a class="btn" href="http://saiitportal.com/ITLogin-Bajaj.aspx">BAJAJ SUPPORT</a>
+              <a class="btn" [routerLink]="['/admin/bajajIssueModule/bajajuserIssueLog']" >BAJAJ SUPPORT</a>
          </div>
          <div class="feature"> 
               <a class="btn" href="http://saiappsnew.horizon.org:8014/">HORIZON</a>
@@ -89,7 +90,45 @@
      </div>
 </section>
 
+
 <section class="latest-cars">
+  <div class="container">
+        <div class="car-list">
+            <div class="car">
+              <!-- <img src="https://encrypted-tbsn0.gstatic.com/images?q=tbn:ANd9GcSwkAVLmBnTwAQnYOJqOABDrf-XsiEAgOEvVMlfNt2vZFViuHHLXwCf3_EWV8LQO7wWlYM&usqp=CAU"> -->
+            
+              <img src="http://localhost:8080/DocUpload/DownloadImages?imagePath=D://IMGUPLOAD//image.1.jpg">
+             
+          </div>
+            <div class="car">
+              <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfXlR0C1KcOmo-EY8rUHsXRW5n3VRLM1Timw&s"> -->
+
+              <img src="http://localhost:8080/DocUpload/DownloadImages?imagePath=D://IMGUPLOAD//image.2.jpg">
+            </div>   
+            <div class="car">
+              <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm3lL9KfLQ10aeKed_GHTzfjk_JhIwbPbGng&s"> -->
+
+              <img src="http://localhost:8080/DocUpload/DownloadImages?imagePath=D://IMGUPLOAD//image.3.jpg">
+            </div>
+            <div class="car">
+              <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGr0Cl3ywWWDf8M5GFWaZDeMPy1S5Fnw-U5A&s"> -->
+
+              <!-- <img src="http://localhost:8080/DocUpload/DownloadImages?imagePath=D://IMGUPLOAD//image.4.jpg"> -->
+
+            </div>
+        </div>
+  </div>
+</section>
+
+<footer>
+ <div class="container">
+  <p>Copyright at saiservice.com. All rights reserve to sai service IT.</p>
+ </div>
+</footer>
+
+</form>
+
+<!-- <section class="latest-cars">
     <div class="container">
           <div class="car-list">
               <div class="car">
@@ -115,4 +154,4 @@
    </div>
 </footer>
 
-</form>
+</form> -->
