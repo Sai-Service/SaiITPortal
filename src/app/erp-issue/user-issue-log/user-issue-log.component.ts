@@ -5,10 +5,17 @@ import { Router } from '@angular/router';
 import { Validators } from '@angular/forms';
 import { style } from '@angular/animations';
 import { NgModule } from '@angular/core';
+import { FormArray } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErpIssueService } from '../erp-issue.service';
+
+const MIME_TYPES = {
+  pdf: 'application/pdf',
+  xls: 'application/vnd.ms-excel',
+  xlsx: 'application/vnc.openxmlformats-officedocument.spreadsheetxml.sheet'
+};
 
 interface uerissueslog{
   issueId:number;
@@ -23,14 +30,14 @@ interface uerissueslog{
   subject:string;
   userName:string;
   contactNo:string;
-  IssueDesc:string;
+  issueDesc:string;
   filePath:string;
   userEmail:string;
-  assignTo:string;
+  assignTo :string;
   aging:string;
   fileType:string;
-  IssueType:string;
-  IssueTime:Date;
+  issueType:string;
+  issueTime:Date;
   emailcc:string;
   createdBy:string;
   creationDt:Date;
@@ -43,9 +50,10 @@ interface uerissueslog{
   attribute3:string;
   attribute4:string;
   attribute5:string;
-  remark:string;
+  remark :string;
   currentYear:string;
   status:string;
+  file:string;
 }
 
 
@@ -54,30 +62,30 @@ interface uerissueslog{
   templateUrl: './user-issue-log.component.html',
   styleUrl: './user-issue-log.component.css'
 })
-export class UserIssueLogComponent { 
+export class UserIssueLogComponent {
   userissueslogForm:FormGroup;
   issueId:number;
-  issueNo:string;
+  issueNo :string;
   issueDate:Date;
   priority:string;
   ouId:number;
   locationId:number;
   deptId:number;
-  module:string;
+  module :string;
   userSubject:string;
   subject:string;
   userName:string;
   contactNo:string;
-  IssueDesc:string;
+  issueDesc:string;
   filePath:string;
   userEmail:string;
-  assignTo:string;
+  assignTo :string;
   aging:string;
   fileType:string;
-  IssueType:string;
-  IssueTime:Date;
+  issueType:string;
+  issueTime:Date;
   emailcc:string;
-  createdBy:string;
+  createdBy :string;
   creationDt:Date;
   lastUpdatedBy:string;
   lastUpdationDt:Date;
@@ -88,13 +96,21 @@ export class UserIssueLogComponent {
   attribute3:string;
   attribute4:string;
   attribute5:string;
-  remark:string;
+  remark :string;
   currentYear:string;
   status:string;
-  erplocationList:any=[];
+  file:string;
+  @ViewChild('fileInput') fileInput:any;
+
+
+public erplocationList:any=[];
+public priorityList:any=[];
+public issueTypeList:any=[];
+public departmentList:any=[];
+public ModuletList:any=[];
+public issuediscList:any=[];
+public filetypeList:any=[];
   mainimage:any=[];
-
-
 
 
 
@@ -112,16 +128,16 @@ export class UserIssueLogComponent {
   subject:[],
   userName:[],
   contactNo:[],
-  IssueDesc:[],
+  issueDesc:[],
   filePath:[],
   userEmail:[],
-  assignTo :[],
+  assignTo:[],
   aging:[],
   fileType:[],
-  IssueType:[],
-  IssueTime:[],
+  issueType:[],
+  issueTime:[],
   emailcc:[],
-  createdBy:[],
+  createdBy :[],
   creationDt:[],
   lastUpdatedBy:[],
   lastUpdationDt:[],
@@ -132,26 +148,132 @@ export class UserIssueLogComponent {
   attribute3:[],
   attribute4:[],
   attribute5:[],
-  remark:[],
+  remark :[],
   currentYear:[],
-  status:[]
+  status:[],
+  file:[],
+  transLines:this.fb.array([this.UserissueLinesGroup()]),
+})
+}
+
+UserissueLinesGroup() {
+    return this.fb.group({
+
+      status:[],
+      remark :['CUSTOMER WORKING'],
+
     })}
 
-  get f() { return this.userissueslogForm.controls; }
-  Userissuesfrm(userissueslogForm: any) { }
+    orderlineDetailsArray(): FormArray {
+      return <FormArray>this.userissueslogForm.get('transLines')
+    }
 
   ngOnInit(): void {
     $("#wrapper").toggleClass("toggled");
-    this.userissueslogForm.patchValue({city:sessionStorage.getItem('orgName')})
-    
-    this.service.erplocationList(sessionStorage.getItem('orgId'))
-    .subscribe(
-      ( data:any) => {
-        this.erplocationList = data.obj;
-        console.log(this.erplocationList); 
+    this.userissueslogForm.patchValue({attribute5:sessionStorage.getItem('orgName')});
+    this.userissueslogForm.patchValue({ouId:sessionStorage.getItem('orgId')});
+
+
+    var patch = this.userissueslogForm.get('transLines') as FormArray
+    (patch.controls[0]).patchValue(
+      {
+        remark:'remark',
+        status:'CUSTOMER WORKING',    
+       
       }
     );
+   
+  
+    this.service.erplocationList(sessionStorage.getItem('orgId'))
+    .subscribe( 
+      data => { 
+        this.erplocationList = data.obj;
+        console.log(this.erplocationList);
+      }
+    )
+
+
+    this.service.priorityList()
+    .subscribe( 
+      data => {
+        this.priorityList = data.obj;
+        console.log(this.priorityList);
+      }
+    )
+
+
+    this.service.issueTypeList()
+    .subscribe( 
+      data => {
+        this.issueTypeList = data.obj;
+        console.log(this.issueTypeList);
+      }
+    )
+
+    this.service.departmentList()
+    .subscribe( 
+      data => {
+        this.departmentList = data.obj;
+        console.log(this.departmentList);
+      }
+    )
+
+    this.service.ModuletList()
+    .subscribe( 
+      data => {
+        this.ModuletList = data.obj;
+        console.log(this.ModuletList);
+      }
+    )
+
+
+    this.service.issuediscList()
+    .subscribe( 
+      data => {
+        this.issuediscList = data.obj;
+        console.log(this.issuediscList);
+      }
+    )
+
+    this.service.filetypeList()
+    .subscribe( 
+      data => {
+        this.filetypeList = data.obj;
+        console.log(this.filetypeList);
+      }
+    )
+
+    
+
+
+  }
+  get f() { return this.userissueslogForm.controls; }
+  Userissuesfrm(userissueslogForm: any) { }
+
+  transData(val :any){
+    return val;
   }
 
+  sendIasue(){
+    const formValue = this.transData(this.userissueslogForm.value);
+    console.log(formValue);
+    let formData = new FormData();
+    formData.append('file', this.fileInput.nativeElement.files[0]); 
+    formData.append('objhdMst',JSON.stringify(formValue));
+    this.service.IssuelogSubmit(formData).subscribe((res: any) => {
+        if (res.code === 200) {
+          alert(res.message);
+          this.userissueslogForm.disable();
+          
+        } else {
+          if (res.code === 400) {
+            alert(res.message);
+           
+          }
+        }
+      });
+
+
+  }
 
 }

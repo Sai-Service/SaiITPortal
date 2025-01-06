@@ -1,208 +1,240 @@
-   <html>
+<html>
     <body>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>IT Support Form</title>
-        <div class="header" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center;">
-            <img src="http://saiitportal.com/Images/Sai%20Logo.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;">
-            <marquee style="font-size: 22px; font-weight: bold;">WELCOME TO SAI SERVICE IT SUPPORT 12 * 7</marquee>
-            <!-- <img src="D:\sai IT Portal\Angular\itPortal\src\images\bg itportral.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;"> -->
-        </div>
-
-
-        <div class="container" >
-            <form [formGroup]="userissueslogForm" (ngSubmit)="Userissuesfrm(userissueslogForm.value)" >
-                <p style="text-align: center; font-weight: 900;font-size: 16px; margin-bottom: 10px;">ERP Issue Registration Form</p>
-              <hr style="width:100%; border: 1px solid black;">
-                <div class="form-group inline">
-                    <div>
-                        <label >City</label>
-                        <input type="text" id="city" value="Mumbai" style="height: 0.7cm;" readonly>
+        <form [formGroup]="userissueslogForm" (ngSubmit)="Userissuesfrm(userissueslogForm)">
+        
+            <div class="header" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center;">
+                <img src="http://saiitportal.com/Images/Sai%20Logo.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;">
+                <marquee style="font-size: 22px; font-weight: bold;">WELCOME TO SAI SERVICE IT SUPPORT 12 * 7</marquee>
+                <!-- <img src="D:\sai IT Portal\Angular\itPortal\src\images\bg itportral.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;"> -->
+            </div>
+    
+    
+            <div class="container" >
+                <!-- <form [formGroup]="userissueslogForm" (ngSubmit)="Userissuesfrm(userissueslogForm.value)" > -->
+                    <p style="text-align: center; font-weight: 900;font-size: 16px;">ERP Issue Registration Form</p>
+                    <!-- <marquee style="text-align: center; font-weight: 900;font-size: 16px;">ERP Issue Registration Form</marquee> -->
+                    <hr style="border: 1px solid black;width: 100%;">
+                    <div class="form-group inline">
+                        <div>
+                            <label >City</label>
+                            <input style="height: 0.7cm;" formControlName="attribute5" readonly>
+                        </div>
+                        <input style="height: 0.7cm;" formControlName="ouId" hidden>
+        
+                        <div>
+                            <label>Location</label>
+                            <select type="number" id="locationId" style="height: 0.7cm;" formControlName="locationId" >
+                                <option *ngFor="let sc of  erplocationList" [value]="sc.locId">
+                                    {{sc.locId}} - {{sc.locName}}
+                                </option>
+                            </select>
+                        </div>
+                            
+                        <div class="form-group">
+                            <div>
+                                <label>Priority</label>
+                                <select id="priority" style="height: 0.7cm;" formControlName="priority">
+                                    <option *ngFor="let sc of  priorityList" [value]="sc.code">
+                                        {{sc.code}}
+                                     </option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
     
-                    <div>
-                        <label>Location</label>
-                        <select id="locationId" style="height: 0.7cm;" formControlName="locationId" >
-                            <option *ngFor="let text of  erplocationList" [value]="text.locId">
-                                {{text.locId}}-{{text.locName}}
-                             </option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
+                    <div class="form-group inline">
                         <div>
-                            <label>Priority</label>
-                            <select id="priority" style="height: 0.7cm;" formControlName="priority">
-                                <option value="High" class="priority-high">High</option>
-                                <option value="Medium">Medium</option>
-                                <option value="Low">Low</option>
+                            <label>Name of User</label>
+                            <input type="text" style="height: 0.7cm;"  id="userName" formControlName="userName">
+                        </div>
+                        
+                        <div>
+                            <label>Email ID</label>
+                            <input type="email"  style="height: 0.7cm;" id="userEmail" placeholder="@saiservice.com" formControlName="userEmail">
+                        </div>
+                        
+                        <div>
+                            <label>Contact No</label>
+                            <input type="tel" style="height: 0.7cm;" id="contactNo" formControlName="contactNo">
+                        </div>
+                    </div>
+    
+                    <div class="form-group inline">
+                        <div>
+                            <label>Issue Type</label>
+                            <select id="issueType" style="height: 0.7cm;" formControlName="issueType">
+                                <option *ngFor="let sc of  issueTypeList" [value]="sc.code">
+                                    {{sc.code}}
+                                 </option>    
+                            </select>
+                        </div>
+        
+                        <div>
+                            <label>Department</label>
+                            <select id="deptId" style="height: 0.7cm;" formControlName="deptId" >
+                                <option *ngFor="let sc of  departmentList" [value]="sc.cmntypeId">
+                                    {{sc.cmnDesc}}
+                                 </option>
+                            </select>
+                        </div>
+        
+                        <div>
+                            <label>Module</label>
+                            <select type="text" id="module" style="height: 0.7cm;" formControlName="module">
+                                <option *ngFor="let sc of  ModuletList" [value]="sc.cmnDesc">
+                                    {{sc.cmnDesc}}
+                                 </option>     
                             </select>
                         </div>
                     </div>
-                </div>
-
-                <div class="form-group inline">
-                    <div>
-                        <label>Name of User</label>
-                        <input type="text" style="height: 0.7cm;"  id="user-name" formControlName="userName">
+            
+                    <div class="form-group inline">
+                        <div>
+                            <label>Mail Subject</label>
+                            <input type="text"  style="height: 0.7cm;" rows="3"  id="subject" formControlName="subject">
+                        </div>
+                   
+                        <div>
+                            <label>Issue-Description Title</label>
+                            <select id="issueType" style="height: 0.7cm;" formControlName="issueType">
+                                <option *ngFor="let sc of  issuediscList" [value]="sc.cmnDesc">
+                                    {{sc.cmnDesc}}
+                                 </option>
+                            </select>
+                        </div>
                     </div>
+    
+                    <div class="form-group">
+                        <label>Issue Description (250 Characters)</label>
+                        <textarea type="textarea" id="issueDesc"  rows="2" formControlName="issueDesc"></textarea>
+                    </div>
+    
+                    <div class="form-group inline">
+                        <div>
+                        <label >Select Type</label>
+                        <select id="fileType" style="height: 0.7cm;" formControlName="fileType">
+                            <option *ngFor="let sc of  filetypeList" [value]="sc.cmnDesc">
+                                {{sc.cmnDesc}}
+                             </option>
+                             
+                        </select>  
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="file-upload">Upload File (Excel with.xlsx pdf with.pdf Format)</label>
+                        <input type="file"  id="file-upload" style="height: 0.7cm;" [(ngModel)]="file" #fileInput formControlName="file">
+                    </div>
+                </div>
+    
+                    <input type="text" id="issueNo" hidden fromControlName="issueNo" style="height: 0.8cm;" readonly>
+                    <input type="text" id="firstName" hidden     fromControlName="firstName" style="height: 0.8cm;" readonly>
                     
-                    <div>
-                        <label>Email ID</label>
-                        <input type="email"  style="height: 0.7cm;" id="email" placeholder="@saiservice.com" formControlName="userEmail">
-                    </div>
-                    
-                    <div>
-                        <label>Contact No</label>
-                        <input type="tel" style="height: 0.7cm;" id="contact-no" formControlName="contactNo">
-                    </div>
-                </div>
-
-                <div class="form-group inline">
-                    <div>
-                        <label>Issue Type</label>
-                        <select id="IssueType" style="height: 0.7cm;" formControlName="IssueType">
-                            <option value="ERP Operations">ERP Operations</option>      
-                        </select>
-                    </div>
-    
-                    <div>
-                        <label>Department</label>
-                        <select id="deptId" style="height: 0.7cm;" formControlName="deptId" >
-                            <option value="Accessories">Accessories</option>
-                          
-                        </select>
-                    </div>
-    
-                    <div>
-                        <label>Module</label>
-                        <select type="text" id="module" style="height: 0.7cm;" formControlName="module">
-                            
-                            
-                        </select>
-                    </div>
-                </div>
         
-                <div class="form-group inline">
-                    <div>
-                        <label>Mail Subject</label>
-                        <input type="text"  style="height: 0.7cm;" rows="3"  id="mail-subject" formControlName="subject">
-                    </div>
-               
-                    <div>
-                        <label>Issue-Description Title</label>
-                        <select id="priority" style="height: 0.7cm;" formControlName="IssueType">
-                            <option class="priority-high">Bill To Ship To Error</option> 
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Issue Description (250 Characters)</label>
-                    <textarea type="textarea" id="issue-description"  rows="2" formControlName="IssueDesc"></textarea>
-                </div>
-    
-                <div class="form-group">
-                    <label for="file-upload">Select File Type & Upload File (Excel with .xlsx/pdf with .pdf Format)</label>
-                    <input type="file"  id="filePath" formControlName="filePath">
-                </div>
-
-                <input type="text" id="issueNo" hidden fromControlName="issueNo" style="height: 0.8cm;" readonly>
-                <input type="text" id="firstName" hidden     fromControlName="firstName" style="height: 0.8cm;" readonly>
+                    <button type="submit"  style="background: linear-gradient(to right, #23a802, #b3f802); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center; width: 5cm;" (click)="sendIasue()">Submit</button>
                 
-             
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-
-        <div class="container">
-            <form>
-                
-                <div class="form-group inline">
-                    <div>
-                        <label for="city">City</label>
-                        <input type="text" id="city" value="Mumbai" style="height: 0.8cm;" readonly>
-                    </div>
-        
-                    <div>
-                        <label>Search by Issue No</label>
-                        <input type="text" id="issueNo" style="height: 0.8cm;" formControlName="issueNo">
-                    </div>
-                    
-                    <div>
-                        <label>Location</label>
-                        <select  style="height: 0.8cm;" formControlName="locationId" id="locationId">    
-                        </select>
-                    </div>
-        
-                    <div>
-                        <label>Department</label>
-                        <select id="deptId" style="height: 0.8cm;" formControlName="deptId">
-                            <option value="Accessories">Accessories</option>
-                        </select>
-                    </div>
-        
-                    <div>
-                        <label>Status</label>
-                        <select id="status" style="height: 0.8cm;" formControlName="status">
-                            <option value="select">Select</option> 
-                        </select>
-                    </div>
-                </div>
-                <button type="submit">Search</button>
-            </form>
-        </div>
-
-
-
-
-
-    
- <div class="search">
-        <table class="issue-table">
-                    <tr>
-                        <th>Priority</th>
-                        <th>Issue No</th>
-                        <th>Status</th>
-                        <th>User Subject</th>
-                        <th>Assign To</th>
-                        <th>User Name</th>
-                        <th>Issue Date</th>
-                        <th>Email ID</th>
-                        <th>Issue Type</th>
-                        <th>Select</th>
-                    </tr>
-                
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th><a href="#">select</a></th>
-                    </tr> 
-        </table>
-
-            <div class="issue-details">
-                <p>Please find the below details of your Issue No: <strong>11MU.227-0029446</strong></p>
-                <form>
-                    <label for="update-issue">Update Issue:</label>
-                    <textarea id="update-issue" rows="2" maxlength="250" placeholder="Enter issue update"></textarea>
-    
-                    <label for="file-type">Select File Type & Upload File:</label>
-                    <input type="file" id="upload-file">
-    
-                    <div class="buttons">
-                         <button type="submit" style="margin-top: 10px;">Add/Update Issue</button>
-                         <button type="button">Close Issue</button>
-                    </div>
-                </form>
             </div>
-</div>
+    
+            <div class="container">
+              
+                    <div class="form-group inline">
+                        <div>
+                            <label for="city">City</label>
+                            <input type="text" id="city" value="Mumbai" style="height: 0.8cm;" readonly>
+                        </div>
+            
+                        <div>
+                            <label>Search by Issue No</label>
+                            <input type="text" id="issueNo" style="height: 0.8cm;" formControlName="issueNo">
+                        </div>
+                        
+                        <div>
+                            <label>Location</label>
+                            <select type="number" id="locationId" style="height: 0.8cm;" formControlName="locationId" >
+                              
+                            </select>
+                        </div>
+            
+                        <div>
+                            <label>Department</label>
+                            <select id="department" style="height: 0.8cm;" formControlName="deptId">
+                                <option value="Accessories">Accessories</option>
+                            </select>
+                        </div>
+            
+                        <div>
+                            <label>Status</label>
+                            <select id="status" style="height: 0.8cm;" formControlName="status">
+                                <option value="select">Select</option> 
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" type="submit" class="btn btn-info" id="register" (click)="sendIasue
+                ()">Search</button>
+             
+            </div>
+    
+    
+    
+    
+    
+        
+     <!-- <div class="search">
+            <table class="issue-table">
+                <thead>
+                        <tr>
+                            <th>Priority</th>
+                            <th>Issue No</th>
+                            <th>Status</th>
+                            <th>User Subject</th>
+                            <th>Assign To</th>
+                            <th>User Name</th>
+                            <th>Issue Date</th>
+                            <th>Email ID</th>
+                            <th>Issue Type</th>
+                            <th>Select</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container class="center" formArrayName="transLines">
+                            <ng-container *ngFor="let group of orderlineDetailsArray().controls; let i= index"
+                                [formGroupName]="i">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th><a href="#">select</a></th>
+                        </tr> 
+                    </ng-container>
+                </ng-container>  
+                      
+                </tbody>
+            </table>
+    
+                <div class="issue-details">
+                    <p>Please find the below details of your Issue No: <strong></strong></p>
+                
+                        <label for="update-issue">Update Issue:</label>
+                        <textarea id="update-issue" rows="2" maxlength="250" placeholder="Enter issue update"></textarea>
+        
+                        <label for="file-type">Select File Type & Upload File:</label>
+                        <input type="file" id="upload-file">
+        
+                        <div class="buttons">
+                             <button type="submit" style="margin-top: 10px;">Add/Update Issue</button>
+                             <button type="button">Close Issue</button>
+                        </div>
+                    
+                </div>
+                
+    </div>-->
+    
+    </form>
 
 
 </body>
