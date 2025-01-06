@@ -12,7 +12,8 @@ const routes: Routes = [
       {
         path: 'bajajIssueModule',
         loadChildren: () => import('../bajaj-issue/bajaj-issue.module').then(mod => mod.BajajIssueModule)
-      },
+      }
+      
     ]
   }
 ];

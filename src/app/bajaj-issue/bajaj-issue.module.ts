@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { BajajIssueRoutingModule } from './bajaj-issue-routing.module';
 import { BajajUserIssueComponent } from './bajaj-user-issue/bajaj-user-issue.component';
-import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
     CommonModule,
     BajajIssueRoutingModule,
     ReactiveFormsModule,
-        FormsModule
+    FormsModule
+  
   ]
 })
 export class BajajIssueModule { }
