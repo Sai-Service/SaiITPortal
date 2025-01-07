@@ -3,20 +3,17 @@ import { CommonModule } from '@angular/common';
 
 import { BajajIssueRoutingModule } from './bajaj-issue-routing.module';
 import { BajajUserIssueComponent } from './bajaj-user-issue/bajaj-user-issue.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { BjjcmnLoginComponent } from './bjjcmn-login/bjjcmn-login.component';
 
 
 @NgModule({
   declarations: [
-    BajajUserIssueComponent
+    BajajUserIssueComponent,
+    BjjcmnLoginComponent
   ],
   imports: [
     CommonModule,
-    BajajIssueRoutingModule,
-    ReactiveFormsModule,
-    FormsModule
-  
+    BajajIssueRoutingModule
   ]
 })
 export class BajajIssueModule { }

@@ -133,7 +133,7 @@
                     <button type="submit"  style="background: linear-gradient(to right, #23a802, #b3f802); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center; width: 5cm;" (click)="sendIasue()">Submit</button>
                 
             </div>
-    
+      
             <div class="container">
               
                     <div class="form-group inline">
@@ -178,41 +178,29 @@
     
     
         
-      <div class="search">
+     <!-- <div class="search">
             <table class="issue-table">
                 <thead>
-                        <tr>
-                            <th>Priority</th>
-                            <th>Issue No</th>
-                            <th>Status</th>
-                            <th>User Subject</th>
-                            <th>Assign To</th>
-                            <th>User Name</th>
-                            <th>Issue Date</th>
-                            <th>Email ID</th>
-                            <th>Issue Type</th>
-                            <th>Select</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <ng-container class="center" formArrayName="transLines">
-                            <ng-container *ngFor="let group of orderlineDetailsArray().controls; let i= index"
-                                [formGroupName]="i">
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th><a href="#">select</a></th>
-                        </tr> 
-                    </ng-container>
-                </ng-container>  
-                      
+                    <tr class="GridHeader">
+                        <th scope="col" style="border: 1px solid black; width: 30px;"> Item Id</th>
+                        <th scope="col" style="border: 1px solid black; width: 30px;"> Item Id</th>
+                        <th scope="col" style="border: 1px solid black; width: 30px;"> Item Id</th>
+                        <th scope="col" style="border: 1px solid black; width: 30px;"> Item Id</th>
+                        <th scope="col" style="border: 1px solid black; width: 30px;"> Item Id</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let com of userissuefromsearch" >
+                       
+                            <th style="border: 1px solid black;padding-left: 15px;">{{com.itemType}}</th>
+                            <th style="border: 1px solid black;padding-left: 15px;">{{com.itemType}}</td>
+                            <td style="border: 1px solid black;padding-left: 15px;">{{com.itemType}}</td>
+                            <td style="border: 1px solid black;padding-left: 15px;">{{com.itemType}}</td>
+                            <td style="border: 1px solid black;padding-left: 15px;">{{com.itemType}}</td>
+
+                    
+                    </tr>
                 </tbody>
             </table>
     
@@ -232,7 +220,7 @@
                     
                 </div>
                 
-            </div>
+    </div>-->
     
     </form>
 

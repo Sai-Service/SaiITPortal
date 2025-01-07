@@ -59,7 +59,15 @@ export class ErpIssueService {
   filetypeList(): Observable<any> {
     return this.http.get(this.ServerUrl + `/FndCmn/CmnType?cmnType=FILETYPE`);
   }
+
+  issuestatusList(): Observable<any> {
+    return this.http.get(this.ServerUrl + `/FndCmn/CmnType?cmnType=STATUS`);
+  }
  
+
+  UserissuesSearch(issueNo:any,ouId:any,locId:any,deptId:any,sts:any): Observable<any> {
+    return this.http.get(this.ServerUrl + `/Transaction/AllIssues?issueNo=${issueNo}&ouId=${ouId}&locationId=${locId}&deptId=${deptId}&status=${sts}`);
+  }
 
 
   public IssuelogSubmit(formdata:FormData) {

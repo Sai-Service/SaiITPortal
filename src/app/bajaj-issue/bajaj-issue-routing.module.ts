@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BajajUserIssueComponent } from './bajaj-user-issue/bajaj-user-issue.component';
-import { BjlogincomComponent } from './bjlogincom/bjlogincom.component';
+
+import { BjjcmnLoginComponent } from './bjjcmn-login/bjjcmn-login.component';
+
 
 const routes: Routes = [
-  {path:'bajajuserIssue',component:BajajUserIssueComponent},
-  {path:'bjloginform',component:BjlogincomComponent}
+   {path:'bajajuserIssueLog',component:BajajUserIssueComponent},
+    {path:'bajajloginform',component:BjjcmnLoginComponent}   
+
 ];
 
 @NgModule({
