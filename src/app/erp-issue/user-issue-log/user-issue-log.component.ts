@@ -339,6 +339,7 @@ UserissueLinesGroup() {
           contactNo:data.obj.contactNo,issueDesc:data.obj.issueDesc,subject:data.obj.userSubject,deptId:data.obj.deptId,
           issueType:data.obj.issueType});
         this.userissueslogForm.patchValue({attribute4:data.obj.issueNo});
+        this.userissueslogForm.disable();
       }
 
 
