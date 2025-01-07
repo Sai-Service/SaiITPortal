@@ -19,7 +19,7 @@ const MIME_TYPES = {
 
 interface uerissueslog{
   issueId:number;
-  issueNo:string;
+  issueNo:string | any;
   issueDate:Date;
   priority:string;
   ouId:number;
@@ -113,7 +113,7 @@ public ModuletList:any=[];
 public issuediscList:any=[];
 public filetypeList:any=[];
 public issuestatusList:any=[];
-userissuefromsearch:any[];
+userissuefromsearch:any=[];
   mainimage:any=[];
 
 
@@ -265,7 +265,10 @@ UserissueLinesGroup() {
   Userissuesfrm(userissueslogForm: any) { }
 
   transData(val :any){
-    return val;
+     delete val.srclocationId
+     delete val.srcdeptId
+
+     return val;
   }
 
   sendIasue(){
@@ -277,6 +280,7 @@ UserissueLinesGroup() {
     this.service.IssuelogSubmit(formData).subscribe((res: any) => {
         if (res.code === 200) {
           alert(res.message);
+          alert(res.obj.issueNo)
           this.userissueslogForm.disable();
           
         } else {
@@ -324,6 +328,28 @@ UserissueLinesGroup() {
   }
 
 
-  issueNoFind(){}
+  issueNoFind(issueNo:any):void{
+    debugger;
+    this.service.IssueNoFindFN(issueNo)
+    .subscribe(
+      data=> {
+        if (data.code === 200) {
+        this.userissueslogForm.patchValue({issueNo:data.obj.issueNo,priority:data.obj.priority,module:data.obj.module,
+          locationId:data.obj.locationId,userEmail:data.obj.userEmail,locName:data.obj.locName,userName:data.obj.userName,
+          contactNo:data.obj.contactNo,issueDesc:data.obj.issueDesc,subject:data.obj.userSubject,deptId:data.obj.deptId,
+          issueType:data.obj.issueType});
+        this.userissueslogForm.patchValue({attribute4:data.obj.issueNo});
+      }
+
+
+        else {
+          alert(data.code===400)
+          
+        }  
+       
+      }
+    )
+
+  }
 
 }

@@ -26,5 +26,8 @@ export class AdminPgComponent {
 
   logout(){
     this.router.navigate(['/login']);
+    // if(sessionStorage.getItem('userName')=='MUMEDP'){this.router.navigate(['./admin/erpIssueModule/loginCommon']);}
+    // if(sessionStorage.getItem('userName')=='MUMBAI'){this.router.navigate(['./login']);}
+
   }
 }

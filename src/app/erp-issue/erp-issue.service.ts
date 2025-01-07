@@ -68,7 +68,10 @@ export class ErpIssueService {
   UserissuesSearch(issueNo:any,ouId:any,locId:any,deptId:any,sts:any): Observable<any> {
     return this.http.get(this.ServerUrl + `/Transaction/AllIssues?issueNo=${issueNo}&ouId=${ouId}&locationId=${locId}&deptId=${deptId}&status=${sts}`);
   }
-
+ 
+  IssueNoFindFN(issueNo:any): Observable<any> {
+    return this.http.get(this.ServerUrl + `/Transaction/getIssue/${issueNo}`);
+  }
 
   public IssuelogSubmit(formdata:FormData) {
     // formdata.append('file',file);
