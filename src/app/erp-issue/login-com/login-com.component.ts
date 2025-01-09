@@ -55,6 +55,7 @@ this.ErpIssueService.login(this.userName, this.password).subscribe((res: any) =>
           if (res.obj.userName=='MUMBAI'){
             alert
             ('----WELCOME TO ADMIN PAGE----')
+            this.router.navigate(['./admin/erpIssueModule/erpsupport']);
           }
       }
       else{

@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f7fc;
+
+}
+
+.container {
+    max-width: 99%;
+    margin: 15px auto;
+    padding: 25px;
+    /* background: linear-gradient(to right, #76c7f7, #45e9ff); */
+    /* background-color: #c97472; */
+    border: 1px solid rgb(46, 46, 46);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.35);
+}
+
+.new{
+    max-width: 99%;
+    margin: 15px auto;
+    padding: 10px;
+    padding-top: 25px;
+    padding-bottom: 20px;
+    /* border: 1px solid rgb(46, 46, 46); */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.35);
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 3px;
+    color: #070607;
+}
+
+td {
+    display: block;
+    font-size: 30spx;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #ffffff;
+}
+
+input, select, textarea {
+    width: 100%;
+    margin-top: 1px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 13px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out;
+    padding-left: 6px;
+}
+
+.group {
+    margin-bottom: 6px;
+}
+
+.inline {
+    display: flex;
+    gap: 15px;
+}
+
+.inline > div {
+    flex: 1;
+}
+
+button {
+    background: linear-gradient(to right, #fa6ba2, #c97472);
+    color: white;
+    border: none;
+    padding: 4px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 1px auto;
+    margin-top:27px ;
+    max-width: 310px;
+    height: 1cm;
+}
+
+.issue-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.issue-table th,
+.issue-table td {
+    border: 1px solid #131212;
+    padding: 4px;
+    text-align: center;
+    font-size: 15px;
+    font-weight:450;
+    color: #070607;
+}
+
+.issue-details p {
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+
+.find {
+    max-width: 99%;
+    margin: 15px auto;
+    padding: 25px;
+    background: white;
+    border: 1px solid rgb(46, 46, 46);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
+}
+
+.last {
+    max-width: 70%;
+    /* margin: 15px auto; */
+    padding: 15px;
+    background: white;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
+}

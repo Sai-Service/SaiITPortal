@@ -5,11 +5,13 @@ import { ErpIssueRoutingModule } from './erp-issue-routing.module';
 import { UserIssueLogComponent } from './user-issue-log/user-issue-log.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { LoginComComponent } from './login-com/login-com.component';
+import { ErpsupportComComponent } from './erpsupport-com/erpsupport-com.component';
 
 @NgModule({
   declarations: [
     UserIssueLogComponent,
-    LoginComComponent
+    LoginComComponent,
+    ErpsupportComComponent
   ],
   imports: [
     CommonModule,

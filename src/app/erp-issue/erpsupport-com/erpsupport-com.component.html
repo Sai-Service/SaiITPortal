@@ -1,0 +1,174 @@
+
+    
+<header>
+    <div class="header" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center;">
+        <img src="http://saiitportal.com/Images/Sai%20Logo.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;">
+        <marquee style="font-size: 22px; font-weight: bold;">WELCOME TO SAI SERVICE IT SUPPORT</marquee>
+    </div>
+
+    <p style="margin-top: 20px;font-family: Arial, Helvetica, sans-serif;margin-left: 7px;font-weight: bold;">
+        Please select YOUR NAME to see list of pending issues against you.
+    </p>
+</header>
+<hr>
+    <form>
+    <div class="container">
+        <div class="group inline">
+    
+           <div>
+            <label>IT Executive Name</label>
+            <select id="Name" style="height: 1cm;">
+                <option value="select">Select</option>
+            </select>
+           </div>
+
+           <div>
+            <label>City</label>
+            <select id="City" style="height: 1cm;">
+                <option value="City">Selelct</option>
+            </select>
+           </div>
+
+           <div>
+            <label>Status</label>
+            <select  id="status" style="height: 1cm;">
+                <option value="status">Select</option>
+            </select>
+           </div>
+
+           <button>Submit</button>
+
+           <button>Export</button>
+
+           <button>All City</button>
+
+           <button>Reports</button>
+        
+    
+    </div>
+    </div>
+</form>
+
+<div class="new">
+    <table class="issue-table">
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Issue No</th>
+                <th>Issue Date</th>
+                <th>Priority</th>
+                <th>OU</th>
+                <th>Location</th>
+                <th>Department</th>
+                <th>Module</th>
+                <th>Subject</th>
+                <th>User Subject</th>
+                <th>Issue Description</th>
+                <th>User Name</th>
+                <th>User Email</th>
+                <th>Contact</th>
+                <th>Status</th>
+                <th>Issue Type</th>
+                <th>Assign To</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="find">
+    Please find the below history of your Issue No.->
+    <table class="issue-table">
+        <thead>
+            <tr>
+                <th>TR ID</th>
+                <th>Issue No</th>
+                <th>TRN Date</th>
+                <th>TRN Time</th>
+                <th>Updates</th>
+                <th>Assign To</th>
+                <th>Status</th>
+                <th>Updated By</th>
+                <th>Attachement</th>
+                <th>Select</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Select</th>
+            </tr>
+        </tbody>
+    </table>
+
+<div class="last">
+    <form>
+        <div class="group inline">
+             <div>
+                    <label>Update Issue (250 Characters)</label>
+                    <textarea type="textarea" id="UpdateIssue"  rows="4"></textarea>
+             </div>
+
+             <div>
+                <label>Solution Offered (250 Characters)</label>
+                <textarea type="textarea" id="solutionoffered"  rows="4"></textarea>
+             </div>
+        </div>
+        <div class="group inline">
+            <div>
+                <label>Update Status</label>
+                <select  id="update" style="height: 1cm;">
+                    <option value="select">Select</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Issue Update/Close By</label>
+                <select  id="Issueupdate" style="height: 1cm;">
+                    <option value="support">Support</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Select Type & Attach File</label>
+                <input type="file" name="file" id="Fileupload" style="height: 1cm;">
+            </div>
+        </div>
+
+            <button>Add/Update Issue</button>
+
+            <button>Close Issue</button>
+
+    </form>
+</div>
+
+</div>
