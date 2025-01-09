@@ -331,10 +331,17 @@ textarea{
       min-height: 30px;
   }
 
-  .modal-dialog {
+  /* .modal-dialog {
     max-width: 1200px;
     margin: 0 auto;
-    text-align: left; 
-  }
+    text-align: right; 
+  } */
+
+  .modal-dialog {
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
  
