@@ -73,6 +73,10 @@ export class ErpIssueService {
     return this.http.get(this.ServerUrl + `/Transaction/getIssue/${issueNo}`);
   }
 
+  viewIssueTrnslnFn(issueNo:any): Observable<any> {
+    return this.http.get(this.ServerUrl + `/Transaction/getIssue/${issueNo}`);
+  }
+
   public IssuelogSubmit(formdata:FormData) {
     // formdata.append('file',file);
     // formdata.append('objhdMst',issuelogpg); 'application/json; charset=utf-8'

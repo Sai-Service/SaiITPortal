@@ -115,7 +115,7 @@ public filetypeList:any=[];
 public issuestatusList:any=[];
 userissuefromsearch:any=[];
   mainimage:any=[];
-
+  viewAllDoucmnet:any;
 
 
   constructor(private fb: FormBuilder, private router: Router, private service: ErpIssueService) {
@@ -329,7 +329,6 @@ UserissueLinesGroup() {
 
 
   issueNoFind(issueNo:any):void{
-    debugger;
     this.service.IssueNoFindFN(issueNo)
     .subscribe(
       data=> {
@@ -340,6 +339,17 @@ UserissueLinesGroup() {
           issueType:data.obj.issueType});
         this.userissueslogForm.patchValue({attribute4:data.obj.issueNo});
         this.userissueslogForm.disable();
+
+        this.service.viewIssueTrnslnFn(issueNo).subscribe((res: any) => {
+          if (res.code === 200) {
+            alert(res.message);
+            this.viewAllDoucmnet = res.obj.transLines;
+            
+          }
+          // else { }
+        
+        })
+        
       }
 
 
@@ -352,5 +362,10 @@ UserissueLinesGroup() {
     )
 
   }
+
+  viewDocument(){}
+
+
+  openDocument(){}
 
 }
