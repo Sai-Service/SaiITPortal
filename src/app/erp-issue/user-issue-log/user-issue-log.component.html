@@ -117,7 +117,7 @@
                 <div>
                     <label>Select Type</label>
                     <select id="fileType" style="height: 0.7cm;" formControlName="fileType">
-                        <option *ngFor="let sc of  filetypeList" [value]="sc.code">
+                        <option *ngFor="let sc of  filetypeList" [value]="sc.cmnDesc">
                             {{sc.cmnDesc}}
                         </option>
 
@@ -180,9 +180,7 @@
                 <div>
                     <label>Status</label>
                     <select id="status" style="height: 0.8cm;" formControlName="status">
-                        <option *ngFor="let sc of  issuestatusList" [value]="sc.cmntypeId">
-                            {{sc.cmnDesc}}
-                        </option>
+                        <option value="select">Select</option>
                     </select>
                 </div>
             </div>
