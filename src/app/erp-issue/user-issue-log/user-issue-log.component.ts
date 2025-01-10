@@ -50,7 +50,7 @@ interface uerissueslog{
   attribute3:string;
   attribute4:string;
   attribute5:string;
-  remark :string;
+  // remark :string;
   currentYear:string;
   status:string;
   file:string;
@@ -96,7 +96,7 @@ export class UserIssueLogComponent {
   attribute3:string;
   attribute4:string;
   attribute5:string;
-  remark :string;
+  // remark :string;
   currentYear:string;
   status:string;
   file:string;
@@ -114,8 +114,9 @@ public issuediscList:any=[];
 public filetypeList:any=[];
 public issuestatusList:any=[];
 userissuefromsearch:any=[];
-  mainimage:any=[];
-  viewAllDoucmnet:any;
+mainimage:any=[];
+viewAllDoucmnet:any;
+isButtonDisabled = false;
 
 
   constructor(private fb: FormBuilder, private router: Router, private service: ErpIssueService) {
@@ -152,7 +153,7 @@ userissuefromsearch:any=[];
   attribute3:[],
   attribute4:[],
   attribute5:[],
-  remark :[],
+  // remark :[],
   currentYear:[],
   status:[],
   file:[],
@@ -166,7 +167,8 @@ UserissueLinesGroup() {
     return this.fb.group({
 
       status:[],
-      remark :['CUSTOMER WORKING'],
+      remark :[],
+      filepath:[],
 
     })}
 
@@ -178,12 +180,13 @@ UserissueLinesGroup() {
     $("#wrapper").toggleClass("toggled");
     this.userissueslogForm.patchValue({attribute5:sessionStorage.getItem('orgName')});
     this.userissueslogForm.patchValue({ouId:sessionStorage.getItem('orgId')});
+    this.userissueslogForm.patchValue({createdBy:sessionStorage.getItem('userName')});
+   
 
 
     var patch = this.userissueslogForm.get('transLines') as FormArray
     (patch.controls[0]).patchValue(
       {
-        remark:'remark',
         status:'CUSTOMER WORKING',    
        
       }
@@ -272,6 +275,7 @@ UserissueLinesGroup() {
   }
 
   sendIasue(){
+    this.isButtonDisabled = true;
     const formValue = this.transData(this.userissueslogForm.value);
     console.log(formValue);
     let formData = new FormData();
@@ -280,8 +284,20 @@ UserissueLinesGroup() {
     this.service.IssuelogSubmit(formData).subscribe((res: any) => {
         if (res.code === 200) {
           alert(res.message);
-          alert(res.obj.issueNo)
-          this.userissueslogForm.disable();
+          alert(res.obj.issueNo),
+          this.userissueslogForm.get('locationId')?.disable();
+          this.userissueslogForm.get('priority')?.disable();
+          this.userissueslogForm.get('userName')?.disable();
+          this.userissueslogForm.get('userEmail')?.disable();
+          this.userissueslogForm.get('contactNo')?.disable();
+          this.userissueslogForm.get('issueType')?.disable();
+           this.userissueslogForm.get('deptId')?.disable();
+          this.userissueslogForm.get('module')?.disable();
+          this.userissueslogForm.get('userSubject')?.disable();
+          this.userissueslogForm.get('subject')?.disable();
+          this.userissueslogForm.get('issueDesc')?.disable();
+          
+          // this.userissueslogForm.disable();
           
         } else {
           if (res.code === 400) {
@@ -310,6 +326,17 @@ UserissueLinesGroup() {
       if (res.code==200){
         alert(res.message)
       this.userissuefromsearch= res.obj;
+      this.userissueslogForm.get('locationId')?.disable();
+      this.userissueslogForm.get('priority')?.disable();
+      this.userissueslogForm.get('userName')?.disable();
+      this.userissueslogForm.get('userEmail')?.disable();
+      this.userissueslogForm.get('contactNo')?.disable();
+      this.userissueslogForm.get('issueType')?.disable();
+       this.userissueslogForm.get('deptId')?.disable();
+      this.userissueslogForm.get('module')?.disable();
+      this.userissueslogForm.get('userSubject')?.disable();
+      this.userissueslogForm.get('subject')?.disable();
+      this.userissueslogForm.get('issueDesc')?.disable();
       
    
     if (res.obj.length !=0){
@@ -329,17 +356,33 @@ UserissueLinesGroup() {
 
 
   issueNoFind(issueNo:any):void{
+    this.userissueslogForm.patchValue({lastUpdatedBy:sessionStorage.getItem('userName')});
     this.service.IssueNoFindFN(issueNo)
     .subscribe(
       data=> {
         if (data.code === 200) {
         this.userissueslogForm.patchValue({issueNo:data.obj.issueNo,priority:data.obj.priority,module:data.obj.module,
           locationId:data.obj.locationId,userEmail:data.obj.userEmail,locName:data.obj.locName,userName:data.obj.userName,
-          contactNo:data.obj.contactNo,issueDesc:data.obj.issueDesc,subject:data.obj.userSubject,deptId:data.obj.deptId,
-          issueType:data.obj.issueType});
-        this.userissueslogForm.patchValue({attribute4:data.obj.issueNo});
-        this.userissueslogForm.disable();
-
+          contactNo:data.obj.contactNo,issueDesc:data.obj.issueDesc,subject:data.obj.userSubject,deptId:data.obj.deptId,issueType:data.obj.issueType});
+        this.userissueslogForm.patchValue({issueType:data.obj.issueType});
+        this.userissueslogForm.patchValue({filePath:data.obj.filePath});
+        this.userissueslogForm.patchValue({status:data.obj.status});
+        this.userissueslogForm.patchValue({issueDesc:data.obj.issueDesc});
+        this.userissueslogForm.patchValue({userSubject:data.obj.userSubject});
+        this.userissueslogForm.patchValue({subject:data.obj.subject});
+        this.userissueslogForm.patchValue({attribute4:issueNo});
+        this.userissueslogForm.get('locationId')?.disable();
+        this.userissueslogForm.get('priority')?.disable();
+        this.userissueslogForm.get('userName')?.disable();
+        this.userissueslogForm.get('userEmail')?.disable();
+        this.userissueslogForm.get('contactNo')?.disable();
+        this.userissueslogForm.get('issueType')?.disable();
+         this.userissueslogForm.get('deptId')?.disable();
+        this.userissueslogForm.get('module')?.disable();
+        this.userissueslogForm.get('userSubject')?.disable();
+        this.userissueslogForm.get('subject')?.disable();
+        this.userissueslogForm.get('issueDesc')?.disable();
+        this.isButtonDisabled = true;
         this.service.viewIssueTrnslnFn(issueNo).subscribe((res: any) => {
           if (res.code === 200) {
             alert(res.message);
@@ -360,6 +403,30 @@ UserissueLinesGroup() {
        
       }
     )
+
+  }
+
+  issueupdate(){
+    // let formValue = this.userissueslogForm.getRawValue();
+    const formValue = this.transData(this.userissueslogForm.getRawValue());
+    //  const formValue = this.transData(this.userissueslogForm.value);
+    var issueNo = this.userissueslogForm.get('issueNo')?.value;
+    console.log(formValue);
+    let formData = new FormData();
+    formData.append('file', this.fileInput.nativeElement.files[0]); 
+    formData.append('objhdMst',JSON.stringify(formValue));
+    this.service.updateUserIssueLinefn(formData,issueNo).subscribe((res: any) => {
+      if (res.code === 200) {
+        alert(res.message);
+        // this.closeResetButton = true;
+        // this.progress = 0;
+        // this.dataDisplay = res.message;
+      }
+      else{
+        alert(res.message);
+      }
+    })
+
 
   }
 
