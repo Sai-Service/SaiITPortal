@@ -45,14 +45,15 @@ this.ErpIssueService.login(this.userName, this.password).subscribe((res: any) =>
         sessionStorage.setItem('orgId', res.obj.orgId);
         sessionStorage.setItem('userName', res.obj.userName);
         sessionStorage.setItem('orgName', res.obj.orgName);
+        sessionStorage.setItem('role', res.obj.role);
         
-        alert(res.obj.userName)
+        // alert(res.obj.userName)
         // this.router.navigate(['./admin/erpIssueModule/userIssueLog']);
-        if (res.obj.userName=='MUMEDP'){
+        if (res.obj.role=='User'){
             this.router.navigate(['./admin/erpIssueModule/userIssueLog']);
             
           }
-          if (res.obj.userName=='MUMBAI'){
+          if (res.obj.role=='IT'){
             alert
             ('----WELCOME TO ADMIN PAGE----')
             this.router.navigate(['./admin/erpIssueModule/erpsupport']);
