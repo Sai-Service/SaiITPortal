@@ -5,8 +5,13 @@
         <marquee style="font-size: 22px; font-weight: bold;">WELCOME TO SAI SERVICE IT SUPPORT</marquee>
     </div>
 
+    <p style="text-align: center; font-size: 14px;font-weight:bold;margin-top: 20px;background: linear-gradient(to right, #fcadf8,#a8c4f5);">
+        <!-- Support Issue Registration Form -->
+         ERP Support Form
+    </p>
+
     <p style="margin-top: 20px;margin-left: 7px;">
-        Please select YOUR NAME to see list of pending issues against you.
+        <!-- Please select YOUR NAME to see list of pending issues against you. -->
     </p>
 </header>
 <hr>
@@ -163,12 +168,65 @@
                                 Close
                             </button>
                          </div>
+
+                         <hr style="border: 0.2px solid rgb(99, 98, 98);width: 100%;">
+
+                         <div class="last">
+                            <form>
+                                <div class="group inline">
+                                     <div>
+                                            <label>Update Issue (250 Characters)</label>
+                                            <textarea type="textarea" id="UpdateIssue"  rows="3"></textarea>
+                                     </div>
+                        
+                                     <div>
+                                        <label>Solution Offered (250 Characters)</label>
+                                        <textarea type="textarea" id="solutionoffered"  rows="3"></textarea>
+                                     </div>
+                                </div>
+                                <div class="group inline">
+                                    <div>
+                                        <label>Update Status</label>
+                                        <select id="status" style="height: 1cm;">
+                                            <option>Select </option> 
+                                        </select>
+                                    </div>
+                        
+                                    <div>
+                                        <label>Issue Update/Close By</label>
+                                        <select  id="Issueupdate" style="height: 1cm;" name="support">
+                                            <option value="support">Support</option>
+                                        </select>
+                                    </div>
+                        
+                                    <div>
+                                        <label>Select Type & Attach File</label>
+                                        <input type="file" name="file" id="Fileupload" style="height: 1cm;">
+                                    </div>
+
+                                    <div>
+                                        <label>Email CC</label>
+                                        <input type="email" name="email" style="height: 1cm;" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="group inline">
+                                    <div>
+                                    <button>Add/Update Issue</button>
+                            
+                                    <button>Close Issue</button>
+                                    </div>
+                                </div>
+                                </form>
+                               </div>
+
+
+
                      </div>
                  </div>
              </div>
 
 
-<div class="last">
+<!-- <div class="last">
     <form>
         <div class="group inline">
              <div>
@@ -207,7 +265,7 @@
             <button>Close Issue</button>
 
     </form>
-</div>
+</div> -->
 
 </div>
 </form>
