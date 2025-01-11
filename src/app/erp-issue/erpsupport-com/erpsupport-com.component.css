@@ -83,6 +83,14 @@ button {
     height: 1cm;
 }
 
+.btnn{
+    background: linear-gradient(to right, #d14178, #d45351);
+    color: white;
+    border: none;
+    max-width: 310px;
+    height: 1cm;  
+}
+
 .issue-table {
     width: 100%;
     border-collapse: collapse;
@@ -115,11 +123,14 @@ button {
 }
 
 .last {
-    max-width: 70%;
-    /* margin: 15px auto; */
+    max-width: 80%;
+    border: 1px solid black;
+    margin-top: 10px;
+    margin-left: 105px;
     padding: 15px;
     background: white;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(to right, #fdc7e8, #c1ecf1);
 }
 
 .btn-primary{
