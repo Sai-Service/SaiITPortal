@@ -63,10 +63,21 @@ export class ErpIssueService {
   issuestatusList(): Observable<any> {
     return this.http.get(this.ServerUrl + `/FndCmn/CmnType?cmnType=STATUS`);
   }
- 
+
+  itsupportList(): Observable<any> {
+    return this.http.get(this.ServerUrl + '/FndCmn/CmnType?cmnType=ITSUPPORT');
+  }
+
+  cityList(): Observable<any> {
+    return this.http.get(this.ServerUrl + '/ouMst/Active')
+  }
 
   UserissuesSearch(issueNo:any,ouId:any,locId:any,deptId:any,sts:any): Observable<any> {
     return this.http.get(this.ServerUrl + `/Transaction/AllIssues?issueNo=${issueNo}&ouId=${ouId}&locationId=${locId}&deptId=${deptId}&status=${sts}`);
+  }
+
+  ErpissuesSearch(issueNo:any,ouId:any,locId:any,deptId:any,sts:any): Observable<any> {
+    return this.http.get(this.ServerUrl + `/Transaction/AllIssues?issueNo=${issueNo}&ouId=${ouId}&locationId=${locId}&deptId=${deptId}&status=${sts}`)
   }
  
   IssueNoFindFN(issueNo:any): Observable<any> {
@@ -76,6 +87,7 @@ export class ErpIssueService {
   viewIssueTrnslnFn(issueNo:any): Observable<any> {
     return this.http.get(this.ServerUrl + `/Transaction/getIssue/${issueNo}`);
   }
+  
 
   public IssuelogSubmit(formdata:FormData) {
     // formdata.append('file',file);

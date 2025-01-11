@@ -1,42 +1,47 @@
-
-    
+   
 <header>
     <div class="header" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center;">
         <img src="http://saiitportal.com/Images/Sai%20Logo.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;">
         <marquee style="font-size: 22px; font-weight: bold;">WELCOME TO SAI SERVICE IT SUPPORT</marquee>
     </div>
 
-    <p style="margin-top: 20px;font-family: Arial, Helvetica, sans-serif;margin-left: 7px;font-weight: bold;">
+    <p style="margin-top: 20px;margin-left: 7px;">
         Please select YOUR NAME to see list of pending issues against you.
     </p>
 </header>
 <hr>
-    <form>
+    <form [formGroup]="erpsupportcomForm"  (ngSubmit)="erpsupportfrm(erpsupportcomForm)">
     <div class="container">
         <div class="group inline">
     
            <div>
             <label>IT Executive Name</label>
-            <select id="Name" style="height: 1cm;">
-                <option value="select">Select</option>
+            <select id="itexecutive" style="height: 1cm;" formControlName="itexecutive">
+                <option *ngFor="let sc of itsupportList" [value]="sc.cmnDesc">
+                    {{sc.cmnDesc}}
+                </option>
             </select>
            </div>
 
            <div>
             <label>City</label>
-            <select id="City" style="height: 1cm;">
-                <option value="City">Selelct</option>
+            <select type="number" id="ouId" style="height: 1cm;" formControlName="ouId" >
+                <option *ngFor="let sc of  cityList" [value]="sc.ouId">
+                    {{sc.ouId}} - {{sc.ouCity}}
+                </option>
             </select>
            </div>
 
            <div>
             <label>Status</label>
-            <select  id="status" style="height: 1cm;">
-                <option value="status">Select</option>
+            <select id="status" style="height: 1cm;" formControlName="status">
+                <option *ngFor="let sc of issuestatusList" [value]="sc.cmnDesc">
+                    {{sc.cmnDesc}}
+                </option> 
             </select>
            </div>
 
-           <button>Submit</button>
+           <button type="submit" id="register" (click)="search()">Search</button>
 
            <button>Export</button>
 
@@ -47,88 +52,121 @@
     
     </div>
     </div>
-</form>
+    
 
 <div class="new">
     <table class="issue-table">
         <thead>
-            <tr>
-                <th>Select</th>
-                <th>Issue No</th>
-                <th>Issue Date</th>
-                <th>Priority</th>
-                <th>OU</th>
-                <th>Location</th>
-                <th>Department</th>
-                <th>Module</th>
-                <th>Subject</th>
-                <th>User Subject</th>
-                <th>Issue Description</th>
-                <th>User Name</th>
-                <th>User Email</th>
-                <th>Contact</th>
-                <th>Status</th>
-                <th>Issue Type</th>
-                <th>Assign To</th>
+            <tr  class="GridHeader">
+              <th scope="col" style="border:1px solid black;background-color: aquamarine;font-weight: 650;">Select</th>
+              <th scope="col" style="border:1px solid black;background-color: aquamarine;font-weight: 650;">Issue No</th>
+              <th scope="col" style="border:1px solid black;background-color: aquamarine;font-weight: 650;">Issue Date</th>
+              <th scope="col" style="border:1px solid black;background-color: aquamarine;font-weight: 650;">Priority</th>
+              <th scope="col" style="border:1px solid black;background-color: aquamarine;font-weight: 650;">OU</th>
+              <th scope="col" style="border:1px solid black;background-color: aquamarine;font-weight: 650;">Location</th>
+              <th scope="col" style="border:1px solid black;background-color: aquamarine;font-weight: 650;">Department</th>
+              <th scope="col" style="border:1px solid black;background-color: aquamarine;font-weight: 650;">Module</th>
+              <th scope="col" style="border:1px solid black;background-color: aquamarine;font-weight: 650;">Subject</th>
+              <th scope="col" style="border:1px solid black;background-color: aquamarine;font-weight: 650;">User Subject</th>
+              <th scope="col" style="border:1px solid black;background-color: aquamarine;font-weight: 650;">Issue Description</th>
+              <th scope="col" style="border:1px solid black;background-color: aquamarine;font-weight: 650;">User Name</th>
+              <th scope="col" style="border:1px solid black;background-color: aquamarine;font-weight: 650;">User Email</th>
+              <th scope="col" style="border:1px solid black;background-color: aquamarine;font-weight: 650;">Contact</th>
+              <th scope="col" style="border:1px solid black;background-color: aquamarine;font-weight: 650;">Status</th>
+              <th scope="col" style="border:1px solid black;background-color: aquamarine;font-weight: 650;">Issue Type</th>
+              <th scope="col" style="border:1px solid black;background-color: aquamarine;font-weight: 650;">Assign To</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
+            <tr *ngFor='let com of erpsupportfromsearch'>
+                <th><button type="button"
+                    style="width: fit-content;" (click)="issueNoFind(com.issueNo)" class="btn btn-primary"
+                    id="register" data-toggle="modal" style="width: fit-content;"
+                    data-target="#confirmAlert1">Select</button></th>
+                <th>{{com.issueNo}}</th>
+                <th>{{com.issueDate}}</th>
+                <th>{{com.priority}}</th>
+                <th>{{com.ouId}}</th>
+                <th>{{com.locationId}}</th>
+                <th>{{com.deptId}}</th>
+                <th>{{com.module}}</th>
+                <th>{{com.subject}}</th>
+                <th>{{com.userSubject}}</th>
+                <th>{{com.issueDesc}}</th>
+                <th>{{com.userName}}</th>
+                <th>{{com.userEmail}}</th>
+                <th>{{com.contactNo}}</th>
+                <th>{{com.status}}</th>
+                <th>{{com.issueType}}</th>
+                <th>{{com.assignTo}}</th>
             </tr>
         </tbody>
     </table>
 </div>
 
+<div>
+           <div class="modal fade" id="confirmAlert1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+               <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                             <h5 class="modal-title" id="exampleModalLabel">Issue Details</h5>
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                             </button>
+                        </div>
+                        <div class="modal-body">
+                             <label>
+                                 Please find the below details of your Issue No:- 
+                                <input style="height: 0.7cm; width: 5cm;" formControlName="attribute4" readonly /></label>
+           
+                             <table class="table table-bordered"
+                                    style="border-color: #959595; border-collapse: collapse; width: 100%;">
+                                  <thead>
+                                      <tr style="background-color: rgb(81, 81, 255); color: white;">
+                                         <th>Trans Id</th>
+                                         <th>Issue No</th>
+                                         <th>TRN Date</th>
+                                         <th>TRN Time</th>
+                                         <th>Updates</th>
+                                         <th>Assign To</th>
+                                         <th>status</th>
+                                         <th>Updated By</th>
+                                         <th>Attachment</th>
+                                         <th>View Document</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr *ngFor="let com of viewAllDoucmnet" class="ItemStyle"
+                                         style="text-align: center; font-size: 12px;">
+                                         <th>{{ com.trlineId }}</th>
+                                         <th>{{ com.issueNo }}</th>
+                                         <th>{{ com.trnDate | date: 'dd-MM-yyyy' }}</th>
+                                         <th>{{com.trnTime}}</th>
+                                         <th>{{ com.update}}</th>
+                                         <th>{{com.assignedTo}}</th>
+                                         <th>{{ com.status }}</th>
+                                         <th>{{ com.lastUpdatedBy }}</th>
+                                         <th>{{com.attachment}}</th>
+                                         <th>
+                                           <button type="button" class="btn btn-primary" style="width: 170px;">
+                                            View Document
+                                           </button>
+                                             <!--- (click)="openDocument(com.docId, com.docType)"-->
+                                         </th>
+                                     </tr>
+                                   </tbody>
+                            </table>
+                         </div>
+                         <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                Close
+                            </button>
+                         </div>
+                     </div>
+                 </div>
+             </div>
 
-<div class="find">
-    Please find the below history of your Issue No.->
-    <table class="issue-table">
-        <thead>
-            <tr>
-                <th>TR ID</th>
-                <th>Issue No</th>
-                <th>TRN Date</th>
-                <th>TRN Time</th>
-                <th>Updates</th>
-                <th>Assign To</th>
-                <th>Status</th>
-                <th>Updated By</th>
-                <th>Attachement</th>
-                <th>Select</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th>Select</th>
-            </tr>
-        </tbody>
-    </table>
 
 <div class="last">
     <form>
@@ -172,3 +210,4 @@
 </div>
 
 </div>
+</form>
