@@ -99,7 +99,15 @@ export class ErpIssueService {
     const url = this.ServerUrl + '/Transaction/addIssue';
     return this.http.post(url, formdata);
   }
-  // /Transaction/addIssue
+ 
+  updateUserIssueLinefn(UpdateCounterSaleInvRecord:FormData,issueNo:any) {
+    // const options = {
+    //   headers: this.headers
+    // };
+    const url = (this.ServerUrl + `/Transaction/updateIssue?issueNo=${issueNo}`);
+    return this.http.put(url, UpdateCounterSaleInvRecord);
+  }
+
 
 
     imagemainget(): Observable<any> {
