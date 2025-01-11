@@ -340,8 +340,19 @@ textarea{
   .modal-dialog {
     margin: auto;
     position: relative;
-    top: 50%;
+    top: 15%;
+    max-width: 80%;
     transform: translateY(-50%);
 }
 
+.new{
+    max-width: 99%;
+    margin: 15px auto;
+    padding: 10px;
+    padding-top: 25px;
+    padding-bottom: 20px;
+    background: linear-gradient(to right, #ffdaf1, #d0f1f5);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.35);
+    overflow: auto;
+}
  

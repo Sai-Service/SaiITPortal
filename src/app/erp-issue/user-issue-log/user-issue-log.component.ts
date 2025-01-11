@@ -103,6 +103,7 @@ export class UserIssueLogComponent {
   srclocationId:number;
   srcdeptId:number;
   @ViewChild('fileInput') fileInput:any;
+  @ViewChild('fileInput1') fileInput1:any;
 
 
 public erplocationList:any=[];
@@ -371,6 +372,8 @@ UserissueLinesGroup() {
         this.userissueslogForm.patchValue({userSubject:data.obj.userSubject});
         this.userissueslogForm.patchValue({subject:data.obj.subject});
         this.userissueslogForm.patchValue({attribute4:issueNo});
+        this.userissueslogForm.patchValue({issueDate:data.obj.issueDate});
+        
         this.userissueslogForm.get('locationId')?.disable();
         this.userissueslogForm.get('priority')?.disable();
         this.userissueslogForm.get('userName')?.disable();
@@ -407,20 +410,15 @@ UserissueLinesGroup() {
   }
 
   issueupdate(){
-    // let formValue = this.userissueslogForm.getRawValue();
     const formValue = this.transData(this.userissueslogForm.getRawValue());
-    //  const formValue = this.transData(this.userissueslogForm.value);
     var issueNo = this.userissueslogForm.get('issueNo')?.value;
     console.log(formValue);
     let formData = new FormData();
-    formData.append('file', this.fileInput.nativeElement.files[0]); 
+    formData.append('file', this.fileInput1.nativeElement.files[0]); 
     formData.append('objhdMst',JSON.stringify(formValue));
     this.service.updateUserIssueLinefn(formData,issueNo).subscribe((res: any) => {
       if (res.code === 200) {
         alert(res.message);
-        // this.closeResetButton = true;
-        // this.progress = 0;
-        // this.dataDisplay = res.message;
       }
       else{
         alert(res.message);
