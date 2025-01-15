@@ -104,6 +104,8 @@ export class ErpsupportComComponent {
   status:string;
   file:string;
   city:string;
+  srcitexecutive:string;
+  srcstatus:string;
   srclocationId:number;
   srcdeptId:number;
   @ViewChild('fileInput') fileInput:any;
@@ -164,6 +166,8 @@ export class ErpsupportComComponent {
     status:[],
     file:[],
     city:[],
+    srcitexecutive:[],
+    srcstatus:[],
     srcdeptId:[],
     srclocationId:[],
     transLines:this.fb.array([this.UserissueLinesGroup()]),
@@ -299,14 +303,14 @@ export class ErpsupportComComponent {
   var  srcdeptId = this.erpsupportcomForm.get('srcdeptId')?.value;
   var  ouId = this.erpsupportcomForm.get('ouId')?.value;
   var  itexecutive = this.erpsupportcomForm.get('itexecutive')?.value;
-  var  status = this.erpsupportcomForm.get('status')?.value;
+  var  srcstatus = this.erpsupportcomForm.get('srcstatus')?.value;
   if (issueNo === null) { issueNo = '' }
   if (srclocationId === null) { srclocationId = '' }
   if (srcdeptId === null) { srcdeptId = '' }
   if (itexecutive === null) { itexecutive = '' }
-  if (status === null) { status = '' }
+  if (srcstatus === null) { srcstatus = '' }
 
-  this.service.ErpissuesSearch(issueNo,ouId,srclocationId,srcdeptId,status)
+  this.service.ErpissuesSearch(issueNo,ouId,srclocationId,srcdeptId,srcstatus)
   .subscribe(
     (res: any) => {
       if (res.code==200){
