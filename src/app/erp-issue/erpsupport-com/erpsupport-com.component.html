@@ -21,7 +21,7 @@
     
            <div>
             <label>IT Executive Name</label>
-            <select id="itexecutive" style="height: 1cm;" formControlName="itexecutive">
+            <select id="itexecutive" style="height: 1cm;" formControlName="srcitexecutive">
                 <option *ngFor="let sc of itsupportList" [value]="sc.cmnDesc">
                     {{sc.cmnDesc}}
                 </option>
@@ -39,7 +39,7 @@
 
            <div>
             <label>Status</label>
-            <select id="status" style="height: 1cm;" formControlName="status">
+            <select id="status" style="height: 1cm;" formControlName="srcstatus">
                 <option *ngFor="let sc of issuestatusList" [value]="sc.cmnDesc">
                     {{sc.cmnDesc}}
                 </option> 
