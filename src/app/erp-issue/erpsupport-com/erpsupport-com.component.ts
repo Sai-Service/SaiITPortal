@@ -56,6 +56,7 @@ interface uerissueslog{
   currentYear:string;
   status:string;
   file:string;
+  files:string;
   city:string;
 }
 
@@ -108,6 +109,7 @@ export class ErpsupportComComponent {
   srcstatus:string;
   srclocationId:number;
   srcdeptId:number;
+  files:string;
   @ViewChild('fileInput') fileInput:any;
 
 
@@ -165,6 +167,7 @@ export class ErpsupportComComponent {
     currentYear:[],
     status:[],
     file:[],
+    files:[],
     city:[],
     srcitexecutive:[],
     srcstatus:[],
@@ -344,7 +347,6 @@ export class ErpsupportComComponent {
           issueType:data.obj.issueType});
         this.erpsupportcomForm.patchValue({attribute4:data.obj.issueNo});
         
-        this.erpsupportcomForm.disable();
 
         this.service.viewIssueTrnslnFn(issueNo).subscribe((res: any) => {
           if (res.code === 200) {
@@ -370,24 +372,24 @@ export class ErpsupportComComponent {
   }
 
 
-  issueupdate(){
-    const formValue = this.transData(this.erpsupportcomForm.getRawValue());
-    var issueNo = this.erpsupportcomForm.get('issueNo')?.value;
-    console.log(formValue);
-    let formData = new FormData();
-    formData.append('file', this.fileInput.nativeElement.files[0]); 
-    formData.append('objhdMst',JSON.stringify(formValue));
-    this.service.updateUserIssueLinefn(formData,issueNo).subscribe((res: any) => {
-      if (res.code === 200) {
-        alert(res.message);
-      }
-      else{
-        alert(res.message);
-      }
-    })
+  // issueupdate(){
+  //   const formValue = this.transData(this.erpsupportcomForm.getRawValue());
+  //   var issueNo = this.erpsupportcomForm.get('issueNo')?.value;
+  //   console.log(formValue);
+  //   let formData = new FormData();
+  //   formData.append('file', this.fileInput.nativeElement.files[0]); 
+  //   formData.append('objhdMst',JSON.stringify(formValue));
+  //   this.service.updateUserIssueLinefn(formData,issueNo).subscribe((res: any) => {
+  //     if (res.code === 200) {
+  //       alert(res.message);
+  //     }
+  //     else{
+  //       alert(res.message);
+  //     }
+  //   })
 
 
-  }
+  // }
 
   viewDocument(){}
 

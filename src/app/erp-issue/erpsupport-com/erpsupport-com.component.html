@@ -169,10 +169,9 @@
                             </button>
                          </div>
 
-                         <hr style="border: 0.2px solid rgb(99, 98, 98);width: 100%;">
+                         <!-- <hr style="border: 0.2px solid rgb(99, 98, 98);width: 100%;"> -->
 
                          <div class="last">
-                            <form>
                                 <div class="group inline">
                                      <div>
                                             <label>Update Issue (250 Characters)</label>
@@ -202,26 +201,29 @@
                                             </option>
                                         </select>
                                     </div>
-                        
-                                    <div>
-                                        <label>Select Type & Attach File</label>
-                                        <input type="file" name="file" id="Fileupload" style="height: 1cm;" [(ngModel)]="file" #fileInput
-                                        formControlName="file">
-                                    </div>
+                                
+                                        <div>
+                                            <label for="file-upload">Upload File</label>
+                                            <input type="file" id="file-upload" style="height: 0.9cm;" #fileInput formControlName="file">
+                                        </div>
 
-                                    <div>
-                                        <label>Email CC</label>
-                                        <input type="email" name="email" style="height: 1cm;" placeholder="email cc"  formControlName="emailcc">
-                                    </div>
+                                        <div>
+                                            <label for="file-upload">Email Cc</label>
+                                            <input type="text" id="emailcc" style="height: 0.9cm;" formControlName="emailcc">
+                                        </div>
+                                   
+                        
                                 </div>
+                    
+                                
                                 <div class="group inline">
                                     <div>
-                                    <button (click)="issueupdate()">Add/Update Issue</button>
+                                    <button >Add/Update Issue</button>
                             
                                     <button>Close Issue</button>
                                     </div>
                                 </div>
-                                </form>
+                            
                                </div>
 
 
