@@ -12,14 +12,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErpIssueService } from '../erp-issue.service';
 import { data } from 'jquery';
 
-const MIME_TYPES = {
+const MIME_TYPES :any = {
   pdf: 'application/pdf',
   xls: 'application/vnd.ms-excel',
   xlsx: 'application/vnc.openxmlformats-officedocument.spreadsheetxml.sheet'
 };
 
 interface uerissueslog{
-  itexecutive:string;
+  // itexecutive:string;
   issueId:number;
   issueNo:string | any;
   issueDate:Date;
@@ -56,7 +56,7 @@ interface uerissueslog{
   currentYear:string;
   status:string;
   file:string;
-  files:string;
+  assignedTo:string;
   city:string;
 }
 
@@ -67,7 +67,7 @@ interface uerissueslog{
 })
 export class ErpsupportComComponent {
   erpsupportcomForm:FormGroup;
-  itexecutive:string;
+  // itexecutive:string;
   issueId:number;
   issueNo :string;
   issueDate:Date;
@@ -104,12 +104,13 @@ export class ErpsupportComComponent {
   currentYear:string;
   status:string;
   file:string;
-  city:string;
+  assignedTo:string;
+  // city:string;
   srcitexecutive:string;
   srcstatus:string;
   srclocationId:number;
   srcdeptId:number;
-  files:string;
+
   @ViewChild('fileInput') fileInput:any;
 
 
@@ -130,7 +131,7 @@ export class ErpsupportComComponent {
   
     constructor(private fb: FormBuilder, private router: Router, private service: ErpIssueService) {
       this.erpsupportcomForm = fb.group({
-    itexecutive:[],
+    // itexecutive:[],
     issueId:[],
     issueNo:[],
     issueDate:[],
@@ -154,7 +155,7 @@ export class ErpsupportComComponent {
     emailcc:[],
     createdBy :[],
     creationDt:[],
-    lastUpdatedBy:[],
+    
     lastUpdationDt:[],
     startDate:[],
     endDate:[],
@@ -163,12 +164,12 @@ export class ErpsupportComComponent {
     attribute3:[],
     attribute4:[],
     attribute5:[],
-    remark :[],
+    // remark :[],
     currentYear:[],
     status:[],
     file:[],
-    files:[],
-    city:[],
+    // city:[],
+   
     srcitexecutive:[],
     srcstatus:[],
     srcdeptId:[],
@@ -181,7 +182,9 @@ export class ErpsupportComComponent {
     return this.fb.group({
 
       status:[],
-      remark :['CUSTOMER WORKING'],
+      remark :[],
+      assignedTo:[],
+      lastUpdatedBy:[],
 
     })}
    
@@ -191,15 +194,14 @@ export class ErpsupportComComponent {
 
     ngOnInit(): void {
       $("#wrapper").toggleClass("toggled");
-      // this.erpsupportcomForm.patchValue({attribute5:sessionStorage.getItem('orgName')});
-      // this.erpsupportcomForm.patchValue({ouId:sessionStorage.getItem('orgId')});
+      this.erpsupportcomForm.patchValue({createdBy:sessionStorage.getItem('userName')});
   
   
       var patch = this.erpsupportcomForm.get('transLines') as FormArray
       (patch.controls[0]).patchValue(
         {
-          remark:'remark',
-          status:'CUSTOMER WORKING',    
+          
+          // status:'CUSTOMER WORKING',    
          
         }
       );
@@ -296,6 +298,10 @@ export class ErpsupportComComponent {
   transData(val :any){
     delete val.srclocationId
     delete val.srcdeptId
+    delete val.srcitexecutive
+    delete val.srcstatus
+  
+
 
     return val;
  }
@@ -305,7 +311,7 @@ export class ErpsupportComComponent {
   var  srclocationId = this.erpsupportcomForm.get('srclocationId')?.value;
   var  srcdeptId = this.erpsupportcomForm.get('srcdeptId')?.value;
   var  ouId = this.erpsupportcomForm.get('ouId')?.value;
-  var  itexecutive = this.erpsupportcomForm.get('itexecutive')?.value;
+  var  itexecutive = this.erpsupportcomForm.get('srcitexecutive')?.value;
   var  srcstatus = this.erpsupportcomForm.get('srcstatus')?.value;
   if (issueNo === null) { issueNo = '' }
   if (srclocationId === null) { srclocationId = '' }
@@ -337,13 +343,14 @@ export class ErpsupportComComponent {
 
 
   issueNoFind(issueNo:any):void{
+    
     this.service.IssueNoFindFN(issueNo)
     .subscribe(
       data=> {
         if (data.code === 200) {
         this.erpsupportcomForm.patchValue({issueNo:data.obj.issueNo,priority:data.obj.priority,module:data.obj.module,
           locationId:data.obj.locationId,userEmail:data.obj.userEmail,locName:data.obj.locName,userName:data.obj.userName,
-          contactNo:data.obj.contactNo,issueDesc:data.obj.issueDesc,subject:data.obj.userSubject,deptId:data.obj.deptId,
+          contactNo:data.obj.contactNo,issueDesc:data.obj.issueDesc,userSubject:data.obj.userSubject,subject:data.obj.subject,deptId:data.obj.deptId,
           issueType:data.obj.issueType});
         this.erpsupportcomForm.patchValue({attribute4:data.obj.issueNo});
         
@@ -372,27 +379,102 @@ export class ErpsupportComComponent {
   }
 
 
-  // issueupdate(){
-  //   const formValue = this.transData(this.erpsupportcomForm.getRawValue());
-  //   var issueNo = this.erpsupportcomForm.get('issueNo')?.value;
-  //   console.log(formValue);
-  //   let formData = new FormData();
-  //   formData.append('file', this.fileInput.nativeElement.files[0]); 
-  //   formData.append('objhdMst',JSON.stringify(formValue));
-  //   this.service.updateUserIssueLinefn(formData,issueNo).subscribe((res: any) => {
-  //     if (res.code === 200) {
-  //       alert(res.message);
-  //     }
-  //     else{
-  //       alert(res.message);
-  //     }
-  //   })
+  issueupdate(){
+    const formValue = this.transData(this.erpsupportcomForm.getRawValue());
+    var issueNo = this.erpsupportcomForm.get('issueNo')?.value;
+    this.erpsupportcomForm.patchValue({lastUpdatedBy:'IT'});
+    console.log(formValue);
+    let formData = new FormData();
+    // formData.append('file', this.fileInput.nativeElement.files[0]); 
+    if (this.fileInput?.nativeElement?.files[0]) {
+      formData.append('file', this.fileInput.nativeElement.files[0]); 
+    } else {
+      formData.append('file', '');
+    }
+    formData.append('objhdMst',JSON.stringify(formValue));
+    this.service.updateUserIssueLinefn(formData,issueNo).subscribe((res: any) => {
+      if (res.code === 200) {
+        alert(res.message);
+      }
+      else{
+        alert(res.message);
+      }
+    })
 
 
-  // }
+  }
 
   viewDocument(){}
 
 
-  openDocument(){}
+//   openDocument(trlineId:any,filePath:any){
+//     const fileName = 'download.pdf';
+//     this.service.openDocumentFn(trlineId, filePath)
+//       .subscribe(data => {
+//         var blob = new Blob([data] , { type: 'application/pdf' },{type:''});
+//         var url = URL.createObjectURL(blob);
+//         var printWindow = window.open(url, '', 'width=800,height=500');
+      
+//         /////, { type: 'application/pdf' }
+
+//       });
+// }
+
+
+openDocument(trlineId: any, filePath: any) {
+  this.service.openDocumentFn(trlineId, filePath)
+    .subscribe(data => {
+      // Extract file extension
+      const fileExtension = filePath.split('.').pop()?.toLowerCase();
+
+      // Determine MIME type
+      let mimeType = '';
+      switch (fileExtension) {
+        case 'pdf':
+          mimeType = 'application/pdf';
+          break;
+        case 'jpg':
+        case 'jpeg':
+          mimeType = 'image/jpeg';
+          break;
+        case 'png':
+          mimeType = 'image/png';
+          break;
+        case 'txt':
+          mimeType = 'text/plain';
+          break;
+        case 'doc':
+        case 'docx':
+          mimeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+          break;
+        case 'xls':
+        case 'xlsx':
+          mimeType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+          break;
+        default:
+          mimeType = 'application/octet-stream'; // Default binary file
+          break;
+      }
+
+      // Create blob and URL
+      const blob = new Blob([data], { type: mimeType });
+      const url = URL.createObjectURL(blob);
+
+      // Open file in a new window or tab
+      if (mimeType.startsWith('image') || mimeType === 'application/pdf') {
+        // For images and PDFs, open directly in a new window
+        window.open(url, '_blank', 'width=800,height=500');
+      } else {
+        // For other file types, trigger download
+        const anchor = document.createElement('a');
+        anchor.href = url;
+        anchor.download = `download.${fileExtension}`;
+        anchor.click();
+        URL.revokeObjectURL(url); // Clean up
+      }
+    });
+}
+
+
+
 }

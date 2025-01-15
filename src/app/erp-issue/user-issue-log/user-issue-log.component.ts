@@ -182,6 +182,8 @@ UserissueLinesGroup() {
     this.userissueslogForm.patchValue({attribute5:sessionStorage.getItem('orgName')});
     this.userissueslogForm.patchValue({ouId:sessionStorage.getItem('orgId')});
     this.userissueslogForm.patchValue({createdBy:sessionStorage.getItem('userName')});
+    this.userissueslogForm.patchValue({assignTo:'SUPPORT'});
+    
    
 
 
@@ -277,6 +279,7 @@ UserissueLinesGroup() {
 
   sendIasue(){
     this.isButtonDisabled = true;
+    this.userissueslogForm.patchValue({lastUpdatedBy:'U'});
     const formValue = this.transData(this.userissueslogForm.value);
     console.log(formValue);
     let formData = new FormData();
@@ -357,7 +360,7 @@ UserissueLinesGroup() {
 
 
   issueNoFind(issueNo:any):void{
-    this.userissueslogForm.patchValue({lastUpdatedBy:sessionStorage.getItem('userName')});
+    this.userissueslogForm.patchValue({lastUpdatedBy:'IT'});
     this.service.IssueNoFindFN(issueNo)
     .subscribe(
       data=> {
@@ -414,7 +417,13 @@ UserissueLinesGroup() {
     var issueNo = this.userissueslogForm.get('issueNo')?.value;
     console.log(formValue);
     let formData = new FormData();
-    formData.append('file', this.fileInput1.nativeElement.files[0]); 
+      // formData.append('file', this.fileInput1.nativeElement.files[0]);
+      // alert(this.fileInput1)
+      if (this.fileInput1?.nativeElement?.files[0]) {
+        formData.append('file', this.fileInput1.nativeElement.files[0]); 
+      } else {
+        formData.append('file', '');
+      }
     formData.append('objhdMst',JSON.stringify(formValue));
     this.service.updateUserIssueLinefn(formData,issueNo).subscribe((res: any) => {
       if (res.code === 200) {

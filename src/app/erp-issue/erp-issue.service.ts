@@ -108,8 +108,17 @@ export class ErpIssueService {
     return this.http.put(url, UpdateCounterSaleInvRecord);
   }
 
+  openDocumentFn(headerId:any,docType:any) {
+    const REQUEST_URI = this.ServerUrl + `/Transaction/downloadfile?trlineId=${headerId}&filepath=${docType}`;
+    return this.http.get(REQUEST_URI, {
+      responseType: 'arraybuffer',
+      headers: this.headers,
+    });
+  }
 
-
+  // openDocumentFn(headerId:any,docType:any): Observable<any> {
+  //   return this.http.get(this.ServerUrl + `/Transaction/downloadfile?trlineId=${headerId}&filepath=${docType}`);
+  // }
     imagemainget(): Observable<any> {
       return this.http.get(this.ServerUrl + ``);
     }
