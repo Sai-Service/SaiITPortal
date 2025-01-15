@@ -312,7 +312,6 @@ export class ErpsupportComComponent {
       if (res.code==200){
         alert(res.message)
       this.erpsupportfromsearch= res.obj;
-      
    
     if (res.obj.length !=0){
       
@@ -340,6 +339,7 @@ export class ErpsupportComComponent {
           contactNo:data.obj.contactNo,issueDesc:data.obj.issueDesc,subject:data.obj.userSubject,deptId:data.obj.deptId,
           issueType:data.obj.issueType});
         this.erpsupportcomForm.patchValue({attribute4:data.obj.issueNo});
+        
         this.erpsupportcomForm.disable();
 
         this.service.viewIssueTrnslnFn(issueNo).subscribe((res: any) => {
