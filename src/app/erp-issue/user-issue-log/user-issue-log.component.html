@@ -182,7 +182,9 @@
                 <div>
                     <label>Status</label>
                     <select id="status" style="height: 0.8cm;" formControlName="status">
-                        <option value="select">Select</option>
+                        <option *ngFor="let sc of  issuestatusList" [value]="sc.cmnDesc">
+                            {{sc.cmnDesc}}
+                        </option>
                     </select>
                 </div>
             </div>
@@ -304,17 +306,18 @@
                        </ng-container>
                     </ng-container>
                             <div class="form-group inline">
+                            <div>
                                     <label>Select Type</label>
-                                    <select id="fileType" style="height: 0.9cm; width: 6cm;"  formControlName="fileType">
+                                    <select id="fileType" style="height: 0.9cm; width: 8cm;"  formControlName="fileType">
                                         <option *ngFor="let sc of  filetypeList" [value]="sc.cmnDesc">
                                             {{sc.cmnDesc}}
                                         </option>
                 
                                     </select>
-                                    
-                                    <div class="form-group">
+                            </div>
+                                    <div>
                                         <label for="file-upload">Upload File</label>
-                                        <input type="file" id="file-upload" style="height: 0.7cm;" [(ngModel)]="file" #fileInput1
+                                        <input type="file" id="file-upload" style="height: 0.9cm;" [(ngModel)]="file" #fileInput1
                                             formControlName="file">
                                     </div>
                         </div>
