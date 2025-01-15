@@ -201,17 +201,18 @@
                         
                                     <div>
                                         <label>Select Type & Attach File</label>
-                                        <input type="file" name="file" id="Fileupload" style="height: 1cm;">
+                                        <input type="file" name="file" id="Fileupload" style="height: 1cm;" [(ngModel)]="file" #fileInput
+                                        formControlName="file">
                                     </div>
 
                                     <div>
                                         <label>Email CC</label>
-                                        <input type="email" name="email" style="height: 1cm;" placeholder="Email">
+                                        <input type="email" name="email" style="height: 1cm;" placeholder="email cc"  formControlName="emailcc">
                                     </div>
                                 </div>
                                 <div class="group inline">
                                     <div>
-                                    <button>Add/Update Issue</button>
+                                    <button (click)="issueupdate()">Add/Update Issue</button>
                             
                                     <button>Close Issue</button>
                                     </div>

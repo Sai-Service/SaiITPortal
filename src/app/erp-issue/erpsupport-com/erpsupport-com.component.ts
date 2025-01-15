@@ -365,6 +365,26 @@ export class ErpsupportComComponent {
 
   }
 
+
+  issueupdate(){
+    const formValue = this.transData(this.erpsupportcomForm.getRawValue());
+    var issueNo = this.erpsupportcomForm.get('issueNo')?.value;
+    console.log(formValue);
+    let formData = new FormData();
+    formData.append('file', this.fileInput.nativeElement.files[0]); 
+    formData.append('objhdMst',JSON.stringify(formValue));
+    this.service.updateUserIssueLinefn(formData,issueNo).subscribe((res: any) => {
+      if (res.code === 200) {
+        alert(res.message);
+      }
+      else{
+        alert(res.message);
+      }
+    })
+
+
+  }
+
   viewDocument(){}
 
 
