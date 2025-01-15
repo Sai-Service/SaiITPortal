@@ -187,15 +187,19 @@
                                 <div class="group inline">
                                     <div>
                                         <label>Update Status</label>
-                                        <select id="status" style="height: 1cm;">
-                                            <option>Select </option> 
+                                        <select id="status" style="height: 1cm;" formControlName="srcstatus">
+                                            <option *ngFor="let sc of issuestatusList" [value]="sc.cmnDesc">
+                                                {{sc.cmnDesc}}
+                                            </option> 
                                         </select>
                                     </div>
                         
                                     <div>
                                         <label>Issue Update/Close By</label>
-                                        <select  id="Issueupdate" style="height: 1cm;" name="support">
-                                            <option value="support">Support</option>
+                                        <select  id="itexecutive" style="height: 1cm;" name="support" formcontrolName="assignTo">
+                                            <option *ngFor="let sc of itsupportList" [value]="sc.cmnDesc">
+                                                {{sc.cmnDesc}}
+                                            </option>
                                         </select>
                                     </div>
                         
