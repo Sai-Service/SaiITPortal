@@ -184,8 +184,8 @@ export class ErpsupportComComponent {
 
     ngOnInit(): void {
       $("#wrapper").toggleClass("toggled");
-      this.erpsupportcomForm.patchValue({attribute5:sessionStorage.getItem('orgName')});
-      this.erpsupportcomForm.patchValue({ouId:sessionStorage.getItem('orgId')});
+      // this.erpsupportcomForm.patchValue({attribute5:sessionStorage.getItem('orgName')});
+      // this.erpsupportcomForm.patchValue({ouId:sessionStorage.getItem('orgId')});
   
   
       var patch = this.erpsupportcomForm.get('transLines') as FormArray
@@ -297,6 +297,7 @@ export class ErpsupportComComponent {
   var  issueNo = this.erpsupportcomForm.get('issueNo')?.value;
   var  srclocationId = this.erpsupportcomForm.get('srclocationId')?.value;
   var  srcdeptId = this.erpsupportcomForm.get('srcdeptId')?.value;
+  var  ouId = this.erpsupportcomForm.get('ouId')?.value;
   var  itexecutive = this.erpsupportcomForm.get('itexecutive')?.value;
   var  status = this.erpsupportcomForm.get('status')?.value;
   if (issueNo === null) { issueNo = '' }
@@ -305,7 +306,7 @@ export class ErpsupportComComponent {
   if (itexecutive === null) { itexecutive = '' }
   if (status === null) { status = '' }
 
-  this.service.ErpissuesSearch(issueNo,sessionStorage.getItem('orgId'),srclocationId,srcdeptId,status)
+  this.service.ErpissuesSearch(issueNo,ouId,srclocationId,srcdeptId,status)
   .subscribe(
     (res: any) => {
       if (res.code==200){
