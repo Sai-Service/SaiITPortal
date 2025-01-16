@@ -21,7 +21,7 @@
     
            <div>
             <label>IT Executive Name</label>
-            <select id="itexecutive" style="height: 1cm;" formControlName="srcitexecutive">
+            <select  style="height: 1cm;" formControlName="srcitexecutive">
                 <option *ngFor="let sc of itsupportList" [value]="sc.cmnDesc">
                     {{sc.cmnDesc}}
                 </option>
@@ -53,6 +53,8 @@
            <button>All City</button>
 
            <button>Reports</button>
+           <input type="text" hidden style="height: 0.9cm;" formControlName="userSubject">
+           <input type="text" hidden style="height: 0.9cm;" formControlName="subject">
         
     
     </div>
@@ -137,7 +139,7 @@
                                          <th>Assign To</th>
                                          <th>status</th>
                                          <th>Updated By</th>
-                                         <th>Attachment</th>
+                                         <th>Atachment</th>
                                          <th>View Document</th>
                                       </tr>
                                     </thead>
@@ -147,14 +149,14 @@
                                          <th>{{ com.trlineId }}</th>
                                          <th>{{ com.issueNo }}</th>
                                          <th>{{ com.trnDate | date: 'dd-MM-yyyy' }}</th>
-                                         <th>{{com.trnTime}}</th>
-                                         <th>{{ com.update}}</th>
+                                         <th>{{com.trnTime }}</th>
+                                         <th>{{ com.remark}}</th>
                                          <th>{{com.assignedTo}}</th>
                                          <th>{{ com.status }}</th>
                                          <th>{{ com.lastUpdatedBy }}</th>
-                                         <th>{{com.attachment}}</th>
+                                         <th>{{com.filepath}}</th>
                                          <th>
-                                           <button type="button" class="btn btn-primary" style="width: 170px;">
+                                           <button type="button" class="btn btn-primary" style="width: 170px;" (click)="openDocument(com.trlineId,com.filepath)">
                                             View Document
                                            </button>
                                              <!--- (click)="openDocument(com.docId, com.docType)"-->
@@ -172,10 +174,14 @@
                          <!-- <hr style="border: 0.2px solid rgb(99, 98, 98);width: 100%;"> -->
 
                          <div class="last">
+                            <ng-container class="center" formArrayName="transLines">
+                                <ng-container *ngFor="let group of orderlineDetailsArray().controls; let i= index"
+                                    [formGroupName]="i">
                                 <div class="group inline">
+                                    
                                      <div>
                                             <label>Update Issue (250 Characters)</label>
-                                            <textarea type="textarea" id="UpdateIssue"  rows="3"></textarea>
+                                            <textarea type="textarea" id="UpdateIssue" formControlName="remark" rows="3"></textarea>
                                      </div>
                         
                                      <div>
@@ -186,19 +192,15 @@
                                 <div class="group inline">
                                     <div>
                                         <label>Update Status</label>
-                                        <select id="status" style="height: 1cm;" formControlName="srcstatus">
-                                            <option *ngFor="let sc of issuestatusList" [value]="sc.cmnDesc">
-                                                {{sc.cmnDesc}}
-                                            </option> 
+                                        <select id="status" style="height: 1cm;">
+                                            <option>Select </option> 
                                         </select>
                                     </div>
-                        
+                               
                                     <div>
                                         <label>Issue Update/Close By</label>
-                                        <select  id="itexecutive" style="height: 1cm;" name="support" formcontrolName="assignTo">
-                                            <option *ngFor="let sc of itsupportList" [value]="sc.cmnDesc">
-                                                {{sc.cmnDesc}}
-                                            </option>
+                                        <select  id="Issueupdate" style="height: 1cm;" name="support">
+                                            <option value="support">Support</option>
                                         </select>
                                     </div>
                                 
@@ -212,13 +214,16 @@
                                             <input type="text" id="emailcc" style="height: 0.9cm;" formControlName="emailcc">
                                         </div>
                                    
+                                        <input type="text" hidden style="height: 0.9cm;" formControlName="lastUpdatedBy">
                         
                                 </div>
+                            </ng-container>
+                        </ng-container>
                     
                                 
                                 <div class="group inline">
                                     <div>
-                                    <button >Add/Update Issue</button>
+                                    <button (click)="issueupdate()" >Add/Update Issue</button>
                             
                                     <button>Close Issue</button>
                                     </div>
