@@ -8,14 +8,12 @@
     <p style="text-align: center; font-size: 14px;font-weight:bold;margin-top: 20px;background: linear-gradient(to right, #fcadf8,#a8c4f5);">
         <!-- Support Issue Registration Form -->
          ERP Support Form
-    </p>
-
-    <p style="margin-top: 20px;margin-left: 7px;">
-        <!-- Please select YOUR NAME to see list of pending issues against you. -->
-    </p>
+    </p>    
 </header>
+
 <hr>
-    <form [formGroup]="erpsupportcomForm"  (ngSubmit)="erpsupportfrm(erpsupportcomForm)">
+ 
+<form [formGroup]="erpsupportcomForm"  (ngSubmit)="erpsupportfrm(erpsupportcomForm)">
     <div class="container">
         <div class="group inline">
     
@@ -38,6 +36,15 @@
            </div>
 
            <div>
+            <label>Location</label>
+            <select type="number" id="locationId" style="height: 1cm;" formControlName="srclocationId">
+                <option *ngFor="let sc of  erplocationList" [value]="sc.locId">
+                    {{sc.locId}} - {{sc.locName}}
+                </option>
+            </select>
+           </div>
+
+           <div>
             <label>Status</label>
             <select id="status" style="height: 1cm;" formControlName="srcstatus">
                 <option *ngFor="let sc of issuestatusList" [value]="sc.cmnDesc">
@@ -46,11 +53,16 @@
             </select>
            </div>
 
+           <div>
+            <label>Search by Issue No</label>
+            <input type="text" id="issueNo" style="height: 1cm;" formControlName="issueNo">
+           </div>
+
            <button type="submit" id="register" (click)="search()">Search</button>
 
-           <button>Export</button>
+           <!-- <button>Export</button>
 
-           <button>All City</button>
+           <button>All City</button> -->
 
            <button>Reports</button>
            <input type="text" hidden style="height: 0.9cm;" formControlName="userSubject">
@@ -165,14 +177,14 @@
                                    </tbody>
                             </table>
                          </div>
-                         <div class="modal-footer">
+                         <!-- <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                 Close
                             </button>
-                         </div>
+                         </div> -->
 
-                         <!-- <hr style="border: 0.2px solid rgb(99, 98, 98);width: 100%;"> -->
-
+                         <p style="text-align: center;font-size: 22px;font-weight: 800;color: #963a51;">Update Your Issue Here</p>
+                        
                          <div class="last">
                             <ng-container class="center" formArrayName="transLines">
                                 <ng-container *ngFor="let group of orderlineDetailsArray().controls; let i= index"
@@ -192,15 +204,19 @@
                                 <div class="group inline">
                                     <div>
                                         <label>Update Status</label>
-                                        <select id="status" style="height: 1cm;">
-                                            <option>Select </option> 
+                                        <select id="status" style="height: 1cm;" formControlName="srcstatus">
+                                            <option *ngFor="let sc of issuestatusList" [value]="sc.cmnDesc">
+                                                {{sc.cmnDesc}}
+                                            </option> 
                                         </select>
                                     </div>
                                
                                     <div>
                                         <label>Issue Update/Close By</label>
-                                        <select  id="Issueupdate" style="height: 1cm;" name="support">
-                                            <option value="support">Support</option>
+                                        <select  style="height: 1cm;" formControlName="assignTo">
+                                            <option *ngFor="let sc of itsupportList" [value]="sc.cmnDesc">
+                                                {{sc.cmnDesc}}
+                                            </option>
                                         </select>
                                     </div>
                                 
@@ -223,9 +239,10 @@
                                 
                                 <div class="group inline">
                                     <div>
-                                    <button (click)="issueupdate()" >Add/Update Issue</button>
-                            
-                                    <button>Close Issue</button>
+                                    <button (click)="issueupdate()" style="float: right;">Add/Update Issue</button>
+                                    </div>
+                                    <div>
+                                    <button style="float: left;">Close Issue</button>
                                     </div>
                                 </div>
                             
@@ -237,47 +254,6 @@
                  </div>
              </div>
 
-
-<!-- <div class="last">
-    <form>
-        <div class="group inline">
-             <div>
-                    <label>Update Issue (250 Characters)</label>
-                    <textarea type="textarea" id="UpdateIssue"  rows="4"></textarea>
-             </div>
-
-             <div>
-                <label>Solution Offered (250 Characters)</label>
-                <textarea type="textarea" id="solutionoffered"  rows="4"></textarea>
-             </div>
-        </div>
-        <div class="group inline">
-            <div>
-                <label>Update Status</label>
-                <select  id="update" style="height: 1cm;">
-                    <option value="select">Select</option>
-                </select>
-            </div>
-
-            <div>
-                <label>Issue Update/Close By</label>
-                <select  id="Issueupdate" style="height: 1cm;">
-                    <option value="support">Support</option>
-                </select>
-            </div>
-
-            <div>
-                <label>Select Type & Attach File</label>
-                <input type="file" name="file" id="Fileupload" style="height: 1cm;">
-            </div>
-        </div>
-
-            <button>Add/Update Issue</button>
-
-            <button>Close Issue</button>
-
-    </form>
-</div> -->
 
 </div>
 </form>
