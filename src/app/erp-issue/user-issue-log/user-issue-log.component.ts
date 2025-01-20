@@ -184,8 +184,6 @@ UserissueLinesGroup() {
     this.userissueslogForm.patchValue({createdBy:sessionStorage.getItem('userName')});
     this.userissueslogForm.patchValue({assignTo:'SUPPORT'});
     
-   
-
 
     var patch = this.userissueslogForm.get('transLines') as FormArray
     (patch.controls[0]).patchValue(
@@ -267,6 +265,7 @@ UserissueLinesGroup() {
 
 
   }
+
   get f() { return this.userissueslogForm.controls; }
   Userissuesfrm(userissueslogForm: any) { }
 

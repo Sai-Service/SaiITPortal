@@ -25,16 +25,16 @@
                 </option>
             </select>
            </div>
-
+                  
            <div>
             <label>City</label>
-            <select type="number" id="ouId" style="height: 1cm;" formControlName="ouId" >
+            <select type="number" id="ouId" style="height: 1cm;" formControlName="ouId">
                 <option *ngFor="let sc of  cityList" [value]="sc.ouId">
                     {{sc.ouId}}-{{sc.ouCity}}
                 </option>
             </select>
            </div>
-
+                                 
            <div>
             <label>Location</label>
             <select type="number" id="locationId" style="height: 1cm;" formControlName="srclocationId">

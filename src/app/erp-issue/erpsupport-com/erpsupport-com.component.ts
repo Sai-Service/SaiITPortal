@@ -214,7 +214,6 @@ export class ErpsupportComComponent {
       }
     )
 
-
     this.service.priorityList()
     .subscribe( 
       data => {
