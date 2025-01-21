@@ -43,7 +43,7 @@ interface uerissueslog{
   emailcc:string;
   createdBy:string;
   creationDt:Date;
-  lastUpdatedBy:string;
+  lastUpdatedBy:string;  
   lastUpdationDt:Date;
   startDate:Date;
   endDate:Date;
@@ -185,6 +185,7 @@ export class ErpsupportComComponent {
       remark :[],
       assignedTo:[],
       lastUpdatedBy:[],
+      emailcc:[],
 
     })}
    
@@ -221,7 +222,6 @@ export class ErpsupportComComponent {
         console.log(this.priorityList);
       }
     )
-
 
     this.service.issueTypeList()
     .subscribe( 
@@ -313,10 +313,12 @@ export class ErpsupportComComponent {
   var  itexecutive = this.erpsupportcomForm.get('srcitexecutive')?.value;
   var  srcstatus = this.erpsupportcomForm.get('srcstatus')?.value;
   if (issueNo === null) { issueNo = '' }
+  if (ouId === null) { ouId = '' }
   if (srclocationId === null) { srclocationId = '' }
   if (srcdeptId === null) { srcdeptId = '' }
   if (itexecutive === null) { itexecutive = '' }
   if (srcstatus === null) { srcstatus = '' }
+ 
 
   this.service.ErpissuesSearch(issueNo,ouId,srclocationId,srcdeptId,srcstatus)
   .subscribe(
