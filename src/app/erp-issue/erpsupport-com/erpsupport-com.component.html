@@ -16,7 +16,7 @@
 <form [formGroup]="erpsupportcomForm"  (ngSubmit)="erpsupportfrm(erpsupportcomForm)">
     <div class="container">
         <div class="group inline">
-    
+        
            <div>
             <label>IT Executive Name</label>
             <select  style="height: 1cm;" formControlName="srcitexecutive">
@@ -38,7 +38,7 @@
            <div>
             <label>Location</label>
             <select type="number" id="locationId" style="height: 1cm;" formControlName="srclocationId">
-                <option *ngFor="let sc of  erplocationList" [value]="sc.locId">
+                <option *ngFor="let sc of  alllocationlist" [value]="sc.locId">
                     {{sc.locId}} - {{sc.locName}}
                 </option>
             </select>
@@ -219,23 +219,36 @@
                                             </option>
                                         </select>
                                     </div>
-                                
+
+                                       <div>
+                                        <label>Select Type</label>
+                                           <select id="fileType" style="height: 0.7cm;" formControlName="fileType">
+                                               <option *ngFor="let sc of  filetypeList" [value]="sc.cmnDesc">
+                                                    {{sc.cmnDesc}}
+                                               </option>
+                                            </select>
+                                       </div>
+                                            
                                         <div>
                                             <label for="file-upload">Upload File</label>
                                             <input type="file" id="file-upload" style="height: 0.9cm;" #fileInput formControlName="file">
                                         </div>
+                                        <input type="text" hidden style="height: 0.9cm;" formControlName="lastUpdatedBy">
+
+                            
 
                                         <div>
                                             <label for="file-upload">Email Cc</label>
                                             <input type="text" id="emailcc" style="height: 0.9cm;" formControlName="emailcc">
                                         </div>
                                    
-                                        <input type="text" hidden style="height: 0.9cm;" formControlName="lastUpdatedBy">
+                                        
                         
                                 </div>
+                            
                             </ng-container>
                         </ng-container>
-                    
+
                                 
                                 <div class="group inline">
                                     <div>

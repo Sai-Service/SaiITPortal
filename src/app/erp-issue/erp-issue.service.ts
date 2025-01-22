@@ -34,6 +34,10 @@ export class ErpIssueService {
     erplocationList(orgId: any): Observable<any> {
       return this.http.get(this.ServerUrl + `/locationMst/ErpLocations?ouId=${orgId}`);
     }
+
+    alllocationlist(): Observable<any> {
+      return this.http.get(this.ServerUrl + '/locationMst/loctn/active')
+    }
     
     priorityList(): Observable<any> {
       return this.http.get(this.ServerUrl + `/FndCmn/CmnType?cmnType=PRIORITY`);

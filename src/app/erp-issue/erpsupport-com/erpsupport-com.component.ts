@@ -10,7 +10,9 @@ import { NgForm } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErpIssueService } from '../erp-issue.service';
-import { data } from 'jquery';
+import { data} from 'jquery';
+
+
 
 const MIME_TYPES :any = {
   pdf: 'application/pdf',
@@ -115,6 +117,7 @@ export class ErpsupportComComponent {
 
 
   public erplocationList:any=[];
+  public alllocationlist:any=[];
   public priorityList:any=[];
   public issueTypeList:any=[];
   public departmentList:any=[];
@@ -185,7 +188,7 @@ export class ErpsupportComComponent {
       remark :[],
       assignedTo:[],
       lastUpdatedBy:[],
-      emailcc:[],
+    
 
     })}
    
@@ -206,7 +209,10 @@ export class ErpsupportComComponent {
          
         }
       );
-       
+
+      // var locId = this.erpsupportcomForm.get('ouId')?.value;
+      // alert(locId)
+
       this.service.erplocationList(sessionStorage.getItem('orgId'))
     .subscribe( 
       data => { 
@@ -214,6 +220,15 @@ export class ErpsupportComComponent {
         console.log(this.erplocationList);
       }
     )
+
+    this.service.alllocationlist()
+    .subscribe( 
+      data => { 
+        this.alllocationlist = data.obj;
+        console.log(this.alllocationlist);
+      }
+    )
+
 
     this.service.priorityList()
     .subscribe( 
@@ -476,6 +491,18 @@ openDocument(trlineId: any, filePath: any) {
     });
 }
 
+// onSelectOuCity(event:any) {
+//   var itemType = event.target.value;
+//   var itemType1 = itemType.substr(itemType.indexOf(': ') + 1, itemType.length);
+//   var itemType12 = trim(itemType1);
+//   this.service.erplocationList(itemType12)
+//   .subscribe( 
+//     data => { 
+//       this.erplocationList = data.obj;
+//       console.log(this.erplocationList);
+//     }
+//   )
+// }
 
 
 }
