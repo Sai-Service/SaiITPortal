@@ -201,10 +201,12 @@
                                         <textarea type="textarea" id="solutionoffered"  rows="3"></textarea>
                                      </div>
                                 </div>
+                                 </ng-container>
+                            </ng-container>
                                 <div class="group inline">
                                     <div>
                                         <label>Update Status</label>
-                                        <select id="status" style="height: 1cm;" formControlName="srcstatus">
+                                        <select id="status" style="height: 1cm;" formControlName="status">
                                             <option *ngFor="let sc of issuestatusList" [value]="sc.cmnDesc">
                                                 {{sc.cmnDesc}}
                                             </option> 
@@ -219,6 +221,8 @@
                                             </option>
                                         </select>
                                     </div>
+                                </div>
+                               
 
                                        <div>
                                         <label>Select Type</label>
@@ -237,17 +241,16 @@
 
                             
 
-                                        <div>
+                                        <!-- <div>
                                             <label for="file-upload">Email Cc</label>
                                             <input type="text" id="emailcc" style="height: 0.9cm;" formControlName="emailcc">
                                         </div>
-                                   
+                                    -->
                                         
                         
                                 </div>
                             
-                            </ng-container>
-                        </ng-container>
+                          
 
                                 
                                 <div class="group inline">
@@ -268,5 +271,5 @@
              </div>
 
 
-</div>
+<!-- </div> -->
 </form>

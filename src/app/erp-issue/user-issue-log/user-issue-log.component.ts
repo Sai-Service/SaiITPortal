@@ -118,7 +118,7 @@ userissuefromsearch:any=[];
 mainimage:any=[];
 viewAllDoucmnet:any;
 isButtonDisabled = false;
-
+UpdateisButtonDisabled=false;
 
   constructor(private fb: FormBuilder, private router: Router, private service: ErpIssueService) {
     this.userissueslogForm = fb.group({
@@ -145,7 +145,7 @@ isButtonDisabled = false;
   emailcc:[],
   createdBy :[],
   creationDt:[],
-  lastUpdatedBy:[],
+  lastUpdatedBy:['U'],
   lastUpdationDt:[],
   startDate:[],
   endDate:[],
@@ -170,6 +170,7 @@ UserissueLinesGroup() {
       status:[],
       remark :[],
       filepath:[],
+      lastUpdatedBy:['U'],
 
     })}
 
@@ -359,7 +360,6 @@ UserissueLinesGroup() {
 
 
   issueNoFind(issueNo:any):void{
-    this.userissueslogForm.patchValue({lastUpdatedBy:'IT'});
     this.service.IssueNoFindFN(issueNo)
     .subscribe(
       data=> {
@@ -428,6 +428,7 @@ UserissueLinesGroup() {
     this.service.updateUserIssueLinefn(formData,issueNo).subscribe((res: any) => {
       if (res.code === 200) {
         alert(res.message);
+        this.UpdateisButtonDisabled=true;
       }
       else{
         alert(res.message);

@@ -169,12 +169,11 @@ export class ErpsupportComComponent {
     currentYear:[],
     status:[],
     file:[],
-    // city:[],
-   
     srcitexecutive:[],
     srcstatus:[],
     srcdeptId:[],
     srclocationId:[],
+    lastUpdatedBy:[],
     transLines:this.fb.array([this.UserissueLinesGroup()]),
   })
   }
@@ -182,11 +181,16 @@ export class ErpsupportComComponent {
   UserissueLinesGroup() {
     return this.fb.group({
 
-      status:[],
+      // status:[],
       remark :[],
+      // assignedTo:[],
+      // assignTo:[],
       assignedTo:[],
-      lastUpdatedBy:[],
-    
+      lastUpdatedBy:['IT'],
+      // fileType:[],
+      // emailcc:[],
+      // file:[],
+
 
     })}
    

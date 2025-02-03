@@ -134,7 +134,7 @@
             <input type="text" id="issueNo" hidden fromControlName="issueNo" style="height: 0.8cm;" readonly>
             <input type="text" id="firstName" hidden fromControlName="firstName" style="height: 0.8cm;" readonly>
             <input type="text" id="issueDate" hidden fromControlName="issueDate" style="height: 0.8cm;" readonly>
-            <input type="text" id="issueDate" hidden fromControlName="lastUpdatedBy" style="height: 0.8cm;" readonly>
+            <!-- <input type="text" id="issueDate" hidden fromControlName="lastUpdatedBy" style="height: 0.8cm;" readonly> -->
             <input type="text" id="issueDate" hidden fromControlName="assignTo" style="height: 0.8cm;" readonly>
             <input type="text" id="issueDate" hidden fromControlName="assignedTo" style="height: 0.8cm;" readonly>
             
@@ -235,7 +235,7 @@
                         <th style="border: 1px solid black;padding-left: 15px;">{{com.status}}</th>
                         <th style="border: 1px solid black;padding-left: 15px;">{{com.userSubject}}</th>
                         <th style="border: 1px solid black;padding-left: 15px;">{{com.issueType}}</th>
-                        <th style="border: 1px solid black;padding-left: 15px;">{{com.assignTo}}</th>
+                        <th style="border: 1px solid black;padding-left: 15px;">{{com.assignedTo}}</th>
                         <th style="border: 1px solid black;padding-left: 15px;">{{com.userName}}</th>
                         <th style="border: 1px solid black;padding-left: 15px;">{{com.issueDate}}</th>
                         <th style="border: 1px solid black;padding-left: 15px;">{{com.userEmail}}</th>
@@ -287,7 +287,7 @@
                                         <th>{{com.trlineId }}</th>
                                         <th>{{com.issueNo }}</th>
                                         <th>{{com.trnDate | date: 'dd-MM-yyyy' }}</th>
-                                        <th>{{com.assignTo}}</th>
+                                        <th>{{com.assignedTo}}</th>
                                         <th>{{com.status }}</th>
                                         <th>{{com.lastUpdatedBy }}</th>
                                         <th>
@@ -308,6 +308,8 @@
                                     [formGroupName]="i">
                             <label for="update-issue">Update Issue:</label>
                             <textarea id="update-issue" rows="2" maxlength="250" placeholder="Enter issue update" formControlName="remark"></textarea>
+
+                            <input type="text" id="issueDate" hidden fromControlName="lastUpdatedBy" style="height: 0.8cm;" readonly>
                        </ng-container>
                     </ng-container>
                             <div class="form-group inline">
@@ -330,7 +332,7 @@
                     </ng-container> -->
                             
                             <div class="buttons">
-                                <button type="submit" style="margin-top: 10px;" (click)="issueupdate()">Add/Update Issue</button>
+                                <button type="submit" style="margin-top: 10px;" [disabled]="UpdateisButtonDisabled" (click)="issueupdate()">Add/Update Issue</button>
                                 <button type="button">Close Issue</button>
                             </div>
                             </div>
@@ -345,9 +347,6 @@
                     </div>
                 </div>
             </div>
-
-              
-         
             </div>
         </div>
         <td>
