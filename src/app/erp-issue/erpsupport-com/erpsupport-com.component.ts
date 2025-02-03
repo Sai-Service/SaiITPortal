@@ -305,18 +305,18 @@ export class ErpsupportComComponent {
 
 
 
-  onSelectOuCity(event:any) {
-    var itemType = event.target.value;
-    var itemType1 = itemType.substr(itemType.indexOf(': ') + 1, itemType.length);
-    var itemType12 = trim(itemType1);
-    this.service.erplocationList(itemType12)
-    .subscribe( 
-      data => { 
-        this.erplocationList = data.obj;
-        console.log(this.erplocationList);
-      }
-    )
-  }
+  // onSelectOuCity(event:any) {
+  //   var itemType = event.target.value;
+  //   var itemType1 = itemType.substr(itemType.indexOf(': ') + 1, itemType.length);
+  //   var itemType12 = trim(itemType1);
+  //   this.service.erplocationList(itemType12)
+  //   .subscribe( 
+  //     data => { 
+  //       this.erplocationList = data.obj;
+  //       console.log(this.erplocationList);
+  //     }
+  //   )
+  // }
 
   transData(val :any){
     delete val.srclocationId
