@@ -136,13 +136,15 @@
             <input type="text" id="issueDate" hidden fromControlName="issueDate" style="height: 0.8cm;" readonly>
             <input type="text" id="issueDate" hidden fromControlName="lastUpdatedBy" style="height: 0.8cm;" readonly>
             <input type="text" id="issueDate" hidden fromControlName="assignTo" style="height: 0.8cm;" readonly>
+            <input type="text" id="issueDate" hidden fromControlName="assignedTo" style="height: 0.8cm;" readonly>
+            
             
             
 
             <div>
                 <button type="submit"
                     style="background: linear-gradient(to right, #23a802, #b3f802); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center; width: 5cm;"
-                    (click)="sendIasue()">Submit</button>
+                    [disabled]="isButtonDisabled" (click)="sendIasue()">Submit</button>
             </div>
             <!-- <div>
                     <button type="submit"  style="background: linear-gradient(to right, #23a802, #b3f802); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center; width: 5cm;"  (click)="sendIasue()">Submit</button>
@@ -282,12 +284,12 @@
                                 <tbody>
                                     <tr *ngFor="let com of viewAllDoucmnet" class="ItemStyle"
                                         style="text-align: center; font-size: 12px;">
-                                        <th>{{ com.trlineId }}</th>
-                                        <th>{{ com.issueNo }}</th>
-                                        <th>{{ com.trnDate | date: 'dd-MM-yyyy' }}</th>
-                                        <th>{{ com.assignedTo }}</th>
-                                        <th>{{ com.status }}</th>
-                                        <th>{{ com.lastUpdatedBy }}</th>
+                                        <th>{{com.trlineId }}</th>
+                                        <th>{{com.issueNo }}</th>
+                                        <th>{{com.trnDate | date: 'dd-MM-yyyy' }}</th>
+                                        <th>{{com.assignTo}}</th>
+                                        <th>{{com.status }}</th>
+                                        <th>{{com.lastUpdatedBy }}</th>
                                         <th>
                                             <button type="button" class="btn btn-primary" style="width: 170px;">
                                                 View Document

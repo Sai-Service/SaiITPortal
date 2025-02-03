@@ -11,6 +11,8 @@ import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErpIssueService } from '../erp-issue.service';
 import { data } from 'jquery';
+import { trim } from 'jquery';
+
 
 const MIME_TYPES :any = {
   pdf: 'application/pdf',
@@ -206,13 +208,11 @@ export class ErpsupportComComponent {
         }
       );
        
-      this.service.erplocationList(sessionStorage.getItem('orgId'))
-    .subscribe( 
-      data => { 
-        this.erplocationList = data.obj;
-        console.log(this.erplocationList);
-      }
-    )
+      
+
+
+
+   
 
 
     this.service.priorityList()
@@ -294,6 +294,20 @@ export class ErpsupportComComponent {
   get f() { return this.erpsupportcomForm.controls; }
   erpsupportfrm(erpsupportcomForm: any) { }
 
+
+
+  onSelectOuCity(event:any) {
+    var itemType = event.target.value;
+    var itemType1 = itemType.substr(itemType.indexOf(': ') + 1, itemType.length);
+    var itemType12 = trim(itemType1);
+    this.service.erplocationList(itemType12)
+    .subscribe( 
+      data => { 
+        this.erplocationList = data.obj;
+        console.log(this.erplocationList);
+      }
+    )
+  }
 
   transData(val :any){
     delete val.srclocationId
