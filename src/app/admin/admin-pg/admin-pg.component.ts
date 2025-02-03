@@ -27,7 +27,7 @@ export class AdminPgComponent {
   logout(){
     this.router.navigate(['/login']);
     if(sessionStorage.getItem('role')=='User'){this.router.navigate(['./admin/erpIssueModule/logincommonerp']);}
-    if(sessionStorage.getItem('role')=='IT'){this.router.navigate(['./admin/erpIssueModule/loginCommon']);}
+    if(sessionStorage.getItem('role')=='erpsupport'){this.router.navigate(['./admin/erpIssueModule/loginCommon']);}
 
   }
 }

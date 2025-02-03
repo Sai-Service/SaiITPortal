@@ -11,8 +11,6 @@ import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErpIssueService } from '../erp-issue.service';
 import { data } from 'jquery';
-import { trim } from 'jquery';
-
 
 const MIME_TYPES :any = {
   pdf: 'application/pdf',
@@ -45,7 +43,7 @@ interface uerissueslog{
   emailcc:string;
   createdBy:string;
   creationDt:Date;
-  lastUpdatedBy:string;
+  lastUpdatedBy:string;  
   lastUpdationDt:Date;
   startDate:Date;
   endDate:Date;
@@ -117,6 +115,7 @@ export class ErpsupportComComponent {
 
 
   public erplocationList:any=[];
+  public alllocationlist:any=[];
   public priorityList:any=[];
   public issueTypeList:any=[];
   public departmentList:any=[];
@@ -187,6 +186,7 @@ export class ErpsupportComComponent {
       remark :[],
       assignedTo:[],
       lastUpdatedBy:[],
+    
 
     })}
    
@@ -208,11 +208,21 @@ export class ErpsupportComComponent {
         }
       );
        
-      
+      this.service.erplocationList(sessionStorage.getItem('orgId'))
+    .subscribe( 
+      data => { 
+        this.erplocationList = data.obj;
+        console.log(this.erplocationList);
+      }
+    )
 
-
-
-   
+    this.service.alllocationlist()
+    .subscribe( 
+      data => { 
+        this.alllocationlist = data.obj;
+        console.log(this.alllocationlist);
+      }
+    )
 
 
     this.service.priorityList()
@@ -222,7 +232,6 @@ export class ErpsupportComComponent {
         console.log(this.priorityList);
       }
     )
-
 
     this.service.issueTypeList()
     .subscribe( 
@@ -328,10 +337,12 @@ export class ErpsupportComComponent {
   var  itexecutive = this.erpsupportcomForm.get('srcitexecutive')?.value;
   var  srcstatus = this.erpsupportcomForm.get('srcstatus')?.value;
   if (issueNo === null) { issueNo = '' }
+  if (ouId === null) { ouId = '' }
   if (srclocationId === null) { srclocationId = '' }
   if (srcdeptId === null) { srcdeptId = '' }
   if (itexecutive === null) { itexecutive = '' }
   if (srcstatus === null) { srcstatus = '' }
+ 
 
   this.service.ErpissuesSearch(issueNo,ouId,srclocationId,srcdeptId,srcstatus)
   .subscribe(
@@ -489,6 +500,18 @@ openDocument(trlineId: any, filePath: any) {
     });
 }
 
+// onSelectOuCity(event:any) {
+//   var itemType = event.target.value;
+//   var itemType1 = itemType.substr(itemType.indexOf(': ') + 1, itemType.length);
+//   var itemType12 = trim(itemType1);
+//   this.service.erplocationList(itemType12)
+//   .subscribe( 
+//     data => { 
+//       this.erplocationList = data.obj;
+//       console.log(this.erplocationList);
+//     }
+//   )
+// }
 
 
 }
