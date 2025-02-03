@@ -204,7 +204,7 @@
                                 <div class="group inline">
                                     <div>
                                         <label>Update Status</label>
-                                        <select id="status" style="height: 1cm;" formControlName="srcstatus">
+                                        <select id="status" style="height: 0.8cm;" formControlName="srcstatus">
                                             <option *ngFor="let sc of issuestatusList" [value]="sc.cmnDesc">
                                                 {{sc.cmnDesc}}
                                             </option> 
@@ -213,7 +213,7 @@
                                
                                     <div>
                                         <label>Issue Update/Close By</label>
-                                        <select  style="height: 1cm;" formControlName="assignTo">
+                                        <select  style="height: 0.8cm;" formControlName="assignTo">
                                             <option *ngFor="let sc of itsupportList" [value]="sc.cmnDesc">
                                                 {{sc.cmnDesc}}
                                             </option>
@@ -222,7 +222,7 @@
 
                                        <div>
                                         <label>Select Type</label>
-                                           <select id="fileType" style="height: 0.7cm;" formControlName="fileType">
+                                           <select id="fileType" style="height: 0.8cm;" formControlName="fileType">
                                                <option *ngFor="let sc of  filetypeList" [value]="sc.cmnDesc">
                                                     {{sc.cmnDesc}}
                                                </option>
@@ -231,15 +231,15 @@
                                             
                                         <div>
                                             <label for="file-upload">Upload File</label>
-                                            <input type="file" id="file-upload" style="height: 0.9cm;" #fileInput formControlName="file">
+                                            <input type="file" id="file-upload" style="height: 0.8cm;" #fileInput formControlName="file">
                                         </div>
-                                        <input type="text" hidden style="height: 0.9cm;" formControlName="lastUpdatedBy">
+                                        <input type="text" hidden style="height: 0.8cm;" formControlName="lastUpdatedBy">
 
                             
 
                                         <div>
                                             <label for="file-upload">Email Cc</label>
-                                            <input type="text" id="emailcc" style="height: 0.9cm;" formControlName="emailcc">
+                                            <input type="text" id="emailcc" style="height: 0.8cm;" formControlName="emailcc">
                                         </div>
                                    
                                         

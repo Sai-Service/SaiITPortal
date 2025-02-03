@@ -120,6 +120,10 @@ viewAllDoucmnet:any;
 isButtonDisabled = false;
 
 
+
+// isButtonDisabled: boolean = false;
+
+
   constructor(private fb: FormBuilder, private router: Router, private service: ErpIssueService) {
     this.userissueslogForm = fb.group({
   issueId:[],
@@ -261,8 +265,7 @@ UserissueLinesGroup() {
       }
     )
 
-    
-
+   
 
   }
 
