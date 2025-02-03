@@ -123,10 +123,11 @@ button {
 }
 
 .last {
-    max-width: 80%;
+    max-width: 90%;
     border: 1px solid black;
     margin-top: 10px;
-    margin-left: 105px;
+    margin-bottom: 20px;
+    margin-left: 55px;
     padding: 15px;
     background: white;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
