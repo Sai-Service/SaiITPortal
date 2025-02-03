@@ -1,3 +1,5 @@
+user html
+
 <html>
 
 <body>
@@ -144,7 +146,7 @@
             <div>
                 <button type="submit"
                     style="background: linear-gradient(to right, #23a802, #b3f802); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center; width: 5cm;"
-                    (click)="sendIasue()">Submit</button>
+                    [disabled]="isButtonDisabled" (click)="sendIasue()">Submit</button>
             </div>
             <!-- <div>
                     <button type="submit"  style="background: linear-gradient(to right, #23a802, #b3f802); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center; width: 5cm;"  (click)="sendIasue()">Submit</button>
@@ -278,7 +280,7 @@
                                         <th>Assign To</th>
                                         <th>Status</th>
                                         <th>Updated By</th>
-                                        <!-- <th>View Document</th> -->
+                                        <th>View Document</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -287,27 +289,29 @@
                                         <th>{{com.trlineId }}</th>
                                         <th>{{com.issueNo }}</th>
                                         <th>{{com.trnDate | date: 'dd-MM-yyyy' }}</th>
-                                        <th>{{com.assignTo}}</th>
+                                        <th>{{com.assignedTo}}</th>
                                         <th>{{com.status }}</th>
                                         <th>{{com.lastUpdatedBy }}</th>
                                         <th>
                                             <button type="button" class="btn btn-primary" style="width: 170px;">
                                                 View Document
                                             </button>
-                                                        (click)="openDocument(com.docId, com.docType)"
-                                                        (click)="openDocument(com.docId, com.docType)"
-                                                        (click)="openDocument(com.docId, com.docType)"
-                                            </th> -->
+                                            <!--- (click)="openDocument(com.docId, com.docType)"-->
+                                                         <!--- (click)="openDocument(com.docId, com.docType)"-->
+                                               <!--- (click)="openDocument(com.docId, com.docType)"-->
+                                            </th>
                                         </tr>
                                       </tbody>
                                </table>
                             </div>
-                <div class="last">
+                            <div class="modal-body">
                             <ng-container class="center" formArrayName="transLines">
-                              <ng-container *ngFor="let group of orderlineDetailsArray().controls; let i= index"
+                                <ng-container *ngFor="let group of orderlineDetailsArray().controls; let i= index"
                                     [formGroupName]="i">
                             <label for="update-issue">Update Issue:</label>
                             <textarea id="update-issue" rows="2" maxlength="250" placeholder="Enter issue update" formControlName="remark"></textarea>
+
+                            <input type="text" id="issueDate" hidden fromControlName="lastUpdatedBy" style="height: 0.8cm;" readonly>
                        </ng-container>
                     </ng-container>
                             <div class="form-group inline">
@@ -319,27 +323,27 @@
                                         </option>
                 
                                     </select>
-                                    </div>
+                            </div>
                                     <div>
                                         <label for="file-upload">Upload File</label>
-                                        <input type="file" id="file-upload" style="height: 0.7cm;" [(ngModel)]="file"
-                                           formControlName="file">
+                                        <input type="file" id="file-upload" style="height: 0.9cm;" [(ngModel)]="file" #fileInput1
+                                            formControlName="file">
                                     </div>
-                                </div>
+                        </div>
                         <!-- </ng-container>
                     </ng-container> -->
                             
                             <div class="buttons">
-                                <button type="submit" style="margin-top: 10px;" (click)="issueupdate()">Add/Update Issue</button>
+                                <button type="submit" style="margin-top: 10px;" [disabled]="UpdateisButtonDisabled" (click)="issueupdate()">Add/Update Issue</button>
                                 <button type="button">Close Issue</button>
                             </div>
-                        </div>
+                            </div>
             
-                            <!-- <div class="modal-footer">
+                            <div class="modal-footer">
                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                    Close
                                </button>
-                            </div> -->
+                            </div>
 
                         </div>
                     </div>

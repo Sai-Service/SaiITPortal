@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import {  OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
@@ -119,10 +120,6 @@ mainimage:any=[];
 viewAllDoucmnet:any;
 isButtonDisabled = false;
 UpdateisButtonDisabled=false;
-
-
-// isButtonDisabled: boolean = false;
-
 
   constructor(private fb: FormBuilder, private router: Router, private service: ErpIssueService) {
     this.userissueslogForm = fb.group({
@@ -266,7 +263,8 @@ UserissueLinesGroup() {
       }
     )
 
-   
+    
+
 
   }
 

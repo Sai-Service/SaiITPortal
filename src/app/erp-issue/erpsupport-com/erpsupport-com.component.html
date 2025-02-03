@@ -1,4 +1,3 @@
-   
 <header>
     <div class="header" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center;">
         <img src="http://saiitportal.com/Images/Sai%20Logo.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;">
@@ -206,7 +205,7 @@
                                 <div class="group inline">
                                     <div>
                                         <label>Update Status</label>
-                                        <select id="status" style="height: 1cm;" formControlName="srcstatus">
+                                        <select id="status" style="height: 1cm;" formControlName="status">
                                             <option *ngFor="let sc of issuestatusList" [value]="sc.cmnDesc">
                                                 {{sc.cmnDesc}}
                                             </option> 
@@ -215,7 +214,7 @@
                                
                                     <div>
                                         <label>Issue Update/Close By</label>
-                                        <select  style="height: 0.8cm;" formControlName="assignTo">
+                                        <select  style="height: 1cm;" formControlName="assignTo">
                                             <option *ngFor="let sc of itsupportList" [value]="sc.cmnDesc">
                                                 {{sc.cmnDesc}}
                                             </option>
@@ -226,7 +225,7 @@
 
                                        <div>
                                         <label>Select Type</label>
-                                           <select id="fileType" style="height: 0.8cm;" formControlName="fileType">
+                                           <select id="fileType" style="height: 0.7cm;" formControlName="fileType">
                                                <option *ngFor="let sc of  filetypeList" [value]="sc.cmnDesc">
                                                     {{sc.cmnDesc}}
                                                </option>
@@ -235,15 +234,15 @@
                                             
                                         <div>
                                             <label for="file-upload">Upload File</label>
-                                            <input type="file" id="file-upload" style="height: 0.8cm;" #fileInput formControlName="file">
+                                            <input type="file" id="file-upload" style="height: 0.9cm;" #fileInput formControlName="file">
                                         </div>
-                                        <input type="text" hidden style="height: 0.8cm;" formControlName="lastUpdatedBy">
+                                        <input type="text" hidden style="height: 0.9cm;" formControlName="lastUpdatedBy">
 
                             
 
                                         <!-- <div>
                                             <label for="file-upload">Email Cc</label>
-                                            <input type="text" id="emailcc" style="height: 0.8cm;" formControlName="emailcc">
+                                            <input type="text" id="emailcc" style="height: 0.9cm;" formControlName="emailcc">
                                         </div>
                                     -->
                                         
