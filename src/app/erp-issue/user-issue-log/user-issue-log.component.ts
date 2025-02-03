@@ -395,6 +395,7 @@ UserissueLinesGroup() {
           if (res.code === 200) {
             alert(res.message);
             this.viewAllDoucmnet = res.obj.transLines;
+            this.userissueslogForm.patchValue({assignTo:data.obj.assignTo});
             
           }
           // else { }
