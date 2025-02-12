@@ -128,6 +128,7 @@ export class ErpsupportComComponent {
   erpsupportfromsearch:any=[];
     mainimage:any=[];
     viewAllDoucmnet:any;
+    isButtonDisabled = false;
   
   
     constructor(private fb: FormBuilder, private router: Router, private service: ErpIssueService) {
@@ -201,6 +202,10 @@ export class ErpsupportComComponent {
     ngOnInit(): void {
       $("#wrapper").toggleClass("toggled");
       this.erpsupportcomForm.patchValue({createdBy:sessionStorage.getItem('userName')});
+      var  fileType = this.erpsupportcomForm.get('fileType')?.value;
+      if(fileType === null){
+        this.erpsupportcomForm.patchValue({fileType:'none'});
+      }
   
   
       var patch = this.erpsupportcomForm.get('transLines') as FormArray
@@ -380,7 +385,7 @@ export class ErpsupportComComponent {
         this.erpsupportcomForm.patchValue({issueNo:data.obj.issueNo,priority:data.obj.priority,module:data.obj.module,
           locationId:data.obj.locationId,userEmail:data.obj.userEmail,locName:data.obj.locName,userName:data.obj.userName,
           contactNo:data.obj.contactNo,issueDesc:data.obj.issueDesc,userSubject:data.obj.userSubject,subject:data.obj.subject,deptId:data.obj.deptId,
-          issueType:data.obj.issueType});
+          issueType:data.obj.issueType,issueDate:data.obj.issueDate,lastUpdationDt:data.obj.lastUpdationDt});
         this.erpsupportcomForm.patchValue({attribute4:data.obj.issueNo});
         
 
@@ -409,6 +414,7 @@ export class ErpsupportComComponent {
 
 
   issueupdate(){
+    this.isButtonDisabled = true;
     const formValue = this.transData(this.erpsupportcomForm.getRawValue());
     var issueNo = this.erpsupportcomForm.get('issueNo')?.value;
     this.erpsupportcomForm.patchValue({lastUpdatedBy:'IT'});

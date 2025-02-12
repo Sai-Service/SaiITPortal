@@ -51,6 +51,7 @@
                 </option> 
             </select>
            </div>
+           <input type="text" id="issueDate" hidden fromControlName="issueDate" style="height: 0.8cm;" readonly>
 
            <div>
             <label>Search by Issue No</label>
@@ -160,7 +161,7 @@
                                          <th>{{ com.trlineId }}</th>
                                          <th>{{ com.issueNo }}</th>
                                          <th>{{ com.trnDate | date: 'dd-MM-yyyy' }}</th>
-                                         <th>{{com.trnTime }}</th>
+                                         <th>{{com.trnDate| date: 'hh:mm a' }}</th>
                                          <th>{{ com.remark}}</th>
                                          <th>{{com.assignedTo}}</th>
                                          <th>{{ com.status }}</th>
@@ -254,7 +255,7 @@
                                 
                                 <div class="group inline">
                                     <div>
-                                    <button (click)="issueupdate()" style="float: right;">Add/Update Issue</button>
+                                    <button  [disabled]="isButtonDisabled" (click)="issueupdate()" style="float: right;">Add/Update Issue</button>
                                     </div>
                                     <div>
                                     <button style="float: left;">Close Issue</button>
