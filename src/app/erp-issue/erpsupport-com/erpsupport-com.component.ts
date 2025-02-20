@@ -385,7 +385,7 @@ export class ErpsupportComComponent {
         this.erpsupportcomForm.patchValue({issueNo:data.obj.issueNo,priority:data.obj.priority,module:data.obj.module,
           locationId:data.obj.locationId,userEmail:data.obj.userEmail,locName:data.obj.locName,userName:data.obj.userName,
           contactNo:data.obj.contactNo,issueDesc:data.obj.issueDesc,userSubject:data.obj.userSubject,subject:data.obj.subject,deptId:data.obj.deptId,
-          issueType:data.obj.issueType,issueDate:data.obj.issueDate,lastUpdationDt:data.obj.lastUpdationDt});
+          issueType:data.obj.issueType,issueDate:data.obj.issueDate,lastUpdationDt:data.obj.lastUpdationDt,ouId:data.obj.ouId});
         this.erpsupportcomForm.patchValue({attribute4:data.obj.issueNo});
         
 

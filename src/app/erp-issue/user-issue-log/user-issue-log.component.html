@@ -331,9 +331,13 @@ user html
                         <!-- </ng-container>
                     </ng-container> -->
                             
-                            <div class="buttons">
-                                <button type="submit" style="margin-top: 10px;" [disabled]="UpdateisButtonDisabled" (click)="issueupdate()">Add/Update Issue</button>
-                                <button type="button">Close Issue</button>
+                            <div class="form-group inline">
+                                <div>
+                                <button  type="submit" style="margin-top: 10px;float: right;" [disabled]="UpdateisButtonDisabled" (click)="issueupdate()">Add/Update Issue</button>
+                                </div>
+                                <div>
+                                <button style="float: left;margin-top: 10px;"  type="button">Close Issue</button>
+                                </div>
                             </div>
                             </div>
             
