@@ -4,15 +4,14 @@
         <marquee style="font-size: 22px; font-weight: bold;">WELCOME TO SAI SERVICE IT SUPPORT</marquee>
     </div>
 
-    <p style="text-align: center; font-size: 16px;font-weight:bold;margin-top: 20px;background: linear-gradient(to right, #fcadf8,#a8c4f5);">
-        <!-- Support Issue Registration Form -->
-         ERP Support Form
+    <p style="text-align: center; font-size: 16px;font-weight:bold;margin-top: 20px;background: linear-gradient(to right, #fcd8aa,#f1abab);">
+         Bajaj Support Form
     </p>    
 </header>
 
 <hr>
  
-<form [formGroup]="erpsupportcomForm"  (ngSubmit)="erpsupportfrm(erpsupportcomForm)">
+<form [formGroup]="bajajsupportcomForm"  (ngSubmit)="bajajsupportfrm(bajajsupportcomForm)">
     <div class="container">
         <div class="group inline">
         
@@ -60,10 +59,6 @@
 
            <button type="submit" id="register" (click)="search()">Search</button>
 
-           <!-- <button>Export</button>
-
-           <button>All City</button> -->
-
            <button>Reports</button>
            <input type="text" hidden style="height: 0.9cm;" formControlName="userSubject">
            <input type="text" hidden style="height: 0.9cm;" formControlName="subject">
@@ -99,7 +94,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor='let com of erpsupportfromsearch'>
+            <tr *ngFor='let com of bajajsupportfromsearch'>
                 <th><button type="button"
                     style="width: fit-content;" (click)="issueNoFind(com.issueNo)" class="btn btn-primary"
                     id="register" data-toggle="modal" style="width: fit-content;"
@@ -179,18 +174,15 @@
                                    </tbody>
                             </table>
                          </div>
-                         <!-- <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                Close
-                            </button>
-                         </div> -->
-
-                         <p style="text-align: center;font-size: 22px;font-weight: 800;color: #963a51;">Update Your Issue Here</p>
                         
                          <div class="last">
                             <ng-container class="center" formArrayName="transLines">
                                 <ng-container *ngFor="let group of orderlineDetailsArray().controls; let i= index"
                                     [formGroupName]="i">
+
+                                    <p style="text-align: center;font-size: 22px;font-weight: 600;color: #9b5f05;">Update Your Issue Here</p>
+                                    <hr>
+
                                 <div class="group inline">
                                     
                                      <div>
@@ -240,15 +232,7 @@
                                             <input type="file" id="file-upload" style="height: 0.9cm;" #fileInput formControlName="file">
                                         </div>
                                         <input type="text" hidden style="height: 0.9cm;" formControlName="lastUpdatedBy">
-
-                            
-
-                                        <!-- <div>
-                                            <label for="file-upload">Email Cc</label>
-                                            <input type="text" id="emailcc" style="height: 0.9cm;" formControlName="emailcc">
-                                        </div>
-                                    -->
-                                        
+                                                                           
                         
                                 </div>
                             
@@ -273,5 +257,5 @@
              </div>
 
 
-<!-- </div> -->
+
 </form>

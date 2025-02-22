@@ -1,1 +1,360 @@
-<p>bajaj-user-issue works!</p>
+<html>
+
+<body>
+    <form [formGroup]="bajajuserissuesForm" (ngSubmit)="bajajuserissuesfrm(bajajuserissuesForm)">
+
+        <div class="header"
+            style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center;">
+            <img src="http://saiitportal.com/Images/Sai%20Logo.jpg" alt="Sai Service"
+                style="height: 50px; margin-right: 15px;">
+            <marquee style="font-size: 22px; font-weight: bold;">WELCOME TO SAI SERVICE IT SUPPORT 12 * 7</marquee>
+        </div>
+
+
+        <div class="container">
+            <p style="text-align: center; font-weight: 900;font-size: 16px;">Bajaj Issue Registration Form</p>
+            <hr style="border: 1px solid black;width: 100%;">
+            <div class="form-group inline">
+                <div>
+                    <label>City</label>
+                    <input style="height: 0.7cm;" formControlName="attribute5" readonly>
+                </div>
+                <input style="height: 0.7cm;" formControlName="ouId" hidden>
+
+                <div>
+                    <label>Location</label>
+                    <select type="number" id="locationId" style="height: 0.7cm;" formControlName="locationId">
+                        <option *ngFor="let sc of  bajajlocationList" [value]="sc.locId">
+                            {{sc.locId}} - {{sc.locName}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <div>
+                        <label>Priority</label>
+                        <select id="priority" style="height: 0.7cm;" formControlName="priority">
+                            <option *ngFor="let sc of  priorityList" [value]="sc.code">
+                                {{sc.code}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group inline">
+                <div>
+                    <label>Name of User</label>
+                    <input type="text" style="height: 0.7cm;" id="userName" formControlName="userName">
+                </div>
+
+                <div>
+                    <label>Email ID</label>
+                    <input type="email" style="height: 0.7cm;" id="userEmail" placeholder="@saiservice.com"
+                        formControlName="userEmail">
+                </div>
+
+                <div>
+                    <label>Contact No</label>
+                    <input type="tel" style="height: 0.7cm;" id="contactNo" formControlName="contactNo">
+                </div>
+            </div>
+
+            <div class="form-group inline">
+                <div>
+                    <label>Issue Type</label>
+                    <select id="issueType" style="height: 0.7cm;" formControlName="issueType">
+                        <option *ngFor="let sc of  issueTypeList" [value]="sc.code">
+                            {{sc.code}}
+                        </option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Department</label>
+                    <select id="deptId" style="height: 0.7cm;" formControlName="deptId">
+                        <option *ngFor="let sc of  departmentList" [value]="sc.cmntypeId">
+                            {{sc.cmnDesc}}
+                        </option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Module</label>
+                    <select type="text" id="module" style="height: 0.7cm;" formControlName="module">
+                        <option *ngFor="let sc of  ModuletList" [value]="sc.cmnDesc">
+                            {{sc.cmnDesc}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group inline">
+                <div>
+                    <label>Mail Subject</label>
+                    <input type="text" style="height: 0.7cm;" rows="3" id="userSubject" formControlName="userSubject">
+                </div>
+
+                <div>
+                    <label>Issue-Description Title</label>
+                    <select id="issueType" style="height: 0.7cm;" formControlName="subject">
+                        <option *ngFor="let sc of  issuediscList" [value]="sc.cmnDesc">
+                            {{sc.cmnDesc}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Issue Description (250 Characters)</label>
+                <textarea type="textarea" id="issueDesc" rows="2" formControlName="issueDesc"></textarea>
+            </div>
+
+            <div class="form-group inline">
+                <div>
+                    <label>Select Type</label>
+                    <select id="fileType" style="height: 0.7cm;" formControlName="fileType">
+                        <option *ngFor="let sc of  filetypeList" [value]="sc.cmnDesc">
+                            {{sc.cmnDesc}}
+                        </option>
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="file-upload">Upload File (Excel with.xlsx pdf with.pdf Format)</label>
+                    <input type="file" id="file-upload" style="height: 0.7cm;" [(ngModel)]="file" #fileInput
+                        formControlName="file">
+                </div>
+            </div>
+
+            <input type="text" id="issueNo" hidden fromControlName="issueNo" style="height: 0.8cm;" readonly>
+            <input type="text" id="firstName" hidden fromControlName="firstName" style="height: 0.8cm;" readonly>
+            <input type="text" id="issueDate" hidden fromControlName="issueDate" style="height: 0.8cm;" readonly>
+            <!-- <input type="text" id="issueDate" hidden fromControlName="lastUpdatedBy" style="height: 0.8cm;" readonly> -->
+            <input type="text" id="assignTo" hidden fromControlName="assignTo" style="height: 0.8cm;" readonly>
+            <input type="text" id="assignedTo" hidden fromControlName="assignedTo" style="height: 0.8cm;" readonly>
+            
+            
+            
+
+            <div>
+                <button type="submit"
+                    style="background: linear-gradient(to right, #5d90c0, #a1bfe6); color: rgb(12, 12, 12); padding: 7px; position: relative; display: flex; align-items: center; justify-content: center; width: 5cm;"
+                    [disabled]="isButtonDisabled" (click)="sendIssue()">Submit</button>
+            </div>
+        
+        </div>
+
+        <div class="container">
+            <p style="text-align: center; font-weight: 900;font-size: 16px;">Search Issue Here</p>
+            <hr style="border: 1px solid black;width: 100%;">
+            
+            <div class="form-group inline">
+                <div>
+                    <label for="city">City</label>
+                    <input type="text" id="city" value="Mumbai" style="height: 0.8cm;" readonly>
+                </div>
+
+                <div>
+                    <label>Search by Issue No</label>
+                    <input type="text" id="issueNo" style="height: 0.8cm;" formControlName="issueNo">
+                </div>
+
+                <div>
+                    <label>Location</label>
+                    <select type="number" id="locationId" style="height: 0.8cm;" formControlName="srclocationId">
+                        <option *ngFor="let sc of  bajajlocationList" [value]="sc.locId">
+                            {{sc.locId}} - {{sc.locName}}
+                        </option>
+
+                    </select>
+                </div>
+
+                <div>
+                    <label>Department</label>
+                    <select id="department" style="height: 0.8cm;" formControlName="srcdeptId">
+                        <option *ngFor="let sc of  departmentList" [value]="sc.cmntypeId">
+                            {{sc.cmnDesc}}
+                        </option>
+
+                    </select>
+                </div>
+
+                <div>
+                    <label>Status</label>
+                    <select id="status" style="height: 0.8cm;" formControlName="status">
+                        <option *ngFor="let sc of  issuestatusList" [value]="sc.cmnDesc">
+                            {{sc.cmnDesc}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" type="submit"  style="background: linear-gradient(to right, #5d90c0, #a1bfe6); color: rgb(12, 12, 12); padding: 7px; position: relative; display: flex; align-items: center; justify-content: center; width: 5cm;"
+             id="register" (click)="search()">Search</button>
+
+        </div>
+
+        <div class="new">
+            <table class="issue-table">
+                <thead>
+                    <tr class="GridHeader">
+                        <th scope="col" style="border: 1px solid black; width: 30px; background-color: #66b9fd;font-weight: bolder;">
+                            Priority</th>
+                        <th scope="col" style="border: 1px solid black; width: 30px; background-color:#66b9fd;font-weight: bolder;">Issue No
+                        </th>
+                        <th scope="col" style="border: 1px solid black; width: 30px;background-color: #66b9fd;font-weight: bolder;">Status
+                        </th>
+                        <th scope="col" style="border: 1px solid black; width: 30px;background-color: #66b9fd;font-weight: bolder;">User
+                            Subject</th>
+                        <th scope="col" style="border: 1px solid black; width: 30px; background-color: #66b9fd;font-weight: bolder;">Issue
+                            Type</th>
+                        <th scope="col" style="border: 1px solid black; width: 30px; background-color:#66b9fd;font-weight: bolder;">Assign
+                            To</th>
+                        <th scope="col" style="border: 1px solid black; width: 30px; background-color: #66b9fd;font-weight: bolder;">User
+                            Name</th>
+                        <th scope="col" style="border: 1px solid black; width: 30px; background-color: #66b9fd;font-weight: bolder;">Issue
+                            Date</th>
+                        <th scope="col" style="border: 1px solid black; width: 30px; background-color: #66b9fd;font-weight: bolder;">EmailID
+                        </th>
+                        <th scope="col" style="border: 1px solid black; width: 30px; background-color:#66b9fd;font-weight: bolder;">Issue
+                            Type</th>
+                        <th scope="col" style="border: 1px solid black; width: 30px; background-color: #66b9fd;font-weight: bolder;">Select
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let com of userissuefromsearch">
+
+                        <th style="border: 1px solid black;padding-left: 15px;">{{com.priority}}</th>
+                        <th style="border: 1px solid black;padding-left: 15px;">{{com.issueNo}}</th>
+                        <th style="border: 1px solid black;padding-left: 15px;">{{com.status}}</th>
+                        <th style="border: 1px solid black;padding-left: 15px;">{{com.userSubject}}</th>
+                        <th style="border: 1px solid black;padding-left: 15px;">{{com.issueType}}</th>
+                        <th style="border: 1px solid black;padding-left: 15px;">{{com.assignedTo}}</th>
+                        <th style="border: 1px solid black;padding-left: 15px;">{{com.userName}}</th>
+                        <th style="border: 1px solid black;padding-left: 15px;">{{com.issueDate}}</th>
+                        <th style="border: 1px solid black;padding-left: 15px;">{{com.userEmail}}</th>
+                        <th style="border: 1px solid black;padding-left: 15px;">{{com.module}}</th>
+                        <th style="border: 1px solid black;padding-left: 15px;"><button type="button"
+                                style="width: fit-content;" (click)="issueNoFind(com.issueNo)" class="btn btn-primary"
+                                id="register" data-toggle="modal" style="width: fit-content;"
+                                data-target="#confirmAlert1">Select</button></th>
+
+
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                
+            <div>
+                <div class="modal fade" id="confirmAlert1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                         <div class="modal-content">
+                             <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Issue Details</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                  </button>
+                             </div>
+                             <div class="modal-body">
+                                  <label>
+                                      Please find the below details of your Issue No:- 
+                                     <input style="height: 0.7cm; width: 5cm;" formControlName="attribute4" readonly /></label>
+                
+                                  <table class="table table-bordered"
+                                         style="border-color: #959595; border-collapse: collapse; width: 100%;">
+                                       <thead>
+                                           <tr style="background-color: rgb(81, 81, 255); color: white;">
+                                        <th>Trans Id</th>
+                                        <th>Issue No</th>
+                                        <th>TRN Date</th>
+                                        <th>Assign To</th>
+                                        <th>Status</th>
+                                        <th>Updated By</th>
+                                        <th>View Document</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let com of viewAllDoucmnet" class="ItemStyle"
+                                        style="text-align: center; font-size: 12px;">
+                                        <th>{{com.trlineId }}</th>
+                                        <th>{{com.issueNo }}</th>
+                                        <th>{{com.trnDate | date: 'dd-MM-yyyy' }}</th>
+                                        <th>{{com.assignedTo}}</th>
+                                        <th>{{com.status }}</th>
+                                        <th>{{com.lastUpdatedBy }}</th>
+                                        <th>
+                                            <button type="button" class="btn btn-primary" style="width: 170px;">
+                                                View Document
+                                            </button>
+                                            <!--- (click)="openDocument(com.docId, com.docType)"-->
+                                                         <!--- (click)="openDocument(com.docId, com.docType)"-->
+                                               <!--- (click)="openDocument(com.docId, com.docType)"-->
+                                            </th>
+                                        </tr>
+                                      </tbody>
+                               </table>
+                            </div>
+                        
+                            <div class="last">
+                            <ng-container class="center" formArrayName="transLines">
+                                <ng-container *ngFor="let group of orderlineDetailsArray().controls; let i= index"
+                                    [formGroupName]="i">
+                            <p style="text-align: center;font-size: 22px;font-weight: 600;color: #9b5f05;">Update Your Issue Here</p>
+
+                              <hr>
+
+                            <label for="update-issue">Update Issue:</label>
+                            <textarea id="update-issue" rows="2" maxlength="250" placeholder="Enter issue update" formControlName="remark"></textarea>
+
+                            <input type="text" id="issueDate" hidden fromControlName="lastUpdatedBy" style="height: 0.8cm;" readonly>
+                       </ng-container>
+                    </ng-container>
+                            <div class="form-group inline">
+                            <div>
+                                    <label>Select Type</label>
+                                    <select id="fileType" style="height: 0.9cm; width: 8cm;"  formControlName="fileType">
+                                        <option *ngFor="let sc of  filetypeList" [value]="sc.cmnDesc">
+                                            {{sc.cmnDesc}}
+                                        </option>
+                
+                                    </select>
+                            </div>
+                                    <div>
+                                        <label for="file-upload">Upload File</label>
+                                        <input type="file" id="file-upload" style="height: 0.9cm;" [(ngModel)]="file" #fileInput1
+                                            formControlName="file">
+                                    </div>
+                        </div>
+                        <!-- </ng-container>
+                    </ng-container> -->
+                            
+                            <div class="form-group inline">
+                                <div>
+                                <button  type="submit" style="margin-top: 10px;float: right;" [disabled]="UpdateisButtonDisabled" (click)="issueupdate()">Add/Update Issue</button>
+                                </div>
+                                <div>
+                                <button style="float: left;margin-top: 10px;"  type="button">Close Issue</button>
+                                </div>
+                            </div>
+                            </div>
+            
+                            <!-- <div class="modal-footer">
+                               <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                   Close
+                               </button>
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <td>
+    </form>
+</body>
+
+</html>

@@ -6,13 +6,19 @@ import { FormsModule } from '@angular/forms';
 import { BajajIssueService } from '../bajaj-issue.service';
 import { NgModule } from '@angular/core';
 
+export interface CmnLogin{
+  userName:string
+  password: string;
+  loginArray: any[];
+}
+
 @Component({
   selector: 'app-bjjcmn-login',
   templateUrl: './bjjcmn-login.component.html',
   styleUrl: './bjjcmn-login.component.css'
 })
 export class BjjcmnLoginComponent {
- userName: string;
+  userName: string;
   password: string;
   loginArray: any[];
   routerLink: any =[];
@@ -39,16 +45,18 @@ this.bjjIssueService.login(this.userName, this.password).subscribe((res: any) =>
         sessionStorage.setItem('orgId', res.obj.orgId);
         sessionStorage.setItem('userName', res.obj.userName);
         sessionStorage.setItem('orgName', res.obj.orgName);
-        
-        alert(res.obj.userName)
+        sessionStorage.setItem('role', res.obj.role);
+
+        // alert(res.obj.userName)
         // this.router.navigate(['./admin/erpIssueModule/userIssueLog']);
-        if (res.obj.userName=='MUMEDP'){
-            this.router.navigate(['./admin/erpIssueModule/userIssueLog']);
-            
-          }
-          if (res.obj.userName=='MUMBAI'){
+        if (res.obj.role=='bjuser'){
+          this.router.navigate(['./admin/bajajIssueModule/bajajuserIssueLog']);
+          
+        }
+        if (res.obj.role=='bjEDP'){
             alert
             ('----WELCOME TO ADMIN PAGE----')
+            this.router.navigate(['./admin/bajajIssueModule/bajajsupport']);
           }
       }
       else{
