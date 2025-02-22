@@ -9,7 +9,7 @@
     height: 100%;
     width: 100%;
     place-items: center;
-    background: #f2f2f2;
+    background: #ffffff;
     /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
   }
   ::selection{
@@ -31,7 +31,7 @@
     color: #fff;
     user-select: none;
     border-radius: 15px 15px 0 0;
-    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    background: linear-gradient(-135deg, #a9069e, #bdc6f0);
   }
   .wrapper form{
     padding: 10px 30px 50px 30px;
@@ -60,7 +60,7 @@
     position: absolute;
     top: 50%;
     left: 20px;
-    color: #999999;
+    color: #b5b5b5;
     font-weight: 400;
     font-size: 17px;
     pointer-events: none;
@@ -71,7 +71,7 @@
   form .field input:valid ~ label{
     top: 0%;
     font-size: 16px;
-    color: #4158d0;
+    color: #2242e1;
     background: #fff;
     transform: translateY(-50%);
   }
@@ -109,11 +109,13 @@
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
-    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    background: linear-gradient(-135deg, #abf8b4, #029f56);
     transition: all 0.3s ease;
   }
   form .field input[type="submit"]:active{
     transform: scale(0.95);
+    box-shadow: 0px 0px 12px 4px rgba(0,0,0,0.74);
+    background: linear-gradient(-135deg, #029f56,#abf8b4);
   }
   form .signup-link{
     color: #262626;

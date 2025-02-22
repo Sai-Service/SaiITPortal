@@ -254,6 +254,7 @@ UserissueLinesGroup() {
       }
     )
 
+
     this.service.issuestatusList()
     .subscribe( 
       data => {
@@ -299,10 +300,8 @@ UserissueLinesGroup() {
           this.userissueslogForm.get('module')?.disable();
           this.userissueslogForm.get('userSubject')?.disable();
           this.userissueslogForm.get('subject')?.disable();
-          this.userissueslogForm.get('issueDesc')?.disable();
-          
+          this.userissueslogForm.get('issueDesc')?.disable();   
           // this.userissueslogForm.disable();
-          
         } else {
           if (res.code === 400) {
             alert(res.message);
