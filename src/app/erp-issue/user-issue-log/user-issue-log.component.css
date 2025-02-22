@@ -25,7 +25,7 @@ body {
     background: white;
     border-radius: 10px;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-    /* background: linear-gradient(to right, #fadeef, #d1eff1); */
+    background: linear-gradient(to right, #fadeef, #d1eff1);
 }
 
 .form-group {

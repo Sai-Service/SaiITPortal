@@ -185,12 +185,15 @@
                             </button>
                          </div> -->
 
-                         <p style="text-align: center;font-size: 22px;font-weight: 800;color: #963a51;">Update Your Issue Here</p>
+                        
                         
                          <div class="last">
                             <ng-container class="center" formArrayName="transLines">
                                 <ng-container *ngFor="let group of orderlineDetailsArray().controls; let i= index"
                                     [formGroupName]="i">
+
+                                    <p style="text-align: center;font-size: 22px;font-weight: 600;color: #963a51;">Update Your Issue Here</p>
+
                                 <div class="group inline">
                                     
                                      <div>
