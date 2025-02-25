@@ -72,7 +72,7 @@ itsupportList(): Observable<any> {
 }
 
 cityList(): Observable<any> {
-  return this.http.get(this.ServerUrl + '/ouMst/Active')
+  return this.http.get(this.ServerUrl + '/ouMst/InActive')
 }
 
 bajajuserissuesSearch(issueNo:any,ouId:any,locId:any,deptId:any,sts:any): Observable<any> {

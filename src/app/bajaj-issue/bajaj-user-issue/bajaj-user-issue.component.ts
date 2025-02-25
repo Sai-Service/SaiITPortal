@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  OnInit, ViewChild, ElementRef } from '@angular/core';
+import { OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Validators } from '@angular/forms';
@@ -12,8 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BajajIssueService } from '../bajaj-issue.service';
 
 const MIME_TYPES = {
-  pdf: 'application/pdf',
-  xls: 'application/vnd.ms-excel',
+  pdf:  'application/pdf',
+  xls:  'application/vnd.ms-excel',
   xlsx: 'application/vnc.openxmlformats-officedocument.spreadsheetxml.sheet'
 };
 
@@ -120,7 +120,7 @@ viewAllDoucmnet:any;
 isButtonDisabled = false;
 UpdateisButtonDisabled=false;
 
-  constructor(private fb: FormBuilder, private router: Router, private service: BajajIssueService) {
+  constructor(private fb: FormBuilder, private router: Router, private service: BajajIssueService) { 
     this.bajajuserissuesForm = fb.group({
   issueId:[],
   issueNo:[],
@@ -180,7 +180,8 @@ UserissueLinesGroup() {
 
   ngOnInit(): void {
     $("#wrapper").toggleClass("toggled");
-    this.bajajuserissuesForm.patchValue({attribute5:sessionStorage.getItem('orgName')});
+    alert(sessionStorage.getItem('orgId'))
+    this.bajajuserissuesForm.patchValue({attribute5:sessionStorage.getItem('orgId')});
     this.bajajuserissuesForm.patchValue({ouId:sessionStorage.getItem('orgId')});
     this.bajajuserissuesForm.patchValue({createdBy:sessionStorage.getItem('userName')});
     this.bajajuserissuesForm.patchValue({assignTo:'SUPPORT'});
