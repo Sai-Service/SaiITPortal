@@ -524,4 +524,8 @@ openDocument(trlineId: any, filePath: any) {
 // }
 
 
+redirectToReport(){
+  this.router.navigate(['erpsupportreport']);
+}
+
 }

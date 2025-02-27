@@ -18,13 +18,13 @@ export class LoginSerService {
 
    public login(loginName: string, password: string) {
     const body = {
-      'loginName': loginName,
+      'userName': loginName,
       'password': password,
     };
     let options = {
       headers: this.headers
     };
-    const url = this.ServerUrl + `/loginDet/loginpage`;
+    const url = this.ServerUrl + `/Login/loginPage`;
     console.log(body);
     return this.httpclient.post(url, body, options)
   }

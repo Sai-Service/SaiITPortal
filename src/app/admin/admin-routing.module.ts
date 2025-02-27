@@ -12,6 +12,10 @@ const routes: Routes = [
       {
         path: 'bajajIssueModule',
         loadChildren: () => import('../bajaj-issue/bajaj-issue.module').then(mod => mod.BajajIssueModule)
+      },
+      {
+        path: 'itreportsModule',
+        loadChildren: () => import('../itreports/itreports.module').then(mod => mod.ItreportsModule)
       }
       
     ]

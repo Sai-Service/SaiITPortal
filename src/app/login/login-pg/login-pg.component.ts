@@ -49,16 +49,19 @@ export class LoginPgComponent {
       alert('Please enter valid Password !');
       return;
     }
-    this.router.navigate(['/admin']);
-    // this.LoginSerService.login(this.username, this.password).subscribe((res: any) => {
-    //   console.log('Res', res);
-    //   if (res.code === 200) {
-    //     this.router.navigate(['/admin']);
-    //   }
-    //   else{
-    //     alert(res.message)
-    //   }
-    // })
+    // this.router.navigate(['/admin']);
+    this.LoginSerService.login(this.username, this.password).subscribe((res: any) => {
+      console.log('Res', res);
+      if (res.obj.role=='ITADMIN'){
+        this.router.navigate(['./admin/itreportsModule/ceoreports']);
+        
+      }
+      if (res.obj.role=='CORPORATE'){
+        alert
+        ('----WELCOME TO ADMIN PAGE----')
+        this.router.navigate(['./admin/itreportsModule/viewreports']);
+      }
+    })
      
   
   }

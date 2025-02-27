@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sai Service</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="https://pbs.twimg.com/profile_images/1019472030218022912/MMIAhyz-_400x400.jpg" alt="Sai Service Logo" />
+                    <h1 class="brand-name">Sai Service</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="/#/itreports">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#features">Other</a>
+                        <div class="dropdown-content">
+                            <a href="/#/itreports/ceoreports">Upload CEO Reports</a>
+                            <a href="#item2">Upload Data Reports</a>
+                            <a href="#item2">Accounts Reports</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#features">Top Management</a>
+                        <div class="dropdown-content">
+                            <a href="#item1">Advance Details</a>
+                            <a href="#item2">Skype Review</a>
+                        </div>
+                    </li>
+                    <li><a href="/#/itreports/viewreports">Reports</a></li>
+                    <li><a href="#contact">Login Count</a></li>
+                    <li style="color: crimson;"><b>Welcome, {{ username }}!</b></li>
+                    <li><a href="/login"><b style="color: rgb(62, 3, 239);font-family: Arial, Helvetica, sans-serif;">LOGOUT</b></a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <main>
+            <div class="upload-section">
+                <h2>View Reports</h2>
+                <form (submit)="onViewReports(); $event.preventDefault();">
+                    <div class="form-group">
+                      <label for="city">City:</label>
+                      <select id="city">
+                        <option>{{orgName}}</option>
+                        <!-- <option>Select City</option>
+                        <option>Cochin</option>
+                        <option>Goa</option>
+                        <option>Hyderabad</option>
+                        <option>Kolhapur</option>
+                        <option>Mumbai</option>
+                        <option>Pune</option> -->
+                      </select>
+                    </div>
+                  
+                    <div class="form-group">
+                      <label for="reportType">Report Type:</label>
+                      <select id="reportType">
+                        <option>Select Department</option>
+                        <option>CEO</option>
+                        <option>Receivables</option>
+                      </select>
+                    </div>
+                  
+                    <div class="form-group">
+                      <label for="month">Month:</label>
+                      <select id="month">
+                        <option>Select Month</option>
+                        <option>JAN</option>
+                        <option>FEB</option>
+                        <option>MAR</option>
+                        <option>APR</option>
+                        <option>MAY</option>
+                        <option>JUN</option>
+                        <option>JUL</option>
+                        <option>AUG</option>
+                        <option>SEPT</option>
+                        <option>OCT</option>
+                        <option>NOV</option>
+                        <option>DEC</option>
+                      </select>
+                    </div>
+                  
+                    <div class="form-group">
+                      <label for="year">Year:</label>
+                      <select id="year">
+                        <option>Select Year</option>
+                        <option [value]="previousYear">{{previousYear}}</option>
+                        <option [value]="currentYear">{{currentYear}}</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <button type="submit">View Reports</button>
+                    </div>
+                  </form>
+                  
+                  <div *ngIf="reports.length > 0">
+                    <h3>Report Details</h3>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Week No</th>
+                          <th>Report Name</th>
+                          <th>Download Report</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let report of reports">
+                          <td>{{ report.week_no }}</td>
+                          <td>{{ report.report_name }}</td>
+                          <td>
+                            <button (click)="downloadReport(report.report_name)">Download Report</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  
+                  <div *ngIf="errorMessage" style="color: red;">
+                    {{ errorMessage }}
+                  </div>
+                  
+                  
+                  
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer">
+                <p>&copy; Sai Service. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
