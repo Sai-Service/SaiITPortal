@@ -16,6 +16,10 @@ const routes: Routes = [
       {
         path: 'itreportsModule',
         loadChildren: () => import('../itreports/itreports.module').then(mod => mod.ItreportsModule)
+      },
+      {
+        path: 'networkModule',
+        loadChildren: () => import('../network/network.module').then(mod => mod.NetworkModule)
       }
       
     ]
