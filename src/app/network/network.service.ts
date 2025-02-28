@@ -28,4 +28,12 @@ export class NetworkService {
       console.log(body);
       return this.httpclient.post(url, body, options)
     }
+
+    erplocationList(orgId: any): Observable<any> {
+      return this.http.get(this.ServerUrl + `/locationMst/ErpLocations?ouId=${orgId}`);
+    }
+
+    // filetypeList(): Observable<any> {
+    //   return this.http.get(this.ServerUrl + `/FndCmn/CmnType?cmnType=FILETYPE`);
+    // }
 }
