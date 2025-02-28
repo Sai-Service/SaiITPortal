@@ -109,15 +109,7 @@ UpdateisButtonDisabled=false;
       }
     )
 
-    // this.service.filetypeList()
-    // .subscribe( 
-    //   data => {
-    //     this.filetypeList = data.obj;
-    //     console.log(this.filetypeList);
-    //   }
-    // ) 
-
-
+    
   }
 
   get f() { return this. nhloguploadForm.controls; }
