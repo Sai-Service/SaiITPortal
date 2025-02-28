@@ -125,9 +125,10 @@ body {
 }
 
 .main-container {
-    padding-top: 120px;
+    padding-top: 40px;
     padding-left: 20px;
     padding-right: 20px;
+    padding-bottom: 40px;
 }
 
 .upload-section {
@@ -154,7 +155,7 @@ body {
 
 .form-row {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     justify-content: space-between;
 }
 
@@ -162,10 +163,11 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
+    margin-top: 10px;
 }
 
 .form-group label {
-    font-weight: 500;
+    font-weight: 700;
     color: #2d3436;
     margin-bottom: 5px;
 }
@@ -185,7 +187,7 @@ body {
     padding: 6px;
 }
 
-#uploadForm button {
+/* #uploadForm button {
     grid-column: 1 / -1;
     background-color: #0066ff;
     color: white;
@@ -200,7 +202,7 @@ body {
 
 #uploadForm button:hover {
     background-color: #0052cc;
-}
+} */
 
 .footer {
     background-color: #6c5ce7;
@@ -237,4 +239,12 @@ body {
     .form-row {
         flex-direction: column;
     }
+}
+
+.button{
+padding: 3px;
+margin-top: 15px;
+padding-left: 6px;
+padding-right: 6px;
+
 }

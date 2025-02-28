@@ -36,10 +36,7 @@ export class LoginPgComponent {
   constructor(private router: Router, private LoginSerService: LoginSerService) { }
 
 
-  login() {
-    // alert('hiiiii')
-    // alert(this.username+'-----'+this.password)
-   
+  login() { 
     if (this.username == undefined || this.username == "") {
       alert('Please enter valid Username !');
       return;
@@ -51,7 +48,9 @@ export class LoginPgComponent {
     }
     // this.router.navigate(['/admin']);
     this.LoginSerService.login(this.username, this.password).subscribe((res: any) => {
+      if(res.code==200){
       console.log('Res', res);
+      sessionStorage.setItem('orgId',res.obj.orgId);
       if (res.obj.role=='ITADMIN'){
         this.router.navigate(['./admin/itreportsModule/ceoreports']);
         
@@ -71,7 +70,7 @@ export class LoginPgComponent {
             ('----WELCOME TO ADMIN PAGE----')
             this.router.navigate(['./admin/networkModule/nhlogdownload']);
           }
-    })
+    }})
 
     // this.LoginSerService.login(this.username, this.password).subscribe((res: any) => {
     //   console.log('Res', res);

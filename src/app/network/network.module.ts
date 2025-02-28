@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NetworkRoutingModule } from './network-routing.module';
 import { NhloguploadComponent } from './nhlogupload/nhlogupload.component';
 import { NhlogdownloadComponent } from './nhlogdownload/nhlogdownload.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,9 @@ import { NhlogdownloadComponent } from './nhlogdownload/nhlogdownload.component'
   ],
   imports: [
     CommonModule,
-    NetworkRoutingModule
+    NetworkRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class NetworkModule { }
