@@ -166,7 +166,7 @@ export class ErpsupportComComponent {
     attribute3:[],
     attribute4:[],
     attribute5:[],
-    // remark :[],
+
     currentYear:[],
     status:[],
     file:[],
@@ -332,9 +332,6 @@ export class ErpsupportComComponent {
     delete val.srcdeptId
     delete val.srcitexecutive
     delete val.srcstatus
-  
-
-
     return val;
  }
 
