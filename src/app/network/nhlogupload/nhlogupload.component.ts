@@ -10,6 +10,7 @@ import { NgForm } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NetworkService } from '../network.service';
+import { error } from 'node:console';
 
 const MIME_TYPES = {
   pdf: 'application/pdf',
@@ -64,11 +65,13 @@ export class NhloguploadComponent {
 
 
 public erplocationList:any=[];
-public logtypeList:any=[];
+public logTypeList:any=[];
+filetoupload: File | null = null
 mainimage:any=[];
 // viewAllDoucmnet:any;
 isButtonDisabled = false;
 UpdateisButtonDisabled=false;
+  uploadnhreport: any;
 
   constructor(private fb: FormBuilder, private router: Router, private service: NetworkService) {
     this. nhloguploadForm = fb.group({
@@ -109,18 +112,27 @@ UpdateisButtonDisabled=false;
       }
     )
 
-    // this.service.filetypeList()
-    // .subscribe( 
-    //   data => {
-    //     this.filetypeList = data.obj;
-    //     console.log(this.filetypeList);
-    //   }
-    // )
+    this.service.logTypeList()
+    .subscribe( 
+      data => {
+        this.logTypeList = data.obj;
+        console.log(this.logTypeList);
+      }
+    )
+
+    
 
     
   }
 
   get f() { return this. nhloguploadForm.controls; }
   nhloguploadfrm( nhloguploadForm: any) { }
+
+  uploadFiletoActivity(){
+    this.uploadnhreport.postFile(this.filetoupload).subscribe((data: any) => {
+    }, (error: any) => {
+      console.log(error);
+    });
+  }
 
 }

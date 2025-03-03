@@ -33,7 +33,14 @@ export class NetworkService {
       return this.http.get(this.ServerUrl + `/locationMst/ErpLocations?ouId=${orgId}`);
     }
 
-    // logtypeList(): Observable<any> {
-    //   return this.http.get(this.ServerUrl + `/FndCmn/CmnType?cmnType=FILETYPE`);
-    // }
+    logTypeList(): Observable<any> {
+      return this.http.get(this.ServerUrl + `/nhReports/getReportType`);
+    }
+
+    uploadnhreport( formdata:FormData) {
+      const url = (this.ServerUrl + `/nhReports/uploadNhReports`);
+      return this.http.put(url,  formdata);
+    }
+
+  
 }
