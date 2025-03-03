@@ -333,11 +333,6 @@ textarea{
       min-height: 30px;
   }
 
-  /* .modal-dialog {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: right; 
-  } */
 
   .modal-dialog {
     margin: auto;
