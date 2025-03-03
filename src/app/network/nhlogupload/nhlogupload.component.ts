@@ -128,7 +128,7 @@ UpdateisButtonDisabled=false;
   get f() { return this. nhloguploadForm.controls; }
   nhloguploadfrm( nhloguploadForm: any) { }
 
-  uploadFiletoActivity(){
+  uploadFile(){
     this.uploadnhreport.postFile(this.filetoupload).subscribe((data: any) => {
     }, (error: any) => {
       console.log(error);
