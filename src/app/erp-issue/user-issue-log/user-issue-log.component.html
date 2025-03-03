@@ -146,7 +146,7 @@
             <div>
                 <button type="submit"
                     style="background: linear-gradient(to right, #23a802, #b3f802); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center; width: 5cm;"
-                    [disabled]="isButtonDisabled" (click)="sendIasue()">Submit</button>
+                    [disabled]="isButtonDisabled"  (click)="sendIasue()">Submit</button>
             </div>
             <!-- <div>
                     <button type="submit"  style="background: linear-gradient(to right, #23a802, #b3f802); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center; width: 5cm;"  (click)="sendIasue()">Submit</button>
@@ -360,7 +360,13 @@
             </div>
             </div>
         </div>
-        <td>
+        <div class="popup" *ngIf="showPopup">
+            <div class="popup-content">
+              <p>{{responseMessage}}</p>
+              <button (click)="closePopup()">OK</button>
+            </div>
+          </div>
+      
     </form>
 </body>
 

@@ -104,7 +104,8 @@ export class UserIssueLogComponent {
   srcdeptId:number;
   @ViewChild('fileInput') fileInput:any;
   @ViewChild('fileInput1') fileInput1:any;
-
+  showPopup = false;
+  responseMessage: string;
 
 public erplocationList:any=[];
 public priorityList:any=[];
@@ -279,7 +280,6 @@ UserissueLinesGroup() {
   }
 
   sendIasue(){
-    this.isButtonDisabled = true;
     this.userissueslogForm.patchValue({lastUpdatedBy:'U'});
     const formValue = this.transData(this.userissueslogForm.value);
     console.log(formValue);
@@ -288,8 +288,12 @@ UserissueLinesGroup() {
     formData.append('objhdMst',JSON.stringify(formValue));
     this.service.IssuelogSubmit(formData).subscribe((res: any) => {
         if (res.code === 200) {
-          alert(res.message);
-          alert(res.obj.issueNo),
+          this.isButtonDisabled = true;
+          this.showPopup = true;
+          // alert(res.message);
+          this.responseMessage=res.message;
+          // this.responseMessage=res.obj.issueNo;
+          // alert(res.obj.issueNo),
           this.userissueslogForm.get('locationId')?.disable();
           this.userissueslogForm.get('priority')?.disable();
           this.userissueslogForm.get('userName')?.disable();
@@ -302,9 +306,17 @@ UserissueLinesGroup() {
           this.userissueslogForm.get('subject')?.disable();
           this.userissueslogForm.get('issueDesc')?.disable();   
           // this.userissueslogForm.disable();
-        } else {
+        } if (res.code === 500) {
+          alert(res.message);
+          this.showPopup = true;
+          this.responseMessage=res.message;
+         
+        }
+        else {
           if (res.code === 400) {
             alert(res.message);
+            this.showPopup = true;
+            this.responseMessage=res.message;
            
           }
         }
@@ -374,7 +386,6 @@ UserissueLinesGroup() {
         this.userissueslogForm.patchValue({subject:data.obj.subject});
         this.userissueslogForm.patchValue({attribute4:issueNo});
         this.userissueslogForm.patchValue({issueDate:data.obj.issueDate});
-        
         this.userissueslogForm.get('locationId')?.disable();
         this.userissueslogForm.get('priority')?.disable();
         this.userissueslogForm.get('userName')?.disable();
@@ -441,5 +452,14 @@ UserissueLinesGroup() {
 
 
   openDocument(){}
+  closePopup(){
+    this.showPopup = false;
+  }
 
+
+
+  // showResponse(message: string) {
+  //   this.responseMessage = message;
+  //   this.showPopup = true;
+  // }
 }

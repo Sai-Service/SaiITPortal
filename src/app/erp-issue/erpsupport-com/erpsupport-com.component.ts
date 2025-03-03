@@ -439,73 +439,73 @@ export class ErpsupportComComponent {
   viewDocument(){}
 
 
-//   openDocument(trlineId:any,filePath:any){
-//     const fileName = 'download.pdf';
-//     this.service.openDocumentFn(trlineId, filePath)
-//       .subscribe(data => {
-//         var blob = new Blob([data] , { type: 'application/pdf' },{type:''});
-//         var url = URL.createObjectURL(blob);
-//         var printWindow = window.open(url, '', 'width=800,height=500');
+  openDocument(trlineId:any,filePath:any){
+    const fileName = 'download.pdf';
+    this.service.openDocumentFn(trlineId, filePath)
+      .subscribe(data => {
+        var blob = new Blob([data] , { type: 'application/pdf' });
+        var url = URL.createObjectURL(blob);
+        var printWindow = window.open(url, '', 'width=800,height=500');
       
-//         /////, { type: 'application/pdf' }
+        //  { type: 'application/pdf' }
 
-//       });
-// }
-
-
-openDocument(trlineId: any, filePath: any) {
-  this.service.openDocumentFn(trlineId, filePath)
-    .subscribe(data => {
-      // Extract file extension
-      const fileExtension = filePath.split('.').pop()?.toLowerCase();
-
-      // Determine MIME type
-      let mimeType = '';
-      switch (fileExtension) {
-        case 'pdf':
-          mimeType = 'application/pdf';
-          break;
-        case 'jpg':
-        case 'jpeg':
-          mimeType = 'image/jpeg';
-          break;
-        case 'png':
-          mimeType = 'image/png';
-          break;
-        case 'txt':
-          mimeType = 'text/plain';
-          break;
-        case 'doc':
-        case 'docx':
-          mimeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
-          break;
-        case 'xls':
-        case 'xlsx':
-          mimeType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
-          break;
-        default:
-          mimeType = 'application/octet-stream'; // Default binary file
-          break;
-      }
-
-      // Create blob and URL
-      const blob = new Blob([data], { type: mimeType });
-      const url = URL.createObjectURL(blob);
-
-      // Open file in a new window or tab
-      if (mimeType.startsWith('image') || mimeType === 'application/pdf') {
-        // For images and PDFs, open directly in a new window
-        window.open(url, '_blank', 'width=800,height=500');
-      } else {
-        // For other file types, trigger download
-        const anchor = document.createElement('a');
-        anchor.href = url;
-        anchor.download = `download.${fileExtension}`;
-        anchor.click();
-        URL.revokeObjectURL(url); // Clean up
-      }
-    });
+      });
 }
+
+
+// openDocument(trlineId: any, filePath: any) {
+//   this.service.openDocumentFn(trlineId, filePath)
+//     .subscribe(data => {
+//       // Extract file extension
+//       const fileExtension = filePath.split('.').pop()?.toLowerCase();
+
+//       // Determine MIME type
+//       let mimeType = '';
+//       switch (fileExtension) {
+//         case 'pdf':
+//           mimeType = 'application/pdf';
+//           break;
+//         case 'jpg':
+//         case 'jpeg':
+//           mimeType = 'image/jpeg';
+//           break;
+//         case 'png':
+//           mimeType = 'image/png';
+//           break;
+//         case 'txt':
+//           mimeType = 'text/plain';
+//           break;
+//         case 'doc':
+//         case 'docx':
+//           mimeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+//           break;
+//         case 'xls':
+//         case 'xlsx':
+//           mimeType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+//           break;
+//         default:
+//           mimeType = 'application/octet-stream'; // Default binary file
+//           break;
+//       }
+
+//       // Create blob and URL
+//       const blob = new Blob([data], { type: mimeType });
+//       const url = URL.createObjectURL(blob);
+
+//       // Open file in a new window or tab
+//       if (mimeType.startsWith('image') || mimeType === 'application/pdf') {
+//         // For images and PDFs, open directly in a new window
+//         window.open(url, '_blank', 'width=800,height=500');
+//       } else {
+//         // For other file types, trigger download
+//         const anchor = document.createElement('a');
+//         anchor.href = url;
+//         anchor.download = `download.${fileExtension}`;
+//         anchor.click();
+//         URL.revokeObjectURL(url); // Clean up
+//       }
+//     });
+// }
 
 // onSelectOuCity(event:any) {
 //   var itemType = event.target.value;
