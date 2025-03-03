@@ -1,5 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { AppConst } from '../../app-const';
+
 
 interface FormData {
   reportType: string;
@@ -54,7 +59,7 @@ export class CeoreportsComponent implements OnInit {
   
   file: File | null = null;
 
-  constructor(private http: HttpClient) {}
+  // constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     // Get user data from localStorage
@@ -87,6 +92,14 @@ export class CeoreportsComponent implements OnInit {
     }
   }
 
+  headers: HttpHeaders;
+  ServerUrl : string;
+  constructor(private httpclient: HttpClient,private http: HttpClient) {
+    this.headers = new HttpHeaders();
+    // this.headers = this.headers.set('Content-Type', 'application/json; charset=utf-8');
+    this.ServerUrl = AppConst.ServerUrl;
+   }
+
   onSubmit(): void {
     if (!this.file) {
       alert('Please select a file to upload');
@@ -99,7 +112,7 @@ export class CeoreportsComponent implements OnInit {
     });
     formData.append('excelFile', this.file);
   
-    this.http.post('http://localhost:8080/portalReports/uploadPortalReports', formData, { observe: 'response' })
+    this.http.post(this.ServerUrl+`/portalReports/uploadPortalReports`, formData, { observe: 'response' })
       .subscribe(
         (response) => {
           if (response.status === 200 || response.status === 201) {
