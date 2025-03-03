@@ -85,9 +85,10 @@ body {
 }
 
 .main-container {
-    padding-top: 120px;
+    padding-top: 40px;
     padding-left: 20px;
     padding-right: 20px;
+    padding-bottom: 40px;
 }
 
 .upload-section {
@@ -111,6 +112,12 @@ form {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     align-items: start;
+}
+
+.form-row {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
 }
 
 .form-group {

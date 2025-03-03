@@ -1,6 +1,4 @@
-
 <html>
-
 <body>
     <div class="main-container">
         <h3 style="text-align: center;">Network And Hardware Log File Upload</h3>
@@ -10,14 +8,12 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label>City:</label>
-                            <!-- <input type="text"> -->
-                            <input style="height: 0.7cm;" formControlName="attribute5" readonly>
+                            <input formControlName="attribute5" readonly>
                         </div>
 
                         <div class="form-group">
                             <label>Location:</label>
-                            <!-- <select name="" id=""><option value=""></option></select> -->
-                              <select type="number" id="locationId" style="height: 0.7cm;" formControlName="locationId">
+                              <select type="number" id="locationId"  formControlName="locationId">
                                 <option *ngFor="let sc of  erplocationList" [value]="sc.locId">
                                     {{sc.locId}} - {{sc.locName}}
                                 </option>

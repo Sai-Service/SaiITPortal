@@ -24,7 +24,7 @@ interface nhlogupload{
   deptId:number;
   filePath:string;
   aging:string;
-  fileType:string;
+  logType:string;
   attribute1:number;
   attribute2:number;
   attribute3:string;
@@ -46,7 +46,7 @@ export class NhloguploadComponent {
   locationId:number;
   deptId:number;
   filePath:string;
-  fileType:string;
+  logType:string;
   startDate:Date;
   endDate:Date;
   attribute1:number;
@@ -64,7 +64,7 @@ export class NhloguploadComponent {
 
 
 public erplocationList:any=[];
-public filetypeList:any=[];
+public logtypeList:any=[];
 mainimage:any=[];
 // viewAllDoucmnet:any;
 isButtonDisabled = false;
@@ -76,7 +76,7 @@ UpdateisButtonDisabled=false;
   locationId:[],
   deptId:[],
   filePath:[],
-  fileType:[],
+  logType:[],
   startDate:[],
   endDate:[],
   attribute1:[],
@@ -108,6 +108,14 @@ UpdateisButtonDisabled=false;
         console.log(this.erplocationList);
       }
     )
+
+    // this.service.filetypeList()
+    // .subscribe( 
+    //   data => {
+    //     this.filetypeList = data.obj;
+    //     console.log(this.filetypeList);
+    //   }
+    // )
 
     
   }
