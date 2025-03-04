@@ -37,10 +37,18 @@ export class NetworkService {
       return this.http.get(this.ServerUrl + `/nhReports/getReportType`);
     }
 
-    uploadnhreport( formdata:FormData) {
-      const url = (this.ServerUrl + `/nhReports/uploadNhReports`);
-      return this.http.put(url,  formdata);
-    }
+    
+    // uploadnhreport( formdata:FormData) {
+    //   const url = (this.ServerUrl + `/nhReports/uploadNhReports`);
+    //   return this.http.put(url,  formdata);
+    // }
 
+    uploadFile(formData: FormData): Observable<any> {
+      const url = ` http://localhost:8080/nhReports/uploadNhReports`; 
+      return this.httpclient.post( 'http://localhost:8080/nhReports/uploadNhReports', formData, {
+        headers: this.headers
+      });
+    }
+    
   
 }

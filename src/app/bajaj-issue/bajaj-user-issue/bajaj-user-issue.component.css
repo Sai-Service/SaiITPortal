@@ -39,14 +39,6 @@ label {
     color: #a06119;
 }
 
-td {
-    display: block;
-    font-size: 30spx;
-    font-weight: bold;
-    margin-bottom: 4px;
-    color: #ffffff;
-}
-
 input, select, textarea {
     width: 100%;
     margin-top: 1px;
@@ -85,11 +77,6 @@ button:hover {
     background-color: #005bb5;
 }
 
-.priority-high {
-    color: red;
-    font-weight: bold;
-}
-
 .inline {
     display: flex;
     gap: 15px;
@@ -102,12 +89,6 @@ button:hover {
 textarea{
     resize: none;
 }
-
-
-
-
-
-
 
 .search {
     max-width: 98%;
@@ -185,14 +166,7 @@ textarea{
     height:10cm;
     border-color: gray;
   }
-  
-  
-  .placeholder {
-    font-family:Verdana,Sans-serif, Arial, Helvetica ;
-    
-  }
-  
-    
+   
 .SubHeading1 {
     font-size:large;
     font-weight: normal;
@@ -217,7 +191,6 @@ textarea{
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.35);
     overflow: auto;
 }
- 
 .last {
     max-width: 90%;
     border: 1px solid black;

@@ -24,8 +24,8 @@ export class BajajIssueService {
     let options = {
       headers: this.headers
     };
-    // const url = this.ServerUrl + `/Login/loginPage`;
-    const url = 'http://localhost:8080/Login/loginPage';
+    const url = this.ServerUrl + `/Login/loginPage`;
+    // const url = 'http://localhost:8080/Login/loginPage';
     console.log(body);
     return this.httpclient.post(url, body, options)
   }

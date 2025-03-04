@@ -11,6 +11,8 @@ import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NetworkService } from '../network.service';
 import { error } from 'node:console';
+import { getEnvironmentData } from 'node:worker_threads';
+import { data } from 'jquery';
 
 const MIME_TYPES = {
   pdf: 'application/pdf',
@@ -66,12 +68,13 @@ export class NhloguploadComponent {
 
 public erplocationList:any=[];
 public logTypeList:any=[];
+public uploadFile:any=[];
 filetoupload: File | null = null
 mainimage:any=[];
 // viewAllDoucmnet:any;
 isButtonDisabled = false;
 UpdateisButtonDisabled=false;
-  uploadnhreport: any;
+  http: any;
 
   constructor(private fb: FormBuilder, private router: Router, private service: NetworkService) {
     this. nhloguploadForm = fb.group({
@@ -112,6 +115,7 @@ UpdateisButtonDisabled=false;
       }
     )
 
+
     this.service.logTypeList()
     .subscribe( 
       data => {
@@ -119,20 +123,56 @@ UpdateisButtonDisabled=false;
         console.log(this.logTypeList);
       }
     )
-
     
 
-    
-  }
+
+   }
+
+
 
   get f() { return this. nhloguploadForm.controls; }
-  nhloguploadfrm( nhloguploadForm: any) { }
+  // nhloguploadfrm( nhloguploadForm: any) { }
+ 
 
-  uploadFile(){
-    this.uploadnhreport.postFile(this.filetoupload).subscribe((data: any) => {
-    }, (error: any) => {
-      console.log(error);
-    });
+  onFileChange(event: any): void {
+    if (event.target.files.length > 0) {
+      this.filetoupload = event.target.files[0];
+    }
   }
+
+  nhloguploadfrm(nhloguploadForm: any) {
+    if (this.nhloguploadForm.invalid) {
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('ouId', this.nhloguploadForm.get('ouId')?.value);
+    formData.append('locationId', this.nhloguploadForm.get('locationId')?.value);
+    formData.append('logType', this.nhloguploadForm.get('logType')?.value);
+    formData.append('file', this.filetoupload as Blob);
+    
+    formData.append('attribute1', this.nhloguploadForm.get('attribute1')?.value);
+    formData.append('attribute2', this.nhloguploadForm.get('attribute2')?.value);
+    formData.append('attribute3', this.nhloguploadForm.get('attribute3')?.value);
+
+  
+    this.http.post(' http://localhost:8080/nhReports/uploadNhReports', formData).subscribe((response: any) => {
+      console.log('File uploaded successfully', response);
+    }, (error: any) => {
+      console.error('Error uploading file', error);
+    });
+ }
+
+
+
+
+  // uploadFile(){
+  //   this.uploadnhreport.File(this.filetoupload).subscribe((data: any) => {
+  //   }, (error: any) => {
+  //     console.log(error);
+  //   });
+  // }
+
+    
 
 }
