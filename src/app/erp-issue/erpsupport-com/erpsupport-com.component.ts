@@ -207,7 +207,7 @@ export class ErpsupportComComponent {
         this.erpsupportcomForm.patchValue({fileType:'none'});
       }
   
-  
+
       var patch = this.erpsupportcomForm.get('transLines') as FormArray
       (patch.controls[0]).patchValue(
         {
@@ -529,6 +529,17 @@ export class ErpsupportComComponent {
 
 redirectToReport(){
   this.router.navigate(['erpsupportreport']);
+}
+
+
+
+onFileSelected(event: any) {
+  const file = event.target.files[0];
+  if (file) {
+    alert(`File Uploaded Successfully: ${file.name} & click on Add/Update Issue button`);
+  } else {
+    alert("No file selected.");
+  }
 }
 
 }
