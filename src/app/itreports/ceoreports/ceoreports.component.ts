@@ -1,3 +1,4 @@
+
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
@@ -13,12 +14,12 @@ interface FormData {
   weekNo: number;
   year: number;
   department: string;
-  ouId: number;
+  ouId: string;
   createdBy: string;
   updatedBy: string;
-  orgId?: number;    // Added for organization ID
-  orgName?: string;  // Added for organization name
-  role?: string;  // Added for organization name
+  orgId: string;
+  orgName?: string;
+  role?: string;
 
 }
 
@@ -38,7 +39,7 @@ interface UserData {
 export class CeoreportsComponent implements OnInit {
     
   username: string = '';
-  orgId: number = 0;
+  orgId: string = '';
   orgName: string = '';
   role: string = '';
   userData: UserData | null = null;
@@ -50,10 +51,10 @@ export class CeoreportsComponent implements OnInit {
     weekNo: 0,
     year: new Date().getFullYear(),
     department: '',
-    ouId: 0,
+    ouId: '',
     createdBy: '',
     updatedBy: '',
-    orgId: 0,
+    orgId: '',
     orgName: ''
   };
   
@@ -62,15 +63,15 @@ export class CeoreportsComponent implements OnInit {
   // constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    // Get user data from localStorage
-    this.username = localStorage.getItem('username') || '';
-    this.orgId = Number(localStorage.getItem('orgId')) || 0;
-    this.orgName = localStorage.getItem('orgName') || '';
-    this.role = localStorage.getItem('role') || '';
+    // this.username = localStorage.getItem('username') || '';
+    this.username = sessionStorage.getItem('userName') || '';
+    this.orgId = sessionStorage.getItem('orgId') || '';
+    this.orgName = sessionStorage.getItem('orgName') || '';
+    this.role = sessionStorage.getItem('role') || '';
 
 
     // Try to get the complete user data object
-    const userDataString = localStorage.getItem('userData');
+    const userDataString = sessionStorage.getItem('userData');
     if (userDataString) {
       this.userData = JSON.parse(userDataString);
     }
@@ -101,8 +102,10 @@ export class CeoreportsComponent implements OnInit {
    }
 
   onSubmit(): void {
+    console.log("username->"+this.username)
     if (!this.file) {
       alert('Please select a file to upload');
+      console.log("orgname -->"+this.role)
       return;
     }
   

@@ -1,6 +1,6 @@
 <header>
     <div class="header" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center;">
-        <img src="http://saiitportal.com/Images/Sai%20Logo.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;">
+        <img src="assets/images/Sai Logo.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;">
         <marquee style="font-size: 22px; font-weight: bold;">WELCOME TO SAI SERVICE IT SUPPORT</marquee>
     </div>
 
@@ -28,6 +28,7 @@
            <div>
             <label>City</label>
             <select type="number" id="ouId" style="height: 1cm;" formControlName="ouId">
+                <option value="none">None</option>
                 <option *ngFor="let sc of  cityList" [value]="sc.ouId">
                     {{sc.ouId}}-{{sc.ouCity}}
                 </option>
@@ -37,6 +38,7 @@
            <div>
             <label>Location</label>
             <select type="number" id="locationId" style="height: 1cm;" formControlName="srclocationId">
+                <option value="none">None</option>
                 <option *ngFor="let sc of  alllocationlist" [value]="sc.locId">
                     {{sc.locId}} - {{sc.locName}}
                 </option>
@@ -63,6 +65,9 @@
         
 
            <button type="button" [routerLink]="['/admin/erpIssueModule/erpsupportreport']">Reports</button>
+
+           <button (click)="refreshForm()">Refresh</button>
+
            <input type="text" hidden style="height: 0.9cm;" formControlName="userSubject">
            <input type="text" hidden style="height: 0.9cm;" formControlName="subject">
            <input type="text" hidden style="height: 0.9cm;" formControlName="ouId">

@@ -1,5 +1,11 @@
 <html>
 <body>
+  <header>
+    <div class="header" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center;">
+        <img src="assets/images/Sai Logo.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;">
+        <marquee style="font-size: 22px; font-weight: bold;">WELCOME TO SAI SERVICE</marquee>
+    </div>    
+</header>
     <div class="main-container">
 
       <h2 style="text-align: center;">View Network and Hardware Log Data</h2>
@@ -7,27 +13,33 @@
         <main>
             <div class="upload-section">
   
-                <form>
+                <form [formGroup]="nhlogdownloadForm" (ngSubmit)="nhlogdownloadfrm(nhlogdownloadForm)">
                   
                     <div class="form-group">
                       <label for="city">City:</label>
-                      <select>
-                        <option>Select City</option>
+                      <select type="number" id="ouId" style="height: 1cm;" formControlName="ouId">
+                        <option *ngFor="let sc of  cityList" [value]="sc.ouId">
+                            {{sc.ouId}}-{{sc.ouCity}}
+                        </option>
                       </select>
                     </div>
 
                     <div class="form-group">
                       <label for="city">Location:</label>
-                      <select>
-                        <option>Select Location</option>
-                      </select>
+                      <select type="number" id="locationId" style="height: 1cm;" formControlName="srclocationId">
+                        <option *ngFor="let sc of  alllocationlist" [value]="sc.locId">
+                            {{sc.locId}} - {{sc.locName}}
+                        </option>
+                    </select>
                     </div>
                   
                     <div class="form-group">
                       <label>Log Type:</label>
-                      <select>
-                        <option>Select Log</option>
-                      </select>
+                      <select id="logType" formControlName="logType">
+                        <option *ngFor="let sc of logTypeList" [value]="sc.cmnDesc">
+                            {{sc.cmnDesc}}
+                        </option>
+                    </select> 
                     </div>
                   
                     <div class="form-group">
@@ -49,20 +61,41 @@
                       </select>
                     </div>
                   
-                    <!-- <div class="form-group">
-                      <label for="year">Year:</label>
-                      <select id="year">
-                        <option>Select Year</option>
-                        <option>2024</option>
-                        <option>2025</option>
-                      </select>
-                    </div> -->
-                  
                     <div class="form-group">
-                      <button type="submit">View Data</button>
+                      <button style="margin-top: 35px;" type="submit">View Data</button>
                     </div>
                   </form>
             </div>
+
+
+          
+              <!-- <div>
+                <h3>Log Data Details</h3>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>File Name</th>
+                      <th>Month</th>
+                      <th>Log Type</th>
+                      <th>Uploaded By</th>
+                      <th>Download File</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <button>Download Report</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            -->
+
         </main>
 
     </div>

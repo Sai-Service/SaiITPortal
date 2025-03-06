@@ -18,10 +18,10 @@ export class ItcomponentComponent implements OnInit {
 
   ngOnInit() {
     // Retrieve values with null checks
-    const storedUsername = localStorage.getItem('username');
-    const storedOrgId = localStorage.getItem('orgId');
-    const storedOrgName = localStorage.getItem('orgName');
-    const storedRole = localStorage.getItem('role');
+    const storedUsername = sessionStorage.getItem('username');
+    const storedOrgId = sessionStorage.getItem('orgId');
+    const storedOrgName = sessionStorage.getItem('orgName');
+    const storedRole = sessionStorage.getItem('role');
 
 
     // Assign with null checks

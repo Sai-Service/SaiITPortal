@@ -20,7 +20,7 @@ interface UserData {
 export class ViewreportsComponent implements OnInit {  
   // User-related properties
   username: string = '';
-  orgId: number = 0;
+  orgId: string = '';
   orgName: string = '';
   role: string = '';
   userData: UserData | null = null;
@@ -41,13 +41,13 @@ export class ViewreportsComponent implements OnInit {
 
   ngOnInit(): void {
     // Get user data from localStorage
-    this.username = localStorage.getItem('username') || '';
-    this.orgId = Number(localStorage.getItem('orgId')) || 0;
-    this.orgName = localStorage.getItem('orgName') || '';
-    this.role = localStorage.getItem('role') || '';
+    this.username = sessionStorage.getItem('userName') || '';
+    this.orgId = (sessionStorage.getItem('orgId')) || '';
+    this.orgName = sessionStorage.getItem('orgName') || '';
+    this.role = sessionStorage.getItem('role') || '';
 
     // Try to get the complete user data object
-    const userDataString = localStorage.getItem('userData');
+    const userDataString = sessionStorage.getItem('userData');
     if (userDataString) {
       this.userData = JSON.parse(userDataString);
     }
@@ -114,7 +114,7 @@ export class ViewreportsComponent implements OnInit {
 
   onViewReports(): void {
     // If using orgName as city, you might want to get it directly from the stored value
-    const city = this.orgName || (document.getElementById('city') as HTMLSelectElement).value;
+    const city =(document.getElementById('city') as HTMLSelectElement).value;
     const department = (document.getElementById('reportType') as HTMLSelectElement).value;
     const month = (document.getElementById('month') as HTMLSelectElement).value;
     const year = (document.getElementById('year') as HTMLSelectElement).value;

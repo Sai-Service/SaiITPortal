@@ -43,7 +43,7 @@ label {
 input, select, textarea {
     width: 100%;
     margin-top: 1px;
-    border: 1px solid #ccc;
+    border: 1px solid black;
     border-radius: 5px;
     font-size: 13px;
     box-sizing: border-box;
@@ -61,7 +61,8 @@ input[type="file"] {
 }
 
 button {
-    color: white;
+    color:white;
+    background: linear-gradient(to right, #d14178, #d45351);
     border: none;
     padding: 4px 20px;
     border-radius: 5px;
@@ -71,6 +72,10 @@ button {
     display: block;
     margin: 1px auto;
     max-width: 250px;
+}
+
+.button:hover{
+ background-color:blue ;
 }
 
 .priority-high {
@@ -340,7 +345,7 @@ textarea{
   .popup-content button {
     margin-top: 10px;
     padding: 5px 15px;
-    background: #007bff;
+    background: #0c4f96;
     color: white;
     border: none;
     border-radius: 3px;

@@ -151,9 +151,9 @@ UpdateisButtonDisabled=false;
     formData.append('logType', this.nhloguploadForm.get('logType')?.value);
     formData.append('file', this.filetoupload as Blob);
     
-    formData.append('attribute1', this.nhloguploadForm.get('attribute1')?.value);
-    formData.append('attribute2', this.nhloguploadForm.get('attribute2')?.value);
-    formData.append('attribute3', this.nhloguploadForm.get('attribute3')?.value);
+    // formData.append('attribute1', this.nhloguploadForm.get('attribute1')?.value);
+    // formData.append('attribute2', this.nhloguploadForm.get('attribute2')?.value);
+    // formData.append('attribute3', this.nhloguploadForm.get('attribute3')?.value);
 
   
     this.http.post(' http://localhost:8080/nhReports/uploadNhReports', formData).subscribe((response: any) => {

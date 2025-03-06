@@ -51,6 +51,9 @@ export class LoginPgComponent {
       if(res.code==200){
       console.log('Res', res);
       sessionStorage.setItem('orgId',res.obj.orgId);
+      sessionStorage.setItem('userName',res.obj.userName);
+      sessionStorage.setItem('orgName',res.obj.orgName);
+      sessionStorage.setItem('role',res.obj.role);
       if (res.obj.role=='ITADMIN'){
         this.router.navigate(['./admin/itreportsModule/ceoreports']);
         

@@ -33,9 +33,19 @@ export class NetworkService {
       return this.http.get(this.ServerUrl + `/locationMst/ErpLocations?ouId=${orgId}`);
     }
 
+    alllocationlist(): Observable<any> {
+      return this.http.get(this.ServerUrl + '/locationMst/loctn/active')
+    }
+
     logTypeList(): Observable<any> {
       return this.http.get(this.ServerUrl + `/nhReports/getReportType`);
     }
+
+    
+    cityList(): Observable<any> {
+      return this.http.get(this.ServerUrl + '/ouMst/Active')
+    }
+
 
     
     // uploadnhreport( formdata:FormData) {

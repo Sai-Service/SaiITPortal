@@ -436,6 +436,12 @@ export class ErpsupportComComponent {
 
   }
 
+
+ refreshForm() {
+    location.reload();
+  }
+
+
   viewDocument(){}
 
 
