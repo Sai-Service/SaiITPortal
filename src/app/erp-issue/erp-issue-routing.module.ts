@@ -4,13 +4,14 @@ import { UserIssueLogComponent } from './user-issue-log/user-issue-log.component
 import { LoginComComponent } from './login-com/login-com.component';
 import { ErpsupportComComponent } from './erpsupport-com/erpsupport-com.component';
 import { ErpsupportreportComponent } from './erpsupportreport/erpsupportreport.component';
-import { erpauthGuard } from './erpauth.guard';
+import { authGuard } from './auth.guard';
+
 
 const routes: Routes = [
-  {path:'userIssueLog',component:UserIssueLogComponent,canActivate:[erpauthGuard]},
+  {path:'userIssueLog',component:UserIssueLogComponent,canActivate:[authGuard]},
   {path:'logincommonerp',component:LoginComComponent},
-  {path:'erpsupport',component:ErpsupportComComponent,canActivate:[erpauthGuard]},
-  { path: 'erpsupportreport', component: ErpsupportreportComponent,canActivate:[erpauthGuard]},
+  {path:'erpsupport',component:ErpsupportComComponent,canActivate:[authGuard]},
+  { path: 'erpsupportreport', component: ErpsupportreportComponent,canActivate:[authGuard]},
 ];
 
 @NgModule({
