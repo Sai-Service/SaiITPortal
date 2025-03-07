@@ -1,7 +1,4 @@
-
-
 <html>
-
 <body>
     <form [formGroup]="userissueslogForm" (ngSubmit)="Userissuesfrm(userissueslogForm)">
 
@@ -59,9 +56,8 @@
                         formControlName="userEmail" #emailInput (change)="validateEmails(emailInput.value)">
                         <small *ngIf="emailError" style="color: red;">{{ emailError }}</small>
                 </div>
-
-                <div>
-                    <label>Contact No</label>
+             <div>
+                <label>Contact No</label>
                     <input type="tel" style="height: 0.7cm;" id="contactNo" formControlName="contactNo" #contactInput  (change)="validateContact(contactInput.value)" maxlength="10">
                     <small *ngIf="contactError" style="color: red;">{{ contactError }}</small>
                 </div>
@@ -124,7 +120,6 @@
                         <option *ngFor="let sc of  filetypeList" [value]="sc.cmnDesc">
                             {{sc.cmnDesc}}
                         </option>
-
                     </select>
                 </div>
 
@@ -145,10 +140,17 @@
             
             
 
-            <div>
+            <div class="form-group inline">
+                <div>
                 <button type="submit"
-                    style="background: linear-gradient(to right, #23a802, #b3f802); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center; width: 5cm;"
+                    style="background: linear-gradient(to right, #23a802, #b3f802);float: right; color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center; width: 5cm;"
                     [disabled]="isButtonDisabled"  (click)="sendIasue()">Submit</button>
+                </div>
+
+                <div>
+                <button (click)="refreshForm()"  style="background: linear-gradient(to right, #23a802, #b3f802);float: left; color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center;
+                 width: 5cm;">Refresh</button>
+                </div>
             </div>
         </div>
 
@@ -173,7 +175,6 @@
                         <option *ngFor="let sc of  erplocationList" [value]="sc.locId">
                             {{sc.locId}} - {{sc.locName}}
                         </option>
-
                     </select>
                 </div>
 
@@ -205,7 +206,7 @@
             <table class="issue-table">
                 <thead>
                     <tr class="GridHeader">
-                        <th scope="col" style="border: 1px solid black; width: 30px; background-color:  #66b9fd;">
+                        <th scope="col" style="border: 1px solid black; width: 30px; background-color:#66b9fd;">
                             Priority</th>
                         <th scope="col" style="border: 1px solid black; width: 30px; background-color:#66b9fd;">Issue No
                         </th>
@@ -213,19 +214,19 @@
                         </th>
                         <th scope="col" style="border: 1px solid black; width: 30px;background-color: #66b9fd;">User
                             Subject</th>
-                        <th scope="col" style="border: 1px solid black; width: 30px; background-color: #66b9fd;">Issue
+                        <th scope="col" style="border: 1px solid black; width: 30px; background-color:#66b9fd;">Issue
                             Type</th>
                         <th scope="col" style="border: 1px solid black; width: 30px; background-color:#66b9fd;">Assign
                             To</th>
-                        <th scope="col" style="border: 1px solid black; width: 30px; background-color: #66b9fd;">To User
+                        <th scope="col" style="border: 1px solid black; width: 30px; background-color:#66b9fd;">To User
                             Name</th>
-                        <th scope="col" style="border: 1px solid black; width: 30px; background-color: #66b9fd;">Issue
+                        <th scope="col" style="border: 1px solid black; width: 30px; background-color:#66b9fd;">Issue
                             Date</th>
-                        <th scope="col" style="border: 1px solid black; width: 30px; background-color: #66b9fd;">EmailID
+                        <th scope="col" style="border: 1px solid black; width: 30px; background-color:#66b9fd;">EmailID
                         </th>
                         <th scope="col" style="border: 1px solid black; width: 30px; background-color:#66b9fd;">Issue
                             Type</th>
-                        <th scope="col" style="border: 1px solid black; width: 30px; background-color: #66b9fd;">Select
+                        <th scope="col" style="border: 1px solid black; width: 30px; background-color:#66b9fd;">Select
                         </th>
                     </tr>
                 </thead>
@@ -242,7 +243,6 @@
                         <th style="border: 1px solid black;padding-left: 15px;">{{com.issueDate}}</th>
                         <th style="border: 1px solid black;padding-left: 15px;">{{com.userEmail}}</th>
                         <th style="border: 1px solid black;padding-left: 15px;">{{com.module}}</th>
-                        <!-- <th style="border: 1px solid black;padding-left: 15px;">{{com.module}}</th> -->
                         <th style="border: 1px solid black;padding-left: 15px;"><button type="button"
                                 style="width: fit-content;" (click)="issueNoFind(com.issueNo)" class="btn btn-primary"
                                 id="register" data-toggle="modal" style="width: fit-content;"
@@ -319,21 +319,20 @@
                        </ng-container>
                     </ng-container>
                             <div class="form-group inline">
-                            <div>
+                                <div>
                                     <label>Select Type</label>
                                     <select id="fileType" style="height: 0.9cm; width: 8cm;"  formControlName="fileType">
                                         <option *ngFor="let sc of  filetypeList" [value]="sc.cmnDesc">
                                             {{sc.cmnDesc}}
                                         </option>
-                
                                     </select>
-                            </div>
+                                </div>
                                     <div>
                                         <label for="file-upload">Upload File</label>
                                         <input type="file" id="file-upload" style="height: 0.9cm;" [(ngModel)]="file" #fileInput1
                                             formControlName="file" (change)="onFileSelected($event)">
                                     </div>
-                        </div>
+                            </div>
                     
                             
                             <div class="form-group inline">
@@ -363,5 +362,4 @@
       
     </form>
 </body>
-
 </html>

@@ -116,6 +116,7 @@ public filetypeList:any=[];
 public issuestatusList:any=[];
 userissuefromsearch:any=[];
 mainimage:any=[];
+contactError:string='';
 viewAllDoucmnet:any;
 isButtonDisabled = false;
 UpdateisButtonDisabled=false;
@@ -443,6 +444,21 @@ UserissueLinesGroup() {
 
 
   openDocument(){}
+
+  refreshForm() {
+    location.reload();
+  }
+
+  validateContact(value: string) {
+    const contactPattern = /^[0-9]{10}$/; // 10-digit number validation
+    if (!value) {
+      this.contactError = 'Contact number is required.';
+    } else if (!contactPattern.test(value)) {
+      this.contactError = 'Enter a valid 10-digit number.';
+    } else {
+      this.contactError = ''; // No error
+    }
+  }
 
 }
 

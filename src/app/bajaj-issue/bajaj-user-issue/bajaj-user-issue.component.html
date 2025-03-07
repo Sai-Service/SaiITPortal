@@ -137,10 +137,16 @@
             
             
 
-            <div>
+            <div class="form-group inline">
+                <div>
                 <button type="submit"
-                    style="background: linear-gradient(to right, #5d90c0, #a1bfe6); color: rgb(12, 12, 12); padding: 7px; position: relative; display: flex; align-items: center; justify-content: center; width: 5cm;"
+                    style="background: linear-gradient(to right, #5d90c0, #a1bfe6);float: right; color: rgb(12, 12, 12); padding: 7px; position: relative; display: flex; align-items: center; justify-content: center; width: 5cm;"
                     [disabled]="isButtonDisabled" (click)="sendIssue()">Submit</button>
+                </div>
+                <div>
+                <button type="submit" style="background: linear-gradient(to right, #5d90c0, #a1bfe6);float: left; color: rgb(12, 12, 12); padding: 7px; position: relative; display: flex; 
+                    align-items: center; justify-content: center; width: 5cm;"  (click)="refreshForm()" >Refresh</button>
+                </div>
             </div>
         
         </div>
@@ -191,7 +197,6 @@
             </div>
             <button type="submit" type="submit"  style="background: linear-gradient(to right, #5d90c0, #a1bfe6); color: rgb(12, 12, 12); padding: 7px; position: relative; display: flex; align-items: center; justify-content: center; width: 5cm;"
              id="register" (click)="search()">Search</button>
-
         </div>
 
         <div class="new">

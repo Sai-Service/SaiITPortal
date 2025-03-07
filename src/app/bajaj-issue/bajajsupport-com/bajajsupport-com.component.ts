@@ -443,6 +443,11 @@ export class BajajsupportComComponent {
   viewDocument(){}
 
 
+  refreshForm() {
+    location.reload();
+  }
+
+
 //   openDocument(trlineId:any,filePath:any){
 //     const fileName = 'download.pdf';
 //     this.service.openDocumentFn(trlineId, filePath)
