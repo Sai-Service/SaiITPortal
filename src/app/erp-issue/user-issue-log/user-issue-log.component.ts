@@ -450,6 +450,10 @@ UserissueLinesGroup() {
 
   viewDocument(){}
 
+  refreshForm() {
+    location.reload();
+  }
+
 
   openDocument(){}
   closePopup(){
