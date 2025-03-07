@@ -10,7 +10,7 @@ const routes: Routes = [
   {path:'userIssueLog',component:UserIssueLogComponent,canActivate:[erpauthGuard]},
   {path:'logincommonerp',component:LoginComComponent},
   {path:'erpsupport',component:ErpsupportComComponent,canActivate:[erpauthGuard]},
-  { path: 'erpsupportreport', component: ErpsupportreportComponent,canActivate:[erpauthGuard] },
+  { path: 'erpsupportreport', component: ErpsupportreportComponent,canActivate:[erpauthGuard]},
 ];
 
 @NgModule({

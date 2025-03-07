@@ -2,6 +2,9 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import * as xlsx from 'xlsx';
+import { HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { AppConst } from '../../app-const';
 // import saveAs from 'file-saver';
 
 interface Transaction {
@@ -34,10 +37,19 @@ export class ErpsupportreportComponent {
   status: string = '';
   transactions: Transaction[] = [];
 
-  constructor(private http: HttpClient) {}
+    headers: HttpHeaders;
+    ServerUrl : string;
+    constructor(private httpclient: HttpClient,private http: HttpClient) {
+      this.headers = new HttpHeaders();
+      // this.headers = this.headers.set('Content-Type', 'application/json; charset=utf-8');
+      this.ServerUrl = AppConst.ServerUrl;
+     }
+
+  // constructor(private http: HttpClient) {}
 
   onSubmit() {
-    const apiUrl = `http://localhost:8080/Transaction/issuesReportDatewise?fromDate=${this.formatDate(this.fromDate)}&toDate=${this.formatDate(this.toDate)}&city=${this.city}&status=${this.status}`;
+    // const apiUrl = `http://localhost:8080/Transaction/issuesReportDatewise?fromDate=${this.formatDate(this.fromDate)}&toDate=${this.formatDate(this.toDate)}&city=${this.city}&status=${this.status}`;
+    const apiUrl = this.ServerUrl+`/Transaction/issuesReportDatewise?fromDate=${this.formatDate(this.fromDate)}&toDate=${this.formatDate(this.toDate)}&city=${this.city}&status=${this.status}`;
 
     this.http.get<any>(apiUrl).subscribe(
       (response) => {
