@@ -53,12 +53,13 @@
                 <div>
                     <label>Email ID</label>
                     <input type="email" style="height: 0.7cm;" id="userEmail" placeholder="@saiservice.com"
-                        formControlName="userEmail">
+                        formControlName="userEmail" #emailInput (change)="validateEmails(emailInput.value)">
+                        <small *ngIf="emailError" style="color: red;">{{ emailError }}</small>
                 </div>
 
                 <div>
                     <label>Contact No</label>
-                    <input type="tel" style="height: 0.7cm;" id="contactNo" maxlength="10" formControlName="contactNo">
+                    <input type="tel" style="height: 0.7cm;" id="contactNo" formControlName="contactNo">
                 </div>
             </div>
 
@@ -125,7 +126,7 @@
                 <div class="form-group">
                     <label for="file-upload">Upload File (Excel with.xlsx pdf with.pdf Format)</label>
                     <input type="file" id="file-upload" style="height: 0.7cm;" [(ngModel)]="file" #fileInput
-                        formControlName="file">
+                        formControlName="file" (change)="onFileSelected($event)"   >
                 </div>
             </div>
 
@@ -329,7 +330,7 @@
                                     <div>
                                         <label for="file-upload">Upload File</label>
                                         <input type="file" id="file-upload" style="height: 0.9cm;" [(ngModel)]="file" #fileInput1
-                                            formControlName="file">
+                                            formControlName="file" (change)="onFileSelected($event)">
                                     </div>
                             </div>
                     

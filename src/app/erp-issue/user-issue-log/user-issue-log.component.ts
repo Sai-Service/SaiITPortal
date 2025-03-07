@@ -117,6 +117,8 @@ public filetypeList:any=[];
 public issuestatusList:any=[];
 userissuefromsearch:any=[];
 mainimage:any=[];
+contactError:string='';
+emailError:string='';
 viewAllDoucmnet:any;
 isButtonDisabled = false;
 UpdateisButtonDisabled=false;
@@ -290,10 +292,8 @@ UserissueLinesGroup() {
         if (res.code === 200) {
           this.isButtonDisabled = true;
           this.showPopup = true;
-          // alert(res.message);
           this.responseMessage=res.message;
-          // this.responseMessage=res.obj.issueNo;
-          // alert(res.obj.issueNo),
+          alert('Issue Registration No -'+ res.obj.issueNo);
           this.userissueslogForm.get('locationId')?.disable();
           this.userissueslogForm.get('priority')?.disable();
           this.userissueslogForm.get('userName')?.disable();
@@ -461,9 +461,52 @@ UserissueLinesGroup() {
   }
 
 
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      alert(`File Uploaded Successfully: ${file.name}`);
+    } else {
+      alert("No file selected.");
+    }
+   }
 
-  // showResponse(message: string) {
-  //   this.responseMessage = message;
-  //   this.showPopup = true;
-  // }
+
+
+
+
+
+   validateContact(value: string) {
+    const contactPattern = /^[0-9]{10}$/; // 10-digit number validation
+    if (!value) {
+      this.contactError = 'Contact number is required.';
+    } else if (!contactPattern.test(value)) {
+      this.contactError = 'Enter a valid 10-digit number.';
+    } else {
+      this.contactError = ''; // No error
+    }
+  }
+
+
+
+  validateEmails(value: string) {
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/; // Email regex
+    if (!value) {
+      this.emailError = 'Email field is required.';
+      return;
+    }
+  
+    // Split input by ',' or ';' and trim spaces
+    const emailArray = value.split(/[;,]+/).map(email => email.trim());
+  
+    // Validate each email
+    const invalidEmails = emailArray.filter(email => !emailPattern.test(email));
+  
+    if (invalidEmails.length > 0) {
+      this.emailError = `Invalid email(s): ${invalidEmails.join(', ')}`;
+    } else {
+      this.emailError = ''; // No errors
+    }
+  }
+  
+
 }

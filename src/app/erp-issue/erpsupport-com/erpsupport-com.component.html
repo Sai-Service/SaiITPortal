@@ -28,7 +28,7 @@
            <div>
             <label>City</label>
             <select type="number" id="ouId" style="height: 1cm;" formControlName="ouId">
-                <option value="none"></option>
+                <option value="none">None</option>
                 <option *ngFor="let sc of  cityList" [value]="sc.ouId">
                     {{sc.ouId}}-{{sc.ouCity}}
                 </option>
@@ -110,9 +110,9 @@
                 <th>{{com.issueNo}}</th>
                 <th>{{com.issueDate}}</th>
                 <th>{{com.priority}}</th>
-                <th>{{com.ouId}}</th>
-                <th>{{com.locationId}}</th>
-                <th>{{com.deptId}}</th>
+                <th>{{com.ouCity}}</th>
+                <th>{{com.locName}}</th>
+                <th>{{com.cmnDesc}}</th>
                 <th>{{com.module}}</th>
                 <th>{{com.subject}}</th>
                 <th>{{com.userSubject}}</th>
@@ -239,7 +239,7 @@
                                             
                                         <div>
                                             <label for="file-upload">Upload File</label>
-                                            <input type="file" id="file-upload" style="height: 0.9cm;" #fileInput formControlName="file">
+                                            <input type="file" id="file-upload" style="height: 0.9cm;" #fileInput formControlName="file" (change)="onFileSelected($event)">
                                         </div>
                                         <input type="text" hidden style="height: 0.9cm;" formControlName="lastUpdatedBy">
 
