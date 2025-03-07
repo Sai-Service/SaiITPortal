@@ -173,10 +173,6 @@ UpdateisButtonDisabled=false;
   //   });
   // }
 
-
-  refreshForm() {
-    location.reload();
-  }
     
 
 }
