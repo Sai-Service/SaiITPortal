@@ -51,12 +51,14 @@
                 <div>
                     <label>Email ID</label>
                     <input type="email" style="height: 0.7cm;" id="userEmail" placeholder="@saiservice.com"
-                        formControlName="userEmail">
+                        formControlName="userEmail" #emailInput (change)="validateEmails(emailInput.value)">
+                        <small *ngIf="emailError" style="color: red;">{{ emailError }}</small>
                 </div>
 
                 <div>
                     <label>Contact No</label>
-                    <input type="tel" style="height: 0.7cm;" id="contactNo" formControlName="contactNo">
+                    <input type="tel" style="height: 0.7cm;" id="contactNo" formControlName="contactNo" #contactInput  (change)="validateContact(contactInput.value)" maxlength="10">
+                    <small *ngIf="contactError" style="color: red;">{{ contactError }}</small>
                 </div>
             </div>
 

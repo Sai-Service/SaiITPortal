@@ -38,7 +38,7 @@ export class NetworkService {
     }
 
     logTypeList(): Observable<any> {
-      return this.http.get(this.ServerUrl + `/nhReports/getReportType`);
+      return this.http.get(this.ServerUrl + `/nhReports/getReportType?attribute1`);
     }
 
     

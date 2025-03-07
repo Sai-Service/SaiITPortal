@@ -38,7 +38,7 @@
            <div>
             <label>Location</label>
             <select type="number" id="locationId" style="height: 1cm;" formControlName="srclocationId">
-                <option value="none">None</option>
+                <option value="">None</option>
                 <option *ngFor="let sc of  alllocationlist" [value]="sc.locId">
                     {{sc.locId}} - {{sc.locName}}
                 </option>

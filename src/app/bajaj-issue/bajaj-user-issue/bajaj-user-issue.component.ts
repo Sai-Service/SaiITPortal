@@ -117,6 +117,7 @@ public issuestatusList:any=[];
 userissuefromsearch:any=[];
 mainimage:any=[];
 contactError:string='';
+emailError:string='';
 viewAllDoucmnet:any;
 isButtonDisabled = false;
 UpdateisButtonDisabled=false;
@@ -457,6 +458,27 @@ UserissueLinesGroup() {
       this.contactError = 'Enter a valid 10-digit number.';
     } else {
       this.contactError = ''; // No error
+    }
+  }
+
+
+  validateEmails(value: string) {
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/; // Email regex
+    if (!value) {
+      this.emailError = 'Email field is required.';
+      return;
+    }
+  
+    // Split input by ',' or ';' and trim spaces
+    const emailArray = value.split(/[;,]+/).map(email => email.trim());
+  
+    // Validate each email
+    const invalidEmails = emailArray.filter(email => !emailPattern.test(email));
+  
+    if (invalidEmails.length > 0) {
+      this.emailError = `Invalid email(s): ${invalidEmails.join(', ')}`;
+    } else {
+      this.emailError = ''; // No errors
     }
   }
 
