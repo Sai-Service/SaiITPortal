@@ -1,3 +1,199 @@
+// import { Component } from '@angular/core';
+// import {  OnInit, ViewChild, ElementRef } from '@angular/core';
+// import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+// import { Router } from '@angular/router';
+// import { Validators } from '@angular/forms';
+// import { style } from '@angular/animations';
+// import { NgModule } from '@angular/core';
+// import { FormArray } from '@angular/forms';
+// import { NgForm } from '@angular/forms';
+// import { DatePipe } from '@angular/common';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { NetworkService } from '../network.service';
+// import { error } from 'node:console';
+// import { getEnvironmentData } from 'node:worker_threads';
+// import { data } from 'jquery';
+// import { HttpClient } from '@angular/common/http';
+
+// const MIME_TYPES = {
+//   pdf: 'application/pdf',
+//   xls: 'application/vnd.ms-excel',
+//   xlsx: 'application/vnc.openxmlformats-officedocument.spreadsheetxml.sheet'
+// };
+
+
+// interface nhlogupload{
+//   ouId:number;
+//   locationId:number;
+//   deptId:number;
+//   filePath:string;
+//   month: string;
+//   aging:string;
+//   logType:string;
+//   attribute1:number;
+//   attribute2:number;
+//   attribute3:string;
+//   attribute4:string;
+//   attribute5:string;
+//   // remark :string;
+//   currentYear:string;
+//   file:string;
+// }
+
+// @Component({
+//   selector: 'app-nhlogupload',
+//   templateUrl: './nhlogupload.component.html',
+//   styleUrl: './nhlogupload.component.css'
+// })
+// export class NhloguploadComponent {
+//   nhloguploadForm:FormGroup;
+//   ouId:number;
+//   locationId:number;
+//   deptId:number;
+//   filePath:string;
+//   month: string;
+//   logType:string;
+//   startDate:Date;
+//   endDate:Date;
+//   attribute1:number;
+//   attribute2:number;
+//   attribute3:string;
+//   attribute4:string;
+//   attribute5:string;
+//   // remark :string;
+//   currentYear:string;
+//   file:string;
+//   srclocationId:number;
+//   srcdeptId:number;
+//   @ViewChild('fileInput') fileInput:any;
+//   @ViewChild('fileInput1') fileInput1:any;
+
+
+// public erplocationList:any=[];
+// public logTypeList:any=[];
+// public uploadFile:any=[];
+// filetoupload: File | null = null
+// mainimage:any=[];
+// // viewAllDoucmnet:any;
+// isButtonDisabled = false;
+// UpdateisButtonDisabled=false;
+//   // http: any;
+
+//   constructor(private fb: FormBuilder, private router: Router, private service: NetworkService,private http: HttpClient) {
+//     this. nhloguploadForm = fb.group({
+//   ouId:[],
+//   locationId:[],
+//   deptId:[],
+//   filePath:[],
+//   logType:[],
+//   month: [],
+//   startDate:[],
+//   endDate:[],
+//   attribute1:[],
+//   attribute2:[],
+//   attribute3:[],
+//   attribute4:[],
+//   attribute5:[],
+//   // remark :[],
+//   // currentYear:[],
+//   currentYear: [new Date().getFullYear().toString()], 
+//   file:[],
+//   srcdeptId:[],
+//   srclocationId:[],
+// })
+// }
+
+
+//   ngOnInit(): void {
+//     $("#wrapper").toggleClass("toggled");
+  
+//     this.nhloguploadForm.patchValue({
+//       attribute5: sessionStorage.getItem('orgName'),
+//       ouId: sessionStorage.getItem('orgId'),
+//       currentYear: new Date().getFullYear().toString()
+//     });
+  
+//     console.log('Session Data:', sessionStorage.getItem('orgName'), sessionStorage.getItem('orgId'));
+  
+//     // Fetch ERP locations
+//     this.service.erplocationList(sessionStorage.getItem('orgId')).subscribe(
+//       (data) => {
+//         this.erplocationList = data.obj;
+//         console.log('Location List:', this.erplocationList);
+//       },
+//       (error) => console.error('Error fetching locations:', error)
+//     );
+  
+//     // Fetch log types
+//     this.service.logTypeList().subscribe(
+//       (data) => {
+//         this.logTypeList = data.obj;
+//         console.log('Log Type List:', this.logTypeList);
+//       },
+//       (error) => console.error('Error fetching log types:', error)
+//     );
+//   }
+  
+  
+
+
+
+//   get f() { return this. nhloguploadForm.controls; }
+//   // nhloguploadfrm( nhloguploadForm: any) { }
+ 
+
+//   onFileChange(event: any): void {
+//     if (event.target.files.length > 0) {
+//       this.filetoupload = event.target.files[0];
+//     }
+//   }
+
+
+// nhloguploadfrm(nhloguploadForm: any) {
+//   if (this.nhloguploadForm.invalid) {
+//     console.warn('Form is invalid!');
+//     return;
+//   }
+
+//   const formData = new FormData();
+//   const formValues = this.nhloguploadForm.value;
+
+//   console.log('Form Values Before Submission:', formValues); 
+
+//   // Ensure all fields are appended
+//   formData.append('ouId', formValues.ouId || '');
+//   formData.append('locationId', formValues.locationId || '');
+//   formData.append('city', formValues.attribute5 || '');
+//   formData.append('reportType', formValues.logType || '');
+//   formData.append('month', formValues.month || '');
+//   formData.append('year', formValues.currentYear || new Date().getFullYear().toString());
+//   formData.append('attribute5', formValues.attribute5 || '');
+//   formData.append('excelFile', this.filetoupload as Blob);
+
+//   console.log('Sending Form Data:', formValues);
+
+//   this.http.post('http://localhost:8080/nhReports/uploadNhReports', formData)
+//     .subscribe({
+//       next: (response) => console.log('File uploaded successfully:', response),
+//       error: (error) => console.error('Error uploading file:', error),
+//     });
+// }
+
+
+
+
+ 
+//  refreshForm() {
+//   location.reload();
+// }
+
+
+// }
+
+
+
+
+
 import { Component } from '@angular/core';
 import {  OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
@@ -13,6 +209,7 @@ import { NetworkService } from '../network.service';
 import { error } from 'node:console';
 import { getEnvironmentData } from 'node:worker_threads';
 import { data } from 'jquery';
+import { HttpClient } from '@angular/common/http';
 
 const MIME_TYPES = {
   pdf: 'application/pdf',
@@ -26,6 +223,7 @@ interface nhlogupload{
   locationId:number;
   deptId:number;
   filePath:string;
+  month: string;
   aging:string;
   logType:string;
   attribute1:number;
@@ -49,6 +247,7 @@ export class NhloguploadComponent {
   locationId:number;
   deptId:number;
   filePath:string;
+  month: string;
   logType:string;
   startDate:Date;
   endDate:Date;
@@ -74,15 +273,16 @@ mainimage:any=[];
 // viewAllDoucmnet:any;
 isButtonDisabled = false;
 UpdateisButtonDisabled=false;
-  http: any;
+  // http: any;
 
-  constructor(private fb: FormBuilder, private router: Router, private service: NetworkService) {
+  constructor(private fb: FormBuilder, private router: Router, private service: NetworkService,private http: HttpClient) {
     this. nhloguploadForm = fb.group({
   ouId:[],
   locationId:[],
   deptId:[],
   filePath:[],
   logType:[],
+  month: [],
   startDate:[],
   endDate:[],
   attribute1:[],
@@ -91,7 +291,8 @@ UpdateisButtonDisabled=false;
   attribute4:[],
   attribute5:[],
   // remark :[],
-  currentYear:[],
+  // currentYear:[],
+  currentYear: [new Date().getFullYear().toString()], 
   file:[],
   srcdeptId:[],
   srclocationId:[],
@@ -101,32 +302,35 @@ UpdateisButtonDisabled=false;
 
   ngOnInit(): void {
     $("#wrapper").toggleClass("toggled");
-    this. nhloguploadForm.patchValue({attribute5:sessionStorage.getItem('orgName')});
-    this. nhloguploadForm.patchValue({ouId:sessionStorage.getItem('orgId')});
-
-   
-  alert(sessionStorage.getItem('orgId'))
-
-    this.service.erplocationList(sessionStorage.getItem('orgId'))
-    .subscribe( 
-      data => { 
+  
+    this.nhloguploadForm.patchValue({
+      attribute5: sessionStorage.getItem('orgName'),
+      ouId: sessionStorage.getItem('orgId'),
+      currentYear: new Date().getFullYear().toString()
+    });
+  
+    console.log('Session Data:', sessionStorage.getItem('orgName'), sessionStorage.getItem('orgId'));
+  
+    // Fetch ERP locations
+    this.service.erplocationList(sessionStorage.getItem('orgId')).subscribe(
+      (data) => {
         this.erplocationList = data.obj;
-        console.log(this.erplocationList);
-      }
-    )
-
-
-    this.service.logTypeList()
-    .subscribe( 
-      data => {
+        console.log('Location List:', this.erplocationList);
+      },
+      (error) => console.error('Error fetching locations:', error)
+    );
+  
+    // Fetch log types
+    this.service.logTypeList().subscribe(
+      (data) => {
         this.logTypeList = data.obj;
-        console.log(this.logTypeList);
-      }
-    )
-    
-
-
-   }
+        console.log('Log Type List:', this.logTypeList);
+      },
+      (error) => console.error('Error fetching log types:', error)
+    );
+  }
+  
+  
 
 
 
@@ -140,39 +344,43 @@ UpdateisButtonDisabled=false;
     }
   }
 
-  nhloguploadfrm(nhloguploadForm: any) {
-    if (this.nhloguploadForm.invalid) {
-      return;
-    }
 
-    const formData = new FormData();
-    formData.append('ouId', this.nhloguploadForm.get('ouId')?.value);
-    formData.append('locationId', this.nhloguploadForm.get('locationId')?.value);
-    formData.append('logType', this.nhloguploadForm.get('logType')?.value);
-    formData.append('file', this.filetoupload as Blob);
-    
-    // formData.append('attribute1', this.nhloguploadForm.get('attribute1')?.value);
-    // formData.append('attribute2', this.nhloguploadForm.get('attribute2')?.value);
-    // formData.append('attribute3', this.nhloguploadForm.get('attribute3')?.value);
+nhloguploadfrm(nhloguploadForm: any) {
+  if (this.nhloguploadForm.invalid) {
+    console.warn('Form is invalid!');
+    return;
+  }
 
+  const formData = new FormData();
+  const formValues = this.nhloguploadForm.value;
+
+  console.log('Form Values Before Submission:', formValues); 
   
-    this.http.post(' http://localhost:8080/nhReports/uploadNhReports', formData).subscribe((response: any) => {
-      console.log('File uploaded successfully', response);
-    }, (error: any) => {
-      console.error('Error uploading file', error);
+  formData.append('ouId', formValues.ouId || '');
+  formData.append('locationId', formValues.locationId || '');
+  formData.append('city', formValues.attribute5 || '');
+  formData.append('reportType', formValues.logType || '');
+  formData.append('month', formValues.month || '');
+  formData.append('year', formValues.currentYear || new Date().getFullYear().toString());
+  formData.append('attribute5', formValues.attribute5 || '');
+  formData.append('excelFile', this.filetoupload as Blob);
+
+  console.log('Sending Form Data:', formValues);
+
+  this.http.post('http://localhost:8080/nhReports/uploadNhReports', formData)
+    .subscribe({
+      next: (response) => console.log('File uploaded successfully:', response),
+      error: (error) => console.error('Error uploading file:', error),
     });
- }
+}
 
 
 
 
-  // uploadFile(){
-  //   this.uploadnhreport.File(this.filetoupload).subscribe((data: any) => {
-  //   }, (error: any) => {
-  //     console.log(error);
-  //   });
-  // }
+ 
+ refreshForm() {
+  location.reload();
+}
 
-    
 
 }

@@ -121,6 +121,7 @@ emailError:string='';
 viewAllDoucmnet:any;
 isButtonDisabled = false;
 UpdateisButtonDisabled=false;
+checkValidation = false;
 
   constructor(private fb: FormBuilder, private router: Router, private service: BajajIssueService) { 
     this.bajajuserissuesForm = fb.group({
@@ -281,15 +282,18 @@ UserissueLinesGroup() {
   }
 
   sendIssue(){
-    this.isButtonDisabled = true;
-    this.bajajuserissuesForm.patchValue({lastUpdatedBy:'U'});
     const formValue = this.transData(this.bajajuserissuesForm.value);
+    this.validation();
+    if (this.checkValidation === true) {
+    this.bajajuserissuesForm.patchValue({lastUpdatedBy:'U'});
+    // const formValue = this.transData(this.bajajuserissuesForm.value);
     console.log(formValue);
     let formData = new FormData();
     formData.append('file', this.fileInput.nativeElement.files[0]); 
     formData.append('objhdMst',JSON.stringify(formValue));
     this.service.IssuelogSubmit(formData).subscribe((res: any) => {
         if (res.code === 200) {
+          this.isButtonDisabled = true;
           alert(res.message);
           alert(res.obj.issueNo),
           this.bajajuserissuesForm.get('locationId')?.disable();
@@ -312,9 +316,10 @@ UserissueLinesGroup() {
            
           }
         }
+      
       });
 
-
+    }
   }
 
   search(){
@@ -481,6 +486,72 @@ UserissueLinesGroup() {
       this.emailError = ''; // No errors
     }
   }
+
+
+  validation() {
+    var userSubject = this.bajajuserissuesForm.get('userSubject')?.value;
+    var locationId = this.bajajuserissuesForm.get('locationId')?.value;
+    var issueType = this.bajajuserissuesForm.get('issueType')?.value;
+    var deptId = this.bajajuserissuesForm.get('deptId')?.value;
+    var issueDesc = this.bajajuserissuesForm.get('issueDesc')?.value;
+    var subject = this.bajajuserissuesForm.get('subject')?.value;
+    var module = this.bajajuserissuesForm.get('module')?.value;
+    var userName = this.bajajuserissuesForm.get('userName')?.value;
+    
+    
+    if (locationId === undefined || locationId === null || locationId === '') {
+      this.checkValidation = false;
+      alert('Please Select Location .!');
+      return;
+    }
+    if (locationId === undefined || locationId === null || locationId === '') {
+      this.checkValidation = false;
+      alert('Please Enter Your Name.!');
+      return;
+    }
+    if (issueType === undefined || issueType === null || issueType === '') {
+      this.checkValidation = false;
+      alert('Please Select Issue Type.!');
+      return;
+    }
+    if (deptId === undefined || deptId === null || deptId === '') {
+      this.checkValidation = false;
+      alert('Please Select Department .!');
+      return;
+    }
+    if (userSubject === undefined || userSubject === null || userSubject === '') {
+      this.checkValidation = false;
+      alert('Please Enter User Subject .!');
+      return;
+    }
+    if (issueDesc === undefined || issueDesc === null || issueDesc === '') {
+      this.checkValidation = false;
+      alert('Please Enter Issue Description .!');
+      return;
+    }
+    if (module === undefined || module === null || module === '') {
+      this.checkValidation = false;
+      alert('Please Select Module .!');
+      return;
+    }
+    if (subject === undefined || subject === null || subject === '') {
+      this.checkValidation = false;
+      alert('Please Enter Issue-Description Title .!');
+      return;
+    }
+    this.checkValidation = true
+}
+
+
+onFileSelected(event: any) {
+  const file = event.target.files[0];
+  if (file) {
+    alert(`File Uploaded Successfully: ${file.name}`);
+  } else {
+    alert("No file selected.");
+  }
+ }
+
 
 }
 

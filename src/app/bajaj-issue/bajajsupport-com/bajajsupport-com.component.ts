@@ -516,6 +516,15 @@ openDocument(trlineId: any, filePath: any) {
     });
 }
 
+onFileSelected(event: any) {
+  const file = event.target.files[0];
+  if (file) {
+    alert(`File Uploaded Successfully: ${file.name} & click on Add/Update Issue button`);
+  } else {
+    alert("No file selected.");
+  }
+}
+
 // onSelectOuCity(event:any) {
 //   var itemType = event.target.value;
 //   var itemType1 = itemType.substr(itemType.indexOf(': ') + 1, itemType.length);

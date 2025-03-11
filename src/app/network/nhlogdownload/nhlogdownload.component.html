@@ -1,4 +1,4 @@
-<html>
+<!-- <html>
 <body>
   <header>
     <div class="header" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center;">
@@ -19,8 +19,19 @@
                       <label for="city">City:</label>
                       <select type="number" id="ouId" style="height: 1cm;" formControlName="ouId">
                         <option *ngFor="let sc of  cityList" [value]="sc.ouId">
-                            {{sc.ouId}}-{{sc.ouCity}}
+                          
+                          {{sc.ouCity}}
+
                         </option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="year">year</label>
+                      <select name="" id="">
+                        <option value=""></option>
+                        <option value="">2024</option>
+                        <option value="">2025</option>
                       </select>
                     </div>
 
@@ -30,46 +41,46 @@
                         <option *ngFor="let sc of  alllocationlist" [value]="sc.locId">
                             {{sc.locId}} - {{sc.locName}}
                         </option>
-                    </select>
+                      </select>
                     </div>
                   
                     <div class="form-group">
                       <label>Log Type:</label>
                       <select id="logType" formControlName="logType">
-                        <option *ngFor="let sc of logTypeList" [value]="sc.cmnDesc">
-                            {{sc.cmnDesc}}
+                        <option *ngFor="let sc of logTypeList" [value]="sc.report_type">
+                            {{sc.report_type}}
                         </option>
                     </select> 
                     </div>
                   
                     <div class="form-group">
                       <label for="month">Month:</label>
-                      <select id="month">
-                        <option>Select Month</option>
-                        <option>JAN</option>
-                        <option>FEB</option>
-                        <option>MAR</option>
-                        <option>APR</option>
-                        <option>MAY</option>
-                        <option>JUN</option>
-                        <option>JUL</option>
-                        <option>AUG</option>
-                        <option>SEPT</option>
-                        <option>OCT</option>
-                        <option>NOV</option>
-                        <option>DEC</option>
-                      </select>
+                            <select id="month" name="month" formControlName="month">
+                                <option value="">None</option>
+                                <option value="JAN">JAN</option>
+                                <option value="FEB">FEB</option>
+                                <option value="MAR">MAR</option>
+                                <option value="APR">APR</option>
+                                <option value="MAY">MAY</option>
+                                <option value="JUN">JUN</option>
+                                <option value="JUL">JUL</option>
+                                <option value="AUG">AUG</option>
+                                <option value="SEP">SEP</option>
+                                <option value="OCT">OCT</option>
+                                <option value="NOV">NOV</option>
+                                <option value="DEC">DEC</option>
+                            </select>
                     </div>
                   
                     <div class="form-group">
-                      <button style="margin-top: 35px;" type="submit">View Data</button>
+                      <button style="margin-top: 35px;" type="submit" (click)="onViewReports()">View Data</button>
                     </div>
                   </form>
             </div>
 
 
           
-              <!-- <div>
+              <div>
                 <h3>Log Data Details</h3>
                 <table>
                   <thead>
@@ -79,26 +90,117 @@
                       <th>Log Type</th>
                       <th>Uploaded By</th>
                       <th>Download File</th>
-                    </tr>
+                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                    <tr *ngFor="let report of reports">
+                      <td>{{reports.filename}}</td>
+                      <td>{{reports.month}}</td>
+                      <td>{{reports.logType}}</td>
+                      <td>{{reports.uploadedby}}</td>
                       <td>
-                        <button>Download Report</button>
+                        <button type="submit" (click)="downloadReport(report.filename)">Download Report</button>
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-            -->
+           
 
         </main>
 
     </div>
 </body>
-</html>
+</html> -->
 
+<div class="main-container">
+
+  <header>
+    <div class="header" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center;">
+      <img src="assets/images/Sai Logo.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;">
+      <marquee style="font-size: 22px; font-weight: bold;">WELCOME TO SAI SERVICE</marquee>
+    </div>    
+  </header>
+
+  <h2 style="text-align: center; margin-top: 20px;">View Network and Hardware Log Data</h2>
+
+  <main>
+    <div class="upload-section">
+      <form [formGroup]="nhlogdownloadForm" (ngSubmit)="search()">
+
+        <div class="form-group">
+          <label for="city">City:</label>
+          <select id="city" formControlName="ouId" style="height: 1cm; width: 100%;">
+            <option *ngFor="let sc of cityList" [value]="sc.ouCity">{{ sc.ouCity }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="year">Year:</label>
+          <select id="year" formControlName="year" style="height: 1cm; width: 100%;">
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="logType">Log Type:</label>
+          <select id="logType" formControlName="logType" style="height: 1cm; width: 100%;">
+            <option *ngFor="let sc of logTypeList" [value]="sc.code">{{ sc.code }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="month">Month:</label>
+          <select id="month" formControlName="month" style="height: 1cm; width: 100%;">
+            <option value="JAN">JAN</option>
+            <option value="FEB">FEB</option>
+            <option value="MAR">MAR</option>
+            <option value="APR">APR</option>
+            <option value="MAY">MAY</option>
+            <option value="JUN">JUN</option>
+            <option value="JUL">JUL</option>
+            <option value="AUG">AUG</option>
+            <option value="SEPT">SEPT</option>
+            <option value="OCT">OCT</option>
+            <option value="NOV">NOV</option>
+            <option value="DEC">DEC</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-top: 20px;">
+          <button type="submit" (click)="search()">View Data</button>
+        </div>
+
+      </form>
+    </div>
+
+  
+
+    <!-- <div *ngIf="reports?.length > 0" style="margin-top: 40px;"> -->
+    <div style="margin-top: 40px;">
+
+      <h3>Available Reports:</h3>
+      <table style="width: 100%; text-align: left; border-collapse: collapse;">
+        <thead>
+          <tr style="background-color: #f2f2f2;">
+            <th>Report Name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sc of nhteamreportsearch">
+            <td>{{ sc.report_path }}</td>
+            <td>
+              <button (click)="openDocument(sc.report_path)">Download</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+
+
+  </main>
+
+</div>

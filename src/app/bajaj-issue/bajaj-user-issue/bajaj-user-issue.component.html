@@ -125,7 +125,7 @@
                 <div class="form-group">
                     <label for="file-upload">Upload File (Excel with.xlsx pdf with.pdf Format)</label>
                     <input type="file" id="file-upload" style="height: 0.7cm;" [(ngModel)]="file" #fileInput
-                        formControlName="file">
+                        formControlName="file" (change)="onFileSelected($event)">
                 </div>
             </div>
 
@@ -328,7 +328,7 @@
                                     <div>
                                         <label for="file-upload">Upload File</label>
                                         <input type="file" id="file-upload" style="height: 0.9cm;" [(ngModel)]="file" #fileInput1
-                                            formControlName="file">
+                                            formControlName="file" (change)="onFileSelected($event)">
                                     </div>
                         </div>
  
