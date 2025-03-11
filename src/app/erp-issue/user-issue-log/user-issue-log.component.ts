@@ -456,7 +456,7 @@ UserissueLinesGroup() {
         this.userissueslogForm.get('module')?.disable();
         this.userissueslogForm.get('userSubject')?.disable();
         this.userissueslogForm.get('subject')?.disable();
-        this.userissueslogForm.get('issueDesc')?.disable();
+        // this.userissueslogForm.get('issueDesc')?.disable();
         this.isButtonDisabled = true;
         this.service.viewIssueTrnslnFn(issueNo).subscribe((res: any) => {
           if (res.code === 200) {
@@ -515,7 +515,19 @@ UserissueLinesGroup() {
   }
 
 
-  openDocument(){}
+  openDocument(trlineId:any,filePath:any){
+    const fileName = 'download.pdf';
+    this.service.openDocumentFn(trlineId, filePath)
+      .subscribe(data => {
+        var blob = new Blob([data] , { type: 'application/pdf' });
+        var url = URL.createObjectURL(blob);
+        var printWindow = window.open(url, '', 'width=800,height=500');
+      
+        //  { type: 'application/pdf' }
+
+      });
+}
+
   closePopup(){
     this.showPopup = false;
   }

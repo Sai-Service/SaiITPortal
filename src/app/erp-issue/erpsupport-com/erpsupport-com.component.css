@@ -171,3 +171,11 @@ button {
 
 }
 
+.modal-dialog {
+    margin: auto;
+    position: relative;
+    top: 15%;
+    max-width: 90%;
+    transform: translateY(-50%);
+}
+

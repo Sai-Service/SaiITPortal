@@ -314,19 +314,6 @@ export class ErpsupportComComponent {
 
 
 
-  // onSelectOuCity(event:any) {
-  //   var itemType = event.target.value;
-  //   var itemType1 = itemType.substr(itemType.indexOf(': ') + 1, itemType.length);
-  //   var itemType12 = trim(itemType1);
-  //   this.service.erplocationList(itemType12)
-  //   .subscribe( 
-  //     data => { 
-  //       this.erplocationList = data.obj;
-  //       console.log(this.erplocationList);
-  //     }
-  //   )
-  // }
-
   transData(val :any){
     delete val.srclocationId
     delete val.srcdeptId
@@ -458,73 +445,6 @@ export class ErpsupportComComponent {
       });
 }
 
-
-// openDocument(trlineId: any, filePath: any) {
-//   this.service.openDocumentFn(trlineId, filePath)
-//     .subscribe(data => {
-//       // Extract file extension
-//       const fileExtension = filePath.split('.').pop()?.toLowerCase();
-
-//       // Determine MIME type
-//       let mimeType = '';
-//       switch (fileExtension) {
-//         case 'pdf':
-//           mimeType = 'application/pdf';
-//           break;
-//         case 'jpg':
-//         case 'jpeg':
-//           mimeType = 'image/jpeg';
-//           break;
-//         case 'png':
-//           mimeType = 'image/png';
-//           break;
-//         case 'txt':
-//           mimeType = 'text/plain';
-//           break;
-//         case 'doc':
-//         case 'docx':
-//           mimeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
-//           break;
-//         case 'xls':
-//         case 'xlsx':
-//           mimeType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
-//           break;
-//         default:
-//           mimeType = 'application/octet-stream'; // Default binary file
-//           break;
-//       }
-
-//       // Create blob and URL
-//       const blob = new Blob([data], { type: mimeType });
-//       const url = URL.createObjectURL(blob);
-
-//       // Open file in a new window or tab
-//       if (mimeType.startsWith('image') || mimeType === 'application/pdf') {
-//         // For images and PDFs, open directly in a new window
-//         window.open(url, '_blank', 'width=800,height=500');
-//       } else {
-//         // For other file types, trigger download
-//         const anchor = document.createElement('a');
-//         anchor.href = url;
-//         anchor.download = `download.${fileExtension}`;
-//         anchor.click();
-//         URL.revokeObjectURL(url); // Clean up
-//       }
-//     });
-// }
-
-// onSelectOuCity(event:any) {
-//   var itemType = event.target.value;
-//   var itemType1 = itemType.substr(itemType.indexOf(': ') + 1, itemType.length);
-//   var itemType12 = trim(itemType1);
-//   this.service.erplocationList(itemType12)
-//   .subscribe( 
-//     data => { 
-//       this.erplocationList = data.obj;
-//       console.log(this.erplocationList);
-//     }
-//   )
-// }
 
 
 redirectToReport(){

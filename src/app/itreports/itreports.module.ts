@@ -5,6 +5,8 @@ import { ItreportsRoutingModule } from './itreports-routing.module';
 import { ItcomponentComponent } from './itcomponent/itcomponent.component';
 import { CeoreportsComponent } from './ceoreports/ceoreports.component';
 import { ViewreportsComponent } from './viewreports/viewreports.component';
+import { ViewescalationreportsComponent } from './viewescalationreports/viewescalationreports.component';
+import { EscalationreportComponent } from './escalationreport/escalationreport.component';
 
 
 
@@ -12,7 +14,9 @@ import { ViewreportsComponent } from './viewreports/viewreports.component';
   declarations: [
     ItcomponentComponent,
     CeoreportsComponent,
-    ViewreportsComponent
+    ViewreportsComponent,
+    ViewescalationreportsComponent,
+    EscalationreportComponent,
   ],
   imports: [
     CommonModule,

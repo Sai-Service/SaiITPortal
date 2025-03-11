@@ -277,6 +277,8 @@
                                         <th>Trans Id</th>
                                         <th>Issue No</th>
                                         <th>TRN Date</th>
+                                        <th>Updates</th>
+                                        <th>Issue Description</th>
                                         <th>Assign To</th>
                                         <th>Status</th>
                                         <th>Updated By</th>
@@ -289,17 +291,16 @@
                                         <th>{{com.trlineId }}</th>
                                         <th>{{com.issueNo }}</th>
                                         <th>{{com.trnDate | date: 'dd-MM-yyyy' }}</th>
+                                        <th>{{com.remark}}</th>
+                                        <th>{{com.issueDesc}}</th>
                                         <th>{{com.assignedTo}}</th>
                                         <th>{{com.status }}</th>
                                         <th>{{com.lastUpdatedBy }}</th>
                                         <th>
-                                            <button type="button" class="btn btn-primary" style="width: 170px;">
+                                            <button type="button" class="btn btn-primary" style="width: 170px;" (click)="openDocument(com.trlineId,com.filepath)">
                                                 View Document
                                             </button>
-                                            <!--- (click)="openDocument(com.docId, com.docType)"-->
-                                                         <!--- (click)="openDocument(com.docId, com.docType)"-->
-                                               <!--- (click)="openDocument(com.docId, com.docType)"-->
-                                            </th>
+                                        </th>
                                         </tr>
                                       </tbody>
                                </table>

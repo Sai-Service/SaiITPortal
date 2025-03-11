@@ -469,4 +469,10 @@ openDocument(reportName: string) {
     });
 }
   
+
+refreshForm() {
+  location.reload();
+}
+
+
 }

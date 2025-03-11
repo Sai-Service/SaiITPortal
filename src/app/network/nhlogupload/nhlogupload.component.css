@@ -32,19 +32,21 @@ body {
 }
 
 .main-container {
-    padding-top: 40px;
+    padding-top: 10px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 40px;
+    padding-bottom: 30px;
 }
 
 .upload-section {
-    background-color: #d9ecff;
-    border-radius: 8px;
+    background: linear-gradient(to right, #eec2f7, #c8e1f8);
+    /* background: linear-gradient(to right, #c5ebee, #97e0ec, #c5f0f3 ); */
+    /* background-color: #d9ecff; */
+    border: 1px solid rgb(105, 105, 105);
     padding: 30px;
     margin: 20px auto;
-    max-width: 800px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    box-shadow: 2px 2px 2px 3px rgba(2, 2, 2, 0.5);
 }
 
 .upload-section h2 {
@@ -75,8 +77,11 @@ body {
 
 .form-group label {
     font-weight: 700;
-    color: #2d3436;
+    /* color: #2d3436; */
     margin-bottom: 5px;
+    color: #4e2753;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .form-group select,
@@ -95,11 +100,13 @@ body {
 }
 
 .button{
-padding: 3px;
+padding: 5px;
 margin-top: 15px;
-padding-left: 10px;
-padding-right: 10px;
-border-radius: 5px;
-background: linear-gradient(to right, #598ebe, #89a1c2);
+padding-left: 19px;
+padding-right: 19px;
+border-radius: 3px;
+border: none;
+background: linear-gradient(to right, #679cf7, #4686f5);
+/* background: linear-gradient(to right, #ae74eb, #79a8f8); */
 }
 

@@ -367,10 +367,24 @@ nhloguploadfrm(nhloguploadForm: any) {
 
   console.log('Sending Form Data:', formValues);
 
+  // this.http.post('http://localhost:8080/nhReports/uploadNhReports', formData)
+  //   .subscribe({
+  //     next: (response) => console.log('File uploaded successfully:', response),
+  //     error: (error) => console.error('Error uploading file:', error),
+  //   });
+
   this.http.post('http://localhost:8080/nhReports/uploadNhReports', formData)
     .subscribe({
-      next: (response) => console.log('File uploaded successfully:', response),
-      error: (error) => console.error('Error uploading file:', error),
+      next: (response) => {
+        console.log('File uploaded successfully:', response);
+        // Show alert on successful upload
+        alert('Details uploaded successfully!');
+      },
+      error: (error) => {
+        console.error('Error uploading file:', error);
+        // Show alert on error
+        alert('Error uploading file. Please try again!');
+      },
     });
 }
 

@@ -58,6 +58,20 @@ export class LoginPgComponent {
         this.router.navigate(['./admin/itreportsModule/ceoreports']);
         
       }
+
+      if (res.obj.role=='User'){
+        alert
+        ('----WELCOME TO ADMIN PAGE----')
+        this.router.navigate(['./admin/itreportsModule/viewescalationreports']);
+        // this.router.navigate(['./admin/itreportsModule/saiuserhomepage']);
+      }
+
+      if (res.obj.role=='Group'){
+        alert
+        ('----WELCOME TO ADMIN PAGE----')
+        this.router.navigate(['./admin/itreportsModule/escalationreport']);
+      }
+
       if (res.obj.role=='CORPORATE'){
         alert
         ('----WELCOME TO ADMIN PAGE----')
