@@ -456,13 +456,14 @@ UserissueLinesGroup() {
         this.userissueslogForm.get('module')?.disable();
         this.userissueslogForm.get('userSubject')?.disable();
         this.userissueslogForm.get('subject')?.disable();
-        // this.userissueslogForm.get('issueDesc')?.disable();
+        this.userissueslogForm.get('issueDesc')?.disable();
         this.isButtonDisabled = true;
         this.service.viewIssueTrnslnFn(issueNo).subscribe((res: any) => {
           if (res.code === 200) {
             alert(res.message);
             this.viewAllDoucmnet = res.obj.transLines;
             this.userissueslogForm.patchValue({assignTo:data.obj.assignTo});
+  
             
           }
           // else { }

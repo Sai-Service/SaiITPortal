@@ -115,17 +115,14 @@ export class NetworkService {
       return this.http.get(this.ServerUrl + `/FndCmn/CmnType?cmnType=NHREPORTTYPE`);
       
     }
-
     
     cityList(): Observable<any> {
       return this.http.get(this.ServerUrl + '/ouMst/Active')
     }
 
-
     nhREportSearch(city: string,reportType: string,month: string,year: string): Observable<any> {
       return this.http.get(this.ServerUrl + `/nhReports/nhReportPathDetails?city=${city}&reportType=${reportType}&month=${month}&year=${year}`)
     }
-
 
     openDocumentFn(path:string) {
       const REQUEST_URI = this.ServerUrl + `/nhReports/downNhPortalReport/${path}`;
@@ -134,11 +131,6 @@ export class NetworkService {
         headers: this.headers,
       });
     }
-    
-    // uploadnhreport( formdata:FormData) {
-    //   const url = (this.ServerUrl + `/nhReports/uploadNhReports`);
-    //   return this.http.put(url,  formdata);
-    // }
 
     uploadFile(formData: FormData): Observable<any> {
       const url = ` http://localhost:8080/nhReports/uploadNhReports`; 

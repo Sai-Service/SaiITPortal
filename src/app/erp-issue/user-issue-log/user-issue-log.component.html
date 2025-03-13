@@ -126,7 +126,7 @@
                 <div class="form-group">
                     <label for="file-upload">Upload File (Excel with.xlsx pdf with.pdf Format)</label>
                     <input type="file" id="file-upload" style="height: 0.7cm;" [(ngModel)]="file" #fileInput
-                        formControlName="file" (change)="onFileSelected($event)"   >
+                        formControlName="file" (change)="onFileSelected($event)">
                 </div>
             </div>
 
@@ -176,7 +176,7 @@
                             {{sc.locId}} - {{sc.locName}}
                         </option>
                     </select>
-                </div>
+                </div> 
 
                 <div>
                     <label>Department</label>
@@ -184,7 +184,6 @@
                         <option *ngFor="let sc of  departmentList" [value]="sc.cmntypeId">
                             {{sc.cmnDesc}}
                         </option>
-
                     </select>
                 </div>
 
@@ -206,9 +205,9 @@
             <table class="issue-table">
                 <thead>
                     <tr class="GridHeader">
-                        <th scope="col" style="border: 1px solid black; width: 30px; background-color:#66b9fd;">
+                        <th scope="col" style="border: 1px solid black; width: 30px;background-color:#66b9fd;">
                             Priority</th>
-                        <th scope="col" style="border: 1px solid black; width: 30px; background-color:#66b9fd;">Issue No
+                        <th scope="col" style="border: 1px solid black; width: 30px;background-color:#66b9fd;">Issue No
                         </th>
                         <th scope="col" style="border: 1px solid black; width: 30px;background-color: #66b9fd;">Status
                         </th>
@@ -247,8 +246,6 @@
                                 style="width: fit-content;" (click)="issueNoFind(com.issueNo)" class="btn btn-primary"
                                 id="register" data-toggle="modal" style="width: fit-content;"
                                 data-target="#confirmAlert1">Select</button></th>
-
-
                     </tr>
                 </tbody>
             </table>
@@ -278,7 +275,7 @@
                                         <th>Issue No</th>
                                         <th>TRN Date</th>
                                         <th>Updates</th>
-                                        <th>Issue Description</th>
+                                        <!-- <th>Issue Description</th> -->
                                         <th>Assign To</th>
                                         <th>Status</th>
                                         <th>Updated By</th>
@@ -292,7 +289,7 @@
                                         <th>{{com.issueNo }}</th>
                                         <th>{{com.trnDate | date: 'dd-MM-yyyy' }}</th>
                                         <th>{{com.remark}}</th>
-                                        <th>{{com.issueDesc}}</th>
+                                        <!-- <th>{{com.issueDesc}}</th> -->
                                         <th>{{com.assignedTo}}</th>
                                         <th>{{com.status }}</th>
                                         <th>{{com.lastUpdatedBy }}</th>
@@ -334,7 +331,6 @@
                                             formControlName="file" (change)="onFileSelected($event)">
                                     </div>
                             </div>
-                    
                             
                             <div class="form-group inline">
                                 <div>

@@ -497,11 +497,17 @@ UserissueLinesGroup() {
     var subject = this.bajajuserissuesForm.get('subject')?.value;
     var module = this.bajajuserissuesForm.get('module')?.value;
     var userName = this.bajajuserissuesForm.get('userName')?.value;
+    var priority = this.bajajuserissuesForm.get('priority')?.value;
     
-    
+
     if (locationId === undefined || locationId === null || locationId === '') {
       this.checkValidation = false;
       alert('Please Select Location .!');
+      return;
+    }
+    if (priority === undefined || priority === null || priority === '') {
+      this.checkValidation = false;
+      alert('Please Select Priority .!');
       return;
     }
     if (locationId === undefined || locationId === null || locationId === '') {

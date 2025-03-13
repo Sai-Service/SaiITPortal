@@ -445,13 +445,9 @@ export class ErpsupportComComponent {
       });
 }
 
-
-
 redirectToReport(){
   this.router.navigate(['erpsupportreport']);
 }
-
-
 
 onFileSelected(event: any) {
   const file = event.target.files[0];
