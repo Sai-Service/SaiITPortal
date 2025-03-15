@@ -1,0 +1,180 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Raleway', sans-serif;
+    background: #f5f7fa;
+    color: #2d3436;
+    line-height: 1.8;
+  }
+  
+  /* Header and Navbar */
+  .header {
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .brand-name {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+  }
+  
+  .nav-links li {
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links li:hover {
+    color: #6c5ce7;
+    cursor: pointer;
+  }
+  
+  .btn-report {
+    background: linear-gradient(135deg, #6c5ce7, #8e44ad);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+  }
+  
+  .btn-report:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #5a4bcf, #7d3c98);
+  }
+  
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  
+  .hamburger span {
+    width: 30px;
+    height: 3px;
+    background: #2d3436;
+    margin: 5px 0;
+  }
+  
+  /* Main Content */
+  .main-container {
+    padding-top: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .dos-donts-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    margin-top: 40px;
+    
+  }
+  
+  .card {
+    flex: 1;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(31, 38, 135, 0.25);
+    backdrop-filter: blur(30px);
+    background: rgba(255, 255, 255, 0.4);
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .card h2 {
+    margin-bottom: 25px;
+    font-size: 28px;
+    text-align: center;
+    color: #2c3e50;
+  }
+  
+  .card p {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 16px;
+    font-size: 18px;
+  }
+  
+  /* Announcement */
+  .announcement {
+    margin-top: 60px;
+    padding: 30px;
+    text-align: center;
+    background: linear-gradient(135deg, #6c5ce7, #8e44ad);
+    color: white;
+    border-radius: 20px;
+    font-size: 20px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+  
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 20px 0;
+    }
+  
+    .nav-links.active {
+        display: flex;
+    }
+  
+    .dos-donts-section {
+        flex-direction: column;
+    }
+  }
+  
+  

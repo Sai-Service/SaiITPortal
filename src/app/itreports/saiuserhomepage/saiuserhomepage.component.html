@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAI SERVICE - Do's and Don'ts</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="http://localhost:8080/DocUpload/DownloadImages?imagePath=D://IMGUPLOAD//apkicon.png" alt="Logo">
+                <h1 class="brand-name">SAI SERVICE</h1>
+            </div>
+
+            <ul class="nav-links">
+                <li><b>User Name: {{ userName }}</b></li>
+            </ul>
+
+            <button class="btn-report" (click)="navigateToReports()">View Reports</button>
+
+            <!-- <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div> -->
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <section class="dos-donts-section">
+            <div class="card do-card">
+                <h2>✅ DO'S</h2>
+                <p><span class="icon">✔️</span> Save all your work files in D: or E: Drive.</p>
+                <p><span class="icon">✔️</span> Always shut down your system properly.</p>
+                <p><span class="icon">✔️</span> Allow antivirus to complete scanning.</p>
+                <p><span class="icon">✔️</span> Delete unwanted emails regularly.</p>
+                <p><span class="icon">✔️</span> Report system issues immediately.</p>
+                <p><span class="icon">✔️</span> Do proper logout from web portals.</p>
+            </div>
+
+            <div class="card dont-card">
+                <h2>❌ DON'TS</h2>
+                <p><span class="icon">❌</span> Don’t save files on your desktop.</p>
+                <p><span class="icon">❌</span> Don’t save data on the C: drive.</p>
+                <p><span class="icon">❌</span> Don’t autosave passwords.</p>
+                <p><span class="icon">❌</span> Don’t overload the UPS.</p>
+                <p><span class="icon">❌</span> Avoid unauthorized websites.</p>
+                <p><span class="icon">❌</span> Avoid using USB for mobile charging.</p>
+            </div>
+        </section>
+
+        <div class="announcement">
+            <p>✨ A company’s most valuable asset is its employees. Thank you for your efforts and determination. Today’s talent. Tomorrow’s success. ✨</p>
+        </div>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+    </script>
+
+</body>
+
+</html>

@@ -134,9 +134,6 @@ UpdateisButtonDisabled=false;
   }
   
   
-
-
-
   get f() { return this. nhloguploadForm.controls; }
   // nhloguploadfrm( nhloguploadForm: any) { }
  
@@ -190,8 +187,6 @@ nhloguploadfrm(nhloguploadForm: any) {
       },
     });
 }
-
-
 
 
  
