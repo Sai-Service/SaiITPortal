@@ -85,7 +85,7 @@ form {
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 6px;
 }
 
 form label {
@@ -103,7 +103,6 @@ form input[type="file"] {
     border-radius: 4px;
     background-color: white;
     font-size: 14px;
-    min-width: 0;
 }
 
 form button {

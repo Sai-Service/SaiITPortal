@@ -1,0 +1,88 @@
+<html>
+
+<header>
+    <div class="header" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center;">
+      <img src="assets/images/Sai Logo.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;">
+      <marquee style="font-size: 22px; font-weight: bold;">WELCOME TO SAI SERVICE</marquee>
+    </div>    
+</header>
+
+<form [formGroup]="commonformForm"  (ngSubmit)="commonformfrm(commonformForm)">
+    <div class="container">
+        <!-- <div class="group inline">
+        
+           <div>
+               <label>News Line 1:</label>
+               <input type="text">
+           </div>
+                  
+           <div>
+               <label>News Line 2:</label>
+               <input type="text">
+           </div>
+                                 
+           <div>
+                <label>News Line 3:</label>
+                <input type="text">
+           </div>
+
+           <div>
+                <label>News Line 4:</label>
+                <input type="text">
+           </div>
+    </div> 
+
+    <div class="group inline">
+           <div>
+            <label>Image 1</label>
+            <input type="file" id="Uploadimage" name="image" #fileInput formControlName="file" (change)="onFileSelect($event)">
+           </div>
+
+           <div>
+            <label>Image 2</label>
+            <input type="file" id="Uploadimage" name="image" #fileInput formControlName="file" (change)="onFileSelect($event)">
+           </div>
+
+           <div>
+            <label>Image 3</label>
+            <input type="file" id="Uploadimage" name="image" #fileInput formControlName="file" (change)="onFileSelect($event)">
+           </div>
+
+           <div>
+            <label>Image 4</label>
+            <input type="file" id="Uploadimage" name="image" #fileInput formControlName="file" (change)="onFileSelect($event)">
+           </div>
+    
+    </div> -->
+   
+        <div class="group inline">
+                <div>
+                   <label>Image Name</label>
+                   <!-- <select id="fileName" style="height: 0.8cm;" formControlName="fileName">
+                            <option value="MAIN IMAGE">MAIN IMAGE</option>   
+                            <option value="image.1">image.1</option>   
+                            <option value="image.2">image.2</option>   
+                            <option value="image.3">image.3</option>   
+                   </select> -->
+                   <select id="fileName" style="height: 0.7cm;" formControlName="attribute2">
+                            <option *ngFor="let sc of  fileNameList" [value]="sc.cmnDesc">
+                             {{sc.cmnDesc}}
+                            </option>
+                   </select>
+             
+                </div>
+                <div>
+                    <label>Image Upload</label>
+                    <input type="file" style="height: 0.7cm;" id="file" name="file" [(ngModel)]="file" #fileInput formControlName="file" (change)="onFileSelect($event)">
+                </div>
+        </div>
+
+        <div class="group inline">
+                 <button type="submit" (click)="Uploadimage()">Upload</button>
+        </div>
+
+    </div>
+
+</form>
+
+</html>

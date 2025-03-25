@@ -87,22 +87,13 @@ export class LoginPgComponent {
             ('----WELCOME TO ADMIN PAGE----')
             this.router.navigate(['./admin/networkModule/nhlogdownload']);
           }
+
+      if (res.obj.role=='COMMON'){
+            this.router.navigate(['./admin/commonpageModule/commonform']);
+            }
     }})
 
-    // this.LoginSerService.login(this.username, this.password).subscribe((res: any) => {
-    //   console.log('Res', res);
-    //   if (res.obj.role=='NH'){
-    //     this.router.navigate(['./admin/networkModule/nhlogupload']);
-        
-    //   }
-    //   if (res.obj.role==''){
-    //     alert
-    //     ('----WELCOME TO ADMIN PAGE----')
-    //     this.router.navigate(['./admin/networkModule/nhlogdownload']);
-    //   }
-    // }
-  // )
-     
+   
   
   }
 

@@ -167,6 +167,8 @@ nhloguploadfrm(nhloguploadForm: any) {
 
   console.log('Sending Form Data:', formValues);
 
+
+  
   // this.http.post('http://localhost:8080/nhReports/uploadNhReports', formData)
   //   .subscribe({
   //     next: (response) => console.log('File uploaded successfully:', response),
@@ -186,6 +188,7 @@ nhloguploadfrm(nhloguploadForm: any) {
         alert('Error uploading file. Please try again!');
       },
     });
+
 }
 
 

@@ -170,7 +170,7 @@ export class NhlogdownloadComponent {
 
   search() {
     const city = (document.getElementById('city') as HTMLSelectElement).value;
-    alert("city-->"+city);
+    alert("city-"+city);
     const year = (document.getElementById('year') as HTMLSelectElement).value;
     const logType = (document.getElementById('logType') as HTMLSelectElement).value;
     const month = (document.getElementById('month') as HTMLSelectElement).value;
@@ -191,7 +191,8 @@ export class NhlogdownloadComponent {
               } else {
                 console.error('Expected report_path to be a string, but got:', typeof reportPath);
               }
-            } else {
+            } 
+            else {
               console.error('Expected res.obj to be a non-empty array.');
             }
           } else {

@@ -20,8 +20,11 @@ const routes: Routes = [
       {
         path: 'networkModule',
         loadChildren: () => import('../network/network.module').then(mod => mod.NetworkModule)
+      },
+      {
+        path: 'commonpageModule',
+        loadChildren: () => import('../commonpage/commonpage.module').then(mod => mod.CommonpageModule)
       }
-      
     ]
   }
 ];
