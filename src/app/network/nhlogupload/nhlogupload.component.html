@@ -7,13 +7,20 @@
             <marquee style="font-size: 22px; font-weight: bold;">WELCOME TO SAI SERVICE</marquee>
         </div>    
     </header>
+    <div class="marquee-section">
+        <div class="marquee-wrapper">
+            <h6 class="marquee-text">Network And Hardware</h6>
+        </div>
+    </div>
     
-    <h3 style="text-align: center;font-weight: bolder;margin-top: 20px;background-color: #dde3ec;color: #405f8d;">Network And Hardware Log File Upload</h3>
+    <!-- <h3 style="text-align: center;font-weight: bolder;margin-top: 20px;background-color: #dde3ec;color: #405f8d;">Network And Hardware</h3> -->
 
     <div class="main-container">
+        
 
         <main>
             <div class="upload-section">
+                <h5>Upload File Here:</h5>
                 <form [formGroup]="nhloguploadForm" (ngSubmit)="nhloguploadfrm(nhloguploadForm)">
                     <div class="form-row">
                         <div class="form-group">
@@ -88,11 +95,40 @@
                     
                     <button class="button" style="margin-left: 20px;" (click)="refreshForm()">Clear</button>
 
-                    <button class="button" style="margin-left: 20px;">Close</button>
+                    <button class="button" style="margin-left: 20px;" (click)="search()">Search</button>
                     </div>
 
                 </form>
             </div>
+
+          
+
+            <!-- <div style="margin-top: 40px;">
+
+                <h3>Available Reports:</h3>
+                <table style="width: 100%; text-align: left; border-collapse: collapse;">
+                  <thead>
+                    <tr style="background-color: #f2f2f2;">
+                      <th>Report Name</th>
+                      <th>Report</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let sc of nhteamreportsearch">
+                      <td>{{ sc.report_path }}</td>
+                      <td>
+                        <button >Download</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+           -->
+
+
+
+
+
         </main>
 
         

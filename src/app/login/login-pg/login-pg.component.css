@@ -3,15 +3,14 @@
   background: rgb(7, 7, 7,0.7);
    color: white;
    padding: 10px 20px;
-   position: sticky;
+   /* position: sticky; */
    top: 0;
    z-index: 1000;
  }
  
  .navbar .container{
    display: flex;
-   align-items: center;
-   justify-content: space-between;
+   /* justify-content: space-between; */
  }
  
  .navbar .logo img{
@@ -120,10 +119,10 @@
  }
  
  .page{
-   margin-top:70px;
+   margin-top:40px;
    font-size:30px;
    font-weight: bold;
-   font-family: Georgia, 'Times New Roman', Times, serif;
+   /* font-family: Georgia, 'Times New Roman', Times, serif; */
    color:black;
  }
  
@@ -248,10 +247,40 @@
    padding: 8px 15px;
    font-size: 13px;
    color: white;
-   background-color: #4b0558bb;
-   /* background: linear-gradient(to right,#a345c9,#a86ebe, #bf8ac4); */
+   /* background-color: #4b0558bb; */
+   background: linear-gradient(to right,#9e69b1,#b123e9,#cb9ddb);
    text-align: center;
    font-weight: bolder;
    border-radius: 5px;
    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.7);
  }  
+
+ .frontlogin-section {
+  flex-grow: 1;
+  text-align: center;
+  margin: 0 20px;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #c7d7f0;
+}
+
+.frontlogin-wrapper {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 4px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.frontlogin-text {
+  font-size: 30px;
+  font-weight: 700;
+  color: #1e82f5ad;
+  animation: glowing 2s infinite alternate;
+}
+
+/* @keyframes glowing {
+  0% { color: #f3dbc4; text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+  100% { color: #75caf1; text-shadow: 0 0 15px rgba(255, 109, 0, 0.7); }
+} */
+
+

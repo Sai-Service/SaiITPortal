@@ -28,6 +28,21 @@ interface uerissueslog{
   status:string;
   file:string;
   fileName:string;
+  image_Main:string;
+  image_1:string;
+  image_2:string;
+  image_3:string;
+  image_4:string;
+  image_5:string;
+  news_Line1:string;
+  news_Line2:string;
+  news_Line3:string;
+  news_Line4:string;
+  news_Line5:string;
+  news_Line6:string;
+  news_Line7:string;
+  news_Line8:string;
+  createdBy:string;
 
 }
 
@@ -53,9 +68,37 @@ export class CommonformComponent {
   currentYear:string;
   file:string;
   fileName:string;
-  
+  image_Main:string;
+  image_1:string;
+  image_2:string;
+  image_3:string;
+  image_4:string;
+  image_5:string;
+  news_Line1:string;
+  news_Line2:string;
+  news_Line3:string;
+  news_Line4:string;
+  news_Line5:string;
+  news_Line6:string;
+  news_Line7:string;
+  news_Line8:string;
+  createdBy:string;
 
-  @ViewChild('fileInput') fileInput:any;
+
+  // @ViewChild('fileInput') fileInput:any;
+  // @ViewChild('fileInput1') fileInput1:any;
+  // @ViewChild('fileInput2') fileInput2:any;
+  // @ViewChild('fileInput3') fileInput3:any;
+  // @ViewChild('fileInput4') fileInput4:any;
+  // @ViewChild('fileInput5') fileInput5:any;
+  // @ViewChild('fileInput6') fileInput6:any;
+  // @ViewChild('fileInput7') fileInput7:any;
+  @ViewChild('fileInput1') fileInput1!: ElementRef;
+  @ViewChild('fileInput2') fileInput2!: ElementRef;
+  @ViewChild('fileInput3') fileInput3!: ElementRef;
+  @ViewChild('fileInput4') fileInput4!: ElementRef;
+  @ViewChild('fileInput5') fileInput5!: ElementRef;
+  @ViewChild('fileInput6') fileInput6!: ElementRef;
   // Uploadimage: any;
   selectedFile: any;
 
@@ -79,6 +122,21 @@ export class CommonformComponent {
       currentYear:[],
       file:[],
       fileName:[],
+      image_Main:[],
+      image_1:[],
+      image_2:[],
+      image_3:[],
+      image_4:[],
+      image_5:[],
+      news_Line1:[],
+      news_Line2:[],
+      news_Line3:[],
+      news_Line4:[],
+      news_Line5:[],
+      news_Line6:[],
+      news_Line7:[],
+      news_Line8:[],
+      createdBy:[],
      
     })
     }
@@ -86,11 +144,21 @@ export class CommonformComponent {
 
     ngOnInit(): void {
       $("#wrapper").toggleClass("toggled");
-      this.commonformForm.patchValue({createdBy:sessionStorage.getItem('')});
+      this.commonformForm.patchValue({createdBy:sessionStorage.getItem('userName')});
       var  fileType = this.commonformForm.get('fileType')?.value;
       if(fileType === null){
         this.commonformForm.patchValue({fileType:'none'});
       }
+
+
+      
+    // this.service.fileNameList(sessionStorage.getItem(''))
+    // .subscribe( 
+    //   data => { 
+    //     this.fileNameList = data.obj;
+    //     console.log(this.fileNameList);
+    //   }
+    // )
 
 
       this.service.fileNameList()
@@ -116,26 +184,66 @@ onFileSelect(event: any): void {
 
 
 
-Uploadimage(){
-  let formData = new FormData();
-  formData.append('imageFile', this.fileInput.nativeElement.files[0]); 
-  // formData.append('file', this.fileInput.nativeElement.files[0]);  
-  formData.append('attribute2',  this.commonformForm.get('attribute2')?.value); 
-  // formData.append('objhdMst',JSON.stringify(formValue));
-  this.service.upload(formData).subscribe((res: any) => {
-      if (res.code === 200) {
-        console.log('Image uploaded successfully:');
-        // Show alert on successful upload
-        alert('Image uploaded successfully!');
-      }
+// Uploadimage(){
+//   let formData = new FormData();
+//   formData.append('image_Main', this.fileInput1.nativeElement.files[0]); 
+//   formData.append('image_1', this.fileInput2.nativeElement.files[0]); 
+//   formData.append('image_2', this.fileInput3.nativeElement.files[0]); 
+//   formData.append('image_3', this.fileInput4.nativeElement.files[0]); 
+//   formData.append('image_4', this.fileInput5.nativeElement.files[0]); 
+//   formData.append('image_5', this.fileInput6.nativeElement.files[0]); 
+//   // formData.append('file', this.fileInput.nativeElement.files[0]);  
+//   formData.append('createdBy', this.commonformForm.get('createdBy')?.value ||'') 
+//   // this.service.erplocationList(sessionStorage.getItem('orgId'))
+//   // formData.append('objhdMst',JSON.stringify(formValue));
+//   this.service.upload(formData).subscribe((res: any) => {
+//       if (res.code === 200) {
+//         console.log('Image uploaded successfully:');
+//         // Show alert on successful upload
+//         alert('Image uploaded successfully!');
+//       }
 
-      else {
+//       else {
         
-      }
-   })
+//       }
+//    })
 
+// }
+
+Uploadimage() {
+  let formData = new FormData();
+
+  if (this.fileInput1?.nativeElement.files.length > 0) {
+    formData.append('image_Main', this.fileInput1.nativeElement.files[0]);
+  }
+  if (this.fileInput2?.nativeElement.files.length > 0) {
+    formData.append('image_1', this.fileInput2.nativeElement.files[0]);
+  }
+  if (this.fileInput3?.nativeElement.files.length > 0) {
+    formData.append('image_2', this.fileInput3.nativeElement.files[0]);
+  }
+  if (this.fileInput4?.nativeElement.files.length > 0) {
+    formData.append('image_3', this.fileInput4.nativeElement.files[0]);
+  }
+  if (this.fileInput5?.nativeElement.files.length > 0) {
+    formData.append('image_4', this.fileInput5.nativeElement.files[0]);
+  }
+  if (this.fileInput6?.nativeElement.files.length > 0) {
+    formData.append('image_5', this.fileInput6.nativeElement.files[0]);
+  }
+
+  formData.append('createdBy', this.commonformForm.get('createdBy')?.value || '');
+
+  this.service.upload(formData).subscribe((res: any) => {
+    if (res.code === 200) {
+      alert('Image uploaded successfully!');
+    } else {
+      alert('Upload failed');
+    }
+  });
 }
 
 
 
+   
 }

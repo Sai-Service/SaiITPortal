@@ -2,6 +2,22 @@ import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AppConst } from '../../app-const';
 
+interface FormData {
+  reportType: string;
+  city: string;
+  month: string;
+  weekNo: number;
+  year: number;
+  department: string;
+  ouId: string;
+  createdBy: string;
+  updatedBy: string;
+  orgId: string;
+  orgName?: string;
+  role?: string;
+
+}
+
 @Component({
   selector: 'app-viewescalationreports',
   templateUrl: './viewescalationreports.component.html',
@@ -13,14 +29,34 @@ export class ViewescalationreportsComponent {
   errorMessage: string | null = null;
   ServerUrl: string;
 
+  userName: string = ''; 
+  orgId: number = 0;    
+  orgName: string = '';  
+  role: string = '';
+
   constructor(private http: HttpClient) {
     this.ServerUrl = AppConst.ServerUrl;
   }
 
+  ngOnInit() {
+    const storedUsername = sessionStorage.getItem('userName');
+    const storedOrgId = sessionStorage.getItem('orgId');
+    const storedOrgName = sessionStorage.getItem('orgName');
+    const storedRole = sessionStorage.getItem('role');
+
+
+    this.userName = storedUsername || '';
+    this.orgId = storedOrgId ? Number(storedOrgId) : 0;
+    this.orgName = storedOrgName || '';
+    this.role = storedRole || '';
+
+
+  }
+
 
   fetchReports(city: string): void {
-    if (city === 'Select City') {
-      alert('Please select a valid city.');
+    if (city === 'Select Report Type') {
+      alert('Please select a valid report type.');
       return;
     }
   

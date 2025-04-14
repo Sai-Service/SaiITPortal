@@ -1,14 +1,16 @@
 <br>
 <br>
 <br>
-<form #f="ngForm" novalidate class="form-container" >
+<form #f="ngForm" novalidate class="form-container">
 <!-- <html> -->
-   <body style="padding-left: 25cm;">
+   
+  <body >
+      <!--  <div style="padding-left: 25cm;">
       <div class="wrapper">
          <div class="title">
             Login Form
          </div>
-         <form action="#" >  
+         <form action="#">  
             <div class="field">
                <input type="text" id="userName" name="userName" [(ngModel)]="userName"  required>
                <label>User Name</label>
@@ -23,9 +25,41 @@
            
          </form>
       </div>
+   </div> -->
+
+   <div style="display: flex; align-items: center; justify-content: center; height: 58vh;">
+    
+      <!-- Left Side Image -->
+      <div style="flex: 1; text-align: center;margin-right: 290px;">
+         
+        <!-- <img src="https://www.saiservice.com/public/assets/sai_images/home-page-side.PNG" alt="Login Image" style="max-width: 80%; height: auto;"> -->
+        <img src="assets/images/map1.jpg" alt="Login Image" style="max-width: 100%; height: 70%;">
+      </div>
+      
+      <!-- Right Side Login Form -->
+      <div class="wrapper" style="flex: 1; max-width: 350px;margin-right: 20px;">
+
+        <!-- <div style="text-align: center;font-size: 30px;font-weight: 600;margin-bottom: 20px; background: linear-gradient(-135deg, #a9069e, #bdc6f0);color: white;border-radius: 20px;">IT Support</div> -->
+
+        <div class="title">Login Form</div>
+        <form action="#">
+          <div class="field">
+            <input type="text" id="userName" name="userName" [(ngModel)]="userName" required>
+            <label>User Name</label>
+          </div>
+          <div class="field">
+            <input type="password" id="password" [(ngModel)]="password" name="password" required>
+            <label>Password</label>
+          </div>
+          <div class="field">
+            <input type="submit" (click)="login()" value="Login">
+          </div>
+        </form>
+      </div>
+    </div>
+
    </body>
 <!-- </html> -->
-
 </form>
 <br>
 <br>

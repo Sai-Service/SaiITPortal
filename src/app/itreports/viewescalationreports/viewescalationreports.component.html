@@ -6,25 +6,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sai Service</title>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 
 <body>
-  <header>
+
+  <!-- <header>
     <div class="header" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center;">
       <img src="assets/images/Sai Logo.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;">
       <marquee style="font-size: 22px; font-weight: bold;">WELCOME TO SAI SERVICE</marquee>
     </div>
-  </header>
+  </header> -->
+
+
+
+  <header class="header">
+    <div class="header-container">
+        <div class="logo-section">
+            <img src="http://localhost:8080/DocUpload/DownloadImages?imagePath=D://IMGUPLOAD//apkicon.png" alt="Sai Service Logo" class="logo">
+            <h1 class="brand-name">SAI SERVICE</h1>
+        </div>
+        
+        <div class="marquee-section">
+            <div class="marquee-wrapper">
+                <marquee class="marquee-text">✨Sai Service✨</marquee>
+            </div>
+        </div>
+        
+        <div class="user-section">
+            <div class="username">
+                <span class="user-label">User:</span>
+                <span class="user-highlight">{{userName}}</span>
+            </div>
+          
+        </div>
+    </div>    
+</header>
 
   <div class="main-container">
     <main>
       <div class="upload-section">
-        <h2>View Reports</h2>
+       <h2 style="text-align: center;">View Reports</h2>
 
         <form (submit)="onViewReports(); $event.preventDefault();">
-          <div class="form-group">
+          <div class="form-group" style="margin-left: 300px;">
             <label for="city">Report Type:</label>
-            <!-- <select id="city" (change)="onCityChange($event)"> -->
             <select id="city">
               <option>Select Report Type</option>
               <option>ERP</option>
@@ -36,33 +63,9 @@
             
           </div>
 
-          <!-- <div class="form-group">
-            <label for="reportType">Report Type:</label>
-            <select id="reportType">
-              <option>Select Report Type</option>
-              <option *ngFor="let type of reportTypes">{{ type }}</option>
-            </select>
-          </div> -->
-
-          <!-- <div class="form-group">
-            <label for="month">Month:</label>
-            <select id="month">
-              <option>Select Month</option>
-              <option *ngFor="let month of ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEPT', 'OCT', 'NOV', 'DEC']">{{ month }}</option>
-            </select>
-          </div> -->
-
-          <!-- <div class="form-group">
-            <label for="year">Year:</label>
-            <select id="year">
-              <option>Select Year</option>
-              <option [value]="previousYear">{{ previousYear }}</option>
-              <option [value]="currentYear">{{ currentYear }}</option>
-            </select>
-          </div> -->
 
           <div class="form-group">
-            <button type="submit" (click)="onViewReports()">View Reports</button>
+            <button (click)="onViewReports()">View Reports</button>
           </div>
         </form>
 
@@ -77,7 +80,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let report of reports">
-                <td>{{ report.fileName }}</td> <!-- Displaying extracted filename -->
+                <td>{{ report.fileName }}</td>
                 <td>
                   <button (click)="downloadReport(report.fileName)">Download</button>
                 </td>

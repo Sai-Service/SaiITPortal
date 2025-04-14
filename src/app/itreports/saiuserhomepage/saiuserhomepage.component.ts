@@ -34,6 +34,7 @@ export class SaiuserhomepageComponent {
 
   navigateToReports() {
     this.router.navigate(['./admin/itreportsModule/viewescalationreports']);
+    
   }
 
 }

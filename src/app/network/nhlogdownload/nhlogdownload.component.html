@@ -5,13 +5,19 @@
   </div>    
 </header>
 
-<h2 style="text-align: center; margin-top: 20px;background-color: #dde3ec;color: #405f8d;">View Network and Hardware Log Data</h2>
+<div class="marquee-section">
+  <div class="marquee-wrapper">
+      <h6 class="marquee-text">Network And Hardware</h6>
+  </div>
+</div>
+
+<!-- <h2 style="text-align: center; margin-top: 20px;background-color: #dde3ec;color: #405f8d;">View Network and Hardware Log Data</h2> -->
 
 <div class="main-container">
  
   <main>
     <div class="upload-section">
-      <!-- <h2 style="color: #405f8d;">Download Network and Hardware Log Data :</h2> -->
+      <h6 style="margin-bottom: 20px;">Download data here:</h6>
       <form [formGroup]="nhlogdownloadForm" (ngSubmit)="search()">
 
         <div class="form-group">
@@ -55,7 +61,7 @@
         </div>
       
       
-        <div class="form-group" style="margin-top: 20px;">
+        <div class="form-group" style="margin-top: 15px;">
           <button type="submit" (click)="search()">View Data</button>
         </div>
 
@@ -68,6 +74,9 @@
 
   
 
+
+
+
     <!-- <div *ngIf="reports?.length > 0" style="margin-top: 40px;"> -->
     <div style="margin-top: 40px;">
 
@@ -76,12 +85,16 @@
         <thead>
           <tr style="background-color: #f2f2f2;">
             <th>Report Name</th>
+            <!-- <th>LogType</th> -->
+            <!-- <th>City</th> -->
             <th>Download Report</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let sc of nhteamreportsearch">
             <td>{{ sc.report_path }}</td>
+            <!-- <td>{{sc.code}}</td> -->
+            <!-- <td>{{sc.city}}</td> -->
             <td>
               <button (click)="openDocument(sc.report_path)">Download</button>
             </td>

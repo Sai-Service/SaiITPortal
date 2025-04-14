@@ -77,6 +77,7 @@ mainimage:any=[];
 // viewAllDoucmnet:any;
 isButtonDisabled = false;
 UpdateisButtonDisabled=false;
+  nhteamreportsearch: any;
 
   constructor(private fb: FormBuilder, private router: Router, private service: NetworkService,private http: HttpClient) {
     this. nhloguploadForm = fb.group({
@@ -195,6 +196,54 @@ nhloguploadfrm(nhloguploadForm: any) {
  
  refreshForm() {
   location.reload();
+}
+
+search() {
+  const city = (document.getElementById('city') as HTMLSelectElement).value;
+  alert("city-"+city);
+  const year = (document.getElementById('year') as HTMLSelectElement).value;
+  const logType = (document.getElementById('logType') as HTMLSelectElement).value;
+  const month = (document.getElementById('month') as HTMLSelectElement).value;
+
+  this.service.nhREportSearch(city, logType, month, year)
+    .subscribe(
+      (res: any) => {
+        if (res.code == 200) {
+          alert(res.message);
+          
+          this.nhteamreportsearch = res.obj;
+
+          if (Array.isArray(res.obj) && res.obj.length > 0) {
+            const reportPath = res.obj[0].report_path; 
+            if (typeof reportPath === 'string') {
+               const fileName = this.extractFileName(reportPath);
+              console.log('Extracted file name: ', fileName);  // For debugging purposes, or you can use it elsewhere
+            } else {
+              console.error('Expected report_path to be a string, but got:', typeof reportPath);
+            }
+          } 
+          else {
+            console.error('Expected res.obj to be a non-empty array.');
+          }
+        } else {
+          // Handle the case when the response code is not 200
+        }
+      },
+      (error: any) => {
+        // Handle any errors that occur during the HTTP request
+        console.error('Error occurred: ', error);
+      }
+    );
+}
+
+// Your extractFileName function
+private extractFileName(path: string): string {
+  if (!path) return '';
+  if (typeof path !== 'string') {
+    console.error('Expected path to be a string but got:', typeof path);
+    return '';  // Return an empty string if path isn't a string
+  }
+  return path.split('//').pop() || '';  // Extract the file name from the path
 }
 
 

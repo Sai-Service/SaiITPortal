@@ -168,6 +168,8 @@ export class NhlogdownloadComponent {
   get f() { return this.nhlogdownloadForm.controls; }
   nhlogdownloadfrm(nhlogdownloadForm: any) { }
 
+//(city: string,reportType: string,month: string,year: string)
+
   search() {
     const city = (document.getElementById('city') as HTMLSelectElement).value;
     alert("city-"+city);
@@ -221,7 +223,7 @@ openDocument(reportName: string) {
   var path = this.extractFileName(reportName);
   this.service.openDocumentFn(path)
     .subscribe((data: BlobPart) => {
-      var blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      var blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
 
       var url = URL.createObjectURL(blob);
 
@@ -231,9 +233,9 @@ openDocument(reportName: string) {
       document.body.appendChild(a); // Append anchor to the DOM to trigger download
       a.click();  // Programmatically click the anchor to trigger download
 
-      // Clean up by revoking the object URL
+      
       URL.revokeObjectURL(url);
-      document.body.removeChild(a); // Remove the anchor element
+      document.body.removeChild(a); 
     }, (error: any) => {
       console.error('Error downloading the file', error);
     });

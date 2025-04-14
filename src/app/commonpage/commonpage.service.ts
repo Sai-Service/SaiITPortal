@@ -42,10 +42,14 @@ export class CommonpageService {
       return this.http.get(this.ServerUrl + '/FndCmn/CmnType?cmnType=IMG');
     }
 
-    public upload(formdata:FormData) {
-      const url = this.ServerUrl + '/DocUpload/ImgUpload';
-      return this.http.post(url, formdata);
-    }
+    // public upload(formdata:FormData) {
+    //   const url = this.ServerUrl + '/DocUpload/ImgUpload/7';
+    //   return this.http.post(url, formdata);
+    // }
       
+    public upload(formdata:FormData) {
+    const url = (this.ServerUrl + `/DocUpload/ImgUpload/7`);
+    return this.http.put(url, formdata);
+    }
 
 }

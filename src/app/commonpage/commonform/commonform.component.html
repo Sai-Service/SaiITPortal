@@ -23,47 +23,74 @@
                                  
            <div>
                 <label>News Line 3:</label>
-                <input type="text">
+                <input type="text" id="news_Line3" name="news_Line3" formControlName="news_Line3" #fileInput>
            </div>
 
            <div>
                 <label>News Line 4:</label>
                 <input type="text">
            </div>
-    </div> 
+    </div>  -->
 
     <div class="group inline">
            <div>
-            <label>Image 1</label>
-            <input type="file" id="Uploadimage" name="image" #fileInput formControlName="file" (change)="onFileSelect($event)">
+            <label>MAIN IMAGE</label>
+            <input type="file" id="Uploadimage" name="image" #fileInput1 formControlName="image_Main" (change)="onFileSelect($event)">
            </div>
 
            <div>
-            <label>Image 2</label>
-            <input type="file" id="Uploadimage" name="image" #fileInput formControlName="file" (change)="onFileSelect($event)">
+            <label>IMAGE-1</label>
+            <input type="file" id="Uploadimage" name="image" #fileInput2 formControlName="image_1" (change)="onFileSelect($event)">
            </div>
 
            <div>
-            <label>Image 3</label>
-            <input type="file" id="Uploadimage" name="image" #fileInput formControlName="file" (change)="onFileSelect($event)">
+            <label>IMAGE-2</label>
+            <input type="file" id="Uploadimage" name="image" #fileInput3 formControlName="image_2" (change)="onFileSelect($event)">
            </div>
 
            <div>
-            <label>Image 4</label>
-            <input type="file" id="Uploadimage" name="image" #fileInput formControlName="file" (change)="onFileSelect($event)">
+            <label>IMAGE-3</label>
+            <input type="file" id="Uploadimage" name="image" #fileInput4 formControlName="image_3" (change)="onFileSelect($event)">
            </div>
+
+           <div>
+            <label>IMAGE-4</label>
+            <input type="file" id="Uploadimage" name="image" #fileInput5 formControlName="image_4" (change)="onFileSelect($event)">
+           </div>
+
+           <div>
+            <label>IMAGE-5</label>
+            <input type="file" id="Uploadimage" name="image" #fileInput6 formControlName="image_5" (change)="onFileSelect($event)">
+           </div>
+
+           </div>
+
     
-    </div> -->
+        
+
+        <div>
+            <input hidden  type="text" name="createdBy" id="createdBy" formControlName="createdBy">
+        </div>
+          
+        <div class="group inline"> 
+           <div>
+            <button  type="submit" (click)="Uploadimage()">Upload</button>
+        </div>
+          
+    
+    </div>
+    </div>
+    <!-- <div class="container">
    
         <div class="group inline">
                 <div>
                    <label>Image Name</label>
-                   <!-- <select id="fileName" style="height: 0.8cm;" formControlName="fileName">
+                   <select id="fileName" style="height: 0.8cm;" formControlName="fileName">
                             <option value="MAIN IMAGE">MAIN IMAGE</option>   
                             <option value="image.1">image.1</option>   
                             <option value="image.2">image.2</option>   
                             <option value="image.3">image.3</option>   
-                   </select> -->
+                   </select>
                    <select id="fileName" style="height: 0.7cm;" formControlName="attribute2">
                             <option *ngFor="let sc of  fileNameList" [value]="sc.cmnDesc">
                              {{sc.cmnDesc}}
@@ -75,13 +102,14 @@
                     <label>Image Upload</label>
                     <input type="file" style="height: 0.7cm;" id="file" name="file" [(ngModel)]="file" #fileInput formControlName="file" (change)="onFileSelect($event)">
                 </div>
+                <input hidden type="text" name="createdBy" id="createdBy" formControlName="createdBy">
         </div>
 
         <div class="group inline">
                  <button type="submit" (click)="Uploadimage()">Upload</button>
         </div>
 
-    </div>
+    </div> -->
 
 </form>
 

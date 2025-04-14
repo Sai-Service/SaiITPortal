@@ -1,69 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAI SERVICE - Do's and Don'ts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
     <header class="header">
-        <nav class="navbar">
-            <div class="logo">
-                <img src="http://localhost:8080/DocUpload/DownloadImages?imagePath=D://IMGUPLOAD//apkicon.png" alt="Logo">
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="http://localhost:8080/DocUpload/DownloadImages?imagePath=D://IMGUPLOAD//apkicon.png" alt="Sai Service Logo" class="logo">
                 <h1 class="brand-name">SAI SERVICE</h1>
             </div>
-
-            <ul class="nav-links">
-                <li><b>User Name: {{ userName }}</b></li>
-            </ul>
-
-            <button class="btn-report" (click)="navigateToReports()">View Reports</button>
-
-            <!-- <div class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div> -->
-        </nav>
+            
+            <div class="marquee-section">
+                <div class="marquee-wrapper">
+                    <marquee class="marquee-text">✨Sai Service  User Page✨</marquee>
+                </div>
+            </div>
+            
+            <div class="user-section">
+                <div class="username">
+                    <span class="user-label">User:</span>
+                    <span class="user-highlight">{{userName}}</span>
+                </div>
+                <button class="btn-report" (click)="navigateToReports()">
+                    <span class="btn-icon">📊</span>
+                    <span class="btn-text">View Reports</span>
+                </button>
+            </div>
+        </div>    
     </header>
 
-    <!-- Main Content -->
     <main class="main-container">
+        <div class="page-header">
+            <h1 class="page-title">🚀 IT Meet Mumbai 2024</h1>
+            <div class="title-underline"></div>
+        </div>
+
+        <div class="image-container">
+            <img src="http://localhost:8080/DocUpload/DownloadImages?imagePath=D://IMGUPLOAD//employees.jpeg" alt="Workplace Guidelines" class="main-image">
+        </div>
+
         <section class="dos-donts-section">
             <div class="card do-card">
-                <h2>✅ DO'S</h2>
-                <p><span class="icon">✔️</span> Save all your work files in D: or E: Drive.</p>
-                <p><span class="icon">✔️</span> Always shut down your system properly.</p>
-                <p><span class="icon">✔️</span> Allow antivirus to complete scanning.</p>
-                <p><span class="icon">✔️</span> Delete unwanted emails regularly.</p>
-                <p><span class="icon">✔️</span> Report system issues immediately.</p>
-                <p><span class="icon">✔️</span> Do proper logout from web portals.</p>
+                <div class="card-header">
+                    <h2>✅ DO'S</h2>
+                </div>
+                <div class="card-body">
+                    <ul class="guidelines-list">
+                        <li class="guideline-item">Save all your work files in D: or E: Drive.</li>
+                        <li class="guideline-item">Always shut down your system properly.</li>
+                        <li class="guideline-item">Allow antivirus to complete scanning.</li>
+                        <li class="guideline-item">Delete unwanted emails regularly.</li>
+                        <li class="guideline-item">Report system issues immediately.</li>
+                        <li class="guideline-item">Do proper logout from web portals.</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="card dont-card">
-                <h2>❌ DON'TS</h2>
-                <p><span class="icon">❌</span> Don’t save files on your desktop.</p>
-                <p><span class="icon">❌</span> Don’t save data on the C: drive.</p>
-                <p><span class="icon">❌</span> Don’t autosave passwords.</p>
-                <p><span class="icon">❌</span> Don’t overload the UPS.</p>
-                <p><span class="icon">❌</span> Avoid unauthorized websites.</p>
-                <p><span class="icon">❌</span> Avoid using USB for mobile charging.</p>
+                <div class="card-header">
+                    <h2>❌ DON'TS</h2>
+                </div>
+                <div class="card-body">
+                    <ul class="guidelines-list">
+                        <li class="guideline-item">Don't save files on your desktop.</li>
+                        <li class="guideline-item">Don't save data on the C: drive.</li>
+                        <li class="guideline-item">Don't autosave passwords.</li>
+                        <li class="guideline-item">Don't overload the UPS.</li>
+                        <li class="guideline-item">Avoid unauthorized websites.</li>
+                        <li class="guideline-item">Avoid using USB for mobile charging.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <div class="announcement">
-            <p>✨ A company’s most valuable asset is its employees. Thank you for your efforts and determination. Today’s talent. Tomorrow’s success. ✨</p>
+            <div class="announcement-icon">🌟</div>
+            <p class="announcement-text">A company's most valuable asset is its employees. Thank you for your efforts and determination. Today's talent, tomorrow's success!</p>
+            <div class="announcement-icon">🌟</div>
         </div>
     </main>
 
-    <script>
-        function toggleMenu() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        }
-    </script>
-
+   
 </body>
-
 </html>
