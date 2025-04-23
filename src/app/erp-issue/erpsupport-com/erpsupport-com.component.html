@@ -154,7 +154,7 @@
                                          <th>Assign To</th>
                                          <th>status</th>
                                          <th>Updated By</th>
-                                         <th>Atachment</th>
+                                         <!-- <th>Atachment</th> -->
                                          <th>View Document</th>
                                       </tr>
                                     </thead>
@@ -169,7 +169,7 @@
                                          <th>{{com.assignedTo}}</th>
                                          <th>{{ com.status }}</th>
                                          <th>{{ com.lastUpdatedBy }}</th>
-                                         <th>{{com.filepath}}</th>
+                                         <!-- <th>{{com.filepath}}</th> -->
                                          <th>
                                            <button type="button" class="btn btn-primary" style="width: 170px;" (click)="openDocument(com.trlineId,com.filepath)">
                                             View Document
@@ -189,7 +189,7 @@
                                 <ng-container *ngFor="let group of orderlineDetailsArray().controls; let i= index"
                                     [formGroupName]="i">
 
-                                    <p style="text-align: center;font-size: 22px;font-weight: 600;color: #963a51;">Update Your Issue Here</p>
+                                    <p style="text-align: center;font-size: 22px;font-weight: 600;color: #963a51;">Update Your Issue Status Here</p>
 
                                 <div class="group inline">
                                     
@@ -227,7 +227,7 @@
                                
 
                                        <div>
-                                        <label>Select Type</label>
+                                        <label>Select File Type</label>
                                            <select id="fileType" style="height: 0.7cm;" formControlName="fileType">
                                                <option *ngFor="let sc of  filetypeList" [value]="sc.cmnDesc">
                                                     {{sc.cmnDesc}}

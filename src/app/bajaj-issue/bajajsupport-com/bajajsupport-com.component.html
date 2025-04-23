@@ -61,7 +61,7 @@
 
            <button type="submit" id="register" (click)="search()">Search</button>
 
-           <button>Reports</button>
+           <!-- <button>Reports</button> -->
 
            <button (click)="refreshForm()">Refresh</button>
            <input type="text" hidden style="height: 0.9cm;" formControlName="userSubject">
@@ -184,7 +184,7 @@
                                 <ng-container *ngFor="let group of orderlineDetailsArray().controls; let i= index"
                                     [formGroupName]="i">
 
-                                    <p style="text-align: center;font-size: 22px;font-weight: 600;color: #9b5f05;">Update Your Issue Here</p>
+                                    <p style="text-align: center;font-size: 22px;font-weight: 600;color: #9b5f05;">Update Your Issue Status Here</p>
                                     <hr>
 
                                 <div class="group inline">
