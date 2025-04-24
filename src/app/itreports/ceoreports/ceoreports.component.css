@@ -125,9 +125,10 @@ body {
 }
 
 .main-container {
-    padding-top: 120px;
+    padding-top: 50px;
     padding-left: 20px;
     padding-right: 20px;
+    padding-bottom: 88px;
 }
 
 .upload-section {

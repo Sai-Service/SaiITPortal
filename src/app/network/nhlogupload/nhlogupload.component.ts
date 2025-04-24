@@ -169,26 +169,50 @@ nhloguploadfrm(nhloguploadForm: any) {
   console.log('Sending Form Data:', formValues);
 
 
-  
+
+
   // this.http.post('http://localhost:8080/nhReports/uploadNhReports', formData)
   //   .subscribe({
-  //     next: (response) => console.log('File uploaded successfully:', response),
-  //     error: (error) => console.error('Error uploading file:', error),
+  //     next: (response) => {
+  //       console.log('File uploaded successfully:', response);
+  //       // Show alert on successful upload
+  //       alert('Details uploaded successfully!');
+  //     },
+  //     error: (error) => {
+  //       console.error('Error uploading file:', error);
+  //       // Show alert on error
+  //       alert('Error uploading file. Please try again!');
+  //     },
   //   });
 
-  this.http.post('http://localhost:8080/nhReports/uploadNhReports', formData)
-    .subscribe({
-      next: (response) => {
-        console.log('File uploaded successfully:', response);
-        // Show alert on successful upload
-        alert('Details uploaded successfully!');
-      },
-      error: (error) => {
-        console.error('Error uploading file:', error);
-        // Show alert on error
-        alert('Error uploading file. Please try again!');
-      },
-    });
+
+  // this.service.uploadFile(formData).subscribe({
+  //   next: (response) => {
+  //     console.log('File uploaded successfully:', response);
+  //     alert('Details uploaded successfully!');
+  //   },
+  //   error: (error) => {
+  //     console.error('Error uploading file:', error);
+  //     alert('Error uploading file. Please try again!');
+  //   },
+  // });
+
+  this.service.uploadFile(formData).subscribe({
+    next: (response) => {
+      console.log('File uploaded successfully:', response);
+      alert('Details uploaded successfully!');
+    },
+    error: (error) => {
+      console.error('Error uploading file:', error);
+  
+      if (error.status === 400) {
+        alert('Files can only be uploaded for days 1 to 7 of the month.');
+      } else {
+        alert('Error uploading file. Please try again later.');
+      }
+    },
+  });
+  
 
 }
 

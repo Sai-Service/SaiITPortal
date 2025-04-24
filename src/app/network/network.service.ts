@@ -59,18 +59,23 @@ export class NetworkService {
       });
     }
 
-    uploadFile(formData: FormData): Observable<any> {
-      const url = ` http://localhost:8080/nhReports/uploadNhReports`; 
-      return this.httpclient.post( 'http://localhost:8080/nhReports/uploadNhReports', formData, {
-        headers: this.headers
-      });
-    }
+    // uploadFile(formData: FormData): Observable<any> {
+    //   const url = ` http://localhost:8080/nhReports/uploadNhReports`; 
+    //   return this.httpclient.post( 'http://localhost:8080/nhReports/uploadNhReports', formData, {
+    //     headers: this.headers
+    //   });
+    // }
 
     // public upload(formdata:FormData) {
     //   const url = this.ServerUrl + '/nhReports/uploadNhReports';
     //   return this.http.post(url, formdata);
     // }
 
-
+    uploadFile(formData: FormData): Observable<any> {
+      const url = this.ServerUrl + '/nhReports/uploadNhReports'; 
+      return this.httpclient.post(url, formData, {
+        headers: this.headers
+      });
+    }
 
 }

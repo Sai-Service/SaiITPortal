@@ -72,7 +72,7 @@ export class LoginPgComponent {
         this.router.navigate(['./admin/itreportsModule/escalationreport']);
       }
 
-      if (res.obj.role=='CORPORATE'){
+      if (res.obj.role=='CEO'){
         alert
         ('----WELCOME TO ADMIN PAGE----')
         this.router.navigate(['./admin/itreportsModule/viewreports']);

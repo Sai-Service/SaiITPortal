@@ -115,7 +115,7 @@
 
             <div class="form-group inline">
                 <div>
-                    <label>Select Type</label>
+                    <label>Select File Type</label>
                     <select id="fileType" style="height: 0.7cm;" formControlName="fileType">
                         <option *ngFor="let sc of  filetypeList" [value]="sc.cmnDesc">
                             {{sc.cmnDesc}}
@@ -124,7 +124,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="file-upload">Upload File (Excel with.xlsx pdf with.pdf Format)</label>
+                    <label for="file-upload">Upload File</label>
                     <input type="file" id="file-upload" style="height: 0.7cm;" [(ngModel)]="file" #fileInput
                         formControlName="file" (change)="onFileSelected($event)">
                 </div>
@@ -318,8 +318,8 @@
                     </ng-container>
                             <div class="form-group inline">
                                 <div>
-                                    <label>Select Type</label>
-                                    <select id="fileType" style="height: 0.9cm; width: 8cm;"  formControlName="fileType">
+                                    <label>Select File Type</label>
+                                    <select id="fileType" style="height: 0.7cm;" formControlName="fileType">
                                         <option *ngFor="let sc of  filetypeList" [value]="sc.cmnDesc">
                                             {{sc.cmnDesc}}
                                         </option>
@@ -339,6 +339,9 @@
                                 <div>
                                 <button style="float: left;margin-top: 10px;"  type="button">Close Issue</button>
                                 </div>
+                            </div>
+                            <div style="margin-left: 430px;">
+                                <button type="button" data-dismiss="modal" aria-label="Close" style="float: left;">Exit</button>
                             </div>
                             </div>
             
