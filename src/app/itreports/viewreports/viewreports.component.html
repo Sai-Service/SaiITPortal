@@ -14,25 +14,31 @@
           <marquee style="font-size: 22px; font-weight: bold;">WELCOME TO SAI SERVICE</marquee>
       </div>    
   </header>
-   <!-- <h3 style="text-align: center;">CEO and Receivables Reports</h3> -->
+
+  <!-- <p>
+    Login Name:-
+      <input style="height: 0.7cm; width: 5cm;" formControlName="userName" readonly /> 
+  </p> -->
+  <b style="float: right;">Welcome, {{ username }}!</b>
 
     <div class="main-container">
+     
       <h3 style="text-align: center;font-weight: 800;">CEO and Receivables Reports</h3>
         <main>
             <div class="upload-section">
-                <h2>View Reports</h2>
+                <h3 style="font-weight: 800;">View Reports</h3>
                 <form (submit)="onViewReports(); $event.preventDefault();">
                     <div class="form-group">
                       <label for="city">City:</label>
                       <select id="city">
-                        <!-- <option>{{orgName}}</option> -->
-                        <option>Select City</option>
+                        <option>{{orgName}}</option>
+                        <!-- <option>Select City</option>
                         <option>COCHIN</option>
                         <option>GOA</option>
                         <option>HYDERABAD</option>
                         <option>KOLHAPUR</option>
                         <option>MUMBAI</option>
-                        <option>PUNE</option>
+                        <option>PUNE</option> -->
                       </select>
                     </div>
                   
@@ -73,7 +79,7 @@
                       </select>
                     </div>
                     <div class="form-group">
-                      <button type="submit">View Reports</button>
+                      <button style="margin-top: 32px;" type="submit">View Reports</button>
                     </div>
                   </form>
                   
