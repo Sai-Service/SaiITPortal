@@ -29,8 +29,9 @@ export class AdminPgComponent {
     // if(sessionStorage.getItem('role')=='User'){this.router.navigate(['./admin/erpIssueModule/logincommonerp']);}
     // if(sessionStorage.getItem('role')=='IT'){this.router.navigate(['./admin/erpIssueModule/loginCommon']);}
 
-    this.router.navigate(['./admin/erpIssueModule/logincommonerp'])
+    this.router.navigate(['./admin/erpIssueModule/logincommonerp']);
     // this.router.navigate(['/admin/bajajIssueModule/bajajloginform'])
+    
 
   }
 }

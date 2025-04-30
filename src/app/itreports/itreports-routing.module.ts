@@ -6,13 +6,15 @@ import { ViewreportsComponent } from './viewreports/viewreports.component';
 import { ViewescalationreportsComponent } from './viewescalationreports/viewescalationreports.component';
 import { EscalationreportComponent } from './escalationreport/escalationreport.component';
 import { SaiuserhomepageComponent } from './saiuserhomepage/saiuserhomepage.component';
+import { ViewreportsallComponent } from './viewreportsall/viewreportsall.component';
 
 const routes: Routes = [ { path: '', component: ItcomponentComponent },
                          { path: 'ceoreports', component: CeoreportsComponent }, 
                          { path: 'viewreports', component: ViewreportsComponent }, 
                          { path: 'viewescalationreports', component: ViewescalationreportsComponent }, 
                          { path: 'escalationreport', component: EscalationreportComponent }, 
-                         { path:'saiuserhomepage',component:SaiuserhomepageComponent}
+                         { path:'saiuserhomepage',component:SaiuserhomepageComponent},
+                         { path: 'viewreportsall', component:ViewreportsallComponent}
 
 
 

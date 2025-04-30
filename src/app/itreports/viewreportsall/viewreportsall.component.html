@@ -32,8 +32,18 @@
                 <form (submit)="onViewReports(); $event.preventDefault();">
                     <div class="form-group">
                       <label for="city">City:</label>
-                      <select id="city">
+                      <!-- <select id="city">
                         <option>{{orgName}}</option>
+                      </select> -->
+                      <select id="city"   name="city" required>
+                        <option value="">Select City</option>
+                        <option>ALL</option>
+                        <option>COCHIN</option>
+                        <option>GOA</option>
+                        <option>HYDERABAD</option>
+                        <option>KOLHAPUR</option>
+                        <option>MUMBAI</option>
+                        <option>PUNE</option>
                       </select>
                       <!-- <option style="background-color: white;height: 0.9cm;">{{orgName}}</option> -->
                     </div>
@@ -113,3 +123,4 @@
     </div>
 </body>
 </html>
+

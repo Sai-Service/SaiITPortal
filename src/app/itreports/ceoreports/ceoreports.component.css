@@ -26,7 +26,7 @@ body {
     top: 0;
     left: 0;
     z-index: 1000;
-    height: 100px;
+    height: 60px;
 }
 
 .navbar {
@@ -125,10 +125,10 @@ body {
 }
 
 .main-container {
-    padding-top: 50px;
+    padding-top: 40px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 88px;
+    padding-bottom: 45px;
 }
 
 .upload-section {

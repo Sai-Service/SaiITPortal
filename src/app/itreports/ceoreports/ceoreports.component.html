@@ -8,8 +8,8 @@
     <!-- <link rel="stylesheet" href="styles.css"> -->
 </head>
 <body>
-    <!-- <header class="header">
-        <div class="container">
+    <header class="header">
+        <!-- <div class="container">
             <nav class="navbar">
                 <div class="logo">
                  <h1 class="brand-name">Sai Service</h1> 
@@ -42,24 +42,33 @@
                     <span></span>
                 </div>
             </nav>
-        </div>
-    </header> -->
-    <b style="float: right;">Welcome, {{ username }}!</b>
+        </div> -->
+        <div class="header" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center;">
+            <img src="assets/images/Sai Logo.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;">
+            <marquee style="font-size: 22px; font-weight: bold;">WELCOME TO SAI SERVICE</marquee>
+            <div style="width: 150px;"><a href="/login"><b style="color: rgb(248, 247, 250);font-family: Arial, Helvetica, sans-serif;margin-left: 30px;">LOGOUT</b></a></div>
+        </div>   
+    </header>
+    <b style="float: right; margin-top: 15px;margin-right: 10px;background-color:#7AC6D2;padding: 5px 5px 5px 5px ;">Login Name -  {{ username }}</b>
+    <br>
     <div class="main-container">
         <h3 style="text-align: center;font-weight: 800;">CEO and Receivables Reports</h3>
         <main>
             <div class="upload-section">
-                <h2>Upload CEO Report/Upload Receivables Report</h2>
+                <h2> Upload CEO Report/Upload Receivables Report</h2>
                 <form (ngSubmit)="onSubmit()">
                     <div class="form-row">
                         <div class="form-group">
+                            <label for="city">City:</label>
+                            <select id="city" name="city" [(ngModel)]="formData.city" required >
+                                <option value="{{orgName}}">{{orgName}}</option>
+                            </select>
+                            <!-- <option value="{{orgName}}" style="background-color:white;height: 0.9cm;">{{orgName}}</option> -->
+                            <!-- <label>City :</label>
+                            <input type="text" class="yellow-input" placeholder="MUMBAI" style="width: 225px; font-weight: bold;" /> -->
+                        </div>
+                        <div class="form-group">
                             <label for="reportType">Report Type:</label>
-                            <!-- <select id="reportType" name="reportType" [(ngModel)]="formData.reportType" required>
-                                <option value="">Select Report Type</option>
-                                <option value="CEO">CEO</option>
-                                <option value="Receivables">Receivables</option>
-                            </select> -->
-
                             <select id="reportType" name="reportType" [(ngModel)]="formData.reportType" (change)="updateDepartment()" required>
                                 <option value="">Select Report Type</option>
                                 <option value="CEO">CEO</option>
@@ -68,17 +77,17 @@
                             
                         </div>
                         <div class="form-group">
-                            <label for="city">City:</label>
-                            <select id="city" name="city" [(ngModel)]="formData.city" required>
-                                <option value="{{orgName}}">{{orgName}}</option>
+                            <label for="department">Department:</label>
+                            <select id="department" name="department" [(ngModel)]="formData.department" required>
+                                <option value="">Select Department</option>
+                                <option value="CEO">CEO</option>
+                                <option value="Receivables">Receivables</option>
                             </select>
-                            <!-- <select type="number" id="ouId" style="height: 1cm;" formControlName="ouId">
-                                <option *ngFor="let sc of  cityList" [value]="sc.ouId">
-                                    {{sc.ouId}}-{{sc.ouCity}}
-                                </option>
-                            </select> -->
+                            
                         </div>
-                    
+                    </div>
+                    <div class="form-row">
+
                         <div class="form-group">
                             <label for="month">Month:</label>
                             <select id="month" name="month" [(ngModel)]="formData.month" required>
@@ -107,8 +116,7 @@
                             </select>
                         </div>
 
-                    </div>
-                    <div class="form-row">
+
                         <div class="form-group">
                             <label for="weekNo">Week:</label>
                             <select id="weekNo" name="weekNo" [(ngModel)]="formData.weekNo" required>
@@ -121,33 +129,19 @@
                             </select>
                         </div>
 
-
-                        <div class="form-group">
-                            <label for="department">Department:</label>
-                            <!-- <select id="department" name="department" [(ngModel)]="formData.department" required>
-                               
-                                <option value="">Select Department</option>
-                                <option value="CEO">CEO</option>
-                                <option value="Receivables">Receivables</option>
-                            </select> -->
-                            <select id="department" name="department" [(ngModel)]="formData.department" required>
-                                <option value="">Select Department</option>
-                                <option value="CEO">CEO</option>
-                                <option value="Receivables">Receivables</option>
-                            </select>
-                            
-                        </div>
-
                         <!-- <div class="form-group">
                             <label for="department">Department:</label>
                             <input type="text" id="department" name="department" [(ngModel)]="formData.department" required>
                         </div> -->
+                        </div>
+                        <div class="form-row">
                         <div class="form-group">
                             <label for="file">Upload File:</label>
                             <input type="file" id="file" (change)="onFileSelected($event)" required>
                         </div>
+                        <div><button type="submit" style="margin-top: 33px;padding: 5px 5px 5px 5px;background: linear-gradient(to right, #8b48d3, #2575fc);color: white;">Upload File</button></div>
                     </div>
-                    <button type="submit">Upload File</button>
+                    
                 </form>
             </div>
         </main>

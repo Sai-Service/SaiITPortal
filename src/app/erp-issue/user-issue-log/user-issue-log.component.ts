@@ -190,6 +190,7 @@ UserissueLinesGroup() {
     this.userissueslogForm.patchValue({assignTo:'SUPPORT'});
     
 
+
     var patch = this.userissueslogForm.get('transLines') as FormArray
     (patch.controls[0]).patchValue(
       {
@@ -580,9 +581,6 @@ UserissueLinesGroup() {
       this.emailError = ''; // No errors
     }
   }
-
-
-
 
 
 

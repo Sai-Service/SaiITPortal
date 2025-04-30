@@ -59,7 +59,7 @@ export class LoginPgComponent {
         
       }
 
-      if (res.obj.role=='User'){
+      if (res.obj.role=='common'){
         alert
         ('----WELCOME TO ADMIN PAGE----')
         // this.router.navigate(['./admin/itreportsModule/viewescalationreports']);
@@ -91,6 +91,11 @@ export class LoginPgComponent {
       if (res.obj.role=='COMMON'){
             this.router.navigate(['./admin/commonpageModule/commonform']);
             }
+
+      if (res.obj.role=='Group1'){
+              this.router.navigate(['./admin/itreportsModule/viewreportsall']);
+              }
+      
     }})
 
    
