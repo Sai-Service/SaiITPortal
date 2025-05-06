@@ -101,11 +101,57 @@ export class CeoreportsComponent implements OnInit {
     this.ServerUrl = AppConst.ServerUrl;
    }
 
+  // onSubmit(): void {
+  //   console.log("username->"+this.username)
+  //   if (!this.file) {
+  //     alert('Please select a file to upload');
+  //     console.log("orgname -->"+this.role)
+  //     return;
+  //   }
+  
+  //   const formData = new FormData();
+  //   Object.entries(this.formData).forEach(([key, value]) => {
+  //     formData.append(key, value?.toString() || '');
+  //   });
+  //   formData.append('excelFile', this.file);
+  
+  //   this.http.post(this.ServerUrl+`/portalReports/uploadPortalReports`, formData, { observe: 'response' })
+  //     .subscribe(
+  //       (response) => {
+  //         if (response.status === 200 || response.status === 201) {
+  //           const responseBody: any = response.body;
+  //           if (responseBody && responseBody.message && responseBody.message.includes('already uploaded')) {
+  //             alert(responseBody.message);
+  //           } else {
+  //             alert('Report uploaded successfully');
+  //             this.resetForm();
+  //           }
+  //         } else {
+  //           alert('Unexpected response from the server.');
+  //         }
+  //       },
+  //       (error) => {
+  //         console.error('Error uploading report:', error);
+  //         const errorMessage = error?.error?.message || 'Error uploading report. Please try again.';
+  //         alert(errorMessage);
+  //       }
+  //     );
+  // }
+
   onSubmit(): void {
-    console.log("username->"+this.username)
+    console.log("username -> " + this.username);
+  
     if (!this.file) {
       alert('Please select a file to upload');
-      console.log("orgname -->"+this.role)
+      console.log("role -> " + this.role);
+      return;
+    }
+  
+    const allowedExtensions = ['xls', 'xlsx'];
+    const fileExtension = this.file.name.split('.').pop()?.toLowerCase();
+  
+    if (!fileExtension || !allowedExtensions.includes(fileExtension)) {
+      alert('Invalid file type. Please upload an Excel file (.xls or .xlsx)');
       return;
     }
   
@@ -115,12 +161,12 @@ export class CeoreportsComponent implements OnInit {
     });
     formData.append('excelFile', this.file);
   
-    this.http.post(this.ServerUrl+`/portalReports/uploadPortalReports`, formData, { observe: 'response' })
+    this.http.post(this.ServerUrl + '/portalReports/uploadPortalReports', formData, { observe: 'response' })
       .subscribe(
         (response) => {
           if (response.status === 200 || response.status === 201) {
             const responseBody: any = response.body;
-            if (responseBody && responseBody.message && responseBody.message.includes('already uploaded')) {
+            if (responseBody?.message?.includes('already uploaded')) {
               alert(responseBody.message);
             } else {
               alert('Report uploaded successfully');
@@ -137,6 +183,7 @@ export class CeoreportsComponent implements OnInit {
         }
       );
   }
+  
   
   resetForm(): void {
     this.formData = {

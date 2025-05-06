@@ -129,6 +129,7 @@ export class ErpsupportComComponent {
     mainimage:any=[];
     viewAllDoucmnet:any;
     isButtonDisabled = false;
+    checkValidation = false;
   
   
     constructor(private fb: FormBuilder, private router: Router, private service: ErpIssueService) {
@@ -168,7 +169,7 @@ export class ErpsupportComComponent {
     attribute5:[],
 
     currentYear:[],
-    status:[],
+    status:['', Validators.required],
     file:[],
     srcitexecutive:[],
     srcstatus:[],
@@ -398,8 +399,10 @@ export class ErpsupportComComponent {
 
 
   issueupdate(){
-    this.isButtonDisabled = true;
+   
     const formValue = this.transData(this.erpsupportcomForm.getRawValue());
+    this.validation();
+    if (this.checkValidation === true) {  
     var issueNo = this.erpsupportcomForm.get('issueNo')?.value;
     this.erpsupportcomForm.patchValue({lastUpdatedBy:'IT'});
     console.log(formValue);
@@ -413,6 +416,7 @@ export class ErpsupportComComponent {
     formData.append('objhdMst',JSON.stringify(formValue));
     this.service.updateUserIssueLinefn(formData,issueNo).subscribe((res: any) => {
       if (res.code === 200) {
+        this.isButtonDisabled = true;
         alert(res.message);
       }
       else{
@@ -420,6 +424,7 @@ export class ErpsupportComComponent {
       }
     })
 
+  }
 
   }
 
@@ -457,5 +462,32 @@ onFileSelected(event: any) {
     alert("No file selected.");
   }
 }
+
+
+validation() {
+  var status = this.erpsupportcomForm.get('status')?.value;
+  var assignTo = this.erpsupportcomForm.get('assignTo')?.value;
+  var remark = this.erpsupportcomForm.get('remark')?.value;
+  
+  
+  if (status === undefined || status === null || status === '') {
+    this.checkValidation = false;
+    alert('Please Select Update Status .!');
+    return;
+  }
+  if (assignTo === undefined || assignTo === null || assignTo === '') {
+    this.checkValidation = false;
+    alert('Please Select Issue Update/Close by Field.!');
+    return;
+  }
+  if (remark === undefined || remark === null || remark === '') {
+    this.checkValidation = false;
+    alert('Please Enter Update.!');
+    return;
+  }
+  
+  this.checkValidation = true
+}
+
 
 }

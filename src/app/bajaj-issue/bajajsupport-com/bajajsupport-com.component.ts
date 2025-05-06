@@ -130,6 +130,7 @@ export class BajajsupportComComponent {
     mainimage:any=[];
     viewAllDoucmnet:any;
     isButtonDisabled = false;
+    checkValidation = false;
   
   
     constructor(private fb: FormBuilder, private router: Router, private service: BajajIssueService) {
@@ -415,8 +416,10 @@ export class BajajsupportComComponent {
 
 
   issueupdate(){
-    this.isButtonDisabled = true;
+    // this.isButtonDisabled = true;
     const formValue = this.transData(this.bajajsupportcomForm.getRawValue());
+    this.validation();
+    if (this.checkValidation === true) { 
     var issueNo = this.bajajsupportcomForm.get('issueNo')?.value;
     this.bajajsupportcomForm.patchValue({lastUpdatedBy:'IT'});
     console.log(formValue);
@@ -430,13 +433,14 @@ export class BajajsupportComComponent {
     formData.append('objhdMst',JSON.stringify(formValue));
     this.service.updateUserIssueLinefn(formData,issueNo).subscribe((res: any) => {
       if (res.code === 200) {
+        this.isButtonDisabled = true;
         alert(res.message);
       }
       else{
         alert(res.message);
       }
     })
-
+  }
 
   }
 
@@ -537,6 +541,31 @@ onFileSelected(event: any) {
 //     }
 //   )
 // }
+
+validation() {
+  var status = this.bajajsupportcomForm.get('status')?.value;
+  var assignTo = this.bajajsupportcomForm.get('assignTo')?.value;
+  var remark = this.bajajsupportcomForm.get('remark')?.value;
+  
+  
+  if (status === undefined || status === null || status === '') {
+    this.checkValidation = false;
+    alert('Please Select Update Status .!');
+    return;
+  }
+  if (assignTo === undefined || assignTo === null || assignTo === '') {
+    this.checkValidation = false;
+    alert('Please Select Issue Update/Close by Field.!');
+    return;
+  }
+  if (remark === undefined || remark === null || remark === '') {
+    this.checkValidation = false;
+    alert('Please Enter Update.!');
+    return;
+  }
+  
+  this.checkValidation = true
+}
 
 
 }

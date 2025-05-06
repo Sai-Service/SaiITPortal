@@ -213,6 +213,10 @@
                                                 {{sc.cmnDesc}}
                                             </option> 
                                         </select>
+
+                                        <div *ngIf="erpsupportcomForm.get('status')?.touched && erpsupportcomForm.get('status')?.invalid" class="error-msg" style="color: red;
+                                         font-size: 14px; margin-top: 4px;">Update Status Required</div>
+                                         
                                     </div>
                                
                                     <div>
