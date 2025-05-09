@@ -100,7 +100,7 @@ export class ErpsupportComComponent {
   attribute3:string;
   attribute4:string;
   attribute5:string;
-  remark :string;
+  remark:string;
   currentYear:string;
   status:string;
   file:string;
@@ -184,7 +184,7 @@ export class ErpsupportComComponent {
     return this.fb.group({
 
       // status:[],
-      remark :[],
+      remark:[],
       // assignedTo:[],
       // assignTo:[],
       assignedTo:[],
@@ -398,8 +398,8 @@ export class ErpsupportComComponent {
   }
 
 
-  issueupdate(){
-   
+  issueupdateButton(){
+    debugger;
     const formValue = this.transData(this.erpsupportcomForm.getRawValue());
     this.validation();
     if (this.checkValidation === true) {  
@@ -467,9 +467,9 @@ onFileSelected(event: any) {
 validation() {
   var status = this.erpsupportcomForm.get('status')?.value;
   var assignTo = this.erpsupportcomForm.get('assignTo')?.value;
-  var remark = this.erpsupportcomForm.get('remark')?.value;
-  
-  
+  // var remark = this.erpsupportcomForm.get('remark')?.value;
+  // alert(remark)
+  // alert(assignTo)
   if (status === undefined || status === null || status === '') {
     this.checkValidation = false;
     alert('Please Select Update Status .!');
@@ -480,11 +480,11 @@ validation() {
     alert('Please Select Issue Update/Close by Field.!');
     return;
   }
-  if (remark === undefined || remark === null || remark === '') {
-    this.checkValidation = false;
-    alert('Please Enter Update.!');
-    return;
-  }
+  // if (remark === undefined || remark === null || remark === '') {
+  //   this.checkValidation = false;
+  //   alert('Please Enter Update.!');
+  //   return;
+  // }
   
   this.checkValidation = true
 }

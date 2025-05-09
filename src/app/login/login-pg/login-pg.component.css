@@ -190,12 +190,13 @@
  
  .features .container{
    display: flex;
-   gap: 2px;
+   gap: 4px;
+   width:1600px ;
    justify-content: center;
  }
  
  .features .feature{
-   width:180px;
+   width:190px;
    justify-content: center;
    align-items: center;
  }
@@ -244,7 +245,10 @@
  
  .btn{ 
    display: inline-block;
-   padding: 8px 15px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   padding-left: 6px;
+   padding-right: 6px;
    font-size: 13px;
    color: white;
    /* background-color: #4b0558bb; */

@@ -193,14 +193,15 @@
 
                                 <div class="group inline">
                                     
-                                     <div>
+                                     <div rows="3">
                                             <label>Update Issue (250 Characters)</label>
-                                            <textarea type="textarea" id="UpdateIssue" formControlName="remark" rows="3"></textarea>
+                                            <!-- <textarea id="remark" formControlName="remark" ></textarea> -->
+                                             <input type="text" id="remark" formControlName="remark" style="height: 2cm; width: 15cm;">
                                      </div>
                         
                                      <div>
                                         <label>Solution Offered (250 Characters)</label>
-                                        <textarea type="textarea" id="solutionoffered"  rows="3"></textarea>
+                                        <textarea  id="solutionoffered"  rows="3"></textarea>
                                      </div>
                                 </div>
                                  </ng-container>
@@ -257,7 +258,7 @@
                                 
                                     <div class="group inline">
                                         <div>
-                                        <button  [disabled]="isButtonDisabled" (click)="issueupdate()" style="float: right;">Add/Update Issue</button>
+                                        <button  [disabled]="isButtonDisabled" (click)="issueupdateButton()" style="float: right;">Add/Update Issue</button>
                                         </div>
                                     <div>
                                      <button style="float: left;">Close Issue</button>
