@@ -152,7 +152,7 @@
                                          <th>Assign To</th>
                                          <th>status</th>
                                          <th>Updated By</th>
-                                         <th>Atachment</th>
+                                         <!-- <th>Atachment</th> -->
                                          <th>View Document</th>
                                       </tr>
                                     </thead>
@@ -167,7 +167,7 @@
                                          <th>{{com.assignedTo}}</th>
                                          <th>{{ com.status }}</th>
                                          <th>{{ com.lastUpdatedBy }}</th>
-                                         <th>{{com.filepath}}</th>
+                                         <!-- <th>{{com.filepath}}</th> -->
                                          <th>
                                            <button type="button" class="btn btn-primary" style="width: 170px;" (click)="openDocument(com.trlineId,com.filepath)">
                                             View Document
@@ -248,8 +248,11 @@
                                     <button  [disabled]="isButtonDisabled" (click)="issueupdate()" style="float: right;">Add/Update Issue</button>
                                     </div>
                                     <div>
-                                    <button style="float: left;">Close Issue</button>
+                                    <button style="float: left;" (click)="closeIssue()" [disabled]="isIssueClosed">Close Issue</button>
                                     </div>
+                                </div>
+                                <div style="margin-left: 495px;">
+                                    <button type="button" data-dismiss="modal" aria-label="Close" style="float: left;">Exit</button>
                                 </div>
                             
                                </div>

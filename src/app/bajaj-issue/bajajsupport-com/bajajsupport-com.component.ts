@@ -131,7 +131,8 @@ export class BajajsupportComComponent {
     viewAllDoucmnet:any;
     isButtonDisabled = false;
     checkValidation = false;
-  
+    isIssueClosed = false;
+     UpdateisButtonDisabled=false;
   
     constructor(private fb: FormBuilder, private router: Router, private service: BajajIssueService) {
       this.bajajsupportcomForm = fb.group({
@@ -397,6 +398,10 @@ export class BajajsupportComComponent {
             this.viewAllDoucmnet = res.obj.transLines;
             
           }
+            if (data.obj.status === 'CLOSED') {
+            this.isIssueClosed = true;
+            this.disableFormControls();
+          }
           // else { }
         
         })
@@ -523,7 +528,7 @@ openDocument(trlineId: any, filePath: any) {
 onFileSelected(event: any) {
   const file = event.target.files[0];
   if (file) {
-    alert(`File Uploaded Successfully: ${file.name} & click on Add/Update Issue button`);
+    alert(`File Uploaded Successfully: ${file.name}`);
   } else {
     alert("No file selected.");
   }
@@ -565,6 +570,39 @@ validation() {
   }
   
   this.checkValidation = true
+}
+
+closeIssue() {
+  const issueNo = this.bajajsupportcomForm.get('issueNo')?.value;
+  if (!issueNo) {
+    alert("No issue selected to close.");
+    return;
+  }
+
+  // Mark status as CLOSED
+  this.bajajsupportcomForm.patchValue({ status: 'CLOSED' });
+
+  const formValue = this.transData(this.bajajsupportcomForm.getRawValue());
+
+  let formData = new FormData();
+  formData.append('objhdMst', JSON.stringify(formValue));
+  formData.append('file', ''); // No file needed to close
+
+  this.service.updateUserIssueLinefn(formData, issueNo).subscribe((res: any) => {
+    if (res.code === 200) {
+      alert("Issue Closed Successfully.");
+      this.isIssueClosed = true;
+      this.disableFormControls();
+    } else {
+      alert(res.message);
+    }
+  });
+}
+
+disableFormControls() {
+  this.bajajsupportcomForm.disable();
+  this.UpdateisButtonDisabled = true;
+  this.isButtonDisabled = true;
 }
 
 

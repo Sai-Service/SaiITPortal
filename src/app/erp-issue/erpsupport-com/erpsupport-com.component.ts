@@ -444,17 +444,54 @@ export class ErpsupportComComponent {
   viewDocument(){}
 
 
-  openDocument(trlineId:any,filePath:any){
-    const fileName = 'download.pdf';
-    this.service.openDocumentFn(trlineId, filePath)
-      .subscribe(data => {
-        var blob = new Blob([data] , { type: 'application/pdf' });
-        var url = URL.createObjectURL(blob);
-        var printWindow = window.open(url, '', 'width=800,height=500');
+//   openDocument(trlineId:any,filePath:any){
+//     const fileName = 'download.pdf';
+//     this.service.openDocumentFn(trlineId, filePath)
+//       .subscribe(data => {
+//         var blob = new Blob([data] , { type: 'application/pdf' });
+//         var url = URL.createObjectURL(blob);
+//         var printWindow = window.open(url, '', 'width=800,height=500');
       
-        //  { type: 'application/pdf' }
+//         //  { type: 'application/pdf' }
 
-      });
+//       });
+// }
+
+openDocument(trlineId: any, filePath: any) {
+  const fileName = filePath.split('/').pop(); // Get file name from path
+  const fileExtension = fileName?.split('.').pop()?.toLowerCase(); // Get file extension
+
+  const mimeTypes: { [key: string]: string } = {
+    'pdf': 'application/pdf',
+    'jpg': 'image/jpeg',
+    'jpeg': 'image/jpeg',
+    'png': 'image/png',
+    'gif': 'image/gif',
+    'bmp': 'image/bmp',
+    'xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    'xls': 'application/vnd.ms-excel',
+    'csv': 'text/csv'
+  };
+
+  const mimeType = mimeTypes[fileExtension || ''] || 'application/octet-stream'; // Fallback
+
+  this.service.openDocumentFn(trlineId, filePath).subscribe(data => {
+    const blob = new Blob([data], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+
+    if (mimeType.startsWith('image/') || mimeType === 'application/pdf') {
+      // View directly in a new window/tab
+      window.open(url, '_blank', 'width=800,height=600');
+    } else {
+      // For other types (Excel, CSV, etc.), force download
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = fileName || 'download';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+  });
 }
 
 redirectToReport(){
@@ -464,7 +501,7 @@ redirectToReport(){
 onFileSelected(event: any) {
   const file = event.target.files[0];
   if (file) {
-    alert(`File Uploaded Successfully: ${file.name} & click on Add/Update Issue button`);
+    alert(`File Uploaded Successfully: ${file.name}`);
   } else {
     alert("No file selected.");
   }

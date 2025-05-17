@@ -294,9 +294,9 @@
                                         <th>{{com.status }}</th>
                                         <th>{{com.lastUpdatedBy }}</th>
                                         <th>
-                                            <button type="button" class="btn btn-primary" style="width: 170px;">
-                                                View Document
-                                            </button>
+                                           <button type="button" class="btn btn-primary" style="width: 170px;" (click)="openDocument(com.trlineId,com.filepath)">
+                                            View Document
+                                           </button>
                                             </th>
                                         </tr>
                                       </tbody>
@@ -340,8 +340,11 @@
                                 <button  type="submit" style="margin-top: 10px;float: right;" [disabled]="UpdateisButtonDisabled" (click)="issueupdate()">Add/Update Issue</button>
                                 </div>
                                 <div>
-                                <button style="float: left;margin-top: 10px;"  type="button">Close Issue</button>
+                                <button style="float: left;margin-top: 10px;" (click)="closeIssue()" [disabled]="isIssueClosed" type="button">Close Issue</button>
                                 </div>
+                            </div>
+                            <div style="margin-left: 300px;">
+                                <button type="button" data-dismiss="modal" aria-label="Close" style="float: left;">Exit</button>
                             </div>
                             </div>
                         </div>
