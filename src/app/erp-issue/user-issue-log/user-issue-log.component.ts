@@ -123,6 +123,7 @@ viewAllDoucmnet:any;
 isButtonDisabled = false;
 UpdateisButtonDisabled=false;
 checkValidation = false;
+isIssueClosed = false;
 
   constructor(private fb: FormBuilder, private router: Router, private service: ErpIssueService) {
     this.userissueslogForm = fb.group({
@@ -446,7 +447,7 @@ UserissueLinesGroup() {
         this.userissueslogForm.patchValue({userSubject:data.obj.userSubject});
         this.userissueslogForm.patchValue({subject:data.obj.subject});
         this.userissueslogForm.patchValue({attribute4:issueNo});
-        this.userissueslogForm.patchValue({issueDate:data.obj.issueDate});
+        this.userissueslogForm.patchValue({issueDate:data.obj.issueDate,fileType:'none'});
         this.userissueslogForm.get('locationId')?.disable();
         this.userissueslogForm.get('priority')?.disable();
         this.userissueslogForm.get('userName')?.disable();
@@ -466,6 +467,11 @@ UserissueLinesGroup() {
             this.userissueslogForm.patchValue({assignTo:data.obj.assignTo});
   
             
+          }
+
+          if (data.obj.status === 'CLOSED') {
+            this.isIssueClosed = true;
+            this.disableFormControls();
           }
           // else { }
         
@@ -538,7 +544,7 @@ UserissueLinesGroup() {
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
-      alert(`File Uploaded Successfully: ${file.name}`);
+      alert(`File Uploaded Successfully: ${file.name}& click on Add/Update Issue button`);
     } else {
       alert("No file selected.");
     }
@@ -583,7 +589,37 @@ UserissueLinesGroup() {
   }
 
 
-
+  closeIssue() {
+    const issueNo = this.userissueslogForm.get('issueNo')?.value;
+    if (!issueNo) {
+      alert("No issue selected to close.");
+      return;
+    }
   
+    // Mark status as CLOSED
+    this.userissueslogForm.patchValue({ status: 'CLOSED' });
+  
+    const formValue = this.transData(this.userissueslogForm.getRawValue());
+  
+    let formData = new FormData();
+    formData.append('objhdMst', JSON.stringify(formValue));
+    formData.append('file', ''); // No file needed to close
+  
+    this.service.updateUserIssueLinefn(formData, issueNo).subscribe((res: any) => {
+      if (res.code === 200) {
+        alert("Issue Closed Successfully.");
+        this.isIssueClosed = true;
+        this.disableFormControls();
+      } else {
+        alert(res.message);
+      }
+    });
+  }
+
+  disableFormControls() {
+    this.userissueslogForm.disable();
+    this.UpdateisButtonDisabled = true;
+    this.isButtonDisabled = true;
+  }
 
 }

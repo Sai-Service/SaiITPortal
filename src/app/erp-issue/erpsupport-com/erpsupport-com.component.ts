@@ -130,6 +130,8 @@ export class ErpsupportComComponent {
     viewAllDoucmnet:any;
     isButtonDisabled = false;
     checkValidation = false;
+    UpdateisButtonDisabled=false;
+    isIssueClosed = false;
   
   
     constructor(private fb: FormBuilder, private router: Router, private service: ErpIssueService) {
@@ -380,6 +382,11 @@ export class ErpsupportComComponent {
             this.viewAllDoucmnet = res.obj.transLines;
             
           }
+
+          if (data.obj.status === 'CLOSED') {
+            this.isIssueClosed = true;
+            this.disableFormControls();
+          }
           // else { }
         
         })
@@ -399,7 +406,7 @@ export class ErpsupportComComponent {
 
 
   issueupdateButton(){
-    debugger;
+    // debugger;
     const formValue = this.transData(this.erpsupportcomForm.getRawValue());
     this.validation();
     if (this.checkValidation === true) {  
@@ -487,6 +494,39 @@ validation() {
   // }
   
   this.checkValidation = true
+}
+
+closeIssue() {
+  const issueNo = this.erpsupportcomForm.get('issueNo')?.value;
+  if (!issueNo) {
+    alert("No issue selected to close.");
+    return;
+  }
+
+  // Mark status as CLOSED
+  this.erpsupportcomForm.patchValue({ status: 'CLOSED' });
+
+  const formValue = this.transData(this.erpsupportcomForm.getRawValue());
+
+  let formData = new FormData();
+  formData.append('objhdMst', JSON.stringify(formValue));
+  formData.append('file', ''); // No file needed to close
+
+  this.service.updateUserIssueLinefn(formData, issueNo).subscribe((res: any) => {
+    if (res.code === 200) {
+      alert("Issue Closed Successfully.");
+      this.isIssueClosed = true;
+      this.disableFormControls();
+    } else {
+      alert(res.message);
+    }
+  });
+}
+
+disableFormControls() {
+  this.erpsupportcomForm.disable();
+  this.UpdateisButtonDisabled = true;
+  this.isButtonDisabled = true;
 }
 
 

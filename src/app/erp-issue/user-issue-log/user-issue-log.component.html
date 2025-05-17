@@ -319,15 +319,15 @@
                             <div class="form-group inline">
                                 <div>
                                     <label>Select File Type</label>
-                                    <select id="fileType" style="height: 0.7cm;" formControlName="fileType">
-                                        <option *ngFor="let sc of  filetypeList" [value]="sc.cmnDesc">
-                                            {{sc.cmnDesc}}
-                                        </option>
-                                    </select>
-                                </div>
+                                       <select id="fileType" style="height: 0.7cm;" formControlName="fileType">
+                                           <option *ngFor="let sc of  filetypeList" [value]="sc.cmnDesc">
+                                                {{sc.cmnDesc}}
+                                           </option>
+                                        </select>
+                                   </div>
                                     <div>
                                         <label for="file-upload">Upload File</label>
-                                        <input type="file" id="file-upload" style="height: 0.9cm;" [(ngModel)]="file" #fileInput1
+                                        <input type="file" id="file-upload" style="height: 0.9cm;" #fileInput1
                                             formControlName="file" (change)="onFileSelected($event)">
                                     </div>
                             </div>
@@ -337,7 +337,7 @@
                                 <button  type="submit" style="margin-top: 10px;float: right;" [disabled]="UpdateisButtonDisabled" (click)="issueupdate()">Add/Update Issue</button>
                                 </div>
                                 <div>
-                                <button style="float: left;margin-top: 10px;"  type="button">Close Issue</button>
+                                <button style="float: left;margin-top: 10px;" (click)="closeIssue()" [disabled]="isIssueClosed" type="button">Close Issue</button>
                                 </div>
                             </div>
                             <div style="margin-left: 430px;">

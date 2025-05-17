@@ -261,7 +261,7 @@
                                         <button  [disabled]="isButtonDisabled" (click)="issueupdateButton()" style="float: right;">Add/Update Issue</button>
                                         </div>
                                     <div>
-                                     <button style="float: left;">Close Issue</button>
+                                     <button style="float: left;" (click)="closeIssue()" [disabled]="isIssueClosed">Close Issue</button>
                                     </div>
                                 </div>
                                 <div style="margin-left: 560px;">
