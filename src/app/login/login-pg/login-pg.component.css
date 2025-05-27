@@ -190,7 +190,7 @@
  
  .features .container{
    display: flex;
-   gap: 4px;
+   gap: 10px;
    width:1600px ;
    justify-content: center;
  }

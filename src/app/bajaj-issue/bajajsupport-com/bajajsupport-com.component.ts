@@ -550,7 +550,7 @@ onFileSelected(event: any) {
 validation() {
   var status = this.bajajsupportcomForm.get('status')?.value;
   var assignTo = this.bajajsupportcomForm.get('assignTo')?.value;
-  var remark = this.bajajsupportcomForm.get('remark')?.value;
+  // var remark = this.bajajsupportcomForm.get('remark')?.value;
   
   
   if (status === undefined || status === null || status === '') {
@@ -563,11 +563,11 @@ validation() {
     alert('Please Select Issue Update/Close by Field.!');
     return;
   }
-  if (remark === undefined || remark === null || remark === '') {
-    this.checkValidation = false;
-    alert('Please Enter Update.!');
-    return;
-  }
+  // if (remark === undefined || remark === null || remark === '') {
+  //   this.checkValidation = false;
+  //   alert('Please Enter Update.!');
+  //   return;
+  // }
   
   this.checkValidation = true
 }
