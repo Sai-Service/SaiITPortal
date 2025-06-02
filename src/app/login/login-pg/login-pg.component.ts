@@ -95,6 +95,14 @@ export class LoginPgComponent {
       if (res.obj.role=='Group1'){
               this.router.navigate(['./admin/itreportsModule/viewreportsall']);
               }
+
+       if (res.obj.role=='Master'){
+              this.router.navigate(['./admin/accountsModule/accountreportupload']);
+              }
+
+       if (res.obj.role=='Admin'){
+              this.router.navigate(['./admin/accountsModule/accounteportview']);
+              }
       
     }})
 

@@ -24,7 +24,12 @@ const routes: Routes = [
       {
         path: 'commonpageModule',
         loadChildren: () => import('../commonpage/commonpage.module').then(mod => mod.CommonpageModule)
+      },
+      {
+        path: 'accountsModule',
+        loadChildren: () => import('../accounts/accounts.module').then(mod => mod.AccountsModule)
       }
+
     ]
   }
 ];

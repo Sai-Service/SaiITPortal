@@ -1,0 +1,120 @@
+<html>
+    <body>
+        
+    <header class="header">
+        <div class="header" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center;">
+            <img src="assets/images/Sai Logo.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;">
+            <marquee style="font-size: 22px; font-weight: bold;">WELCOME TO SAI SERVICE</marquee>
+            <div style="width: 150px;"><a href="http://saiitportal.com/#/login/login"><b style="color: rgb(248, 247, 250);font-family: Arial, Helvetica, sans-serif;margin-left: 30px;">LOGOUT</b></a></div>
+  
+        </div>     
+    </header>
+    <div>
+        <div class="marquee-wrapper">
+            <h6 class="marquee-text" style="text-align: center;margin-top: 20px;">Accounts</h6>
+        </div>
+    </div>
+
+    <div class="main-container">
+        
+
+        <main>
+            <div class="upload-section">
+                <h5>Upload Reports Here:</h5>
+                <form [formGroup]="acreportuploadForm" (ngSubmit)="acreportuploadfrm(acreportuploadForm)">
+                       <div class="form-row">
+                        <div class="form-group">
+                            <label>City</label>
+                            <select type="number" id="ouId" style="height: 1cm;" formControlName="ouId">
+                              <option value="">None</option>
+                              <option *ngFor="let sc of  cityList" [value]="sc.ouId">
+                                  {{sc.ouId}}-{{sc.ouCity}}
+                              </option>
+                            </select>
+                        </div>
+                        
+
+
+                        <div class="form-group">
+                            <label>Type of Upload:</label>
+                              <select id="uploadtype" formControlName="uploadtype" *ngIf="uploadtypelist?.length">
+                              <option *ngFor="let sc of uploadtypelist" [value]="sc.cmnDesc">
+                                {{ sc.cmnDesc}}
+                              </option>
+                              </select>
+                        </div>
+
+                        <div class="form-group">
+                              <label>Type of Report:</label>
+                              <select id="reportType" formControlName="reportType" *ngIf="reporttypelist?.length">
+                              <option *ngFor="let sc of reporttypelist" [value]="sc.cmnDesc">
+                                {{ sc.cmnDesc }}
+                              </option>
+                              </select>
+                        </div>
+                   </div>
+                   <div class="form-row">
+                        <div class="form-group">
+                            <label for="month">Month:</label>
+                            <select id="month" name="month" formControlName="month">
+                                <option value="">None</option>
+                                <option value="JAN">JAN</option>
+                                <option value="FEB">FEB</option>
+                                <option value="MAR">MAR</option>
+                                <option value="APR">APR</option>
+                                <option value="MAY">MAY</option>
+                                <option value="JUN">JUN</option>
+                                <option value="JUL">JUL</option>
+                                <option value="AUG">AUG</option>
+                                <option value="SEP">SEP</option>
+                                <option value="OCT">OCT</option>
+                                <option value="NOV">NOV</option>
+                                <option value="DEC">DEC</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Year:</label>
+                            <input formControlName="currentYear" readonly>
+                        </div>
+
+                         <div class="form-group">
+                            <label>Financial Year:</label>
+                            <select name="" id="">
+                                <option value="">None</option>
+                                <option value="2024-25">2024-25</option>
+                                <option value="2025-26">2025-26</option>
+                                <option value="2026-27">2026-27</option>
+                                <option value="2027-28">2027-28</option>
+                                <option value="2028-29">2028-29</option>
+                                <option value="2029-30">2029-30</option>
+                            </select>
+                        </div>
+                   </div>
+                   <div class="form-row">
+                    <div class="form-group">
+                        <label>Upload File:</label>
+                        <input type="file" #fileInput formControlName="file" (change)="onFileChange($event)">
+                    </div>
+                   </div>
+                   <div class="form-row">
+                    <div class="form-group">
+                        <button type="submit" class="button" style="margin-left: 290px;">Upload File</button>
+                    </div>
+                    <div class="form-group">
+                        <button class="button" style="margin-left: 20px;width: 150px;" (click)="refreshForm()">Clear</button>
+                    </div>
+                   </div>
+           
+             </form>
+
+        </div>
+
+
+        </main>
+
+        
+    </div>
+
+    </body>
+</html>

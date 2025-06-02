@@ -9,13 +9,11 @@ import { FormArray } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NetworkService } from '../network.service';
 import { data } from 'jquery';
 import { ChangeDetectorRef } from '@angular/core';
-import { log } from 'node:util';
 import { HttpHeaders } from '@angular/common/http';
 import { AppConst } from '../../app-const';
-
+import { AccountsService } from '../accounts.service';
 
 const MIME_TYPES :any = {
   pdf: 'application/pdf',
@@ -27,7 +25,7 @@ interface uerissueslog{
   ouId:number;
   locationId:number;
   filePath:string;
-  logType:string;
+  reportType:string;
   startDate:Date;
   endDate:Date;
   attribute1:number;
@@ -43,18 +41,18 @@ interface uerissueslog{
   year:string;
 }
 
-
 @Component({
-  selector: 'app-nhlogdownload',
-  templateUrl: './nhlogdownload.component.html',
-  styleUrl: './nhlogdownload.component.css'
+  selector: 'app-account-report-view',
+  templateUrl: './account-report-view.component.html',
+  styleUrl: './account-report-view.component.css'
 })
-export class NhlogdownloadComponent {
- nhlogdownloadForm:FormGroup;
+
+export class AccountReportViewComponent {
+acreportviewForm:FormGroup;
   ouId:number;
   locationId:number;
   filePath:string;
-  logType:string;
+  reportType:string;
   startDate:Date;
   endDate:Date;
   attribute1:number;
@@ -76,9 +74,10 @@ export class NhlogdownloadComponent {
   @ViewChild('fileInput') fileInput:any;
 
   public erplocationList:any=[];
+  public reporttypelist:any=[];
+  public uploadtypelist:any=[];
   public alllocationlist:any=[];
   public cityList:any=[];
-  public logTypeList:any=[];
     mainimage:any=[];
     viewAllDoucmnet:any;
     isButtonDisabled = false;
@@ -88,46 +87,45 @@ export class NhlogdownloadComponent {
   reports: any;
   errorMessage: null;
   orgId: any;
-  nhteamreportsearch:any;
+  acreportsearch:any;
   
-  
-  
-    constructor(private fb: FormBuilder, private router: Router, private service: NetworkService,private cdRef: ChangeDetectorRef) {
-      this.headers = new HttpHeaders();
-        this.ServerUrl = AppConst.ServerUrl;
-      this.nhlogdownloadForm = fb.group({
 
-    ouId:[],
-    locationId:[],
-    filePath:[],
-    logType:[],
-    startDate:[],
-    endDate:[],
-    attribute1:[],
-    attribute2:[],
-    attribute3:[],
-    attribute4:[],
-    attribute5:[],
-    year:[],
-    currentYear:[],
-    file:[],
-    srcitexecutive:[],
-    srcstatus:[],
-    srcdeptId:[],
-    srclocationId:[],
-    lastUpdatedBy:[],
-    month:[]
-    
-  })
-  }
+     constructor(private fb: FormBuilder, private router: Router, private service: AccountsService,private cdRef: ChangeDetectorRef) {
+        this.headers = new HttpHeaders();
+          this.ServerUrl = AppConst.ServerUrl;
+        this.acreportviewForm = fb.group({
+  
+      ouId:[],
+      locationId:[],
+      filePath:[],
+      reportType:[],
+      startDate:[],
+      endDate:[],
+      attribute1:[],
+      attribute2:[],
+      attribute3:[],
+      attribute4:[],
+      attribute5:[],
+      year:[],
+      currentYear: [new Date().getFullYear().toString()],
+      file:[],
+      srcitexecutive:[],
+      srcstatus:[],
+      srcdeptId:[],
+      srclocationId:[],
+      lastUpdatedBy:[],
+      month:[]
+      
+    })
+    }
    
-
-    ngOnInit(): void {
+     ngOnInit(): void {
       $("#wrapper").toggleClass("toggled");
-      this.nhlogdownloadForm.patchValue({createdBy:sessionStorage.getItem('orgID')});
-      var  logType = this.nhlogdownloadForm.get('logType')?.value;
-      if(logType === null){
-        this.nhlogdownloadForm.patchValue({logType:'none'});
+      currentYear: new Date().getFullYear().toString()
+      this.acreportviewForm.patchValue({createdBy:sessionStorage.getItem('orgID')});
+      var  reportType = this.acreportviewForm.get('reportType')?.value;
+      if(reportType === null){
+        this.acreportviewForm.patchValue({reportType:'none'});
       }
   
        
@@ -139,19 +137,19 @@ export class NhlogdownloadComponent {
       }
     )
 
-    this.service.alllocationlist()
-    .subscribe( 
-      data => { 
-        this.alllocationlist = data.obj;
-        console.log(this.alllocationlist);
+      this.service.reporttypelist()
+    .subscribe(
+      data => {
+        this.reporttypelist = data.obj;
+        console.log(this.reporttypelist)
       }
     )
-
-    this.service.logTypeList()
-    .subscribe( 
+  
+      this.service.uploadtypelist()
+    .subscribe(
       data => {
-        this.logTypeList = data.obj;
-        console.log(this.logTypeList);
+        this.uploadtypelist = data.obj;
+        console.log(this.uploadtypelist)
       }
     )
 
@@ -165,25 +163,23 @@ export class NhlogdownloadComponent {
 
     
   }
-  get f() { return this.nhlogdownloadForm.controls; }
-  nhlogdownloadfrm(nhlogdownloadForm: any) { }
+  get f() { return this.acreportviewForm.controls; }
+  acreportviewfrm(acreportviewForm: any) { }
 
-//(city: string,reportType: string,month: string,year: string)
-
-  search() {
+   search() {
     const city = (document.getElementById('city') as HTMLSelectElement).value;
     alert("city-"+city);
     const year = (document.getElementById('year') as HTMLSelectElement).value;
-    const logType = (document.getElementById('logType') as HTMLSelectElement).value;
+    const reportType = (document.getElementById('reportType') as HTMLSelectElement).value;
     const month = (document.getElementById('month') as HTMLSelectElement).value;
   
-    this.service.nhREportSearch(city, logType, month, year)
+    this.service.acreportsearch(city, reportType, month, year)
       .subscribe(
         (res: any) => {
           if (res.code == 200) {
             alert(res.message);
             
-            this.nhteamreportsearch = res.obj;
+            this.acreportsearch = res.obj;
   
             if (Array.isArray(res.obj) && res.obj.length > 0) {
               const reportPath = res.obj[0].report_path; 
@@ -198,7 +194,6 @@ export class NhlogdownloadComponent {
               console.error('Expected res.obj to be a non-empty array.');
             }
           } else {
-            // Handle the case when the response code is not 200
           }
         },
         (error: any) => {
@@ -228,9 +223,9 @@ openDocument(reportName: string) {
 
       var a = document.createElement('a');
       a.href = url;
-      a.download = reportName;  // You can specify a custom name or extract from the path
-      document.body.appendChild(a); // Append anchor to the DOM to trigger download
-      a.click();  // Programmatically click the anchor to trigger download
+      a.download = reportName;  
+      document.body.appendChild(a);
+      a.click();  
 
       
       URL.revokeObjectURL(url);
@@ -245,5 +240,6 @@ refreshForm() {
   location.reload();
 }
 
-
+  
+ 
 }
