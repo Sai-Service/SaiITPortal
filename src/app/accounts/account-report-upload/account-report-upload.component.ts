@@ -112,21 +112,12 @@ export class AccountReportUploadComponent {
     $("#wrapper").toggleClass("toggled");
   
     this.acreportuploadForm.patchValue({
-      attribute5: sessionStorage.getItem('orgName'),
+      city: sessionStorage.getItem('orgName'),
       ouId: sessionStorage.getItem('orgId'),
       currentYear: new Date().getFullYear().toString()
     });
   
     console.log('Session Data:', sessionStorage.getItem('orgName'), sessionStorage.getItem('orgId'));
-  
-    this.service.erplocationList(sessionStorage.getItem('orgId')).subscribe(
-      (data) => {
-        this.erplocationList = data.obj;
-        console.log('Location List:', this.erplocationList);
-      },
-      (error) => console.error('Error fetching locations:', error)
-    );
-
     
     this.service.reporttypelist()
     .subscribe(
@@ -175,14 +166,13 @@ get f() { return this. acreportuploadForm.controls; }
   console.log('Form Values Before Submission:', formValues); 
   
   formData.append('ouId', formValues.ouId || '');
-  formData.append('locationId', formValues.locationId || '');
-  formData.append('city', formValues.attribute5 || '');
+  formData.append('city', formValues.ouId || '');
   formData.append('reportType', formValues.reportType || '');
   formData.append('uploadType', formValues.uploadtype || '');
   formData.append('month', formValues.month || '');
   formData.append('year', formValues.currentYear || new Date().getFullYear().toString());
-  formData.append('attribute5', formValues.attribute5 || '');
-  formData.append('excelFile', this.filetoupload as Blob);
+ // formData.append('attribute5', formValues.attribute5 || '');
+  formData.append('file', this.filetoupload as Blob);
 
   console.log('Sending Form Data:', formValues);
 

@@ -22,7 +22,7 @@
     <div class="form-row">
 
        <div class="form-group">
-            <label>City:</label>
+             <label>City:</label>
                <select type="number" id="ouId" style="height: 1cm;" formControlName="ouId">
                  <option value="">None</option>
                  <option *ngFor="let sc of  cityList" [value]="sc.ouId">
@@ -59,11 +59,10 @@
                                 <option value="NOV">NOV</option>
                                 <option value="DEC">DEC</option>
             </select>
-
-       </div>
+        </div>
 
        <div class="form-group">
-           <label>Year:</label>
+            <label>Year:</label>
             <input formControlName="currentYear" readonly>
        </div>
 
@@ -84,33 +83,32 @@
     <div class="form-row">
         <div class="form-group">
             <button style="width: 200px;margin-left: 310px;"  (click)="search()">Show Reports</button>
-        </div>
-        
+        </div>        
     </div>
 
     </div>
   </main>
 </div>
 </form>
-<div style="margin-top: 40px;">
+<div style="margin-top: 10px;width: 905px;margin-left: 225px;border: 0.5px solid black;padding: 10px 10px;">
 
-      <h6 style="font-weight: 700;">Available Reports:</h6>
-      <table style="width: 100%; text-align: left; border-collapse: collapse;">
+      <h6 style="font-weight: 800;">Available Reports:</h6>
+      <table style="width: 100%; text-align: left; border-collapse:collapse;">
         <thead>
-          <tr style="background-color: #f2f2f2;">
-            <th>Report Name</th>
+          <tr style="background-color: #c0bcbc; text-align: center;">
+            <th >Report Name</th>
             <th>Download Report</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let sc of acreportsearch">
-            <td>{{ sc.report_path }}</td>
+          <tr *ngFor="let sc of acreportsearch" style="text-align: center;">
+            <td>{{ sc.fileName }}</td>
             <td>
-              <button (click)="openDocument(sc.report_path)">Download</button>
+              <button (click)="openDocument(sc.fileName)">Download</button>
             </td>
           </tr>
         </tbody>
       </table>
-    </div>
+</div>
 </body>
 </html>

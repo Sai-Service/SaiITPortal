@@ -25,7 +25,7 @@
                        <div class="form-row">
                         <div class="form-group">
                             <label>City</label>
-                            <select type="number" id="ouId" style="height: 1cm;" formControlName="ouId">
+                            <select type="number" id="ouId" style="height: 0.9cm;" formControlName="ouId">
                               <option value="">None</option>
                               <option *ngFor="let sc of  cityList" [value]="sc.ouId">
                                   {{sc.ouId}}-{{sc.ouCity}}
@@ -37,7 +37,7 @@
 
                         <div class="form-group">
                             <label>Type of Upload:</label>
-                              <select id="uploadtype" formControlName="uploadtype" *ngIf="uploadtypelist?.length">
+                              <select id="uploadtype" style="height: 0.9cm;" formControlName="uploadtype" *ngIf="uploadtypelist?.length">
                               <option *ngFor="let sc of uploadtypelist" [value]="sc.cmnDesc">
                                 {{ sc.cmnDesc}}
                               </option>
@@ -46,7 +46,7 @@
 
                         <div class="form-group">
                               <label>Type of Report:</label>
-                              <select id="reportType" formControlName="reportType" *ngIf="reporttypelist?.length">
+                              <select id="reportType" style="height: 0.9cm;" formControlName="reportType" *ngIf="reporttypelist?.length">
                               <option *ngFor="let sc of reporttypelist" [value]="sc.cmnDesc">
                                 {{ sc.cmnDesc }}
                               </option>
@@ -56,7 +56,7 @@
                    <div class="form-row">
                         <div class="form-group">
                             <label for="month">Month:</label>
-                            <select id="month" name="month" formControlName="month">
+                            <select id="month" style="height: 0.9cm;" name="month" formControlName="month">
                                 <option value="">None</option>
                                 <option value="JAN">JAN</option>
                                 <option value="FEB">FEB</option>
@@ -75,12 +75,12 @@
 
                         <div class="form-group">
                             <label>Year:</label>
-                            <input formControlName="currentYear" readonly>
+                            <input formControlName="currentYear" style="height: 0.9cm;" readonly>
                         </div>
 
                          <div class="form-group">
                             <label>Financial Year:</label>
-                            <select name="" id="">
+                            <select name="financialyear" style="height: 0.9cm;" id="financialyear">
                                 <option value="">None</option>
                                 <option value="2024-25">2024-25</option>
                                 <option value="2025-26">2025-26</option>
@@ -94,7 +94,7 @@
                    <div class="form-row">
                     <div class="form-group">
                         <label>Upload File:</label>
-                        <input type="file" #fileInput formControlName="file" (change)="onFileChange($event)">
+                        <input type="file" style="height: 1cm;" #fileInput formControlName="file" (change)="onFileChange($event)">
                     </div>
                    </div>
                    <div class="form-row">

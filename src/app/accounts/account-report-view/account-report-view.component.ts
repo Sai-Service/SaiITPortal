@@ -68,7 +68,7 @@ acreportviewForm:FormGroup;
   srcstatus:string;
   srclocationId:number;
   srcdeptId:number;
-  reportName:string;
+  fileName:string;
   reportExtractedName:String;
 
   @ViewChild('fileInput') fileInput:any;
@@ -167,11 +167,10 @@ acreportviewForm:FormGroup;
   acreportviewfrm(acreportviewForm: any) { }
 
    search() {
-    const city = (document.getElementById('city') as HTMLSelectElement).value;
-    alert("city-"+city);
-    const year = (document.getElementById('year') as HTMLSelectElement).value;
-    const reportType = (document.getElementById('reportType') as HTMLSelectElement).value;
-    const month = (document.getElementById('month') as HTMLSelectElement).value;
+    const city = this.acreportviewForm.get('ouId')?.value;
+    const year = this.acreportviewForm.get('currentYear')?.value;
+    const reportType = this.acreportviewForm.get('reportType')?.value;
+    const month = this.acreportviewForm.get('month')?.value;
   
     this.service.acreportsearch(city, reportType, month, year)
       .subscribe(
@@ -201,7 +200,6 @@ acreportviewForm:FormGroup;
         }
       );
   }
-  
 
   private extractFileName(path: string): string {
     if (!path) return '';
@@ -213,8 +211,8 @@ acreportviewForm:FormGroup;
   }
   
 
-openDocument(reportName: string) {
-  var path = this.extractFileName(reportName);
+openDocument(fileName: string) {
+  var path = this.extractFileName(fileName);
   this.service.openDocumentFn(path)
     .subscribe((data: BlobPart) => {
       var blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
@@ -223,7 +221,7 @@ openDocument(reportName: string) {
 
       var a = document.createElement('a');
       a.href = url;
-      a.download = reportName;  
+      a.download = fileName;  
       document.body.appendChild(a);
       a.click();  
 
