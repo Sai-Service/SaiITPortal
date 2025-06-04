@@ -1,7 +1,7 @@
 <html>
     <body>
             <header class="header">
-        <div class="header" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center;">
+            <div class="header" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center;">
             <img src="assets/images/Sai Logo.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;">
             <marquee style="font-size: 22px; font-weight: bold;">WELCOME TO SAI SERVICE</marquee>
             <div style="width: 150px;"><a href="http://saiitportal.com/#/login/login"><b style="color: rgb(248, 247, 250);font-family: Arial, Helvetica, sans-serif;margin-left: 30px;">LOGOUT</b></a></div>
@@ -30,6 +30,15 @@
                  </option>
                </select>
        </div>
+
+       <div class="form-group">
+           <label>Type Of Uploads:</label>
+             <select id="uploadType" style="height: 0.9cm;" formControlName="uploadType" *ngIf="uploadtypelist?.length">
+                              <option *ngFor="let sc of uploadtypelist" [value]="sc.cmnDesc">
+                                {{ sc.cmnDesc}}
+                              </option>
+             </select>
+       </div> 
 
        <div class="form-group">
            <label>Type Of Reports:</label>
@@ -61,14 +70,23 @@
             </select>
         </div>
 
-       <div class="form-group">
-            <label>Year:</label>
-            <input formControlName="currentYear" readonly>
-       </div>
+      <div class="form-group">
+                      <label for="year">Year:</label>
+                      <!-- <select id="year">
+                        <option>Select Year</option>
+                        <option [value]="previousYear">{{previousYear}}</option>
+                        <option [value]="currentYear">{{currentYear}}</option>
+                      </select> -->
+                      <select id="year" formControlName="year">
+                         <option value="">none</option>
+                         <option value="2024">2024</option>
+                         <option value="2025">2025</option>
+                      </select>
+      </div>
 
-       <div class="form-group">
+      <div class="form-group">
            <label>Financial Year:</label>
-                <select name="" id="">
+                <select name="financialyear" id="financialyear" formControlName="financialyear">
                       <option value="">None</option>
                       <option value="2024-25">2024-25</option>
                       <option value="2025-26">2025-26</option>
@@ -77,7 +95,7 @@
                       <option value="2028-29">2028-29</option>
                       <option value="2029-30">2029-30</option>
                 </select>
-       </div>
+      </div>
     </div>
 
     <div class="form-row">
@@ -90,19 +108,23 @@
   </main>
 </div>
 </form>
-<div style="margin-top: 10px;width: 905px;margin-left: 225px;border: 0.5px solid black;padding: 10px 10px;">
+<div class="upload-section5">
 
       <h6 style="font-weight: 800;">Available Reports:</h6>
       <table style="width: 100%; text-align: left; border-collapse:collapse;">
         <thead>
           <tr style="background-color: #c0bcbc; text-align: center;">
             <th >Report Name</th>
+            <th>Upload Type</th>
+            <th>Report Type</th>
             <th>Download Report</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let sc of acreportsearch" style="text-align: center;">
             <td>{{ sc.fileName }}</td>
+            <td>{{sc.uploadType}}</td>
+            <td>{{sc.reportType}}</td>
             <td>
               <button (click)="openDocument(sc.fileName)">Download</button>
             </td>

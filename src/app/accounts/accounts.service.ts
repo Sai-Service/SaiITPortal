@@ -48,8 +48,8 @@ export class AccountsService {
       }
 
 
-    acreportsearch(city: string,reportType: string,month: string,year: string): Observable<any> {
-      return this.http.get(this.ServerUrl + `/documentStorage/view?city=${city}&reportType=${reportType}&month=${month}&year=${year} `)
+    acreportsearch(city: string,reportType: string,month: string,year: string,uploadType:string): Observable<any> {
+      return this.http.get(this.ServerUrl + `/documentStorage/view?city=${city}&reportType=${reportType}&month=${month}&year=${year}&uploadType=${uploadType} `)
     }
 
     openDocumentFn(path:string) {

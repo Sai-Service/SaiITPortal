@@ -58,6 +58,17 @@ body {
     box-shadow: 2px 2px 2px 3px rgba(2, 2, 2, 0.5);
 }
 
+.upload-section5 {
+    /* background: linear-gradient(to right, #eec2f7, #c8e1f8); */
+    /* background: linear-gradient(to right, #c5ebee, #97e0ec, #c5f0f3 ); */
+    /* background-color: #d9ecff; */
+    border: 1px solid rgb(105, 105, 105);
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 900px;
+    box-shadow: 2px 2px 2px 3px rgba(2, 2, 2, 0.5);
+}
+
 .upload-section h2 {
     color: #2d3436;
     font-size: 24px;
@@ -140,6 +151,22 @@ background: linear-gradient(to right, #679cf7, #4686f5);
     color: #759ad1;
     animation: glowing 2s infinite alternate;
   }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th,
+table td {
+    border: 1px solid #131212;
+    padding: 4px;
+    text-align: center;
+    font-size: 15px;
+    font-weight:450;
+    color: #070607;
+}
   
   @keyframes glowing {
     0% { color: #7b8be6; text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }

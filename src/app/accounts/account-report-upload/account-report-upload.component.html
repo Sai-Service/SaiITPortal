@@ -37,7 +37,7 @@
 
                         <div class="form-group">
                             <label>Type of Upload:</label>
-                              <select id="uploadtype" style="height: 0.9cm;" formControlName="uploadtype" *ngIf="uploadtypelist?.length">
+                              <select id="uploadType" style="height: 0.9cm;" formControlName="uploadType" *ngIf="uploadtypelist?.length">
                               <option *ngFor="let sc of uploadtypelist" [value]="sc.cmnDesc">
                                 {{ sc.cmnDesc}}
                               </option>
@@ -80,7 +80,7 @@
 
                          <div class="form-group">
                             <label>Financial Year:</label>
-                            <select name="financialyear" style="height: 0.9cm;" id="financialyear">
+                            <select name="financialyear" style="height: 0.9cm;" id="financialyear" formControlName="financialyear">
                                 <option value="">None</option>
                                 <option value="2024-25">2024-25</option>
                                 <option value="2025-26">2025-26</option>

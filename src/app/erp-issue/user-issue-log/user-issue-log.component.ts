@@ -269,9 +269,6 @@ UserissueLinesGroup() {
       }
     )
 
-    
-
-
   }
 
   get f() { return this.userissueslogForm.controls; }

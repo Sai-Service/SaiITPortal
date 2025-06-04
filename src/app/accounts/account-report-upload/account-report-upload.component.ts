@@ -33,7 +33,7 @@ interface ACReportupload{
   reportType:string;
   attribute1:number;
   attribute2:number;
-  uploadtype:string;
+  uploadType:string;
   attribute3:string;
   attribute4:string;
   attribute5:string;
@@ -57,7 +57,7 @@ export class AccountReportUploadComponent {
     filePath:string;
     month: string;
     reportType:string;
-    uploadtype:string;
+    uploadType:string;
     startDate:Date;
     endDate:Date;
     attribute1:number;
@@ -94,7 +94,7 @@ export class AccountReportUploadComponent {
     reportType:[],
     month: [],
     startDate:[],
-    uploadtype:[],
+    uploadType:[],
     endDate:[],
     attribute1:[],
     attribute2:[],
@@ -168,7 +168,7 @@ get f() { return this. acreportuploadForm.controls; }
   formData.append('ouId', formValues.ouId || '');
   formData.append('city', formValues.ouId || '');
   formData.append('reportType', formValues.reportType || '');
-  formData.append('uploadType', formValues.uploadtype || '');
+  formData.append('uploadType', formValues.uploadType || '');
   formData.append('month', formValues.month || '');
   formData.append('year', formValues.currentYear || new Date().getFullYear().toString());
  // formData.append('attribute5', formValues.attribute5 || '');
@@ -189,7 +189,48 @@ get f() { return this. acreportuploadForm.controls; }
   });
 
  }
+
+ transData(val :any){
+
+  }
  
+// uploadreport(){
+//     const formValue = this.transData(this.acreportuploadForm.value);
+//     this.acreportuploadForm.patchValue({lastUpdatedBy:'U'});
+//     console.log(formValue);
+//     let formData = new FormData();
+//     formData.append('file', this.fileInput.nativeElement.files[0]); 
+//     formData.append('objhdMst',JSON.stringify(formValue));
+//     this.service.uploadFile(formData).subscribe((res: any) => {
+//         if (res.code === 200) {
+//           this.isButtonDisabled = true;
+//           // this.showPopup = true;
+//           // this.responseMessage=res.message;
+//           alert('File uploaded successfully:');
+//           this.acreportuploadForm.get('ouId')?.disable();
+//           this.acreportuploadForm.get('city')?.disable();
+//           this.acreportuploadForm.get('reportType')?.disable();
+//           this.acreportuploadForm.get('uploadType')?.disable();
+//           this.acreportuploadForm.get('month')?.disable();
+//           this.acreportuploadForm.get('year')?.disable();
+//         } 
+//         if (res.code === 500) {
+//          // alert(res.message);
+//           // this.showPopup = true;
+//           // this.responseMessage=res.message;
+         
+//         }
+//         else {
+//           if (res.code === 400) {
+//             //alert(res.message);
+//             // this.showPopup = true;
+//             // this.responseMessage=res.message;
+           
+//           }
+//         }
+//       });
+// }
+
  refreshForm() {
   location.reload();
  }

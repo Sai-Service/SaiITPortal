@@ -26,6 +26,7 @@ interface uerissueslog{
   locationId:number;
   filePath:string;
   reportType:string;
+  uploadType:string;
   startDate:Date;
   endDate:Date;
   attribute1:number;
@@ -39,6 +40,7 @@ interface uerissueslog{
   assignedTo:string;
   city:string;
   year:string;
+  financialyear:string;
 }
 
 @Component({
@@ -61,15 +63,19 @@ acreportviewForm:FormGroup;
   attribute4:string;
   attribute5:string;
   remark :string;
-  currentYear:string;
+  month:string;
+  financialyear:string;
   file:string;
   year:string;
+  uploadType:string;
   srcitexecutive:string;
   srcstatus:string;
   srclocationId:number;
   srcdeptId:number;
   fileName:string;
   reportExtractedName:String;
+  currentYear: number = new Date().getFullYear();
+  previousYear: number = this.currentYear - 1;
 
   @ViewChild('fileInput') fileInput:any;
 
@@ -90,7 +96,7 @@ acreportviewForm:FormGroup;
   acreportsearch:any;
   
 
-     constructor(private fb: FormBuilder, private router: Router, private service: AccountsService,private cdRef: ChangeDetectorRef) {
+  constructor(private fb: FormBuilder, private router: Router, private service: AccountsService,private cdRef: ChangeDetectorRef) {
         this.headers = new HttpHeaders();
           this.ServerUrl = AppConst.ServerUrl;
         this.acreportviewForm = fb.group({
@@ -99,6 +105,7 @@ acreportviewForm:FormGroup;
       locationId:[],
       filePath:[],
       reportType:[],
+      uploadType:[],
       startDate:[],
       endDate:[],
       attribute1:[],
@@ -114,19 +121,16 @@ acreportviewForm:FormGroup;
       srcdeptId:[],
       srclocationId:[],
       lastUpdatedBy:[],
-      month:[]
-      
+      month:[],
+      financialyear:[]
     })
+    
     }
    
      ngOnInit(): void {
       $("#wrapper").toggleClass("toggled");
-      currentYear: new Date().getFullYear().toString()
+      // currentYear: new Date().getFullYear().toString()
       this.acreportviewForm.patchValue({createdBy:sessionStorage.getItem('orgID')});
-      var  reportType = this.acreportviewForm.get('reportType')?.value;
-      if(reportType === null){
-        this.acreportviewForm.patchValue({reportType:'none'});
-      }
   
        
       this.service.erplocationList(sessionStorage.getItem('orgId'))
@@ -162,44 +166,97 @@ acreportviewForm:FormGroup;
     )
 
     
+    
   }
   get f() { return this.acreportviewForm.controls; }
   acreportviewfrm(acreportviewForm: any) { }
 
-   search() {
-    const city = this.acreportviewForm.get('ouId')?.value;
-    const year = this.acreportviewForm.get('currentYear')?.value;
-    const reportType = this.acreportviewForm.get('reportType')?.value;
-    const month = this.acreportviewForm.get('month')?.value;
-  
-    this.service.acreportsearch(city, reportType, month, year)
-      .subscribe(
-        (res: any) => {
-          if (res.code == 200) {
-            alert(res.message);
+
+  //  search() {
+  //   const city = this.acreportviewForm.get('ouId')?.value;
+  //   const year = this.acreportviewForm.get('year')?.value;
+  //   const uploadType = this.acreportviewForm.get('uploadType')?.value;
+  //   const reportType = this.acreportviewForm.get('reportType')?.value;
+  //   const month = this.acreportviewForm.get('month')?.value;
+    
+  //   this.service.acreportsearch(city, reportType, month, year, uploadType)
+  //     .subscribe(
+  //       (res: any) => {
+  //         if (res.code == 200) {
+  //           alert(res.message);
             
-            this.acreportsearch = res.obj;
+  //           this.acreportsearch = res.obj;
   
-            if (Array.isArray(res.obj) && res.obj.length > 0) {
-              const reportPath = res.obj[0].report_path; 
-              if (typeof reportPath === 'string') {
-                 const fileName = this.extractFileName(reportPath);
-                console.log('Extracted file name: ', fileName);  
-              } else {
-                console.error('Expected report_path to be a string, but got:', typeof reportPath);
-              }
-            } 
-            else {
-              console.error('Expected res.obj to be a non-empty array.');
+  //           if (Array.isArray(res.obj) && res.obj.length > 0) {
+  //             const reportPath = res.obj[0].report_path; 
+  //             if (typeof reportPath === 'string') {
+  //                const fileName = this.extractFileName(reportPath);
+  //               console.log('Extracted file name: ', fileName);  
+  //             } else {
+  //               console.error('Expected report_path to be a string, but got:', typeof reportPath);
+  //             }
+  //           } 
+  //           else {
+  //             console.error('Expected res.obj to be a non-empty array.');
+  //           }
+  //         } else {
+  //         }
+  //       },
+  //       (error: any) => {
+  //         console.error('Error occurred: ', error);
+  //       }
+  //     );
+  // }
+
+
+  search() {
+  var city = this.acreportviewForm.get('ouId')?.value;
+  var year = this.acreportviewForm.get('currentYear')?.value;
+  var uploadType = this.acreportviewForm.get('uploadType')?.value;
+  var reportType = this.acreportviewForm.get('reportType')?.value;
+  var month = this.acreportviewForm.get('month')?.value;
+   if( city ===null){city=''}
+   if( year ===null){year=''}
+   if( uploadType ===null){uploadType=''}
+   if( reportType ===null){reportType=''}
+   if( month ===null){month=''}
+
+ 
+  if (!city && !year && !uploadType && !reportType && !month) {
+    alert("Please select at least one field to search.");
+    return;
+  }
+
+  this.service.acreportsearch(city, reportType, month, year, uploadType)
+    .subscribe(
+      (res: any) => {
+        if (res.code === 200) {
+          alert(res.message);
+          this.acreportsearch = res.obj;
+
+          if (Array.isArray(res.obj) && res.obj.length > 0) {
+            const reportPath = res.obj[0].report_path; 
+            if (typeof reportPath === 'string') {
+              const fileName = this.extractFileName(reportPath);
+              console.log('Extracted file name: ', fileName);  
+            } else {
+              console.error('Expected report_path to be a string, but got:', typeof reportPath);
             }
           } else {
+            console.error('Expected res.obj to be a non-empty array.');
           }
-        },
-        (error: any) => {
-          console.error('Error occurred: ', error);
+        } else {
+          alert("Search failed or no results found.");
         }
-      );
-  }
+      },
+      (error: any) => {
+        console.error('Error occurred: ', error);
+      }
+    );
+}
+
+
+
 
   private extractFileName(path: string): string {
     if (!path) return '';
