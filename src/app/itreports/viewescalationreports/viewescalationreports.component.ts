@@ -15,7 +15,6 @@ interface FormData {
   orgId: string;
   orgName?: string;
   role?: string;
-
 }
 
 @Component({
@@ -51,52 +50,114 @@ export class ViewescalationreportsComponent {
     this.role = storedRole || '';
 
 
+    // this.service.reporttype()
+    // .subscribe( 
+    //   data => {
+    //     this.reporttype = data.obj;
+    //     console.log(this.reporttype);
+    //   }
+    // )
+
   }
 
+  // fetchReports(city: string): void {
+  //   if (city === 'Select Report Type') {
+  //     alert('Please select a valid report type.');
+  //     return;
+  //   }
+  
+  //   const url = `${this.ServerUrl}/portalDataReports/dataReportPath?reportRelatedTo=${city}`;
+  //   this.http.get<any>(url).subscribe({
+  //     next: (response) => {
+  //       if (response.code === 200) {
+  //         this.reportTypes = response.obj.map((report: any) => report.REPORT_TYPE);
+  
+  //         // this.reports = response.obj
+  //         //   .filter((report: any) => report.REPORT_PATH) 
+  //         //   .map((report: any) => ({
+  //         //     fileName: this.extractFileName(report.REPORT_PATH),
+  //         //     fullPath: report.REPORT_PATH, 
+  //         //   }));
 
-  fetchReports(city: string): void {
-    if (city === 'Select Report Type') {
-      alert('Please select a valid report type.');
-      return;
-    }
+  //         this.reports = response.obj
+  //             .filter((report: any) => report.REPORT_PATH)
+  //             .map((report: any) => ({
+  //             fileName: this.extractFileName(report.REPORT_PATH),
+  //             fullPath: report.REPORT_PATH,
+  //             month: report.MONTH || 'N/A'  // Ensure 'MONTH' matches the exact field in your backend
+  //           }));
   
-    const url = `${this.ServerUrl}/portalDataReports/dataReportPath?reportRelatedTo=${city}`;
-    this.http.get<any>(url).subscribe({
-      next: (response) => {
-        if (response.code === 200) {
-          this.reportTypes = response.obj.map((report: any) => report.REPORT_TYPE);
-  
-          this.reports = response.obj
-            .filter((report: any) => report.REPORT_PATH) 
-            .map((report: any) => ({
-              fileName: this.extractFileName(report.REPORT_PATH),
-              fullPath: report.REPORT_PATH, 
-            }));
-  
-          this.errorMessage = null;
-        } else {
-          this.reportTypes = [];
-          this.reports = [];
-          this.errorMessage = response.message || 'No reports found.';
+  //         this.errorMessage = null;
+  //       } else {
+  //         this.reportTypes = [];
+  //         this.reports = [];
+  //         this.errorMessage = response.message || 'No reports found.';
+  //       }
+  //     },
+  //     error: () => {
+  //       this.reportTypes = [];
+  //       this.reports = [];
+  //       this.errorMessage = 'An error occurred while fetching the reports.';
+  //     },
+  //   });
+  // }
+
+  fetchReports(city: string, selectedMonth: string): void {
+  const url = `${this.ServerUrl}/portalDataReports/dataReportPath?reportRelatedTo=${city}`;
+  this.http.get<any>(url).subscribe({
+    next: (response) => {
+      if (response.code === 200) {
+        let allReports = response.obj
+          .filter((report: any) => report.REPORT_PATH)
+          .map((report: any) => ({
+            fileName: this.extractFileName(report.REPORT_PATH),
+            fullPath: report.REPORT_PATH,
+            month: report.MONTH || 'N/A'
+          }));
+
+        // Filter by month only if a valid month is selected
+        if (selectedMonth && selectedMonth !== '') {
+          allReports = allReports.filter((report: { month: string; }) => report.month === selectedMonth);
         }
-      },
-      error: () => {
-        this.reportTypes = [];
+
+        this.reports = allReports;
+        this.errorMessage = this.reports.length === 0 ? 'No reports found for the selected month.' : null;
+      } else {
         this.reports = [];
-        this.errorMessage = 'An error occurred while fetching the reports.';
-      },
-    });
-  }
+        this.errorMessage = response.message || 'No reports found.';
+      }
+    },
+    error: () => {
+      this.reports = [];
+      this.errorMessage = 'An error occurred while fetching the reports.';
+    },
+  });
+}
+
   
+
+  // onViewReports(): void {
+  //   const city =(document.getElementById('city') as HTMLSelectElement).value;
+  //   //const month =(document.getElementById('month') as HTMLSelectElement).value;
+  //   if (city) {
+  //     this.fetchReports(city);
+  //   } 
+  //   else {
+  //     this.errorMessage = 'Please select all fields.';
+  //   }
+  // }
 
   onViewReports(): void {
-    const city =(document.getElementById('city') as HTMLSelectElement).value;
-    if (city) {
-      this.fetchReports(city);
-    } else {
-      this.errorMessage = 'Please select all fields.';
-    }
+  const city = (document.getElementById('city') as HTMLSelectElement).value;
+  const month = (document.getElementById('month') as HTMLSelectElement).value;
+
+  if (city && city !== 'Select Report Type') {
+    this.fetchReports(city, month);
+  } else {
+    this.errorMessage = 'Please select a valid report type.';
   }
+}
+
 
 
   private extractFileName(path: string): string {

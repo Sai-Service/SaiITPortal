@@ -96,7 +96,7 @@ acreportviewForm:FormGroup;
   acreportsearch:any;
   
 
-  constructor(private fb: FormBuilder, private router: Router, private service: AccountsService,private cdRef: ChangeDetectorRef) {
+constructor(private fb: FormBuilder, private router: Router, private service: AccountsService,private cdRef: ChangeDetectorRef) {
         this.headers = new HttpHeaders();
           this.ServerUrl = AppConst.ServerUrl;
         this.acreportviewForm = fb.group({
@@ -254,9 +254,6 @@ acreportviewForm:FormGroup;
       }
     );
 }
-
-
-
 
   private extractFileName(path: string): string {
     if (!path) return '';

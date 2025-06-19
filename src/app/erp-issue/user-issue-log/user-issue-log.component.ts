@@ -500,7 +500,7 @@ UserissueLinesGroup() {
         formData.append('file', '');
       }
     formData.append('objhdMst',JSON.stringify(formValue));
-    this.service.updateUserIssueLinefn(formData,issueNo).subscribe((res: any) => {
+    this.service.updateUserIssueLinefn2(formData,issueNo).subscribe((res: any) => {
       if (res.code === 200) {
         alert(res.message);
         this.UpdateisButtonDisabled=true;
@@ -640,7 +640,7 @@ openDocument(trlineId: any, filePath: any) {
     formData.append('objhdMst', JSON.stringify(formValue));
     formData.append('file', ''); // No file needed to close
   
-    this.service.updateUserIssueLinefn(formData, issueNo).subscribe((res: any) => {
+    this.service.updateUserIssueLinefn2(formData, issueNo).subscribe((res: any) => {
       if (res.code === 200) {
         alert("Issue Closed Successfully.");
         this.isIssueClosed = true;

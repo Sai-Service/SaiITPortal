@@ -27,7 +27,7 @@
                   
            <div>
             <label>City</label>
-            <select type="number" id="ouId" style="height: 1cm;" formControlName="ouId">
+            <select type="number" id="ouId" style="height: 1cm;" formControlName="ouId" (change)="onselectouid($event)">
                 <option value="">None</option>
                 <option *ngFor="let sc of  cityList" [value]="sc.ouId">
                     {{sc.ouId}}-{{sc.ouCity}}
@@ -39,7 +39,7 @@
             <label>Location</label>
             <select type="number" id="locationId" style="height: 1cm;" formControlName="srclocationId">
                 <option value="">None</option>
-                <option *ngFor="let sc of  alllocationlist" [value]="sc.locId">
+                <option *ngFor="let sc of  erplocationList" [value]="sc.locId">
                     {{sc.locId}} - {{sc.locName}}
                 </option>
             </select>

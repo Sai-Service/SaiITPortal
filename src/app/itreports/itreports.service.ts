@@ -35,4 +35,9 @@ export class ItreportsService {
   cityList(): Observable<any> {
     return this.http.get(this.ServerUrl + '/ouMst/Active')
   }
+
+
+  reporttype(): Observable<any> {
+    return this.http.get(this.ServerUrl + '/ portalDataReports/reportRelation')
+  }
 }

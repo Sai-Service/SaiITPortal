@@ -15,6 +15,7 @@ interface FormData {
   orgId: string;
   orgName?: string;
   role?: string;
+  
 }
 
 interface ReportType {
@@ -40,6 +41,8 @@ export class EscalationreportComponent implements OnInit {
   orgId: string = '';
   orgName: string = '';
   role: string = '';
+  year: string='';
+  currentYear:string;
   userData: UserData | null = null;
 
   formData: FormData = {
@@ -156,6 +159,7 @@ export class EscalationreportComponent implements OnInit {
       orgId: this.orgId,
       orgName: this.orgName,
       role: this.role,
+      
     };
 
     this.file = null; 

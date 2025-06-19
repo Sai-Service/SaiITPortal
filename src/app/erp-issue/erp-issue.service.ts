@@ -112,6 +112,14 @@ export class ErpIssueService {
     return this.http.put(url, UpdateCounterSaleInvRecord);
   }
 
+  updateUserIssueLinefn2(UpdateCounterSaleInvRecord:FormData,issueNo:any) {
+    // const options = {
+    //   headers: this.headers
+    // };
+    const url = (this.ServerUrl + `/Transaction/updateIssuebyuser?issueNo=${issueNo}`);
+    return this.http.put(url, UpdateCounterSaleInvRecord);
+  }
+
   openDocumentFn(headerId:any,docType:any) {
     const REQUEST_URI = this.ServerUrl + `/Transaction/downloadfile?trlineId=${headerId}&filepath=${docType}`;
     return this.http.get(REQUEST_URI, {
