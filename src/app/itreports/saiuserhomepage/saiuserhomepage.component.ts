@@ -37,4 +37,14 @@ export class SaiuserhomepageComponent {
     
   }
 
+   navigateToPhotos() {
+    this.router.navigate(['./admin/itreportsModule/imageupload']);
+    
+  }
+
+   navigateTopresentation() {
+    this.router.navigate(['./admin/itreportsModule/annualpresentation']);
+    
+  }
+
 }

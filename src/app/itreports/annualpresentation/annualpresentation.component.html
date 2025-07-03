@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sai Service</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-container">
+        <div class="logo-section">
+            <img src="assets/images/Sai-flower.png" alt="Sai Service Logo" class="logo">
+            <h1 class="brand-name">SAI SERVICE</h1>
+        </div>
+        
+        <div class="marquee-section">
+            <div class="marquee-wrapper">
+                <marquee class="marquee-text">✨Sai Service✨</marquee>
+            </div>
+        </div>
+        
+        <div class="user-section">
+            
+            <div class="username">
+                  <a href="http://saiitportal.com/#/admin/itreportsModule/saiuserhomepage"><b style="color: rgb(248, 247, 250);">Home</b></a>
+            </div>
+            <div class="username">
+                    <a href="http://saiitportal.com/#/login/login">
+                    <b style="color: rgb(248, 247, 250);">LOGOUT</b>
+                    </a>
+            </div>
+          
+        </div>
+    </div>    
+</header>
+
+<main class="main-container">
+
+        <div class="page-header">
+            <h1 class="page-title">🚀 ANNUAL BUSINESS REVIEW MEET PRESNTATIONS 2024-25</h1>
+            <div class="title-underline"></div>
+        </div>
+
+        <div class="container">
+            <!-- <div class="report-list-container">
+                <h2>📊 Available Presentations</h2>
+            
+              <ul *ngIf="reports.length > 0; else noReports">
+                 <li *ngFor="let report of reports">
+                 <span>{{ report.reportPath }}</span>
+                 <button (click)="downloadReport(report.reportPath)" style="margin-left: 50px;">Download</button>
+                 </li>
+              </ul>
+
+            <ng-template #noReports>
+               <p>No reports available at the moment.</p>
+            </ng-template>
+            </div> -->
+
+            <div class="report-list-container">
+                <h2>📊 Available Presentations</h2>
+
+                <table *ngIf="reports.length > 0; else noReports" style="width: 100%;border-collapse: collapse;" >
+
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Report Name</th>
+                            <th>Download</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let report of reports let i = index">
+                            <td>{{i + 1}}</td>
+                            <td>{{ report.reportPath }}</td>
+                            <td><button (click)="downloadReport(report.reportPath)">Download</button></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+                <ng-template #noReports>
+               <p>No reports available at the moment.</p>
+            </ng-template>
+
+            </div>
+        </div>
+   
+</main>
+</body>
+</html>

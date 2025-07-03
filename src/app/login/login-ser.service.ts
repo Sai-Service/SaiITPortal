@@ -28,4 +28,9 @@ export class LoginSerService {
     console.log(body);
     return this.httpclient.post(url, body, options)
   }
+
+  getLatestNewsletter() {
+  return this.http.get(this.ServerUrl + `/portalDataReports/latestNewsLetterFile`);
+}
+
 }

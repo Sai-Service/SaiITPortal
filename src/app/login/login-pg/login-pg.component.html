@@ -19,6 +19,10 @@
 <header class="new">
   <div class="header-left">
      <img style="height: 50px; width:150px;" src="https://st4.depositphotos.com/2274151/30829/v/450/depositphotos_308292292-stock-illustration-new-update-sign-new-update.jpg" alt="">
+
+     <div>For Issue handling web meeting link <a href="https://teams.microsoft.com/l/meetup-join/19%3auS2J1eAq1YUyaooyqTJDYkAp0yXAplJ4E_wyAX7PQcI1%40thread.tacv2/1689832315130?context=%7b%22Tid%22%3a%227e7a3eb3-b25a-4adc-aef6-7c071c762823%22%2c%22Oid%22%3a%221aabe517-d128-4431-a779-86741acf5c87%22%7d">
+         Click Here</a></div>
+
       <div>
         <marquee direction="up" scrollamount="4" onMouseOver="this.stop()" onMouseOut="this.start()">
           <ul>
@@ -38,14 +42,18 @@
               Mumbai News Letter</a>
           </li>
           <br>
-          <li>
-              <a href="http://saiitportal.com/ITPortal/DocUpload/DownloadItLetter?news_Line6=//sai14_data//saiitportal_docs//Application_Image//SaiIT - Newsletter May 2025.pdf"  target="_blank">
-              Sai IT News Letter</a>
+          <!-- <li> -->
+
+              <li *ngIf="latestNewsletter">
+  <a [href]="'http://saiitportal.com/ITPortal/DocUpload/DownloadLetter?news_Line8=//sai14_data//saiitportal_docs//Application_Image//' + latestNewsletter" target="_blank">
+    Sai It NewsLetter
+  </a>
+</li>          
+        <!-- <a href="http://saiitportal.com/ITPortal/DocUpload/DownloadItLetter?news_Line6=//sai14_data//saiitportal_docs//Application_Image//SaiIT - Newsletter May 2025.pdf"  target="_blank">
+              Sai IT News Letter</a> -->
                <!-- <a href="http://saiitportal.com/ITPortal/DocUpload/DownloadItLetter?news_Line6=//sai14_data//saiitportal_docs//Application_Image//SAI IT NEWS LETTER_ALL_JUL.pdf"  target="_blank">
               Sai IT News Letter</a> -->
-              <!-- <a href="http://localhost:8080/DocUpload/DownloadItLetter?news_Line6=D:/NewsLetter/Sai Newsletter May 2025.pdf"  target="_blank">
-              Sai IT News Letter</a> -->
-          </li>
+          <!-- </li> -->
           </ul>
         </marquee> 
       </div>
@@ -65,10 +73,28 @@
     </div>
 </header> 
 
+<section class="main-container" >
+  
+           <div class="page-header">
+           <div class="user-section" style="margin-left: 470px;">
+            <button class="btn-report" (click)="navigateToPhotos()">
+                    <span class="btn-icon">📊</span>
+                    <span class="btn-text">ANNUAL BUSINESS REVIEW MEET PHOTOS 2024-25</span>
+            </button>
+
+            <!-- <button class="btn-report" (click)="navigateTopresentation()">
+                    <span class="btn-icon">📊</span>
+                    <span class="btn-text">ANNUAL BUSINESS MEET PRESNTATIONS 2024-25</span>
+            </button> -->
+           </div>
+        </div>
+  
+</section>
+
 <section class="search-section">
   <div class="container">
     <marquee direction="left">
-      DBA Team Support : Monday to Saturday = Digamber G Pune-9923208023 : 9 AM To 6 PM //  Mangesh R Pune-9594440963 : 9 AM to 6 PM //  Dinesh D Mumbai-9594952151 : 10 AM to 7 PM .
+      DBA Team Support : Monday to Saturday = Digamber G Pune-9923208023 : 9 AM To 7 PM //  Mangesh R Pune-9594440963 : 9 PM to 8 AM //  Dinesh D Mumbai-9594952151 : 10 AM to 7 PM .
     </marquee>
   </div>
 </section>
@@ -104,6 +130,9 @@
          </div>
          <div class="feature">
           <a class="btn" style="width: 132px;" href="http://182.73.44.118:9091/jobSlipProjectNew">Non TV ImgUpload</a>
+         </div>
+         <div class="feature">
+          <a class="btn" style="width: 118px;" href="http://saiitportal.com/filecompression/">File Compression</a>
          </div>
      </div>
 </section>

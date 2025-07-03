@@ -6,6 +6,7 @@ interface FormData {
   accessTo: string;
   city: string;
   month: string;
+  reportRelation: string;  // Add this
   reportType: string;
   year: number;
   department: string;
@@ -15,7 +16,6 @@ interface FormData {
   orgId: string;
   orgName?: string;
   role?: string;
-  
 }
 
 interface ReportType {
@@ -35,6 +35,7 @@ interface UserData {
   templateUrl: './escalationreport.component.html',
   styleUrl: './escalationreport.component.css',
 })
+
 export class EscalationreportComponent implements OnInit {
   isCityDisabled: boolean = false;
   username: string = '';
@@ -44,10 +45,12 @@ export class EscalationreportComponent implements OnInit {
   year: string='';
   currentYear:string;
   userData: UserData | null = null;
+  reportRelations: any[] ;
 
   formData: FormData = {
     accessTo: '',
     city: '',
+    reportRelation: '',
     month: '',
     reportType: '',
     year: new Date().getFullYear(),
@@ -64,8 +67,11 @@ export class EscalationreportComponent implements OnInit {
 
   reportTypes: ReportType[] = [];
 
+  showQuarter: boolean = false;  
+
   headers: HttpHeaders;
   ServerUrl: string;
+  activeTab: string = 'form1';
 
   constructor(private http: HttpClient) {
     this.headers = new HttpHeaders();
@@ -150,6 +156,7 @@ export class EscalationreportComponent implements OnInit {
       accessTo: '',
       city: '',
       month: '',
+      reportRelation: '',
       reportType: '',
       year: new Date().getFullYear(),
       department: '',
@@ -173,15 +180,63 @@ export class EscalationreportComponent implements OnInit {
   }
 
   updateDepartment(): void {
-    console.log('Selected Report Type:', this.formData.accessTo);
-
-    this.isCityDisabled = this.formData.accessTo === 'TOP MGT';
-    if (this.isCityDisabled) {
-      this.formData.city = 'ALL';
-    }
-
-    this.fetchReportTypes();
+  this.isCityDisabled = this.formData.accessTo === 'TOP MGT';
+  if (this.isCityDisabled) {
+    this.formData.city = 'ALL';
   }
+
+  this.formData.reportRelation = '';
+  this.reportRelations = [];
+  this.formData.reportType = '';
+  this.reportTypes = [];
+
+  this.fetchReportRelations();
+}
+
+fetchReportRelations(): void {
+  // var accessTo = encodeURIComponent(this.formData.accessTo);
+  var accessTo1=this.formData.accessTo;
+  var api=`${this.ServerUrl}/portalDataReports/reportRelationByAccess?accessTo=${accessTo1}`
+  
+  this.http.get<any>(api).subscribe(
+    (response) => {
+      if (response.code === 200 && Array.isArray(response.obj)) {
+        this.reportRelations = response.obj;
+      } else {
+        this.reportRelations = [];
+        console.warn('Unexpected reportRelation API response:', response);
+      }
+    },
+    (error) => {
+      console.error('Error fetching report relations:', error);
+      this.reportRelations = [];
+    }
+  );
+}
+
+onReportRelationChange(): void {
+  this.reportTypes = [];
+  this.formData.reportType = '';
+
+  this.showQuarter = this.formData.reportRelation === 'IT_QUARTERLY';
+// alert(this.formData.reportRelation);
+  const reportRelatedTo = encodeURIComponent(this.formData.reportRelation);
+  const apiUrl = `${this.ServerUrl}/portalDataReports/dataReportType?reportRelatedTo=${reportRelatedTo}`;
+
+  this.http.get<any>(apiUrl).subscribe(
+    (response) => {
+      if (response.code === 200 && Array.isArray(response.obj)) {
+        this.reportTypes = response.obj;
+        console.log('Fetched Report Types:', this.reportTypes);
+      } else {
+        console.warn('Unexpected reportType API response:', response);
+      }
+    },
+    (error) => {
+      console.error('Error fetching report types:', error);
+    }
+  );
+}
 
   fetchReportTypes(): void {
     const accessTo = encodeURIComponent(this.formData.accessTo);
@@ -204,3 +259,5 @@ export class EscalationreportComponent implements OnInit {
     );
   }
 }
+
+

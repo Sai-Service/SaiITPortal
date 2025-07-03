@@ -7,40 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- <header class="header">
-        <div class="container">
-            <nav class="navbar">
-                <ul class="nav-links">
-                    <li><a href="/#/itreports">Home</a></li>
-                    <li class="dropdown">
-                        <a href="#features">Other</a>
-                        <div class="dropdown-content">
-                            <a href="/#/itreports/ceoreports">Upload CEO Reports</a>
-                            <a href="#item2">Upload Data Reports</a>
-                            <a href="#item2">Accounts Reports</a>
-                        </div>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#features">Top Management</a>
-                        <div class="dropdown-content">
-                            <a href="#item1">Advance Details</a>
-                            <a href="#item2">Skype Review</a>
-                        </div>
-                    </li>
-                    <li><a href="/#/itreports/viewreports">Reports</a></li>
-                    <li><a href="#contact">Login Count</a></li>
-                    <li style="color: crimson;"><b>Welcome, {{ username }}!</b></li>
-                    <li><a href="/login"><b style="color: rgb(62, 3, 239);font-family: Arial, Helvetica, sans-serif;">LOGOUT</b></a></li>
-                </ul>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </nav>
-        </div>
-    </header> -->
-
     <header class="header">
         <div class="header" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center;">
             <img src="assets/images/Sai Logo.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;">
@@ -50,7 +16,16 @@
 
         </div>      
     </header>
-    <div style="float: right; margin-top: 20px;margin-right: 20px;background-color:#7AC6D2;padding: 5px 5px 5px 5px ;"><b>Login Name- {{ username }}</b></div>
+    <div style="float: right; margin-top: 0px;margin-right: 20px;background-color:#7AC6D2;padding: 5px 5px 5px 5px ;"><b>Login Name- {{ username }}</b></div>
+   
+    <div class="tab-container">
+
+        <div class="tab-buttons">
+         <button [class.active]="activeTab === 'form1'" (click)="activeTab = 'form1'" style="margin-left: 280px;">Report Upload</button>
+         <button [class.active]="activeTab === 'form2'" (click)="activeTab = 'form2'" style="margin-left: 400px;">Support Upload</button>
+        </div>
+   
+    <div class="tab-content" *ngIf="activeTab === 'form1'">
     <div class="main-container">
         <main>
             <div class="upload-section">
@@ -80,8 +55,16 @@
                               <option>PUNE</option>
                             </select>
                           </div>
+
+                          <div class="form-group">
+                             <label>Report Relation:</label>
+                             <select name="reportRelation" [(ngModel)]="formData.reportRelation" (change)="onReportRelationChange()" [disabled]="!formData.accessTo" required>
+                               <option value="">Select Report Relation</option>
+                               <option *ngFor="let rel of reportRelations" [value]="rel.REPORT_RELATED_TO">{{ rel.REPORT_RELATED_TO }}</option>
+                             </select>
+                          </div>
                         
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="month">Month:</label>
                             <select id="month" name="month" [(ngModel)]="formData.month" required>
                                 <option value="">Select Month</option>
@@ -98,7 +81,39 @@
                                 <option value="NOV">NOV</option>
                                 <option value="DEC">DEC</option>
                             </select>
+                        </div> -->
+
+                        <div class="form-group" *ngIf="!showQuarter">
+                           <label for="month">Month:</label>
+                           <select id="month" name="month" [(ngModel)]="formData.month" required>
+                               <option value="">Select Month</option>
+                               <option value="JAN">JAN</option>
+                               <option value="FEB">FEB</option>
+                               <option value="MAR">MAR</option>
+                               <option value="APR">APR</option>
+                               <option value="MAY">MAY</option>
+                               <option value="JUN">JUN</option>
+                               <option value="JUL">JUL</option>
+                               <option value="AUG">AUG</option>
+                               <option value="SEP">SEP</option>
+                               <option value="OCT">OCT</option>
+                               <option value="NOV">NOV</option>
+                               <option value="DEC">DEC</option>
+                           </select>
                         </div>
+
+                        <div class="form-group" *ngIf="showQuarter">
+                             <label for="quarter">Quarter:</label>
+                             <select id="quarter" name="month" [(ngModel)]="formData.month" required>
+                                <option value="">Select Quarter</option>
+                                <option value="Q1">Q1</option>
+                                <option value="Q2">Q2</option>
+                                <option value="Q3">Q3</option>
+                                <option value="Q4">Q4</option>
+                             </select>
+                        </div>
+
+
                         <div class="form-group">
                             <label for="Year">Year:</label>
                             <select name="year" id="year">
@@ -107,16 +122,17 @@
                             </select>
                         </div>
                     </div>
+                    
                     <div class="form-row">
-                      
+
                         <div class="form-group">
-                            <label for="weekNo">Type Of Upload:</label>
-                            <select id="weekNo" name="weekNo" [(ngModel)]="formData.reportType" required>
+                           <label>Type Of Upload:</label>
+                           <select id="weekNo" name="weekNo" [(ngModel)]="formData.reportType" [disabled]="!formData.reportRelation" required>
                               <option *ngIf="reportTypes.length === 0" value="">Select File Type</option>
                               <option *ngFor="let report of reportTypes" [value]="report.REPORT_TYPE">
-                                {{ report.REPORT_TYPE }}
+                                 {{ report.REPORT_TYPE }}
                               </option>
-                            </select>
+                           </select>
                         </div>
 
                         <div class="form-group">
@@ -124,11 +140,43 @@
                             <input type="file" id="file" (change)="onFileSelected($event)" required>
                         </div>
                     </div>
-                    <button type="submit" style="margin-left: 320px;padding: 5px 5px 5px 5px;margin-top: 10px;" class="btn btn-primary">Upload File</button>
+
+                    <button type="submit" style="margin-left: 320px;padding: 5px 5px 5px 5px;margin-top: 10px;" class="btn btn-primary" [disabled]="!formData.accessTo || !formData.reportRelation || !formData.reportType || !file"> Upload File</button>
+
                 </form>
             </div>
         </main>
 
     </div>
+    </div>
+
+
+   <div class="tab-content" *ngIf="activeTab === 'form2'">
+    <div class="upload-section">
+    <h2>Upload Second Type of Report</h2>
+    <form>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="secondAccessTo">Supporter Name:</label>
+            </div>
+
+            <div class="form-group">
+                <label for="secondFile">Contact No:</label>
+            </div>
+
+            <div class="form-group">
+                <label for="secondFile">Email ID:</label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success">
+               Submit
+        </button>
+    </form>
+    </div>
+   </div>
+
+</div>
+
 </body>
 </html>

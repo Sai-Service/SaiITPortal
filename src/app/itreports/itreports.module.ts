@@ -9,6 +9,9 @@ import { ViewescalationreportsComponent } from './viewescalationreports/viewesca
 import { EscalationreportComponent } from './escalationreport/escalationreport.component';
 import { SaiuserhomepageComponent } from './saiuserhomepage/saiuserhomepage.component';
 import { ViewreportsallComponent } from './viewreportsall/viewreportsall.component';
+import { ImageuploadComponent } from './imageupload/imageupload.component';
+import { AnnualpresentationComponent } from './annualpresentation/annualpresentation.component';
+
 
 
 
@@ -21,6 +24,8 @@ import { ViewreportsallComponent } from './viewreportsall/viewreportsall.compone
     EscalationreportComponent,
     SaiuserhomepageComponent,
     ViewreportsallComponent,
+    ImageuploadComponent,
+    AnnualpresentationComponent,
   ],
   imports: [
     CommonModule,

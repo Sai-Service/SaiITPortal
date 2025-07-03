@@ -33,8 +33,13 @@ export class LoginPgComponent {
 
   currentDateList: any = [];
 
+  latestNewsletter: string = '';
+
   constructor(private router: Router, private LoginSerService: LoginSerService) { }
 
+  ngOnInit() {
+  this.fetchNewsletter();
+}
 
   login() { 
     if (this.username == undefined || this.username == "") {
@@ -105,9 +110,30 @@ export class LoginPgComponent {
               }
       
     }})
-
-   
   
+  }
+
+fetchNewsletter() {
+  this.LoginSerService.getLatestNewsletter().subscribe((res: any) => {
+    if (res.code === 200 && res.obj?.length > 0) {
+      this.latestNewsletter = res.obj[0].file_name;
+      console.log("Loaded Newsletter File:", this.latestNewsletter);
+    } else {
+      console.warn("Newsletter file not found in response");
+    }
+  }, err => {
+    console.error("Newsletter API error", err);
+  });
+}
+
+  navigateToPhotos() {
+    this.router.navigate(['./admin/itreportsModule/imageupload']);
+    
+  }
+
+   navigateTopresentation() {
+    this.router.navigate(['./admin/itreportsModule/annualpresentation']);
+    
   }
 
 }

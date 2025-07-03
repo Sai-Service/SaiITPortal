@@ -36,8 +36,24 @@ export class ItreportsService {
     return this.http.get(this.ServerUrl + '/ouMst/Active')
   }
 
-
   reporttype(): Observable<any> {
     return this.http.get(this.ServerUrl + '/ portalDataReports/reportRelation')
   }
+
+  //   openDocumentFn(headerId:any,docType:any) {
+  //   const REQUEST_URI = this.ServerUrl + `/Transaction/downloadfile?trlineId=${headerId}&filepath=${docType}`;
+  //   return this.http.get(REQUEST_URI, {
+  //     responseType: 'arraybuffer',
+  //     headers: this.headers,
+  //   });
+  // }
+
+  getPresentationReports(department:any): Observable<any[]> {
+  const url = `${this.ServerUrl}/portalReports/presentreportPathDetails?department=${department}`;
+  return this.http.get<any[]>(url);
+}
+
+downloadPresentationReport(fileName: string): string {
+  return `${this.ServerUrl}/portalReports/downPresentationReport/${encodeURIComponent(fileName)}`;
+}
 }
