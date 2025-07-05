@@ -64,6 +64,10 @@ export class ErpIssueService {
     return this.http.get(this.ServerUrl + `/FndCmn/CmnType?cmnType=FILETYPE`);
   }
 
+  supportdtls(): Observable<any> {
+    return this.http.get(this.ServerUrl + `/Login/derina`);
+  }
+
   issuestatusList(): Observable<any> {
     return this.http.get(this.ServerUrl + `/FndCmn/CmnType?cmnType=STATUS`);
   }

@@ -72,30 +72,55 @@ export class EscalationreportComponent implements OnInit {
   headers: HttpHeaders;
   ServerUrl: string;
   activeTab: string = 'form1';
+  // activeTab: string = 'form2';
 
   constructor(private http: HttpClient) {
     this.headers = new HttpHeaders();
     this.ServerUrl = AppConst.ServerUrl;
   }
 
+  // ngOnInit(): void {
+  //   this.username = sessionStorage.getItem('userName') || '';
+  //   this.orgId = sessionStorage.getItem('orgId') || '';
+  //   this.orgName = sessionStorage.getItem('orgName') || '';
+  //   this.role = sessionStorage.getItem('role') || '';
+
+  //   const userDataString = sessionStorage.getItem('userData');
+  //   if (userDataString) {
+  //     this.userData = JSON.parse(userDataString);
+  //   }
+
+  //   this.formData.createdBy = this.username;
+  //   this.formData.updatedBy = this.username;
+  //   this.formData.orgId = this.orgId;
+  //   this.formData.orgName = this.orgName;
+  //   this.formData.ouId = this.orgId;
+  //   this.formData.role = this.role;
+  // }
+
   ngOnInit(): void {
-    this.username = sessionStorage.getItem('userName') || '';
-    this.orgId = sessionStorage.getItem('orgId') || '';
-    this.orgName = sessionStorage.getItem('orgName') || '';
-    this.role = sessionStorage.getItem('role') || '';
+  this.username = sessionStorage.getItem('userName') || '';
+  const password = sessionStorage.getItem('password') || '';
 
-    const userDataString = sessionStorage.getItem('userData');
-    if (userDataString) {
-      this.userData = JSON.parse(userDataString);
-    }
+  console.log('Session userName:', this.username);
+  console.log('Session password:', password);  // Remove in production!
 
-    this.formData.createdBy = this.username;
-    this.formData.updatedBy = this.username;
-    this.formData.orgId = this.orgId;
-    this.formData.orgName = this.orgName;
-    this.formData.ouId = this.orgId;
-    this.formData.role = this.role;
-  }
+  // if (!this.username || !password) {
+  //   alert('Session missing username or password');
+  // }
+
+  this.orgId = sessionStorage.getItem('orgId') || '';
+  this.orgName = sessionStorage.getItem('orgName') || '';
+  this.role = sessionStorage.getItem('role') || '';
+
+  this.formData.createdBy = this.username;
+  this.formData.updatedBy = this.username;
+  this.formData.orgId = this.orgId;
+  this.formData.orgName = this.orgName;
+  this.formData.ouId = this.orgId;
+  this.formData.role = this.role;
+}
+
 
   onFileSelected(event: Event): void {
     const element = event.target as HTMLInputElement;
@@ -258,6 +283,46 @@ onReportRelationChange(): void {
       }
     );
   }
+
+    supporterInfo = {
+         attribute3: '',  
+         attribute4: '',  
+         attribute5: '',  
+         userName: '',    
+         password: ''     
+     };
+
+onUpdateSupporterInfo(): void {
+  const userName = this.username; 
+  const password = sessionStorage.getItem('password') || 'derina'; 
+
+  if (!userName || !password) {
+    alert('User is not logged in.');
+    return;
+  }
+
+  const updateData = {
+    attribute3: this.supporterInfo.attribute3,
+    attribute4: this.supporterInfo.attribute4,
+    attribute5: this.supporterInfo.attribute5,
+    userName: userName,
+    password: password
+  };
+
+  const url = `${this.ServerUrl}/Login/update/${userName}`;
+
+  this.http.put(url, updateData).subscribe(
+    (response) => {
+      console.log('Update Success:', response);
+      alert('Support info updated successfully.');
+    },
+    (error) => {
+      console.error('Update Error:', error);
+      alert(error?.error?.message || 'Update failed.');
+    }
+  );
+}
+
 }
 
 

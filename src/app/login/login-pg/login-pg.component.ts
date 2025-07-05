@@ -1,7 +1,9 @@
 import { Component,OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms'; 
+import { FormGroup, NgForm } from '@angular/forms'; 
+import { FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginSerService } from '../login-ser.service';
+import { ErpIssueService } from '../../erp-issue/erp-issue.service';
 
 
 
@@ -17,7 +19,7 @@ export interface IItem {
   styleUrl: './login-pg.component.css'
 })
 export class LoginPgComponent {
-
+  loginpagecomponentForm:FormGroup;
   username: string;
   password: string;
   loginArray: any[];
@@ -30,16 +32,66 @@ export class LoginPgComponent {
   locId:number;
   dmsLoc:string;
   divType:string;
+  supporterName:string| null;
+  contactNo:string| null;
+  emailId:string | null;
 
   currentDateList: any = [];
 
+  supportdtls:any=[];
   latestNewsletter: string = '';
 
-  constructor(private router: Router, private LoginSerService: LoginSerService) { }
+  constructor(private fb: FormBuilder ,private router: Router, private LoginSerService: LoginSerService,private service:ErpIssueService) {
+    this.loginpagecomponentForm= fb.group({
+       supporterName:[],
+    })
 
-  ngOnInit() {
+   
+   }
+
+   ngOnInit() {
   this.fetchNewsletter();
+
+  this.service.supportdtls()
+    .subscribe((data: any) => {
+      this.supportdtls = data.obj;
+      console.log(this.supportdtls);
+
+      sessionStorage.setItem('attribute3', data.obj.attribute3);
+      sessionStorage.setItem('attribute4', data.obj.attribute4); 
+      sessionStorage.setItem('attribute5', data.obj.attribute5); 
+
+      this.supporterName = data.obj.attribute3;
+      this.contactNo = data.obj.attribute4;
+      this.emailId = data.obj.attribute5;
+    });
 }
+
+
+//   ngOnInit() {
+//   this.fetchNewsletter();
+
+//   this.service.supportdtls()
+//     .subscribe( 
+//       (data:any) => {
+//         this.supportdtls = data.obj;
+//         console.log(this.supportdtls);
+//         sessionStorage.setItem('attribute3',data.obj.attribute3);
+//         sessionStorage.setItem('attribute3',data.obj.attribute4);
+//         sessionStorage.setItem('attribute3',data.obj.attribute5);
+//       //   this.loginpagecomponentForm.patchValue({ this.supporterName:data.obj.attribute3
+//       // })
+//       }
+      
+//     )
+
+//    this.supporterName=sessionStorage.getItem('attribute3');
+//    this.contactNo=sessionStorage.getItem('attribute4');
+//    this.emailId=sessionStorage.getItem('attribute5');
+// }
+
+get f() { return this.loginpagecomponentForm.controls; }
+  loginpagecomponentfrm(loginpagecomponentForm: any) { }
 
   login() { 
     if (this.username == undefined || this.username == "") {

@@ -153,23 +153,27 @@
 
    <div class="tab-content" *ngIf="activeTab === 'form2'">
     <div class="upload-section">
-    <h2>Upload Second Type of Report</h2>
-    <form>
+    <h2>Upload Support</h2>
+    <form (ngSubmit)="onUpdateSupporterInfo()">
         <div class="form-row">
             <div class="form-group">
                 <label for="secondAccessTo">Supporter Name:</label>
+                <input type="text" name="supportername" id="supportername" [(ngModel)]="supporterInfo.attribute3" required>
             </div>
 
             <div class="form-group">
                 <label for="secondFile">Contact No:</label>
+                <input type="number" name="contactNo" id="contactNo" [(ngModel)]="supporterInfo.attribute4" required>
             </div>
 
             <div class="form-group">
                 <label for="secondFile">Email ID:</label>
+                <input type="text" name="emailId" id="emailId" [(ngModel)]="supporterInfo.attribute5" required>
+
             </div>
         </div>
 
-        <button type="submit" class="btn btn-success">
+        <button type="submit" style="margin-left: 320px;padding: 5px 5px 5px 5px;margin-top: 10px;" class="btn btn-success">
                Submit
         </button>
     </form>

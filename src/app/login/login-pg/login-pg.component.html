@@ -1,13 +1,18 @@
-<form #f="ngForm" novalidate class="form-container" >
+<form #f="ngForm" novalidate class="form-container" [formGroup]="loginpagecomponentForm"  (ngSubmit)="loginpagecomponentfrm(loginpagecomponentForm)" >
   <nav class="navbar">
     <div class="container">
         <div class="logo">
           <img src="assets/images/Sai Logo.jpg" alt="Sai Service">
         </div>
-         <!-- <div class="navbar-center">
+         <div class="navbar-center">
+         
              <span class="navbar-text">
+               Sunday Support :
+               &nbsp;{{supporterName}}&nbsp;&nbsp;Contact No-&nbsp;{{contactNo}}&nbsp; Email Id-&nbsp;{{emailId}}&nbsp;&nbsp;
              </span>
-         </div>        -->
+         
+         </div> 
+        
         
         <ul class="nav-links">
           <li><a href="#">Home</a></li>
