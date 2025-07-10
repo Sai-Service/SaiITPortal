@@ -44,6 +44,8 @@ export class LoginPgComponent {
   constructor(private fb: FormBuilder ,private router: Router, private LoginSerService: LoginSerService,private service:ErpIssueService) {
     this.loginpagecomponentForm= fb.group({
        supporterName:[],
+       username:[],
+       password:[]
     })
 
    
@@ -94,17 +96,20 @@ get f() { return this.loginpagecomponentForm.controls; }
   loginpagecomponentfrm(loginpagecomponentForm: any) { }
 
   login() { 
-    if (this.username == undefined || this.username == "") {
+    var username = this.loginpagecomponentForm.get('username')?.value;
+    var password = this.loginpagecomponentForm.get('password')?.value;
+
+    if (username == undefined || username == "") {
       alert('Please enter valid Username !');
       return;
     }
 
-    if (this.password == undefined || this.password == "") {
+    if (password == undefined || password == "") {
       alert('Please enter valid Password !');
       return;
     }
     // this.router.navigate(['/admin']);
-    this.LoginSerService.login(this.username, this.password).subscribe((res: any) => {
+    this.LoginSerService.login(username, password).subscribe((res: any) => {
       if(res.code==200){
       console.log('Res', res);
       sessionStorage.setItem('orgId',res.obj.orgId);
@@ -184,8 +189,19 @@ fetchNewsletter() {
   }
 
    navigateTopresentation() {
-    this.router.navigate(['./admin/itreportsModule/annualpresentation']);
+    this.router.navigate(['./admin/itreportsModule/imgtopdf']);
     
   }
+
+     imgtopdf() {
+    this.router.navigate(['./admin/itreportsModule/imgtopdf']);
+    
+  }
+
+   pdftoimg() {
+    this.router.navigate(['./admin/itreportsModule/pdftoimg']);
+    
+  }
+
 
 }

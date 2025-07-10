@@ -1,0 +1,99 @@
+<!-- <div class="container">
+  <h2>Image to PDF Converter</h2>
+   <h5>Upload Image</h5>
+  <input type="file" (change)="onFileSelected1($event)" accept=".jpg,.jpeg,.png" />
+  <br/><br/>
+  <button (click)="imgtopdf()" [disabled]="isLoading">
+    {{ isLoading ? 'Uploading...' : 'Convert to PDF' }}
+  </button>
+
+  <div *ngIf="uploadResponse && uploadResponse.status === 200" class="success-msg">
+    <p>{{ uploadResponse.message }}</p>
+    <a [href]="downloadUrl" target="_blank" class="download-link">Download PDF</a>
+  </div>
+
+  <div *ngIf="uploadResponse && uploadResponse.status !== 200" class="error-msg">
+    <p>Error: {{ uploadResponse.message }}</p>
+  </div>
+</div> -->
+
+
+
+<div class="tab-bar">
+  <button class="tab-btn" (click)="openModal('imgtopdf')">Image to PDF</button>
+  <button class="tab-btn" (click)="openModal('pdfToWord')">PDF to Word</button>
+  <button class="tab-btn" (click)="openModal('pdfToPpt')">PDF to PPT</button>
+</div>
+
+<!-- Common modal structure -->
+<div class="modal-overlay" *ngIf="modalType">
+  <div class="modal-content">
+    <button class="close-btn" (click)="closeModal()">X</button>
+
+    <ng-container *ngIf="modalType === 'imgtopdf'">
+      <h2>Image to PDF Converter</h2>
+      <h5>Upload Image</h5>
+      <input type="file" (change)="onFileSelected1($event)" accept=".jpg,.jpeg,.png" />
+      <br/><br/>
+      <button (click)="imgtopdf()" [disabled]="isLoading">
+        {{ isLoading ? 'Uploading...' : 'Convert to PDF' }}
+      </button>
+
+      <div *ngIf="uploadResponse && uploadResponse.status === 200" class="success-msg">
+        <p>{{ uploadResponse.message }}</p>
+        <a [href]="downloadUrl" target="_blank" class="download-link">Download PDF</a>
+      </div>
+      <div *ngIf="uploadResponse && uploadResponse.status !== 200" class="error-msg">
+        <p>Error: {{ uploadResponse.message }}</p>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="modalType === 'pdfToWord'">
+      <h2>PDF to Word Converter</h2>
+      <input type="file" (change)="onFileSelected($event)" accept="application/pdf" />
+      <button (click)="pdfToWord()">Upload & Convert</button>
+      <div *ngIf="uploadResponse">
+        <p>Status: {{uploadResponse.message}}</p>
+        <button *ngIf="uploadResponse.obj?.docId" (click)="downloadConvertedFile(uploadResponse.obj.docId)">
+          Download Converted File
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="modalType === 'pdfToPpt'">
+      <h2>PDF to PPT Converter</h2>
+      <input type="file" (change)="onFileSelected($event)" accept="application/pdf" />
+      <button (click)="pdfToPpt()">Upload & Convert</button>
+      <div *ngIf="uploadResponse">
+        <p>Status: {{uploadResponse.message}}</p>
+        <button *ngIf="uploadResponse.obj?.docId" (click)="downloadConvertedFile(uploadResponse.obj.docId)">
+          Download Converted File
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<!-- <div class="modal-overlay" *ngIf="modalType">
+  <div class="modal-box">
+    <button class="close-button" (click)="closeModal()">×</button>
+
+   
+    <div *ngIf="modalType === 'imgtopdf'">
+      <h2 class="modal-title">Image to PDF Converter</h2>
+      <label class="label-text">Upload Image</label>
+      <input type="file" class="file-input" (change)="onFileSelected1($event)" accept=".jpg,.jpeg,.png" />
+      <button class="action-button" (click)="imgtopdf()" [disabled]="isLoading">
+        {{ isLoading ? 'Uploading...' : 'Convert to PDF' }}
+      </button>
+
+      <div *ngIf="uploadResponse && uploadResponse.status === 200" class="success-msg">
+        {{ uploadResponse.message }}
+        <a [href]="downloadUrl" target="_blank" class="download-link">Download PDF</a>
+      </div>
+      <div *ngIf="uploadResponse && uploadResponse.status !== 200" class="error-msg">
+        Error: {{ uploadResponse.message }}
+      </div>
+    </div>
+  </div>
+</div> -->

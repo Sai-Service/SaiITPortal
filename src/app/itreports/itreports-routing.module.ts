@@ -9,6 +9,8 @@ import { SaiuserhomepageComponent } from './saiuserhomepage/saiuserhomepage.comp
 import { ViewreportsallComponent } from './viewreportsall/viewreportsall.component';
 import { ImageuploadComponent } from './imageupload/imageupload.component';
 import { AnnualpresentationComponent } from './annualpresentation/annualpresentation.component';
+import { ImgtopdfComponent } from './imgtopdf/imgtopdf.component';
+import { PdftoimgComponent } from './pdftoimg/pdftoimg.component';
 
 const routes: Routes = [ { path: '', component: ItcomponentComponent },
                          { path: 'ceoreports', component: CeoreportsComponent }, 
@@ -18,8 +20,9 @@ const routes: Routes = [ { path: '', component: ItcomponentComponent },
                          { path:'saiuserhomepage',component:SaiuserhomepageComponent},
                          { path: 'viewreportsall', component:ViewreportsallComponent},
                          { path: 'imageupload' , component:ImageuploadComponent},
-                         { path: 'annualpresentation' , component:AnnualpresentationComponent}
-
+                         { path: 'annualpresentation' , component:AnnualpresentationComponent},
+                         { path: 'imgtopdf', component:ImgtopdfComponent},
+                         { path:'pdftoimg', component:PdftoimgComponent}
 ];
 
 @NgModule({

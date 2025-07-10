@@ -6,7 +6,7 @@
         </div>
          <div class="navbar-center">
          
-             <span class="navbar-text">
+             <span class="marquee-text">
                Sunday Support :
                &nbsp;{{supporterName}}&nbsp;&nbsp;Contact No-&nbsp;{{contactNo}}&nbsp; Email Id-&nbsp;{{emailId}}&nbsp;&nbsp;
              </span>
@@ -71,9 +71,9 @@
 </div>
   
     <div class="header-right">
-       <div> <p class="frontlogin-text" style="margin-bottom: 15px;margin-top: 40px;">LOGIN</p>   </div>   
-        <input type="text" id="username"  [(ngModel)]="username" name="username"  name="username" placeholder="username" required style="border-radius: 20px;">
-        <input type="password" id="password"   [(ngModel)]="password" name="username"  name="password" placeholder="password" required style="border-radius: 20px;"><br>
+       <div> <p style="margin-bottom: 15px;margin-top: 40px;font-size: 25px;font-weight: 600;">LOGIN</p>   </div>   
+        <input type="text" id="username"  formControlName="username" name="username"  name="username" placeholder="username" required style="border-radius: 20px;">
+        <input type="password" id="password"   formControlName="password" name="username"  name="password" placeholder="password" required style="border-radius: 20px;"><br>
         <button type="submit" (click)="login()" class="btn btn-signin" style="width: 120px;background: rgba(231, 230, 230, 0.6);box-shadow: none;margin-right: 24px;margin-top: 10px;"><img src="assets/images/imageslog.jpg" height="45px" width="125px"></button>
     </div>
 </header> 
@@ -81,16 +81,16 @@
 <section class="main-container" >
   
            <div class="page-header">
-           <div class="user-section" style="margin-left: 470px;">
+           <div class="user-section" style="margin-left: 400px;">
             <button class="btn-report" (click)="navigateToPhotos()">
                     <span class="btn-icon">📊</span>
                     <span class="btn-text">ANNUAL BUSINESS REVIEW MEET PHOTOS 2024-25</span>
             </button>
 
-            <!-- <button class="btn-report" (click)="navigateTopresentation()">
-                    <span class="btn-icon">📊</span>
-                    <span class="btn-text">ANNUAL BUSINESS MEET PRESNTATIONS 2024-25</span>
-            </button> -->
+            <button class="btn-report" (click)="pdftoimg()">
+                    <span class="btn-icon"></span>
+                    <span class="btn-text">File Conversion</span>
+            </button>
            </div>
         </div>
   
