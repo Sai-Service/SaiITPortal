@@ -1,3 +1,7 @@
+.body{
+ height: 100%;
+}
+
 .header {
     background-color: #ffffff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -46,8 +50,8 @@
   justify-content: center;
   gap: 10px;
   margin-bottom: 25px;
-  margin-top: 150px;
-  margin-bottom: 200px;
+  /* margin-top: 150px; */
+  margin-bottom: 15px;
 }
 
 .tab-btn {
@@ -67,4 +71,87 @@
   background-color: #2575fc;
   color: white;
   border-color: #2575fc;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 40px 30px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.modal-content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.modal-content h6 {
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #666;
+}
+
+input[type="file"] {
+  border: 2px dashed #6a11cb;
+  padding: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  transition: 0.3s ease;
+}
+
+input[type="file"]:hover {
+  background-color: #eef0fc;
+}
+
+button {
+  background-color: #8b37e6;
+  color: rgb(255, 253, 253);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #4c08b5;
+}
+
+.download-link {
+  display: inline-block;
+  margin-top: 15px;
+  background-color: #2575fc;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.download-link:hover {
+  background-color: #1e60d5;
+}
+
+.success-msg,
+.error-msg {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.success-msg p {
+  color: green;
+}
+
+.error-msg p {
+  color: red;
 }

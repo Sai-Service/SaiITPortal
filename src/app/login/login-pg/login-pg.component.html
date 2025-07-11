@@ -4,7 +4,7 @@
         <div class="logo">
           <img src="assets/images/Sai Logo.jpg" alt="Sai Service">
         </div>
-         <div class="navbar-center">
+         <div class="navbar-center" *ngIf="showSupport">
          
              <span class="marquee-text">
                Sunday Support :
@@ -81,25 +81,24 @@
 <section class="main-container" >
   
            <div class="page-header">
-           <div class="user-section" style="margin-left: 400px;">
+           <div class="user-section" style="margin-left: 450px;">
             <button class="btn-report" (click)="navigateToPhotos()">
                     <span class="btn-icon">📊</span>
                     <span class="btn-text">ANNUAL BUSINESS REVIEW MEET PHOTOS 2024-25</span>
             </button>
 
-            <button class="btn-report" (click)="pdftoimg()">
+            <!-- <button class="btn-report" (click)="pdftoimg()">
                     <span class="btn-icon"></span>
                     <span class="btn-text">File Conversion</span>
-            </button>
+            </button> -->
            </div>
-        </div>
-  
+          </div> 
 </section>
 
 <section class="search-section">
   <div class="container">
     <marquee direction="left">
-      DBA Team Support : Monday to Saturday = Digamber G Pune-9923208023 : 9 AM To 7 PM //  Mangesh R Pune-9594440963 : 9 PM to 8 AM //  Dinesh D Mumbai-9594952151 : 10 AM to 7 PM .
+      DBA Team Support : Monday to Saturday = Digamber G Pune-9923208023 : 9 AM To 7 PM //  Mangesh R Pune-9594440963 : 9 PM to 8 AM //  Dinesh D Mumbai-9594952151 : 10 AM to 7 PM // Mamata N Pune-7506079698 : 3 PM to 11PM.
     </marquee>
   </div>
 </section>
@@ -153,8 +152,8 @@
             </div>
 
             <!-- <div class="car">
-         <img src="http://localhost:8080/DocUpload/DownloadImages?imagePath=D://IMGUPLOAD//image.2.jpg" height="225px" width="225px">
-              <img src="http://saiitportal.com/ITPortal/DocUpload/DownloadImages?Path=//sai14_data//saiitportal_docs//Application_Image//image.2.jpg" height="225px" width="225px">
+               <img src="http://localhost:8080/DocUpload/DownloadImages?imagePath=D://IMGUPLOAD//image.2.jpg" height="225px" width="225px">
+               <img src="http://saiitportal.com/ITPortal/DocUpload/DownloadImages?Path=//sai14_data//saiitportal_docs//Application_Image//image.2.jpg" height="225px" width="225px">
                 <img src="http://saiitportaltest.com/ITPortal/DocUpload/DownloadImages?Path=//sai14_data//saiitportal_docs//Application_Image//image.2.jpg" height="225px" width="225px"> 
             </div>    -->
 

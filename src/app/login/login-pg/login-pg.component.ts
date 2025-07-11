@@ -41,6 +41,8 @@ export class LoginPgComponent {
   supportdtls:any=[];
   latestNewsletter: string = '';
 
+  showSupport: boolean = false;
+
   constructor(private fb: FormBuilder ,private router: Router, private LoginSerService: LoginSerService,private service:ErpIssueService) {
     this.loginpagecomponentForm= fb.group({
        supporterName:[],
@@ -51,8 +53,11 @@ export class LoginPgComponent {
    
    }
 
-   ngOnInit() {
+  ngOnInit() {
   this.fetchNewsletter();
+
+  const today = new Date().getDay(); 
+  this.showSupport = (today === 0 || today === 6);
 
   this.service.supportdtls()
     .subscribe((data: any) => {
@@ -164,6 +169,10 @@ get f() { return this.loginpagecomponentForm.controls; }
 
        if (res.obj.role=='Admin'){
               this.router.navigate(['./admin/accountsModule/accounteportview']);
+              }
+
+       if (res.obj.role=='Conversion'){
+              this.router.navigate(['./admin/itreportsModule/pdftoimg']);
               }
       
     }})
