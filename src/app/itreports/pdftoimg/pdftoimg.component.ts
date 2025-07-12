@@ -27,41 +27,82 @@ export class PdftoimgComponent {
   selectedFilesForMerge: File[] = [];
   statusMsg: string = '';
   statusClass: string = '';
+  userName: string | null = '';
 
   constructor(private http: HttpClient) {
     this.ServerUrl=AppConst.ServerUrl;
+    
   }
+
+  ngOnInit() {
+  this.userName = sessionStorage.getItem('userName');
+    // console.log('Logged in as:', this.userName);
+ }
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
   }
 
-  Pdftoimg() {
-    if (!this.selectedFile) {
-      alert('Please select a file first!');
-      return;
-    }
+  // Pdftoimg() {
+  //   if (!this.selectedFile) {
+  //     alert('Please select a file first!');
+  //     return;
+  //   }
     
-    const formData = new FormData();
-    formData.append('file', this.selectedFile);
-    formData.append('type', 'jpg');
+  //   const formData = new FormData();
+  //   formData.append('file', this.selectedFile);
+  //   formData.append('type', 'jpg');
     
-    formData.append('createdBy', 'SAGAR');
+  //   formData.append('createdBy', 'SAGAR');
  
-    this.http.post(this.ServerUrl +'/DocCompress/convert', formData, {
-      reportProgress: true,
-      observe: 'events'
-    }).subscribe(event => {
-      if (event.type === HttpEventType.UploadProgress && event.total) {
-        // this.uploadProgress = Math.round((event.loaded / event.total) * 100);
-      } else if (event.type === HttpEventType.Response) {
-        this.uploadResponse = event.body;
-        alert('File converted successfully!');
-      }
-    }, error => {
-      alert('Upload failed: ' + error.message);
-    });
+  //   this.http.post(this.ServerUrl +'/DocCompress/convert', formData, {
+  //     reportProgress: true,
+  //     observe: 'events'
+  //   }).subscribe(event => {
+  //     if (event.type === HttpEventType.UploadProgress && event.total) {
+  //       // this.uploadProgress = Math.round((event.loaded / event.total) * 100);
+  //     } else if (event.type === HttpEventType.Response) {
+  //       this.uploadResponse = event.body;
+  //       alert('File converted successfully!');
+  //     }
+  //   }, error => {
+  //     alert('Upload failed: ' + error.message);
+  //   });
+  // }
+
+  Pdftoimg() {
+  if (!this.selectedFile) {
+    alert('Please select a file first!');
+    return;
   }
+
+  const userName = sessionStorage.getItem('userName'); 
+  if (!userName) {
+    // alert('User not logged in');
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('file', this.selectedFile);
+  formData.append('type', 'jpg');
+  formData.append('createdBy', userName); 
+
+  this.http.post(this.ServerUrl + '/DocCompress/convert', formData, {
+    reportProgress: true,
+    observe: 'events'
+  }).subscribe(event => {
+    if (event.type === HttpEventType.UploadProgress && event.total) {
+      // Optional: show progress
+      // this.uploadProgress = Math.round((event.loaded / event.total) * 100);
+    } else if (event.type === HttpEventType.Response) {
+      this.uploadResponse = event.body;
+      alert('File converted successfully!');
+    }
+  }, error => {
+    alert('Upload failed: ' + error.message);
+  });
+}
+
 
  pdfToWord() {
   if (!this.selectedFile) {
@@ -94,10 +135,18 @@ pdfToPpt() {
       alert('Please select a file first!');
       return;
     }
+
+     const userName = sessionStorage.getItem('userName'); 
+       if (!userName) {
+         // alert('User not logged in');
+        return;
+      }
+
     const formData = new FormData();
     formData.append('file', this.selectedFile);
     formData.append('type', 'ppt');
-    formData.append('createdBy', 'SAGAR');
+    // formData.append('createdBy', 'SAGAR');
+    formData.append('createdBy', userName);
 
     this.http.post(this.ServerUrl +'/DocCompress/convert', formData, {
       reportProgress: true,
@@ -126,10 +175,16 @@ onFileSelected1(event: any) {
       alert('Please select an image file first!');
       return;
     }
+
+     const userName = sessionStorage.getItem('userName'); 
+      if (!userName) {
+        alert('User not logged in');
+       return;
+      }
   
     const formData = new FormData();
     formData.append('file', this.selectedFile);
-    formData.append('createdBy', this.createdBy);
+    formData.append('createdBy', userName);
 
     this.isLoading = true;
 
