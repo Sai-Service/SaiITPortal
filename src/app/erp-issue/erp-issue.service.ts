@@ -64,6 +64,10 @@ export class ErpIssueService {
     return this.http.get(this.ServerUrl + `/FndCmn/CmnType?cmnType=FILETYPE`);
   }
 
+  supportdtls(): Observable<any> {
+    return this.http.get(this.ServerUrl + `/Login/derina`);
+  }
+
   issuestatusList(): Observable<any> {
     return this.http.get(this.ServerUrl + `/FndCmn/CmnType?cmnType=STATUS`);
   }
@@ -109,6 +113,14 @@ export class ErpIssueService {
     //   headers: this.headers
     // };
     const url = (this.ServerUrl + `/Transaction/updateIssue?issueNo=${issueNo}`);
+    return this.http.put(url, UpdateCounterSaleInvRecord);
+  }
+
+  updateUserIssueLinefn2(UpdateCounterSaleInvRecord:FormData,issueNo:any) {
+    // const options = {
+    //   headers: this.headers
+    // };
+    const url = (this.ServerUrl + `/Transaction/updateIssuebyuser?issueNo=${issueNo}`);
     return this.http.put(url, UpdateCounterSaleInvRecord);
   }
 

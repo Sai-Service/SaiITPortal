@@ -132,7 +132,7 @@ body {
 } */
 
 .main-container {
-    padding-top: 80px;
+    padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 95px;
@@ -245,4 +245,36 @@ body {
     .form-row {
         flex-direction: column;
     }
+}
+
+.tab-container {
+  margin-top: 20px;
+}
+
+.tab-buttons {
+  display: flex;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.tab-buttons button {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  
+  cursor: pointer;
+  font-weight: bold;
+  color: #444;
+}
+
+.tab-buttons button.active {
+  border-bottom: 3px solid #007bff;
+  color: #007bff;
+}
+
+.tab-content {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
 }

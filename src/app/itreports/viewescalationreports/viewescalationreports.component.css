@@ -121,6 +121,16 @@
     font-size: 16px;
     text-align: center;
   }
+
+    .form-row {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.form-row {
+        flex-direction: column;
+    }
   
   select {
     width: 100%;
@@ -139,9 +149,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   }
   
-  
-  /* Marquee Section */
-  .marquee-section {
+    .marquee-section {
     flex-grow: 1;
     text-align: center;
     margin: 0 20px;

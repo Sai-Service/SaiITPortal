@@ -1,0 +1,223 @@
+<html>
+  <body class="body" style="background-image: url('assets/images/UPLOADBGIMGE.jpg');">
+    
+ 
+<header class="header">
+        <div class="header" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; padding: 7px; position: relative; display: flex; align-items: center; justify-content: center;">
+            <img src="assets/images/Sai Logo.jpg" alt="Sai Service" style="height: 50px; margin-right: 15px;">
+            <marquee style="font-size: 22px; font-weight: bold;">WELCOME TO SAI SERVICE</marquee>
+            <div style="width: 150px;"><a href="http://saiitportal.com/#/login/login"><b style="color: rgb(248, 247, 250);font-family: Arial, Helvetica, sans-serif;margin-left: 30px;">LOGOUT</b></a></div>
+          </div>  
+        <div style="float: right;margin-top: 10px;">WELCOME - {{userName}}</div> 
+</header>
+
+<main>
+<div class="tab-bar" style="margin-top: 15px;">
+  <!-- <button class="tab-btn" (click)="openModal('imgtopdf')">Image to PDF</button> -->
+   <div (click)="openModal('imgtopdf')"
+     style="background-color: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 16px; width: 240px; margin: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-family: Arial, sans-serif; cursor: pointer;">
+     <div style="color: #2ecc71; font-size: 20px; margin-bottom: 8px;">🖼️</div>
+     <div style="font-size: 16px; font-weight: bold; margin-bottom: 6px;">Image To PDF</div>
+     <div style="font-size: 13px; color: #666;">Convert from Image to PDF </div>
+   </div>
+
+  <!-- <button class="tab-btn" (click)="openModal('pdfToWord')">PDF to Word</button> -->
+   <div (click)="openModal('pdfToWord')"
+     style="background-color: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 16px; width: 240px; margin: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-family: Arial, sans-serif; cursor: pointer;">
+     <div style="color: #2ecc71; font-size: 20px; margin-bottom: 8px;">📄</div>
+     <div style="font-size: 16px; font-weight: bold; margin-bottom: 6px;">PDF To Word</div>
+     <div style="font-size: 13px; color: #666;">Convert from PDF to DOC </div>
+   </div>
+
+  <!-- <button class="tab-btn" (click)="openModal('pdfToPpt')">PDF to PPT</button> -->
+  <div (click)="openModal('pdfToPpt')" 
+     style="background-color: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 16px; width: 240px; margin: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-family: Arial, sans-serif; cursor: pointer;">
+     <div style="color: #9b59b6; font-size: 20px; margin-bottom: 8px;">📽️</div>
+     <div style="font-size: 16px; font-weight: bold; margin-bottom: 6px;">PDF To PPT</div>
+     <div style="font-size: 13px; color: #666;">Convert PDF to PowerPoint Presentation</div>
+  </div>
+
+</div>
+
+<div class="tab-bar" style="margin-top: 10px;">
+
+   <!-- <a href="http://saiitportal.com/filecompression/" 
+     style="text-decoration: none;color: black;">
+    <div style="background-color: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 16px; width: 240px; margin: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-family: Arial, sans-serif; cursor: pointer;">
+      <div style="color: #9b59b6; font-size: 20px; margin-bottom: 8px;">🗜️</div>
+      <div style="font-size: 16px; font-weight: bold; margin-bottom: 6px;">File Compression</div>
+      <div style="font-size: 13px; color: #666;">Compress your files</div>
+    </div>
+   </a> -->
+
+   <div (click)="openModal('pdfToImg')" 
+     style="background-color: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 16px; width: 240px; margin: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-family: Arial, sans-serif; cursor: pointer;">
+     <div style="color: #9b59b6; font-size: 20px; margin-bottom: 8px;">📽️</div>
+     <div style="font-size: 16px; font-weight: bold; margin-bottom: 6px;">PDF To JPG</div>
+     <div style="font-size: 13px; color: #666;">Convert PDF to JPG </div>
+  </div>
+
+  <div (click)="openModal('pdfToExcel')" 
+     style="background-color: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 16px; width: 240px; margin: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-family: Arial, sans-serif; cursor: pointer;">
+     <div style="color: #9b59b6; font-size: 20px; margin-bottom: 8px;">📽️</div>
+     <div style="font-size: 16px; font-weight: bold; margin-bottom: 6px;">PDF To Excel</div>
+     <div style="font-size: 13px; color: #666;">Convert PDF to Excel </div>
+  </div>
+
+  <div (click)="openModal('pdfToText')"
+     style="background-color: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 16px; width: 240px; margin: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-family: Arial, sans-serif; cursor: pointer;">
+     <div style="color: #e67e22; font-size: 20px; margin-bottom: 8px;">📝</div>
+     <div style="font-size: 16px; font-weight: bold; margin-bottom: 6px;">PDF To Text</div>
+     <div style="font-size: 13px; color: #666;">Convert PDF to Plain Text</div>
+  </div>
+</div>
+
+<div class="tab-bar"> 
+   <div (click)="openModal('Compression')" 
+     style="background-color: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 16px; width: 240px; margin: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-family: Arial, sans-serif; cursor: pointer;">
+     <div style="color: #9b59b6; font-size: 20px; margin-bottom: 8px;">📽️</div>
+     <div style="font-size: 16px; font-weight: bold; margin-bottom: 6px;">File Compression</div>
+     <div style="font-size: 13px; color: #666;">File Compression</div>
+  </div>
+
+  <div (click)="openModal('mergePDF')"
+     style="background-color: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 16px; width: 240px; margin: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-family: Arial, sans-serif; cursor: pointer;">
+   <div style="color: #2980b9; font-size: 20px; margin-bottom: 8px;">📎</div>
+   <div style="font-size: 16px; font-weight: bold; margin-bottom: 6px;">Merge PDF</div>
+   <div style="font-size: 13px; color: #666;">Combine multiple PDFs into one</div>
+  </div>
+</div>
+
+
+<div class="modal-overlay" *ngIf="modalType">
+  <div class="modal-content">
+    <button class="close-btn" style="color: #0f0f0f;" (click)="closeModal()">X</button>
+
+    <ng-container *ngIf="modalType === 'imgtopdf'">
+      <h2>Image to PDF Converter</h2>
+      <h6>Upload Image</h6>
+      <input type="file" (change)="onFileSelected1($event)" accept=".jpg,.jpeg,.png" />
+      <br/>
+      <button (click)="imgtopdf()" [disabled]="isLoading">
+        {{ isLoading ? 'Uploading...' : 'Convert to PDF' }}
+      </button>
+      <div *ngIf="uploadResponse && uploadResponse.status === 200" class="success-msg">
+        <p>{{ uploadResponse.message }}</p>
+        <a [href]="downloadUrl" target="_blank" class="download-link">Download PDF</a>
+      </div>
+      <div *ngIf="uploadResponse && uploadResponse.status !== 200" class="error-msg">
+        <p>Error: {{ uploadResponse.message }}</p>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="modalType === 'pdfToWord'">
+      <h2>PDF to Word Converter</h2>
+      <h6>Upload File</h6>
+      <input type="file" (change)="onFileSelected($event)" accept="application/pdf" />
+      <br>
+      <button (click)="pdfToWord()">Upload & Convert</button>
+      <div *ngIf="uploadResponse">
+        <p>Status: {{uploadResponse.message}}</p>
+        <button *ngIf="uploadResponse.obj?.docId" (click)="downloadConvertedFile(uploadResponse.obj.docId)">
+          Download Converted File
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="modalType === 'pdfToPpt'">
+      <h2>PDF to PPT Converter</h2>
+      <h6>Upload File</h6>
+      <input type="file" (change)="onFileSelected($event)" accept="application/pdf" />
+      <br>
+      <button (click)="pdfToPpt()">Upload & Convert</button>
+      <div *ngIf="uploadResponse">
+        <p>Status: {{uploadResponse.message}}</p>
+        <button *ngIf="uploadResponse.obj?.docId" (click)="downloadConvertedFile(uploadResponse.obj.docId)">
+          Download Converted File
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="modalType === 'pdfToImg'">
+       <h2>PDF to Image Converter</h2>
+         <h6>Upload File</h6>
+         <input type="file" (change)="onFileSelected($event)" accept="application/pdf" />
+         <button (click)="Pdftoimg()">Upload & Convert</button>
+         <div *ngIf="uploadProgress > 0">
+            Upload Progress: {{uploadProgress}}%
+         </div>
+        <div *ngIf="uploadResponse">
+          <p>Status: {{uploadResponse.message}}</p>
+        <button *ngIf="uploadResponse.obj?.docId" (click)="downloadConvertedFile(uploadResponse.obj.docId)">
+          Download Converted File
+        </button>
+       </div>
+    </ng-container>
+
+    <ng-container *ngIf="modalType === 'pdfToExcel'">
+        <h2>PDF to Excel Converter</h2>
+        <h6>Upload File</h6>
+        <input type="file" (change)="onFileSelected($event)" accept="application/pdf" />
+        <button (click)="pdfToExcel()">Upload & Convert</button>
+       <div *ngIf="uploadResponse">
+         <p>Status: {{ uploadResponse.message }}</p>
+         <button *ngIf="uploadResponse.obj?.docId" (click)="downloadConvertedFile(uploadResponse.obj.docId)">
+          Download Converted File
+         </button>
+       </div>
+      </ng-container>
+
+      <ng-container *ngIf="modalType === 'pdfToText'">
+         <h2>PDF to Text Converter</h2>
+         <h6>Upload File</h6>
+          <input type="file" (change)="onFileSelected($event)" accept="application/pdf" />
+          <br>
+          <button (click)="pdfToText()">Upload & Convert</button>
+         <div *ngIf="uploadResponse">
+           <p>Status: {{ uploadResponse.message }}</p>
+           <button *ngIf="uploadResponse.obj?.docId" (click)="downloadConvertedFile(uploadResponse.obj.docId)">
+              Download Converted Text File
+           </button>
+          </div>
+      </ng-container>
+       
+      <ng-container *ngIf="modalType === 'Compression'">
+         <h2>File Compression</h2>
+         <h6>Select File</h6>
+         <input type="file" (change)="onFileSelected($event)" />
+         <br />
+         <button (click)="uploadForCompression()" [disabled]="isLoading">
+            {{ isLoading ? 'Uploading...' : 'Compress File' }}
+        </button>
+        <div *ngIf="uploadResponse && uploadResponse.code === 200" class="success-msg">
+          <p>Compressed File Name: {{ compressedDocName }}</p>
+          <a [href]="downloadUrl" target="_blank" class="download-link">Download Compressed File</a>
+        </div>
+        <div *ngIf="uploadResponse && uploadResponse.code !== 200" class="error-msg">
+         <p>Error: {{ uploadResponse.message }}</p>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="modalType === 'mergePDF'">
+        <h2>Merge PDF Files</h2>
+       <input type="text" [(ngModel)]="mergedFileName" placeholder="Enter merged file name" />
+         <br><br>
+       <label class="upload-box">
+         Click to select multiple PDF files
+       <input type="file" (change)="onFilesSelectedForMerge($event)" multiple accept="application/pdf" />
+       </label>
+      <div class="file-list">
+        <div *ngIf="selectedFilesForMerge.length === 0">No files selected.</div>
+        <div *ngFor="let file of selectedFilesForMerge; let i = index" class="file-item">
+         <span>{{ file.name }}</span>
+         <button (click)="removeMergeFile(i)" class="remove-btn">✖</button>
+        </div>
+        </div>
+      <button [disabled]="selectedFilesForMerge.length < 2" (click)="mergePDFs()">Merge PDFs</button>
+      <div [ngClass]="statusClass">{{ statusMsg }}</div>
+    </ng-container>
+  </div>
+</div>
+</main>
+ </body>
+</html>

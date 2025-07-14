@@ -1,13 +1,18 @@
-<form #f="ngForm" novalidate class="form-container" >
+<form #f="ngForm" novalidate class="form-container" [formGroup]="loginpagecomponentForm"  (ngSubmit)="loginpagecomponentfrm(loginpagecomponentForm)" >
   <nav class="navbar">
     <div class="container">
         <div class="logo">
           <img src="assets/images/Sai Logo.jpg" alt="Sai Service">
         </div>
-         <!-- <div class="navbar-center">
-             <span class="navbar-text">
+         <div class="navbar-center" *ngIf="showSupport">
+         
+             <span class="marquee-text">
+               Sunday Support :
+               &nbsp;{{supporterName}}&nbsp;&nbsp;Contact No-&nbsp;{{contactNo}}&nbsp; Email Id-&nbsp;{{emailId}}&nbsp;&nbsp;
              </span>
-         </div>        -->
+         
+         </div> 
+        
         
         <ul class="nav-links">
           <li><a href="#">Home</a></li>
@@ -19,14 +24,18 @@
 <header class="new">
   <div class="header-left">
      <img style="height: 50px; width:150px;" src="https://st4.depositphotos.com/2274151/30829/v/450/depositphotos_308292292-stock-illustration-new-update-sign-new-update.jpg" alt="">
+
+     <div>For Issue handling web meeting link <a href="https://teams.microsoft.com/l/meetup-join/19%3auS2J1eAq1YUyaooyqTJDYkAp0yXAplJ4E_wyAX7PQcI1%40thread.tacv2/1689832315130?context=%7b%22Tid%22%3a%227e7a3eb3-b25a-4adc-aef6-7c071c762823%22%2c%22Oid%22%3a%221aabe517-d128-4431-a779-86741acf5c87%22%7d">
+         Click Here</a></div>
+
       <div>
         <marquee direction="up" scrollamount="4" onMouseOver="this.stop()" onMouseOut="this.start()">
           <ul>
           <li>The best preparation for tomorrow is doing your best today.</li>
           <br>
-          <li> Increasing your competitive advantage by aligning strategy with people and culture.</li>
+          <li>Increasing your competitive advantage by aligning strategy with people and culture.</li>
           <br>
-          <li> Stay updated with our latest offers and services!</li>
+          <li>Stay updated with our latest offers and services!</li>
           <br>
           <li>
             <a href="http://saiitportal.com/ITPortal/DocUpload/DownloadExcelLink?news_Line7=//sai14_data//saiitportal_docs//Application_Image//Excel Training - Links.xlsx"    
@@ -38,12 +47,18 @@
               Mumbai News Letter</a>
           </li>
           <br>
-          <li>
-              <a href="http://saiitportal.com/ITPortal/DocUpload/DownloadItLetter?news_Line6=//sai14_data//saiitportal_docs//Application_Image//SaiIT - Newsletter May 2025.pdf"  target="_blank">
-              Sai IT News Letter</a>
-              <!-- <a href="http://localhost:8080/DocUpload/DownloadItLetter?news_Line6=D:/NewsLetter/Sai Newsletter May 2025.pdf"  target="_blank">
+          <!-- <li> -->
+
+              <li *ngIf="latestNewsletter">
+  <a [href]="'http://saiitportal.com/ITPortal/DocUpload/DownloadLetter?news_Line8=//sai14_data//saiitportal_docs//Application_Image//' + latestNewsletter" target="_blank">
+    Sai It NewsLetter
+  </a>
+</li>          
+        <!-- <a href="http://saiitportal.com/ITPortal/DocUpload/DownloadItLetter?news_Line6=//sai14_data//saiitportal_docs//Application_Image//SaiIT - Newsletter May 2025.pdf"  target="_blank">
               Sai IT News Letter</a> -->
-          </li>
+               <!-- <a href="http://saiitportal.com/ITPortal/DocUpload/DownloadItLetter?news_Line6=//sai14_data//saiitportal_docs//Application_Image//SAI IT NEWS LETTER_ALL_JUL.pdf"  target="_blank">
+              Sai IT News Letter</a> -->
+          <!-- </li> -->
           </ul>
         </marquee> 
       </div>
@@ -56,17 +71,34 @@
 </div>
   
     <div class="header-right">
-       <div> <p class="frontlogin-text" style="margin-bottom: 15px;margin-top: 40px;">LOGIN</p>   </div>   
-        <input type="text" id="username"  [(ngModel)]="username" name="username"  name="username" placeholder="username" required style="border-radius: 20px;">
-        <input type="password" id="password"   [(ngModel)]="password" name="username"  name="password" placeholder="password" required style="border-radius: 20px;"><br>
+       <div> <p style="margin-bottom: 15px;margin-top: 40px;font-size: 25px;font-weight: 600;">LOGIN</p>   </div>   
+        <input type="text" id="username"  formControlName="username" name="username"  name="username" placeholder="username" required style="border-radius: 20px;">
+        <input type="password" id="password"   formControlName="password" name="username"  name="password" placeholder="password" required style="border-radius: 20px;"><br>
         <button type="submit" (click)="login()" class="btn btn-signin" style="width: 120px;background: rgba(231, 230, 230, 0.6);box-shadow: none;margin-right: 24px;margin-top: 10px;"><img src="assets/images/imageslog.jpg" height="45px" width="125px"></button>
     </div>
 </header> 
 
+<section class="main-container" >
+  
+           <div class="page-header">
+           <div class="user-section" style="margin-left: 450px;">
+            <button class="btn-report" (click)="navigateToPhotos()">
+                    <span class="btn-icon">📊</span>
+                    <span class="btn-text">ANNUAL BUSINESS REVIEW MEET PHOTOS 2024-25</span>
+            </button>
+
+            <!-- <button class="btn-report" (click)="pdftoimg()">
+                    <span class="btn-icon"></span>
+                    <span class="btn-text">File Conversion</span>
+            </button> -->
+           </div>
+          </div> 
+</section>
+
 <section class="search-section">
   <div class="container">
     <marquee direction="left">
-      DBA Team Support : Monday to Saturday = Digamber G Pune-9923208023 : 9 AM To 6 PM //  Mangesh R Pune-9594440963 : 9 PM to 6 AM //  Dinesh D Mumbai-9594952151 : 10 PM to 7 PM .
+      DBA Team Support : Monday to Saturday = Digamber G Pune-9923208023 : 9 AM To 7 PM //  Mangesh R Pune-9594440963 : 9 PM to 8 AM //  Dinesh D Mumbai-9594952151 : 10 AM to 7 PM // Mamata N Pune-7506079698 : 3 PM to 11PM.
     </marquee>
   </div>
 </section>
@@ -83,13 +115,13 @@
               <a class="btn" style="width: 100px;" href="http://ebs.saihorizon.org:8024" target="_blank">HORIZON</a>
          </div>
          <div class="feature">
-              <a class="btn" href="http://saihorizon.com:8051/erpReplica/" target="_blank">BAJAJ REPLICA</a>
+              <a class="btn" style="width: 110px;" href="http://saihorizon.com:8051/erpReplica/" target="_blank">BAJAJ REPLICA</a>
          </div>
          <div class="feature">
-              <a class="btn" href="http://saiitportal.com/TV_NMaruti.aspx" target="_blank">TRUE VALUE</a>
+              <a class="btn" style="width: 90px;" href="http://saiitportal.com/TV_NMaruti.aspx" target="_blank">TRUE VALUE</a>
          </div> 
          <div class="feature">
-           <a class="btn" style="width: 100px;margin-right: 10px;" href="http://dmsconnect.maruti.com" target="_blank">DMS</a>
+           <a class="btn" style="width: 100px;" href="http://dmsconnect.maruti.com" target="_blank">DMS</a>
          </div>
          <div class="feature">
               <a class="btn" style="width: 140px;" href="http://10.58.1.10/" target="_blank">MARUTI EXTRANET</a>
@@ -98,7 +130,13 @@
               <a class="btn"  style="width: 100px;" href="http://136.233.241.10/EasyPAY/view/loginmain.aspx?1=1&key=&mod=ess&code=" target="_blank">HR</a>
          </div>
          <div class="feature">
-          <a class="btn" style="width: 140px;" href="http://saihorizon.org:8080/dmsEinvoice">DMS-E-UTILITY</a>
+          <a class="btn" style="width: 135px;" href="http://saihorizon.org:8080/dmsEinvoice">DMS-E-UTILITY</a>
+         </div>
+         <div class="feature">
+          <a class="btn" style="width: 132px;" href="http://182.73.44.118:9091/jobSlipProjectNew">Non TV ImgUpload</a>
+         </div>
+         <div class="feature">
+          <a class="btn" style="width: 118px;" href="http://saiitportal.com/filecompression/">File Compression</a>
          </div>
      </div>
 </section>
@@ -114,8 +152,8 @@
             </div>
 
             <!-- <div class="car">
-         <img src="http://localhost:8080/DocUpload/DownloadImages?imagePath=D://IMGUPLOAD//image.2.jpg" height="225px" width="225px">
-              <img src="http://saiitportal.com/ITPortal/DocUpload/DownloadImages?Path=//sai14_data//saiitportal_docs//Application_Image//image.2.jpg" height="225px" width="225px">
+               <img src="http://localhost:8080/DocUpload/DownloadImages?imagePath=D://IMGUPLOAD//image.2.jpg" height="225px" width="225px">
+               <img src="http://saiitportal.com/ITPortal/DocUpload/DownloadImages?Path=//sai14_data//saiitportal_docs//Application_Image//image.2.jpg" height="225px" width="225px">
                 <img src="http://saiitportaltest.com/ITPortal/DocUpload/DownloadImages?Path=//sai14_data//saiitportal_docs//Application_Image//image.2.jpg" height="225px" width="225px"> 
             </div>    -->
 

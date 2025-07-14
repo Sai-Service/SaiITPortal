@@ -115,7 +115,7 @@ export class ErpsupportComComponent {
 
 
   public erplocationList:any=[];
-  public alllocationlist:any=[];
+  public alllocationlist:any;
   public priorityList:any=[];
   public issueTypeList:any=[];
   public departmentList:any=[];
@@ -219,22 +219,15 @@ export class ErpsupportComComponent {
          
         }
       );
-       
-      this.service.erplocationList(sessionStorage.getItem('orgId'))
-    .subscribe( 
-      data => { 
-        this.erplocationList = data.obj;
-        console.log(this.erplocationList);
-      }
-    )
+   
 
-    this.service.alllocationlist()
-    .subscribe( 
-      data => { 
-        this.alllocationlist = data.obj;
-        console.log(this.alllocationlist);
-      }
-    )
+    // this.service.alllocationlist()
+    // .subscribe( 
+    //   data => { 
+    //     this.alllocationlist = data.obj;
+    //     console.log(this.alllocationlist);
+    //   }
+    // )
 
 
     this.service.priorityList()
@@ -323,6 +316,19 @@ export class ErpsupportComComponent {
     delete val.srcitexecutive
     delete val.srcstatus
     return val;
+ }
+
+ onselectouid(event:any){
+  var id=event.target.value;
+      this.service.erplocationList(id)
+    .subscribe( 
+      data => { 
+        this.erplocationList = data.obj;
+        console.log(this.erplocationList);
+      }
+    )
+
+
  }
 
  search(){

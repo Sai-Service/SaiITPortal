@@ -6,6 +6,7 @@ interface FormData {
   accessTo: string;
   city: string;
   month: string;
+  reportRelation: string;  // Add this
   reportType: string;
   year: number;
   department: string;
@@ -34,17 +35,22 @@ interface UserData {
   templateUrl: './escalationreport.component.html',
   styleUrl: './escalationreport.component.css',
 })
+
 export class EscalationreportComponent implements OnInit {
   isCityDisabled: boolean = false;
   username: string = '';
   orgId: string = '';
   orgName: string = '';
   role: string = '';
+  year: string='';
+  currentYear:string;
   userData: UserData | null = null;
+  reportRelations: any[] ;
 
   formData: FormData = {
     accessTo: '',
     city: '',
+    reportRelation: '',
     month: '',
     reportType: '',
     year: new Date().getFullYear(),
@@ -61,32 +67,60 @@ export class EscalationreportComponent implements OnInit {
 
   reportTypes: ReportType[] = [];
 
+  showQuarter: boolean = false;  
+
   headers: HttpHeaders;
   ServerUrl: string;
+  activeTab: string = 'form1';
+  // activeTab: string = 'form2';
 
   constructor(private http: HttpClient) {
     this.headers = new HttpHeaders();
     this.ServerUrl = AppConst.ServerUrl;
   }
 
+  // ngOnInit(): void {
+  //   this.username = sessionStorage.getItem('userName') || '';
+  //   this.orgId = sessionStorage.getItem('orgId') || '';
+  //   this.orgName = sessionStorage.getItem('orgName') || '';
+  //   this.role = sessionStorage.getItem('role') || '';
+
+  //   const userDataString = sessionStorage.getItem('userData');
+  //   if (userDataString) {
+  //     this.userData = JSON.parse(userDataString);
+  //   }
+
+  //   this.formData.createdBy = this.username;
+  //   this.formData.updatedBy = this.username;
+  //   this.formData.orgId = this.orgId;
+  //   this.formData.orgName = this.orgName;
+  //   this.formData.ouId = this.orgId;
+  //   this.formData.role = this.role;
+  // }
+
   ngOnInit(): void {
-    this.username = sessionStorage.getItem('userName') || '';
-    this.orgId = sessionStorage.getItem('orgId') || '';
-    this.orgName = sessionStorage.getItem('orgName') || '';
-    this.role = sessionStorage.getItem('role') || '';
+  this.username = sessionStorage.getItem('userName') || '';
+  const password = sessionStorage.getItem('password') || '';
 
-    const userDataString = sessionStorage.getItem('userData');
-    if (userDataString) {
-      this.userData = JSON.parse(userDataString);
-    }
+  console.log('Session userName:', this.username);
+  console.log('Session password:', password);  // Remove in production!
 
-    this.formData.createdBy = this.username;
-    this.formData.updatedBy = this.username;
-    this.formData.orgId = this.orgId;
-    this.formData.orgName = this.orgName;
-    this.formData.ouId = this.orgId;
-    this.formData.role = this.role;
-  }
+  // if (!this.username || !password) {
+  //   alert('Session missing username or password');
+  // }
+
+  this.orgId = sessionStorage.getItem('orgId') || '';
+  this.orgName = sessionStorage.getItem('orgName') || '';
+  this.role = sessionStorage.getItem('role') || '';
+
+  this.formData.createdBy = this.username;
+  this.formData.updatedBy = this.username;
+  this.formData.orgId = this.orgId;
+  this.formData.orgName = this.orgName;
+  this.formData.ouId = this.orgId;
+  this.formData.role = this.role;
+}
+
 
   onFileSelected(event: Event): void {
     const element = event.target as HTMLInputElement;
@@ -147,6 +181,7 @@ export class EscalationreportComponent implements OnInit {
       accessTo: '',
       city: '',
       month: '',
+      reportRelation: '',
       reportType: '',
       year: new Date().getFullYear(),
       department: '',
@@ -156,6 +191,7 @@ export class EscalationreportComponent implements OnInit {
       orgId: this.orgId,
       orgName: this.orgName,
       role: this.role,
+      
     };
 
     this.file = null; 
@@ -169,15 +205,63 @@ export class EscalationreportComponent implements OnInit {
   }
 
   updateDepartment(): void {
-    console.log('Selected Report Type:', this.formData.accessTo);
-
-    this.isCityDisabled = this.formData.accessTo === 'TOP MGT';
-    if (this.isCityDisabled) {
-      this.formData.city = 'ALL';
-    }
-
-    this.fetchReportTypes();
+  this.isCityDisabled = this.formData.accessTo === 'TOP MGT';
+  if (this.isCityDisabled) {
+    this.formData.city = 'ALL';
   }
+
+  this.formData.reportRelation = '';
+  this.reportRelations = [];
+  this.formData.reportType = '';
+  this.reportTypes = [];
+
+  this.fetchReportRelations();
+}
+
+fetchReportRelations(): void {
+  // var accessTo = encodeURIComponent(this.formData.accessTo);
+  var accessTo1=this.formData.accessTo;
+  var api=`${this.ServerUrl}/portalDataReports/reportRelationByAccess?accessTo=${accessTo1}`
+  
+  this.http.get<any>(api).subscribe(
+    (response) => {
+      if (response.code === 200 && Array.isArray(response.obj)) {
+        this.reportRelations = response.obj;
+      } else {
+        this.reportRelations = [];
+        console.warn('Unexpected reportRelation API response:', response);
+      }
+    },
+    (error) => {
+      console.error('Error fetching report relations:', error);
+      this.reportRelations = [];
+    }
+  );
+}
+
+onReportRelationChange(): void {
+  this.reportTypes = [];
+  this.formData.reportType = '';
+
+  this.showQuarter = this.formData.reportRelation === 'IT_QUARTERLY';
+// alert(this.formData.reportRelation);
+  const reportRelatedTo = encodeURIComponent(this.formData.reportRelation);
+  const apiUrl = `${this.ServerUrl}/portalDataReports/dataReportType?reportRelatedTo=${reportRelatedTo}`;
+
+  this.http.get<any>(apiUrl).subscribe(
+    (response) => {
+      if (response.code === 200 && Array.isArray(response.obj)) {
+        this.reportTypes = response.obj;
+        console.log('Fetched Report Types:', this.reportTypes);
+      } else {
+        console.warn('Unexpected reportType API response:', response);
+      }
+    },
+    (error) => {
+      console.error('Error fetching report types:', error);
+    }
+  );
+}
 
   fetchReportTypes(): void {
     const accessTo = encodeURIComponent(this.formData.accessTo);
@@ -199,4 +283,46 @@ export class EscalationreportComponent implements OnInit {
       }
     );
   }
+
+    supporterInfo = {
+         attribute3: '',  
+         attribute4: '',  
+         attribute5: '',  
+         userName: '',    
+         password: ''     
+     };
+
+onUpdateSupporterInfo(): void {
+  const userName = this.username; 
+  const password = sessionStorage.getItem('password') || 'derina'; 
+
+  if (!userName || !password) {
+    alert('User is not logged in.');
+    return;
+  }
+
+  const updateData = {
+    attribute3: this.supporterInfo.attribute3,
+    attribute4: this.supporterInfo.attribute4,
+    attribute5: this.supporterInfo.attribute5,
+    userName: userName,
+    password: password
+  };
+
+  const url = `${this.ServerUrl}/Login/update/${userName}`;
+
+  this.http.put(url, updateData).subscribe(
+    (response) => {
+      console.log('Update Success:', response);
+      alert('Support info updated successfully.');
+    },
+    (error) => {
+      console.error('Update Error:', error);
+      alert(error?.error?.message || 'Update failed.');
+    }
+  );
 }
+
+}
+
+

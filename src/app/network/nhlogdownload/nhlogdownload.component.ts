@@ -71,7 +71,7 @@ export class NhlogdownloadComponent {
   srclocationId:number;
   srcdeptId:number;
   reportName:string;
-  reportExtractedName:String
+  reportExtractedName:String;
 
   @ViewChild('fileInput') fileInput:any;
 
@@ -189,7 +189,7 @@ export class NhlogdownloadComponent {
               const reportPath = res.obj[0].report_path; 
               if (typeof reportPath === 'string') {
                  const fileName = this.extractFileName(reportPath);
-                console.log('Extracted file name: ', fileName);  // For debugging purposes, or you can use it elsewhere
+                console.log('Extracted file name: ', fileName);  
               } else {
                 console.error('Expected report_path to be a string, but got:', typeof reportPath);
               }
@@ -202,20 +202,19 @@ export class NhlogdownloadComponent {
           }
         },
         (error: any) => {
-          // Handle any errors that occur during the HTTP request
           console.error('Error occurred: ', error);
         }
       );
   }
   
-  // Your extractFileName function
+
   private extractFileName(path: string): string {
     if (!path) return '';
     if (typeof path !== 'string') {
       console.error('Expected path to be a string but got:', typeof path);
-      return '';  // Return an empty string if path isn't a string
+      return '';  
     }
-    return path.split('//').pop() || '';  // Extract the file name from the path
+    return path.split('//').pop() || '';  
   }
   
 

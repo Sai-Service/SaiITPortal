@@ -269,9 +269,6 @@ UserissueLinesGroup() {
       }
     )
 
-    
-
-
   }
 
   get f() { return this.userissueslogForm.controls; }
@@ -503,7 +500,7 @@ UserissueLinesGroup() {
         formData.append('file', '');
       }
     formData.append('objhdMst',JSON.stringify(formValue));
-    this.service.updateUserIssueLinefn(formData,issueNo).subscribe((res: any) => {
+    this.service.updateUserIssueLinefn2(formData,issueNo).subscribe((res: any) => {
       if (res.code === 200) {
         alert(res.message);
         this.UpdateisButtonDisabled=true;

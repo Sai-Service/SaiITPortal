@@ -12,7 +12,7 @@
     <header class="header">
         <div class="header-container">
             <div class="logo-section">
-                <img src="http://localhost:8080/DocUpload/DownloadImages?imagePath=D://IMGUPLOAD//apkicon.png" alt="Sai Service Logo" class="logo">
+                <img src="assets/images/Sai-flower.png" alt="Sai Service Logo" class="logo">
                 <h1 class="brand-name">SAI SERVICE</h1>
             </div>
             
@@ -31,18 +31,38 @@
                     <span class="btn-icon">📊</span>
                     <span class="btn-text">View Reports</span>
                 </button>
+                <div class="username">
+                    <a href="http://saiitportal.com/#/login/login">
+                    <b style="color: rgb(248, 247, 250);">LOGOUT</b>
+                    </a>
+                </div>
             </div>
         </div>    
     </header>
 
     <main class="main-container">
+
         <div class="page-header">
-            <h1 class="page-title">🚀 IT Meet Mumbai 2024</h1>
+           <div class="user-section" style="margin-left: 300px;">
+            <button class="btn-report" (click)="navigateToPhotos()">
+                    <span class="btn-icon">📊</span>
+                    <span class="btn-text">ANNUAL BUSINESS REVIEW MEET PHOTOS 2024-25</span>
+            </button>
+
+            <!-- <button class="btn-report" (click)="navigateTopresentation()">
+                    <span class="btn-icon">📊</span>
+                    <span class="btn-text">ANNUAL BUSINESS MEET PRESNTATIONS 2024-25</span>
+            </button> -->
+           </div>
+        </div>
+
+        <div class="page-header">
+            <h1 class="page-title">🚀 ANNUAL BUSINESS MEET 2024-25</h1>
             <div class="title-underline"></div>
         </div>
 
         <div class="image-container">
-            <img src="http://localhost:8080/DocUpload/DownloadImages?imagePath=D://IMGUPLOAD//employees.jpeg" alt="Workplace Guidelines" class="main-image">
+            <img src="assets/images/GRP1.jpg" alt="Workplace Guidelines" class="main-image">
         </div>
 
         <section class="dos-donts-section">
