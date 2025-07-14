@@ -41,9 +41,6 @@ export class LoginPgComponent {
   supportdtls:any=[];
   latestNewsletter: string = '';
 
-<<<<<<< HEAD
-  
-=======
   showSupport: boolean = false;
 
   constructor(private fb: FormBuilder ,private router: Router, private LoginSerService: LoginSerService,private service:ErpIssueService) {
@@ -103,7 +100,7 @@ export class LoginPgComponent {
 get f() { return this.loginpagecomponentForm.controls; }
   loginpagecomponentfrm(loginpagecomponentForm: any) { }
 
->>>>>>> abf9fcd1acd64172a7879a461dacd127ddf32314
+
   login() { 
     var username = this.loginpagecomponentForm.get('username')?.value;
     var password = this.loginpagecomponentForm.get('password')?.value;
