@@ -533,6 +533,26 @@ validation() {
   this.checkValidation = true
 }
 
+
+
+refreshModalData() {
+  this.ExitButon(); // Re-fetch issue details from backend
+  this.orderlineDetailsArray().reset(); // Or repopulate form array if needed
+  this.erpsupportcomForm.patchValue({
+    remark: '',
+    status: '',
+    assignTo: '',
+    fileType: '',
+    file: null,
+    lastUpdatedBy: '' // or however you track user
+  });
+}
+
+ExitButon(){
+
+    this.isIssueClosed = false;
+}
+
 closeIssue() {
   const issueNo = this.erpsupportcomForm.get('issueNo')?.value;
   if (!issueNo) {
