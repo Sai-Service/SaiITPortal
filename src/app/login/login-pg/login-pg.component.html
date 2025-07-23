@@ -47,14 +47,24 @@
               Mumbai News Letter</a>
           </li>
           <br>
-          <!-- <li> -->
+        
+          <li *ngIf="latestNewsletter">
+                <a [href]="'http://saiitportal.com/ITPortal/DocUpload/DownloadLetter?news_Line8=//sai14_data//saiitportal_docs//Application_Image//' + latestNewsletter" target="_blank">
+                  Sai IT NewsLetter </a>
+          </li>  
+          <br>
 
-              <li *ngIf="latestNewsletter">
-  <a [href]="'http://saiitportal.com/ITPortal/DocUpload/DownloadLetter?news_Line8=//sai14_data//saiitportal_docs//Application_Image//' + latestNewsletter" target="_blank">
-    Sai It NewsLetter
-  </a>
-</li>          
-        <!-- <a href="http://saiitportal.com/ITPortal/DocUpload/DownloadItLetter?news_Line6=//sai14_data//saiitportal_docs//Application_Image//SaiIT - Newsletter May 2025.pdf"  target="_blank">
+           <!-- <li>
+                <a href="http://localhost:8080/DocUpload/DownloadImages?imagePath=D://IMGUPLOAD//IT POLICY - SSPL - End Users (003).pdf" target="_blank">
+                 IT POLICY </a>
+           </li> -->
+
+           <li>
+                <a href="http://saiitportal.com/ITPortal/DocUpload/DownloadLetter?news_Line8=//sai14_data//saiitportal_docs//CEO_Report_Data//IT POLICY_ALL.pdf" target="_blank">
+                 IT POLICY </a>
+           </li>
+
+          <!-- <a href="http://saiitportal.com/ITPortal/DocUpload/DownloadItLetter?news_Line6=//sai14_data//saiitportal_docs//Application_Image//SaiIT - Newsletter May 2025.pdf"  target="_blank">
               Sai IT News Letter</a> -->
                <!-- <a href="http://saiitportal.com/ITPortal/DocUpload/DownloadItLetter?news_Line6=//sai14_data//saiitportal_docs//Application_Image//SAI IT NEWS LETTER_ALL_JUL.pdf"  target="_blank">
               Sai IT News Letter</a> -->
